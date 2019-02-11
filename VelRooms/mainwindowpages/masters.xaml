@@ -1,0 +1,143 @@
+<Page x:Class="HMS.mainwindowpages.masters"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMS.mainwindowpages"
+      mc:Ignorable="d" 
+      Height="620"
+      Title="masters" Background="White"  Width="1080">
+
+    <Page.Resources>
+
+        <Style x:Key="txtbox" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="leftpanestyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#354766"/>
+            <Setter Property="Height" Value="35"/>
+
+            <Setter Property="Effect" >
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="2" Color="LightGray"/>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter/>
+                        </Grid>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#e5b300"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+    </Page.Resources>
+
+    <!--window divider-->
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="451*"/>
+            <ColumnDefinition Width="89*"/>
+
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <!--Bottompane-->
+        <StackPanel  Margin="5,0,0,0" Orientation="Horizontal" Grid.Column="1"  >
+            <Button x:Name="btnhtinfo" Width="168"  Margin="0,7,0,578" Style="{StaticResource leftpanestyle}" Click="btnhtinfo_Click" >
+                <TextBlock  FontSize="20" Foreground="White"  Height="22" Style="{StaticResource ResourceKey=txtbox}" >
+                    <AccessText>_Hotel Info</AccessText>
+                </TextBlock>
+            </Button>
+            <Button x:Name="btncategory"  Width="168" Margin="-169,51,0,534" Style="{StaticResource leftpanestyle}" Click="btnctgclick" >
+                <TextBlock FontSize="20" Foreground="White"  Width="88" Style="{StaticResource txtbox}">
+                    <AccessText>Cate_gory</AccessText>
+                </TextBlock>
+            </Button>
+            <Button x:Name="btnRegUsr" Width="168" Margin="-169,470,0,0" Style="{StaticResource leftpanestyle}" Click="btnRegUsr_Click" Height="35" VerticalAlignment="Top" >
+                <TextBlock    FontSize="20" Foreground="White"  Width="86" Style="{StaticResource txtbox}">
+                    <AccessText>Reg U_ser</AccessText>
+                </TextBlock>
+            </Button>
+            <Button x:Name="btncmp"  Width="168" Margin="-169,377,0,207" Style="{StaticResource leftpanestyle}" Click="btncmpclick" >
+                <TextBlock    FontSize="20" Foreground="White" Style="{StaticResource txtbox}">
+                    <AccessText>_Company</AccessText>
+                </TextBlock>
+            </Button>
+            <Button x:Name="btndpt"  Width="168" Margin="-168,330,0,252" Style="{StaticResource leftpanestyle}" Click="btndptclick" Height="35" >
+                <TextBlock FontSize="20" Foreground="White"  Width="120" Style="{StaticResource txtbox}">
+                    <AccessText>_Department</AccessText>
+                </TextBlock>
+            </Button>
+            <Button x:Name="btnplan"  Width="168" Margin="-169,144,0,441" Style="{StaticResource leftpanestyle}" Click="btnplnclick" >
+                <TextBlock   FontSize="20" Foreground="White"  Width="81" Height="31" Style="{StaticResource txtbox}">
+                    
+                    <AccessText>
+                        _Plan Def
+                    </AccessText>
+                </TextBlock>
+            </Button>
+            <Button x:Name="btnrmmst"  Width="168" Margin="-169,192,0,393" Style="{StaticResource leftpanestyle}" Click="btnrmmstclick" >
+                <TextBlock    FontSize="20" Foreground="White" Width="110" Style="{StaticResource txtbox}" Margin="19,6,39,6">
+                    <AccessText>_Room Tariff</AccessText>
+                </TextBlock>
+            </Button>
+            <Button x:Name="btnami" Width="168" Margin="-169,97,0,488" Style="{StaticResource leftpanestyle}" Click="btnamiclick" VerticalAlignment="Bottom" >
+                <TextBlock  FontSize="20" Foreground="White" Style="{StaticResource txtbox}">
+                    <AccessText>_Amenities</AccessText>
+                </TextBlock>
+            </Button>
+            <Button x:Name="btnrvn"  Width="168" Margin="-168,0,0,299" Style="{StaticResource leftpanestyle}" Click="btnrvnclick" VerticalAlignment="Bottom" >
+                <TextBlock    FontSize="20" Foreground="White"  Width="89" Height="29" Style="{StaticResource txtbox}">
+                    <AccessText>R_evenue</AccessText>
+                </TextBlock>
+            </Button>
+            <Button x:Name="btnRstPass" Width="168" Margin="-169,0,0,162" Style="{StaticResource leftpanestyle}" VerticalAlignment="Bottom" Click="btnRstPass_Click" >
+                <TextBlock    FontSize="20" Foreground="White" Height="25" Style="{StaticResource txtbox}">
+                    <AccessText>Reset Pass_word</AccessText>
+                </TextBlock>
+            </Button>
+
+            <Button x:Name="btnrmtax"  Width="168" Margin="-169,239,0,0" Style="{StaticResource leftpanestyle}" Click="btnrmtaxclick" VerticalAlignment="Top" >
+                <TextBlock FontSize="20" Foreground="White"  Width="99" Style="{StaticResource txtbox}" >
+                    <AccessText> Room _Tax</AccessText>
+                </TextBlock>
+            </Button>
+
+           
+        </StackPanel>
+
+        <ScrollViewer Name="scrframe2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+            <Frame Name="frame2" Height="618"   >
+
+            </Frame>
+        </ScrollViewer>
+
+    </Grid>
+
+</Page>
+

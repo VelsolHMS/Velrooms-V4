@@ -1,0 +1,430 @@
+﻿<Page x:Class="HMS.mainwindowpages.UserPermission"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HMS.mainwindowpages"
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="UserPermissions" Height="580" Width="850" Background="White" >
+
+    <material:Card Height="580" material:ShadowAssist.ShadowDepth="Depth4">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="143*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#354766">
+                <TextBlock Text="Roles and Permissons" Height="30" HorizontalAlignment="Center" Padding="0,5,0,0" Foreground="White" FontSize="18" FontFamily="Times New Roman"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel Height="25" Margin="0,20.666,0,507.266" Orientation="Horizontal" >
+                    <material:PackIcon Kind="Shopping" Height="25" Width="27" Margin="80,0,0,0"/>
+                    <ComboBox Name="cbdepartment" SelectedIndex="0" TabIndex="0" Width="150" Height="25" Margin="20,0,0,0" Padding="2,-8,0,0" material:HintAssist.Hint="" material:HintAssist.IsFloating="True" >
+                        <ComboBoxItem >Fornt Office</ComboBoxItem>
+                    </ComboBox>
+                    <material:PackIcon Kind="Account" Height="25" Width="27" Margin="260,0,0,0"/>
+                    <ComboBox Name="cbuser" DisplayMemberPath="USER_NAME" TabIndex="1" DropDownClosed="cbuser_DropDownClosed" Height="25" Width="150" Margin="20,0,0,0" Padding="2,-8,0,0"  material:HintAssist.Hint="User Name"  material:HintAssist.IsFloating="True"></ComboBox>
+                </StackPanel>
+                <StackPanel Height="25" Margin="0,60.666,0,467.266" Orientation="Horizontal" RenderTransformOrigin="0.498,0.251" >
+                    <material:PackIcon Kind="VectorCircle" Height="22" Width="27" Margin="538,0,0,0"/>
+                    <ComboBox Name="cbdesignation" SelectedIndex="0" TabIndex="2" DisplayMemberPath="DESGINATION" Width="150" Height="25" Margin="20,0,0,0" Padding="2,-8,0,0" material:HintAssist.Hint="Designation" material:HintAssist.IsFloating="True" ></ComboBox>
+                </StackPanel>
+                <Separator Margin="1,95,-1,445.933" Background="#FFB6B6B6"/>
+                <StackPanel Margin="1,107,-1,422" Orientation="Horizontal" Background="White" >
+                    <Button Width="100" x:Name="MASTER" Margin="160,0,0,-32" Content="Masters" Click="Button_Click"  />
+                    <Button Width="110" x:Name="OPERATIONS" Margin="40,0,0,-32" Content="Operations" Click="Button_Click_1" />
+                    <Button Width="100" x:Name="REPORTS" Margin="40,0,0,-32" Content="Reports" Click="Button_Click_2" />
+                    <Button Width="100" x:Name="OTHERS" Margin="40,0,0,-32" Content="Others"  />
+                </StackPanel>
+                <Separator Margin="0,167,0,381.933" Background="#FFB6B6B6"/>
+                <StackPanel Margin="1,185,-1,342.933" Orientation="Horizontal"  >
+                    <Label Content="Module" FontSize="18" Margin="150,0,0,0" Padding="0" FontWeight="Bold" ></Label>
+                    <Label Content="Permissions" Margin="390,0,0,0" Padding="0"  FontSize="18" FontWeight="Bold" ></Label>
+                </StackPanel>
+                <!--#region  Master Roles and Permissions -->
+                <ScrollViewer Name="spmaster" Margin="0,220,10,0" Visibility="Hidden">
+                    <WrapPanel Name="wpmaster" Visibility="Hidden">
+                        <!--<StackPanel Height="38" Width="980" Orientation="Horizontal"  >
+                        <Label Content="Module" FontSize="25" Margin="100,0,0,0" ></Label>
+                        <Label Content="Permissions" Margin="400,0,0,0"  FontSize="25" ></Label>
+                    </StackPanel>-->
+                        <StackPanel Height="30" Width="901" Orientation="Horizontal" >
+                            <Label Content="HotelInfo" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="hotelinfo" Margin="10,0,0,0"   ></ToggleButton>
+                            <Label Content="Yes" FontSize="15" ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                            <Label Content="Company" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="company" Margin="10,0,0,0"   ></ToggleButton>
+                            <Label Content="Yes" FontSize="15" ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                            <Label Content="Category" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="category" Margin="10,0,0,0"   ></ToggleButton>
+                            <Label Content="Yes" FontSize="15"></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                            <Label Content="Plan Defination" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="plan" Margin="10,0,0,0"  ></ToggleButton>
+                            <Label Content="Yes" FontSize="15"  ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                            <Label Content="Room Tarrif" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="ROOMTARRIF" Margin="10,0,0,0"   ></ToggleButton>
+                            <Label Content="Yes" FontSize="15"  ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="900" Orientation="Horizontal" >
+                            <Label Content="Tax Code" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="taxcode" Margin="10,0,0,0"   ></ToggleButton>
+                            <Label Content="Yes" FontSize="15"  ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="900" Orientation="Horizontal"  >
+                            <Label Content="Amenities" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="amenities" Margin="10,0,0,0"   ></ToggleButton>
+                            <Label Content="Yes" FontSize="15"  ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="900" Orientation="Horizontal" >
+                            <Label Content="Revenue" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="revenue" Margin="10,0,0,0"   ></ToggleButton>
+                            <Label Content="Yes" FontSize="15"  ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="900" Orientation="Horizontal"  >
+                            <Label Content="Department" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="department" Margin="10,0,0,0"   ></ToggleButton>
+                            <Label Content="Yes" FontSize="15"  ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="900"  Orientation="Horizontal" >
+                            <Label Content="Reset Password" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="resetpassword" Margin="10,0,0,0"   ></ToggleButton>
+                            <Label Content="Yes" FontSize="15"  ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="899" Orientation="Horizontal" >
+                            <Label Content="Reg User" FontSize="15" Width="130" Margin="147,0,0,0" ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0" ></Label>
+                            <ToggleButton Name="reguser" Margin="10,0,0,0"  ></ToggleButton>
+                            <Label Content="Yes" FontSize="15"  ></Label>
+                        </StackPanel>
+                        <StackPanel Height="30" Width="898" Orientation="Horizontal" >
+                            <Label Content="User Permissions" FontSize="15" Width="130" Margin="147,0,0,0"  ></Label>
+                            <Label Content="No" FontSize="15" Margin="328,0,0,0"></Label>
+                            <ToggleButton Name="userpermision" Margin="10,0,0,0"></ToggleButton>
+                            <Label Content="Yes" FontSize="15"  ></Label>
+                        </StackPanel>
+                        <StackPanel Height="39" Width="898" Orientation="Horizontal"  Margin="0,20,0,25">
+                            <Button x:Name="savemaster" Content="SAVE" Width="100" Margin="285,0,0,0" Click="savemaster_Click"  />
+                            <Button x:Name="resetmaster" Content="RESET" Width="100" Margin="80,0,00,0" Click="resetmaster_Click" />
+                        </StackPanel>
+                    </WrapPanel>
+                </ScrollViewer>
+                <!--#endregion Masters Roles and Permissions-->
+                <!--#region  Operations Roles and permissions-->
+                <ScrollViewer Name="spoperations" Margin="12,210,10,0" Visibility="Hidden">
+                    <WrapPanel Name="wpoperations" Visibility="Hidden">
+                        <StackPanel Margin="0,10,0,0">
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Enquiry" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton  Name="enquiry" Margin="10,0,0,0" ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Reservation" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"/>
+                                <ToggleButton Name="Reservation" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15"></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Check-in" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="Checkin" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15"></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Check-out" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="checkout" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Co-Company" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="cocompany" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15"></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Co-Billonhold" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="cobillonhold" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15"></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal">
+                                <Label Content="Co-Transfer" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="cotransfer" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Advance" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="advance" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Pending Bill" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="pendingbill" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="PB-company" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="pbcompany" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal">
+                                <Label Content="PB-Billonhold" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="pbbillonhold" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Group-Checkin" Width="170" FontSize="15" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="groupcheckin" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="PostCharges" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="postcharges" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Paidouts" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="paidouts" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="RoomChange" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="Roomchange" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Refund" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="No" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="refund" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="BlockRoom" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="Blockroom" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Discount" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="discount" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="GuestInfo" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="Guestinfo" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="ChangeRoomstatus" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="changeroom" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Mis Sales" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="missales" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Bill settle" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="billsettle" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Reprint" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="Reprint" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Dashboard" FontSize="15" Width="170" Margin="135,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="288,0,0,0"></Label>
+                                <ToggleButton Name="dashboard" Margin="10,0,0,0"></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="39" Orientation="Horizontal" Margin="0,20,0,25">
+                                <Button Margin="285,0,0,0" Name="saveopr" Width="100" Content="SAVE" Click="saveopr_Click" ></Button>
+                                <Button Margin="80,0,0,0" Name="resetopr" Width="100" Content="RESET" Click="resetopr_Click" ></Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </WrapPanel>
+                </ScrollViewer>
+                <!--#endregion Operations Roles and permissions-->
+                <!--#region  Reports Roles and Permissions-->
+                <ScrollViewer Name="spreports" Margin="12,220,10,0"  Visibility="Hidden">
+                    <WrapPanel Name="wpreports"    Margin="0,0,0,80" Visibility="Hidden">
+                        <StackPanel Margin="0,0,0,0">
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Tariff Posted for the day" Width="180" FontSize="15" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton  Name="tariff" Margin="10,0,0,0"></ToggleButton>
+                                <Label Content="Yes" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Room Occupancy" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="Room" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15"></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Discount(Day)" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="daydiscount" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15"></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Discount(Month)" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="monthdiscount" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Expected Arrivals" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="expectedarrivals" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15"></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Expected Departures" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="expecteddepartures" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15"></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal">
+                                <Label Content="Cancelled Reservation" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="reservationcancel" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Today Arrivals" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="todayarrival" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Checkout for the day" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="checkoutfortheday" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Guest davance" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="guestadvance" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal">
+                                <Label Content="Guest In House" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="Inhouseguest" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Room Rate list" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="roomratelist" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Reservation list" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="reservationlist" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Transcation list" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="transactionlist" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Tax Report" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="TaxReports" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Fo Transaction list" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="folist" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal" >
+                                <Label Content="Change Guest info" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="guestchange" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Room Change Report" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="changeroomreport" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Outstanding Balance" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="outstandingbalance" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="MonthWise Room Tariff" FontSize="15" Width="180" Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="monthwiseroom" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="30" Width="980" Orientation="Horizontal"  >
+                                <Label Content="Pending Bill Report" FontSize="15" Width="180"  Margin="110,0,0,0" ></Label>
+                                <Label Content="NO" FontSize="15" Margin="300,0,0,0"></Label>
+                                <ToggleButton Name="pendingbillreport" Margin="10,0,0,0"  ></ToggleButton>
+                                <Label Content="YES" FontSize="15" ></Label>
+                            </StackPanel>
+                            <StackPanel Height="39" Orientation="Horizontal" Margin="0,20,0,25">
+                                <Button Name="saverep" Content="SAVE" Width="100" Margin="285,00,00,0" Click="saverep_Click" ></Button>
+                                <Button Name="resetrep" Content="RESET" Width="100" Margin="80,0,0,0" Click="resetrep_Click" ></Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </WrapPanel>
+                </ScrollViewer>
+                <!--#endregion-->
+            </Grid>
+        </Grid>
+    </material:Card>
+
+</Page>

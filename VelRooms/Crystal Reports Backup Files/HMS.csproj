@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FFA14366-5CAB-4620-B5EC-2558963AD55E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HMS</RootNamespace>
+    <AssemblyName>HMS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>
+    </DocumentationFile>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>HMS.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Prototyping.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="microsoft.expression.prototyping.runtime, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="sapbusinessobjects.wpf.viewer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DataVisualization.Design" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=3.5.40128.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WPFToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="mainwindowpages\dashboard.xaml.cs">
+      <DependentUpon>dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\home.xaml.cs">
+      <DependentUpon>home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\HotelName.xaml.cs">
+      <DependentUpon>HotelName.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\info.xaml.cs">
+      <DependentUpon>info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\masters.xaml.cs">
+      <DependentUpon>masters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\operations.xaml.cs">
+      <DependentUpon>operations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\reports.xaml.cs">
+      <DependentUpon>reports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Masters\amenity.cs" />
+    <Compile Include="Model\Masters\companymaster.cs" />
+    <Compile Include="Model\Masters\Passwordreset.cs" />
+    <Compile Include="Model\Operations\Enquiry.cs" />
+    <Compile Include="Model\Operations\Pendingbill.cs" />
+    <Compile Include="Model\Operations\Print.cs" />
+    <Compile Include="Model\Operations\Settle.cs" />
+    <Compile Include="Model\Others\dashboard.cs" />
+    <Compile Include="Model\Masters\DEPARTMENT.cs" />
+    <Compile Include="Model\Masters\plancode.cs" />
+    <Compile Include="Model\Masters\registration.cs" />
+    <Compile Include="Model\Masters\revenue.cs" />
+    <Compile Include="Model\Masters\ROOMCATEGORY.cs" />
+    <Compile Include="Model\Masters\RoomMaster.cs" />
+    <Compile Include="Model\Masters\TAXCODE.cs" />
+    <Compile Include="Model\Operations\advance.cs" />
+    <Compile Include="Model\Operations\blockroom.cs" />
+    <Compile Include="Model\Operations\CheckIN.cs" />
+    <Compile Include="Model\Operations\Checkout.cs" />
+    <Compile Include="Model\Operations\discount.cs" />
+    <Compile Include="Model\Operations\Entireroom.cs" />
+    <Compile Include="Model\Operations\INGUESTHOUSEINFO.cs" />
+    <Compile Include="Model\Operations\miscellenous.cs" />
+    <Compile Include="Model\Operations\Paidout.cs" />
+    <Compile Include="Model\Operations\Postcharges.cs" />
+    <Compile Include="Model\Operations\REFUND.cs" />
+    <Compile Include="Model\Operations\RESERVATION.cs" />
+    <Compile Include="Model\Operations\ROOMCHANGE.cs" />
+    <Compile Include="Model\Others\home.cs" />
+    <Compile Include="ViewModel\data.cs" />
+    <Compile Include="View\Masters\Amenities.xaml.cs">
+      <DependentUpon>Amenities.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\Company_Master.xaml.cs">
+      <DependentUpon>Company_Master.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\DEPARTMENT.xaml.cs">
+      <DependentUpon>DEPARTMENT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\Planecode.xaml.cs">
+      <DependentUpon>Planecode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\REGISTRATION.xaml.cs">
+      <DependentUpon>REGISTRATION.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\resetpassword.xaml.cs">
+      <DependentUpon>resetpassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\Revenue.xaml.cs">
+      <DependentUpon>Revenue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\RoomCategory.xaml.cs">
+      <DependentUpon>RoomCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\RoomMaster.xaml.cs">
+      <DependentUpon>RoomMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\TAXCODE.xaml.cs">
+      <DependentUpon>TAXCODE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Advance.xaml.cs">
+      <DependentUpon>Advance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Block_Room.xaml.cs">
+      <DependentUpon>Block_Room.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\changeguestinfo.xaml.cs">
+      <DependentUpon>changeguestinfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Checkin.xaml.cs">
+      <DependentUpon>Checkin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\CheckinDeparture.xaml.cs">
+      <DependentUpon>CheckinDeparture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Checkout.xaml.cs">
+      <DependentUpon>Checkout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Discount.xaml.cs">
+      <DependentUpon>Discount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\enquiry.xaml.cs">
+      <DependentUpon>enquiry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\EntireRoom.xaml.cs">
+      <DependentUpon>EntireRoom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\INGUESTHOUSEINFO.xaml.cs">
+      <DependentUpon>INGUESTHOUSEINFO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Miscellenous_Collection.xaml.cs">
+      <DependentUpon>Miscellenous_Collection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\othersettlement.xaml.cs">
+      <DependentUpon>othersettlement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Paidouts.xaml.cs">
+      <DependentUpon>Paidouts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\PendingBill.xaml.cs">
+      <DependentUpon>PendingBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\PostChargesxaml.xaml.cs">
+      <DependentUpon>PostChargesxaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Refund.xaml.cs">
+      <DependentUpon>Refund.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\RESERVATIONS.xaml.cs">
+      <DependentUpon>RESERVATIONS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\RESERVSTIONCHECKIN.xaml.cs">
+      <DependentUpon>RESERVSTIONCHECKIN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\ROOMCHANGE.xaml.cs">
+      <DependentUpon>ROOMCHANGE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\settle.xaml.cs">
+      <DependentUpon>settle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Vacant.xaml.cs">
+      <DependentUpon>Vacant.xaml</DependentUpon>
+    </Compile>
+    <Page Include="mainwindowpages\dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\HotelName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mainwindowpages\info.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\masters.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\operations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\reports.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Masters\Amenities.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\Company_Master.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\DEPARTMENT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\Planecode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\REGISTRATION.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\resetpassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\Revenue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\RoomCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\RoomMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\TAXCODE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Advance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Operations\Block_Room.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\changeguestinfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\HotelInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App Code\ListExtentions.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Masters\HotelInfo.cs" />
+    <Compile Include="View\Masters\HotelInfo.xaml.cs">
+      <DependentUpon>HotelInfo.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Checkin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\CheckinDeparture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Checkout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Discount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\enquiry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Operations\EntireRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\INGUESTHOUSEINFO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Miscellenous_Collection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\othersettlement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Paidouts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\PendingBill.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Operations\PostChargesxaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Refund.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\RESERVATIONS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\RESERVSTIONCHECKIN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\ROOMCHANGE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\settle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Vacant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-admin.png" />
+    <Resource Include="Images\icons8-password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Accounting_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Briefcase_50px.png" />
+    <Resource Include="Images\Combo Chart_48px.png" />
+    <Resource Include="Images\Exit_50px.png" />
+    <Resource Include="Images\Hotel Check In_50px.png" />
+    <Resource Include="Images\Hotel Check Out_50px.png" />
+    <Resource Include="Images\icons8-Content-96.png" />
+    <Resource Include="Images\icons8-Department-100.png" />
+    <Resource Include="Images\icons8-home.png" />
+    <Resource Include="Images\Info_48px.png" />
+    <Resource Include="Images\Inspection_64px.png" />
+    <Resource Include="Images\Paper Money_50px.png" />
+    <Resource Include="Images\Photo Gallery_50px.png" />
+    <Resource Include="Images\Schedule_50px.png" />
+    <Resource Include="Images\Services_48px.png" />
+    <Resource Include="Images\Today_50px.png" />
+    <Resource Include="Images\User Groups_48px.png" />
+    <Resource Include="Images\User_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-about.png" />
+    <Resource Include="Images\icons8-minimize-window.png" />
+    <Resource Include="Images\icons8-sign-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\align.png" />
+    <Resource Include="Images\back.png" />
+    <Resource Include="Images\checkin.png" />
+    <Resource Include="Images\checkout.png" />
+    <Resource Include="Images\enquiry.png" />
+    <Resource Include="Images\icons8-menu-vertical-96.png" />
+    <Resource Include="Images\icons8-price-tag-96.png" />
+    <Resource Include="Images\icons8-settings-96.png" />
+    <Resource Include="Images\icons8-speech-bubble-50.png" />
+    <Resource Include="Images\pbcollection.png" />
+    <Resource Include="Images\reserv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\advance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-homestuck-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-home-alarm-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DAL\DAL.csproj">
+      <Project>{8644135f-6429-4ad3-add4-8badd840b589}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{8644135f-6429-4ad3-add4-8badd840b589}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{8644135f-6429-4ad3-add4-8badd840b589}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-logout-rounded-up-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-info-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hotel1320x742.jpg" />
+    <Resource Include="Images\icons8-minimize-window-50.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

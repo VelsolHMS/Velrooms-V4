@@ -1,0 +1,176 @@
+﻿<Window x:Class="HMS.View.Masters.login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"     
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:HMS.View.Masters"
+        mc:Ignorable="d"
+        Title="VelRooms" Height="500" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent" >
+    <Window.Resources>
+        <!--<Style x:Key="leftpanestyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Georige"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="CadetBlue"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="placeholder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent},
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource"
+                                 Background="Transparent"
+                                 Panel.ZIndex="2" />
+                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="Gray"/>
+                                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+    </Window.Resources>
+    <Grid>
+        <material:Card Height="500">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="23*"/>
+                    <RowDefinition Height="477*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"  Background="#354766">
+                    <TextBlock Text="Login" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontFamily="Cambria" FontSize="20" Margin="5,-0.447,0,0" Foreground="White"/>
+                    <Button Name="btnexit" Height="Auto" Margin="774,0,2,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btnexit_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/HMS;component/Images/cls.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="501*"/>
+                        <ColumnDefinition Width="299*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0.205"/>
+                                <GradientStop Color="#FF354766" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+                        <Image Margin="61,0,55,232" VerticalAlignment="Bottom" Source="/Images/logo.png" Height="243"/>
+                        <StackPanel Grid.Column="0" Height="59" VerticalAlignment="Bottom"  >
+                            <TextBlock Text="VelRooms powered by Velsol opc pvt ltd." HorizontalAlignment="Center" Foreground="White" FontSize="16" FontFamily="Cambria" Height="27" Margin="120.5,0,106.5,0" Width="274"/>
+                            <TextBlock Text="Corporate Address: 4th floor, Amritha towers, Kondapur, Hyderabad, Telangana-500084. " FontSize="12" TextAlignment="Center" FontFamily="Cambria" Margin="5,5,5,0" Foreground="White" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Height="35" Orientation="Horizontal" Margin="0,134,0,0" Grid.Column="1" VerticalAlignment="Top" >
+                            <Image Width="30" Height="30" Margin="50,0,0,3" VerticalAlignment="Bottom">
+                                <Image.Source>
+                                    <BitmapImage UriSource="/Images/icons8-admin.png"></BitmapImage>
+                                </Image.Source>
+                            </Image>
+                            <TextBox Width="150" TabIndex="0" Name="TXTUSERNAME" Padding="0,-4,0,0" Margin="30,1,0,0" LostFocus="TXTUSERNAME_LostFocus"  ToolTip="Enter Your Name" material:HintAssist.Hint="User Name" FontSize="15" material:HintAssist.IsFloating="True" Foreground="Black" CaretBrush="Black"></TextBox>
+                        </StackPanel>
+                        <StackPanel Height="35" Orientation="Horizontal" Margin="0,185,0,178" Grid.Column="1" >
+                            <Image Width="25" Margin="50,6,0,5">
+                                <Image.Source>
+                                    <BitmapImage UriSource="/Images/icons8-password.png"/>
+                                </Image.Source>
+                            </Image>
+                            <PasswordBox TabIndex="1" x:Name="TXTPASSWORD" GotFocus="TXTPASSWORD_GotFocus" Width="150" Padding="0,-6,0,0" Margin="35,0,0,10" MaxLength="10" LostFocus="TXTPASSWORD_LostFocus" FontSize="15" material:HintAssist.Hint="Password" material:HintAssist.IsFloating="True" CaretBrush="#89020202"  />
+                        </StackPanel>
+
+                        <StackPanel Height="41" Margin="0,0,0,101" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom">
+                            <Button Content="Sign In" TabIndex="2" IsDefault="True" GotFocus="Button_GotFocus" Margin="55,4,0,5" FontSize="15"  HorizontalAlignment="Left" Click="Button_Click_1"  Width="227" />
+
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="0,0,0,8" Height="30" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Orientation="Horizontal" >
+                            <TextBlock Width="150" TextAlignment="Center" Margin="50,10,0,0" HorizontalAlignment="Left" d:LayoutOverrides="Width"> 
+                    <Hyperlink x:Name="tclink" NavigateUri="http://www.velsol.in/" RequestNavigate="tclink_RequestNavigate_1" Foreground="Black">Terms and Conditions</Hyperlink>
+                            </TextBlock>
+                            <TextBlock Width="50" TextAlignment="Center" Margin="15,10,0,0" HorizontalAlignment="Left" d:LayoutOverrides="Width"> 
+                    <Hyperlink NavigateUri="mainwindowpages/info.xaml" RequestNavigate="Hyperlink_RequestNavigate" Foreground="Black">Help</Hyperlink>
+
+                            </TextBlock>
+                        </StackPanel>
+
+                        <Popup Name="ExpPOP" Visibility="Visible"  Width="500" Height="300" Placement="Center">
+                            <Border Background="White" BorderThickness="2" BorderBrush="Black" >
+                                <StackPanel>
+                                    <Label Content="The Hotel License Has Been Expired Please Contact (VELSOL OPC PVT LIMITED) " HorizontalContentAlignment="Center" Margin="0,100,0,0" FontWeight="Bold"></Label>
+                                    <Label Content="Contact Velsol for Licence agrement. " HorizontalContentAlignment="Center"></Label>
+                                    <Label Content="Email: contact@velsol.in / Phone: 040-48509070" HorizontalContentAlignment="Center"/>
+                                    <Button Name="ok" Width="100" Height="30" Content="OK" FontSize="20" Margin="0,190,0,0" Click="ok_Click" ></Button>
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                        <Popup Name="WarningPOP" Height="200" Width="400" Placement="Center">
+                            <Border Background="White" BorderBrush="Black" BorderThickness="2" >
+                                <StackPanel>
+                                    <Label Content="Your License Has been Getting expired" HorizontalContentAlignment="Center" FontWeight="Bold" Margin="0,20,0,0"></Label>
+                                    <Label Content="Pleace contact velsol for Licence Renewal" HorizontalContentAlignment="Center" FontSize="12"></Label>
+                                    <Label Content="Email:contact@velsol.in / Phone: 040-48509070" HorizontalContentAlignment="Center"></Label>
+                                    <Button Width="100" Height="30" Content="ok" FontSize="18" Click="Button_Click_2"  Margin="0,30,0,0"></Button>
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                        <Popup Name="mf_popup" Width="300"  Height="180" Placement="Center">
+                            <material:Card Background="#EF513A" Width="300" Height="180" material:ShadowAssist.ShadowDepth="Depth4">
+                                <StackPanel>
+                                    <StackPanel Height="50" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock Text="Missing Fields" FontSize="25" FontFamily="Calibri" Foreground="White" Margin="0,10,0,10" Padding="0,0,0,0"/>
+                                    </StackPanel>
+                                    <StackPanel Height="120" Margin="10,0,10,0" Background="White">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Viewbox Width="35" Height="35" Margin="15,10,10,0">
+                                                <Canvas Width="24" Height="24">
+                                                    <Path Data="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" Fill="#EF513A" />
+                                                </Canvas>
+                                            </Viewbox>
+                                            <TextBlock Text="Please fill all Fields !" FontSize="20" Margin="0,15,0,0" TextAlignment="Center" FontFamily="Calibri"/>
+                                        </StackPanel>
+                                        <Button HorizontalAlignment="Center" Width="100" Click="Button_Click" Foreground="#EF513A" FontSize="17" Background="White" BorderThickness="1" BorderBrush="#EF513A" Content="OK" FontWeight="Bold" Margin="0,20,0,0"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </material:Card>
+                        </Popup>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </material:Card>
+    </Grid>
+
+</Window>

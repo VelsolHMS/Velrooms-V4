@@ -1,0 +1,173 @@
+﻿<Page x:Class="HMS.mainwindowpages.DB"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:HMS.mainwindowpages"
+      xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+      mc:Ignorable="d" 
+             Height="590" Width="1024">
+    <Grid>
+        <material:Card Height="590">
+            <Grid Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="253*"/>
+                    <ColumnDefinition Width="827*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="157*"/>
+                        <RowDefinition Height="143*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <material:Card Height="309" Margin="2,0,0,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="6*"/>
+                                    <RowDefinition Height="97*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Background="#354766">
+                                    <TextBlock Text="Remainder" Foreground="White" FontSize="18" Padding="0,0,0,0" HorizontalAlignment="Left"  FontFamily="Times New Roman" Cursor="None" Margin="10,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <WrapPanel Name="wrap" Margin="0,0,0,0"/>
+                                    <ListView Name="listrem1" ItemsSource="{Binding}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,0,0,0" Height="292">
+                                        <ListView.Resources>
+                                            <Style TargetType="GridViewColumnHeader">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </Style>
+                                        </ListView.Resources>
+                                        <ListView.View>
+                                            <GridView x:Name="grid">
+                                                <GridViewColumn DisplayMemberBinding="{Binding ROOM_NO}" Width="65"/>
+                                                <GridViewColumn DisplayMemberBinding="{Binding FIRSTNAME}" Width="65"/>
+                                                <GridViewColumn DisplayMemberBinding="{Binding MOBILE_NO}" Width="85"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
+                        </material:Card>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <material:Card Height="261" Margin="2,10,0,0" >
+                            <chartingToolkit:Chart Name="pieChart" Title="Most booked-Room Types" Background="White" VerticalAlignment="Top" Height="261">
+                                <chartingToolkit:PieSeries DependentValuePath="Value" FontSize="20" Foreground="Black" IndependentValuePath="Key" ItemsSource="{Binding}" DataContext="{Binding}" IsSelectionEnabled="True" Margin="-10,0,0,7" HorizontalAlignment="Left" Width="178" >
+                                    <!--<chartingToolkit:PieSeries.Effect>
+                                        <DropShadowEffect ShadowDepth="10" BlurRadius="14" Color="Blue"/>
+                                    </chartingToolkit:PieSeries.Effect>-->
+                                </chartingToolkit:PieSeries>
+                                <chartingToolkit:Chart.LegendStyle >
+                                    <Style x:Name="color" TargetType="Control">
+                                        <Setter Property="Visibility"  Value="Hidden"/>
+                                        <Setter Property="FontSize" Value="7"/>
+                                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="-15,0,0,0"/>
+                                        <Setter Property="Width" Value="74"/>
+                                    </Style>
+                                </chartingToolkit:Chart.LegendStyle>
+                            </chartingToolkit:Chart>
+
+                        </material:Card>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="71*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="5,0,10,0">
+                        <material:Card Height="164">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="77*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Background="#354766">
+                                    <TextBlock Text="Bussiness Stats" Foreground="White" FontSize="18" Padding="0,0,0,0" HorizontalAlignment="Left"  FontFamily="Times New Roman" Cursor="None" Margin="10,0,0,0"/>
+                                </Grid>
+                                <Canvas Grid.Row="1"  Margin="0,0,0,0">
+                                    <material:Card Height="120"    Width="180" Canvas.Left="10" Canvas.Top="10">
+                                        <Grid>
+                                            <material:PackIcon Kind="Rupee" Height="85" Width="59" Margin="4,1,0,0" Foreground="#FF979DA6"/>
+                                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="Today Sale" Margin="7,0,0,20" FontWeight="Bold" FontFamily="Times New Roman" Foreground="#FF979DA6"/>
+
+                                            <Viewbox Margin="75,0,0,0">
+                                                <Label x:Name="lblsale" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0"  Width="51" Foreground="#FF354766" FontFamily="Calibri" FontWeight="Bold" Height="29"/>
+                                            </Viewbox>
+
+                                        </Grid>
+                                    </material:Card>
+                                    <material:Card Height="120"    Width="180"  Margin="200,10,0,0">
+                                        <Grid>
+                                            <material:PackIcon Kind="Hand" Height="85" Width="59" Margin="4,0,0,0" Foreground="#FF979DA6"/>
+                                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="Advance" Margin="7,0,0,20" FontWeight="Bold" FontFamily="Times New Roman" Foreground="#FF979DA6"/>
+
+                                            <Viewbox Margin="75,0,0,0">
+                                                <Label x:Name="lbladv" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0"  Width="51" Foreground="#FF354766" FontFamily="Calibri" FontWeight="Bold" Height="29" />
+                                            </Viewbox>
+                                        </Grid>
+                                    </material:Card>
+                                    <material:Card Height="120"    Width="180"  Margin="390,10,0,0">
+                                        <Grid>
+                                            <material:PackIcon Kind="Coins" Height="85" Width="59" Margin="4,0,0,0" Foreground="#FF979DA6"/>
+                                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="Charges" Margin="7,0,0,20" FontWeight="Bold" FontFamily="Times New Roman" Foreground="#FF979DA6"/>
+
+                                            <Viewbox Margin="75,0,0,0">
+                                                <Label x:Name="lblcharge" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0"  Width="51" Foreground="#FF354766" FontFamily="Calibri" FontWeight="Bold" Height="29"/>
+                                            </Viewbox>
+                                        </Grid>
+                                    </material:Card>
+                                    <material:Card Height="120"    Width="184" Margin="580,10,0,0">
+                                        <Grid>
+                                            <material:PackIcon Kind="DoorOpen" Height="85" Width="59" Margin="4,0,0,0" Foreground="#FF979DA6"/>
+                                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="Room Tariff" Margin="7,0,0,20" FontWeight="Bold" FontFamily="Times New Roman" Foreground="#FF979DA6"/>
+
+                                            <Viewbox Margin="75,0,0,0">
+                                                <Label x:Name="lblroom" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0"  Width="51" Foreground="#FF354766" FontFamily="Calibri" FontWeight="Bold" Height="29"/>
+                                            </Viewbox>
+                                        </Grid>
+                                    </material:Card>
+
+                                </Canvas>
+                            </Grid>
+                        </material:Card>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="5,0,10,0" >
+                        <material:Card Height="408.9">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="7*"/>
+                                    <RowDefinition Height="135*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Background="#354766">
+                                    <TextBlock Text="Rooms" Foreground="White" FontSize="18" Padding="0,0,0,0" HorizontalAlignment="Left"  FontFamily="Times New Roman" Cursor="None" Margin="10,0,0,0"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <ListView Name="LISTCHECK">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Room" DisplayMemberBinding="{Binding ROOM_NO}" Width="80"/>
+                                                <GridViewColumn Header="Guest" DisplayMemberBinding="{Binding FIRSTNAME}" Width="100"/>
+                                                <GridViewColumn Header="Check-In" DisplayMemberBinding="{Binding ARRIVAL_DATE}" HeaderStringFormat="dd/MM/yyyy" Width="100"/>
+                                                <GridViewColumn Header="Check-Out" DisplayMemberBinding="{Binding DEPARTURE_DATE}" HeaderStringFormat="dd/MM/yyyy" Width="100"/>
+                                                <GridViewColumn Header="Tariff" DisplayMemberBinding="{Binding CHARGED_TARRIF}" Width="70"/>
+                                                <GridViewColumn Header="Paid Amount" DisplayMemberBinding="{Binding AMOUNT_RECEIVED}" Width="110"/>
+                                                <GridViewColumn Header="Balance Amount" DisplayMemberBinding="{Binding BALANCE}" Width="130"/>
+                                                <GridViewColumn Header="Stay Days" DisplayMemberBinding="{Binding STAY_DAYS}" Width="100"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+
+                                </Grid>
+                            </Grid>
+                        </material:Card>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </material:Card>
+    </Grid>
+</Page>

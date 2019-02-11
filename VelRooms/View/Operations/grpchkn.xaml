@@ -1,0 +1,430 @@
+﻿<Page x:Class="HMS.View.Operations.grpchkn"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMS.View.Operations"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:vm="clr-namespace:HMS.ViewModel"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      mc:Ignorable="d"
+      Height="595" Width="890" Background="White"
+      Title="grpchkn">
+    <Page.Resources>
+        <vm:data x:Key="Viewmodel"></vm:data>
+        <!--<Style TargetType="{x:Type TextBox}">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <Border Background="White" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White">
+                                    <Image Name="im" Width="20">
+                                        <Image.Source>
+                                            <BitmapImage DecodePixelWidth="20" UriSource="/Images/error.png" />
+                                        </Image.Source>
+                                    </Image>
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" />
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#354766"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DarkOrange" />
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>-->
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+        </Style>
+    </Page.Resources>
+    <material:Card Height="595" Width="890"  material:ShadowAssist.ShadowDepth="Depth4" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="24*"/>
+                <RowDefinition Height="30.5*"/>
+                <RowDefinition Height="15.5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Height="35" Background="#354766">
+                    <TextBlock Text="Group Check -In" Foreground="White" FontSize="18" Padding="0,7,0,0" HorizontalAlignment="Center"  FontFamily="Times New Roman" Cursor="None"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75*"/>
+                        <ColumnDefinition Width="25*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel>
+                            <StackPanel Height="25" Orientation="Horizontal" Margin="0,10,0,0">
+                                <TextBlock Name="tbgck" Text="Grp Check In - ID" Width="130" FontFamily="Times New Roman" Margin="25,0,0,0" FontSize="16"/>
+                                <TextBlock Name="tbgckn" Width="100" Margin="10,0,0,0" FontWeight="Bold" FontSize="16" Foreground="#FF354766"/>
+                                <TextBlock Name="tbrm" Text="Room No's :" Margin="10,0,0,0" FontFamily="Times New Roman" FontSize="16"/>
+                                <TextBlock Name="tbrmst" Margin="10,0,0,0" FontWeight="Bold" FontSize="16" Foreground="#FF354766"/>
+                            </StackPanel>
+                            <StackPanel Height="25" Orientation="Horizontal" Margin="0,8,0,0">
+                                <TextBlock Name="tbrmt" Text="Room Type:" Margin="25,0,0,0" FontFamily="Times New Roman" FontSize="16"/>
+                                <TextBlock Name="tbrmtyp" Margin="10,0,0,0" FontWeight="Bold" FontSize="16" Foreground="#FF354766"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <material:PackIcon Kind="AirplaneLanding" Height="25" Width="25" Margin="25,0,15,0"/>
+                                <Label FontSize="16" Name="arrival" Width="250" Padding="10,2,2,2" />
+                                <material:PackIcon Kind="AirplaneTakeoff" Height="25" Width="25" Margin="20,0,15,0"/>
+                                <Label FontSize="16" Name="departure" Width="250" Padding="10,2,2,2"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Height="30" Margin="0,8,0,0">
+                                <material:PackIcon Kind="GenderMaleFemale" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <ComboBox Name="select" Width="150" Height="24" TabIndex="0" Margin="15,0,0,0" Padding="0,2,0,0" SelectedIndex="0">
+                                    <ComboBoxItem Content="Mr"></ComboBoxItem>
+                                    <ComboBoxItem Content="Ms"></ComboBoxItem>
+                                    <ComboBoxItem Content="Mrs"></ComboBoxItem>
+                                </ComboBox>
+                                <material:PackIcon Kind="AccountOutline" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="txtfirstname" TabIndex="1" Background="White" TextAlignment="Justify" Width="150" MaxLength="22" Margin="15,0,0,0"  Padding="1,-8,0,0" TextChanged="txtfirstname_TextChanged" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Name, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="FirstName *" material:HintAssist.IsFloating="True" />
+                                <material:PackIcon Kind="Account" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="txtlastname" TabIndex="2" Background="White" MaxLength="22" TextAlignment="Justify" Width="150" Margin="15,0,0,0"  Padding="1,-8,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Name1, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="LastName *" material:HintAssist.IsFloating="True" />
+                                <!--<Image Name="IMAGE" Stretch="Fill"   Width="119" Margin="40,-107,0,120" Height="140" ></Image>-->
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel>
+                            <Image Name="IMAGE" Stretch="Fill" Width="120" Height="100" Margin="0,8,0,0"/>
+                            <Button Name="btnupload" Width="100" Height="30" FontSize="15" Padding="0,-2,0,0" Content="Upload"  Margin="0,7,0,0"  />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <StackPanel>
+                    <TextBlock Text="Contact Details" Width="890" Padding="42,10,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF354766"/>
+                    <Border Width="850" BorderBrush="#123" BorderThickness="1.5" Margin="0,10,0,0" Padding="0,15,0,15" CornerRadius="10">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <material:PackIcon Kind="Home" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="ADDRESS" TabIndex="3" Background="White" TextAlignment="Justify" Width="140" Margin="15,0,0,0"  Padding="1,-8,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Plotno, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  MaxLength="100" material:HintAssist.Hint="Address *" material:HintAssist.IsFloating="True" />
+                                <material:PackIcon Kind="MapMarker" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="ZIP" TabIndex="4" Background="White" TextAlignment="Justify" Width="140" Margin="15,0,0,0"  Padding="1,-8,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Number, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  MaxLength="6" material:HintAssist.Hint="ZIP *" material:HintAssist.IsFloating="True" />
+                                <material:PackIcon Kind="City" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="txtcity" TabIndex="5" Background="White" TextAlignment="Justify" Width="140" Margin="15,0,0,0"  Padding="1,-8,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=City, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  MaxLength="25" material:HintAssist.Hint="City *" material:HintAssist.IsFloating="True" />
+                                <material:PackIcon Kind="FlagTriangle" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <ComboBox Name="txtstate" TabIndex="6" DisplayMemberPath="STATE" Width="140" SelectedIndex="0" Height="23" Margin="15,0,0,0" Padding="1"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                                <material:PackIcon Kind="FlagOutline" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <ComboBox  Name="txtcountry" TabIndex="7" SelectedIndex="0" Width="90" Height="25" Margin="15,0,0,0" Padding="1">
+                                    <ComboBoxItem Content="India"></ComboBoxItem>
+                                    <ComboBoxItem Content="Usa"></ComboBoxItem>
+                                </ComboBox>
+                                <material:PackIcon Kind="Phone" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="txtmobileno" TabIndex="8" Background="White" TextAlignment="Justify" Width="100" Margin="15,0,0,0"  Padding="1,-8,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Contact, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  MaxLength="10" material:HintAssist.Hint="Mobile No *" material:HintAssist.IsFloating="True" />
+                                <material:PackIcon Kind="Gmail" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="txtemail" TabIndex="9" Background="White" TextAlignment="Justify" Width="120" Margin="15,0,0,0"  Padding="1,-8,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Emailid, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Email" material:HintAssist.IsFloating="True" />
+                                <material:PackIcon Kind="AccountCardDetails" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <ComboBox x:Name="idproof" TabIndex="10" Width="120" Padding="0,0,0,0" Margin="15,0,0,0" Height="25" >
+                                    <ComboBoxItem Content="Aadhar"/>
+                                    <ComboBoxItem Content="Pancard"/>
+                                    <ComboBoxItem Content="Passport"/>
+                                    <ComboBoxItem Content="Voterid"/>
+                                    <ComboBoxItem Content="DrivingLicense"/>
+                                    <ComboBoxItem Content="GovernmentId"/>
+                                </ComboBox>
+                                <TextBox Name="txtproof" TabIndex="11" Background="White" TextAlignment="Justify" Width="120" Margin="15,0,0,0"  Padding="1,-8,0,0"  LostFocus="txtproof_LostFocus" TextChanged="txtproof_TextChanged" material:HintAssist.Hint="ID proof *" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <StackPanel>
+                    <TextBlock Text="Rate Card" Width="890" Padding="42,10,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF354766"/>
+                    <Border Width="850" BorderBrush="#123" BorderThickness="1.5" Margin="0,8,0,0" Padding="0,15,0,10" CornerRadius="10">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                                <material:PackIcon Kind="Counter" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="txtpax" MaxLength="3" Background="White" TextAlignment="Justify" Width="150" Margin="15,0,0,0"  Padding="1,-9,0,0" material:HintAssist.Hint="Pax *" material:HintAssist.IsFloating="True" />
+                                <material:PackIcon Kind="Human" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="txtadult" MaxLength="3" Background="White" TextAlignment="Justify" Width="150" Margin="15,0,0,0"  Padding="1,-9,0,0" material:HintAssist.Hint="Adult *" material:HintAssist.IsFloating="True" />
+                                <material:PackIcon Kind="HumanChild" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="txtchildd" MaxLength="3" Background="White" TextAlignment="Justify" Width="150" Margin="15,0,0,0"  Padding="1,-9,0,0" material:HintAssist.Hint="Child *" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <material:PackIcon Kind="Cash" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="RACKTARRIF" MaxLength="3" Background="White" TextAlignment="Justify" Width="80" Margin="15,0,0,0"  Padding="1,-9,0,0" material:HintAssist.Hint="T Rack Tariff" material:HintAssist.IsFloating="True" />
+                                <Label Content="Extrabed : " FontSize="15" Margin="10,0,0,0" Width="70" ></Label>
+                                <TextBox Name="RACKADULT" MaxLength="3" Background="White" TextAlignment="Justify" Width="80" Margin="10,0,0,0"  Padding="1,-9,0,0" material:HintAssist.Hint="Adult" material:HintAssist.IsFloating="True" />
+                                <TextBox Name="RACKCHILD" MaxLength="3" Background="White" TextAlignment="Justify" Width="80" Margin="10,0,0,0"  Padding="1,-8,0,0" material:HintAssist.Hint="Child" material:HintAssist.IsFloating="True" />
+                                <material:PackIcon Kind="Calculator" Height="25" Width="25" Margin="25,0,0,0"/>
+                                <TextBox Name="CHARGETARRIF" MaxLength="3" Background="White" TextAlignment="Justify" Width="80" Margin="15,0,0,0"  Padding="1,-8,0,0" material:HintAssist.Hint="T ChargeTariff" material:HintAssist.IsFloating="True" />
+                                <Label Content="Extrabed : " FontSize="15" Margin="10,0,0,0" Width="70" ></Label>
+                                <TextBox Name="CHARGEADULT" MaxLength="3" Background="White" TextAlignment="Justify" Width="80" Margin="10,0,0,0"  Padding="1,-8,0,0" material:HintAssist.Hint="Adult" material:HintAssist.IsFloating="True" />
+                                <TextBox Name="CHARGECHILD" MaxLength="3" Background="White" TextAlignment="Justify" Width="80" Margin="10,0,0,0"  Padding="1,-8,0,0" material:HintAssist.Hint="Child" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                            <StackPanel>
+                                <Button Name="btntd" Width="280" TabIndex="12" Margin="0,15,0,0" Content="To change Plan and Tariff Click Here!"  FontSize="15" Click="btntd_Click" Foreground="#f1f1f1"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="4">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <material:PackIcon Kind="Emoticon" Height="25" Width="25" Margin="25,0,0,0"/>
+                        <ComboBox x:Name="status" TabIndex="13" Width="100" Padding="1" Margin="15,0,0,0" SelectedIndex="0">
+                            <ComboBoxItem Content="VIP"/>
+                            <ComboBoxItem Content="General"/>
+                        </ComboBox>
+                        <Label Content="Scanty Baggage :" FontSize="15" Margin="25,0,0,0"></Label>
+                        <ComboBox Name="scantybaggage" TabIndex="14" Width="100" Padding="2" SelectedIndex="1" Margin="15,0,0,0">
+                            <ComboBoxItem Content="Yes"></ComboBoxItem>
+                            <ComboBoxItem Content="No"></ComboBoxItem>
+                        </ComboBox>
+                        <Label Content="Market Segment :" Margin="25,0,0,0" FontSize="15"></Label>
+                        <Label Name="txtmarketseg" Padding="4,0,0,0" FontSize="14" FontWeight="Bold" Width="200"  Margin="8,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Width="100" Margin="0,10,0,0" TabIndex="15" IsDefault="True" Content="Save" FontSize="15" Click="Button_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Popup Name="poptp" IsOpen="False" PopupAnimation="Fade" Margin="0,0,0,487" Placement="Center" >
+                <Border BorderBrush="#FF354766" BorderThickness="1.5">
+                    <Grid Name="tarrifsgrid" Background="#FF959595" Height="276" Width="1040" >
+                        <!--5476ad-->
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,9,50,243" >
+                            <TextBlock Text="Room No" Margin="15,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15"/>
+                            <TextBlock Text="Pax" Margin="45,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15"/>
+                            <TextBlock Text="Extra bed" Margin="40,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15"/>
+                            <TextBlock Text="Rack Tariff" Margin="125,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15"/>
+                            <TextBlock Text="Charged Tariff" Margin="195,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15"/>
+                            <TextBlock Text="Tax" Margin="120,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15"/>
+                            <TextBlock Text="Plan" Margin="74,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15"/>
+                        </StackPanel>
+                        <Label Content="X" Foreground="WhiteSmoke" Height="23" Margin="1005,0,0,240" Width="20" MouseLeftButtonUp="Label_MouseLeftButtonUp"/>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,30,0,222">
+                            <TextBlock Text="A" Margin="180,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15"/>
+                            <TextBlock Text="C" Margin="34,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15"/>
+                            <TextBlock Text="Tariff" Margin="47,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15" />
+                            <TextBlock Text="Extra Bed - A" Foreground="White" FontFamily="Times New Roman" FontSize="15" Margin="22,0,0,0"/>
+                            <TextBlock Text="Extra Bed - C" Foreground="White" FontFamily="Times New Roman" FontSize="15" Margin="15,0,0,0"/>
+                            <TextBlock Text="Tariff" Margin="40,0,0,0" Foreground="White" FontFamily="Times New Roman" FontSize="15" />
+                            <TextBlock Text="Extra Bed - A" Foreground="White" FontFamily="Times New Roman" FontSize="15" Margin="20,0,0,0"/>
+                            <TextBlock Text="Extra Bed - C" Foreground="White" FontFamily="Times New Roman" FontSize="15" Margin="15,0,0,0"/>
+                        </StackPanel>
+                        <Separator BorderBrush="#f1f1f1" Margin="0,43,22,221" BorderThickness="2"/>
+                        <ScrollViewer x:Name="roomscroll" HorizontalScrollBarVisibility="Auto" Width="1035" VerticalScrollBarVisibility="Auto" Height="185" Margin="0,4,0,0">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom1" Width="60" Margin="0,2,0,0" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax1" Padding="0,0,0,0" Visibility="Hidden" Width="35" TextAlignment="Center" Margin="40,0,0,0"   Height="26"/>
+                                    <TextBox Name="extraa1" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac1" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0"  TextAlignment="Center"  Height="26"/>
+                                    <TextBox Name="tarrif1" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0"  TextAlignment="Center"  Height="26"/>
+                                    <TextBox Name="textraa1" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0"  TextAlignment="Center"  Height="26"/>
+                                    <TextBox Name="textrac1" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0"  TextAlignment="Center"  Height="26"/>
+                                    <TextBox Name="ctarrif1" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0"  TextAlignment="Center"  Height="26"/>
+                                    <TextBox Name="ctextraa1" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0"  TextAlignment="Center"  Height="26"/>
+                                    <TextBox Name="ctextrac1" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0"  TextAlignment="Center"  Height="26"/>
+                                    <TextBox Name="tax1" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0"  TextAlignment="Center"  Height="26"/>
+                                    <ComboBox Name="cplan1" Width="120" DropDownClosed="cplan1_DropDownClosed" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom2" Width="60" Visibility="Hidden" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax2" Padding="0,0,0,0" Visibility="Hidden" TextAlignment="Center" Width="35" Margin="40,0,0,0"   Height="26"/>
+                                    <TextBox Name="extraa2" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac2" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tarrif2" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textraa2" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textrac2" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctarrif2" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextraa2" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextrac2" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tax2" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <ComboBox Name="cplan2" Width="120" DropDownClosed="cplan1_DropDownClosed" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom3" Width="60" Visibility="Hidden" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax3" Padding="0,0,0,0" Visibility="Hidden" Width="35" TextAlignment="Center" Margin="40,0,0,0"   Height="26"/>
+                                    <TextBox Name="extraa3" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac3" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tarrif3" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textraa3" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textrac3" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctarrif3" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextraa3" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextrac3" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tax3" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <ComboBox Name="cplan3" Width="120" DropDownClosed="cplan1_DropDownClosed" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom4" Width="60" Visibility="Hidden" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax4" Padding="0,0,0,0" Visibility="Hidden" Width="35" TextAlignment="Center" Margin="40,0,0,0"   Height="26"/>
+                                    <TextBox Name="extraa4" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac4" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tarrif4" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textraa4" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textrac4" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctarrif4" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextraa4" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextrac4" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tax4" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <ComboBox Name="cplan4" Width="120" DropDownClosed="cplan1_DropDownClosed" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom5" Width="60" Visibility="Hidden" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax5" Padding="0,0,0,0" Visibility="Hidden" Width="35" TextAlignment="Center" Margin="40,0,0,0"   Height="26"/>
+                                    <TextBox Name="extraa5" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac5" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tarrif5" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textraa5" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textrac5" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctarrif5" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextraa5" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextrac5" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tax5" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <ComboBox Name="cplan5" Width="120" DropDownClosed="cplan1_DropDownClosed" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom6" Width="60" Visibility="Hidden" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax6" Padding="0,0,0,0" Visibility="Hidden" Width="35" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extraa6" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac6" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tarrif6" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textraa6" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textrac6" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctarrif6" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextraa6" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextrac6" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tax6" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <ComboBox Name="cplan6" Width="120" DropDownClosed="cplan1_DropDownClosed" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom7" Width="60" Visibility="Hidden" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax7" Padding="0,0,0,0" Visibility="Hidden" Width="35" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extraa7" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac7" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tarrif7" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textraa7" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textrac7" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctarrif7" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextraa7" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextrac7" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tax7" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <ComboBox Name="cplan7" Width="120" DropDownClosed="cplan1_DropDownClosed" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom8" Width="60" Visibility="Hidden" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax8" Padding="0,0,0,0" Visibility="Hidden" Width="35" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extraa8" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac8" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tarrif8" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textraa8" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textrac8" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctarrif8" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextraa8" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextrac8" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tax8" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <ComboBox Name="cplan8" Width="120" DropDownClosed="cplan1_DropDownClosed" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom9" Width="60" Visibility="Hidden" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax9" Padding="0,0,0,0" Visibility="Hidden" Width="35" TextAlignment="Center" Margin="40,0,0,0"   Height="26"/>
+                                    <TextBox Name="extraa9" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac9" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tarrif9" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textraa9" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textrac9" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctarrif9" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextraa9" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextrac9" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tax9" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <ComboBox Name="cplan9" Width="120" DropDownClosed="cplan1_DropDownClosed" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Height="30" Width="1000" Margin="0,5,0,0">
+                                    <TextBlock Name="txtroom10" Width="60" Visibility="Hidden" Foreground="WhiteSmoke" TextAlignment="Center" FontSize="14"/>
+                                    <TextBox Name="pax10" Padding="0,0,0,0" Visibility="Hidden" Width="35" TextAlignment="Center" Margin="40,0,0,0"   Height="26"/>
+                                    <TextBox Name="extraa10" LostFocus="extraa1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="22,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="extrac10" LostFocus="extrac1_LostFocus" Width="35" Visibility="Hidden" Padding="0,0,0,0" Margin="10,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tarrif10" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="21,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textraa10" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="19,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="textrac10" IsEnabled="False" Visibility="Hidden" Width="60" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctarrif10" LostFocus="ctarrif1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="40,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextraa10" LostFocus="ctextraa1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="18,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="ctextrac10" LostFocus="ctextrac1_LostFocus" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <TextBox Name="tax10" Width="60" Visibility="Hidden" Padding="0,0,0,0" Margin="38,0,0,0" TextAlignment="Center"   Height="26"/>
+                                    <ComboBox Name="cplan10" DropDownClosed="cplan1_DropDownClosed" Width="120" Visibility="Hidden" Padding="10,0,0,0" SelectedIndex="0" Margin="10,0,0,0"   Height="27" DisplayMemberPath="NAME"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                        <Button Name="btnpupdt" Height="30" Width="100" Content="Update" FontSize="18" Margin="430,237,473,8" Click="btnpupdt_Click"/>
+                    </Grid>
+                </Border>
+            </Popup>
+            <Popup Name="pop1" Width="300" Height="180" Placement="Center">
+                <material:Card Background="#EF513A" Width="300" Height="180" material:ShadowAssist.ShadowDepth="Depth4">
+                    <StackPanel>
+                        <StackPanel Height="50" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Missing Fields" FontSize="25" FontFamily="Calibri" Foreground="White" Margin="0,10,0,10" Padding="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Height="120" Margin="10,0,10,0" Background="White">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Width="35" Height="35" Margin="15,10,10,0">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Data="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" Fill="#EF513A" />
+                                    </Canvas>
+                                </Viewbox>
+                                <TextBlock Text="Please fill all Fields !" FontSize="20" Margin="0,15,0,0" TextAlignment="Center" FontFamily="Calibri"/>
+                            </StackPanel>
+                            <Button HorizontalAlignment="Center" Width="100" Click="errbtn_Click" Foreground="#EF513A" FontSize="17" Background="White" BorderThickness="1" BorderBrush="#EF513A" Content="OK" FontWeight="Bold" Margin="0,20,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </material:Card>
+            </Popup>
+            <Popup Name="popup_insert" Width="300" Height="180" Placement="Center">
+                <material:Card Background="#31B774" Width="300" Height="180" material:ShadowAssist.ShadowDepth="Depth3">
+                    <StackPanel>
+                        <StackPanel Height="50" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Success" FontSize="25" FontFamily="Calibri" Foreground="White" Margin="0,10,0,10" Padding="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Height="120" Margin="10,0,10,0" Background="White">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Width="35" Height="35"  Margin="15,10,10,0">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Data="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" Fill="#31B774" />
+                                    </Canvas>
+                                </Viewbox>
+                                <TextBlock Text="Data Inserted !" FontSize="20" Margin="0,15,0,0" TextAlignment="Center" FontFamily="Calibri"/>
+                            </StackPanel>
+                            <Button HorizontalAlignment="Center" Width="100" Name="insertpop" Click="insertpop_Click"  Foreground="#31B774" FontSize="17" Background="White" BorderThickness="1.5" BorderBrush="#31B774" Content="OK" FontWeight="Bold" Margin="0,20,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </material:Card>
+            </Popup>
+            <!--<fa:ImageAwesome Icon="Refresh" Name="spin" Spin="True"  Grid.Row="1" Visibility="Hidden" Margin="152,24,166,79" Grid.RowSpan="4"/>-->
+        </Grid>
+    </material:Card>
+</Page>

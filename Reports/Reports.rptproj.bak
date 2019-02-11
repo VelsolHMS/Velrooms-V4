@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ToolsVersion="2.0">
+  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkZGwzMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAiIHhtbG5zOmRkbDMwMF8zMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAvMzAwIiB4bWxuczpkZGw0MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAiIHhtbG5zOmRkbDQwMF80MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAvNDAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
+  <DataSources>
+    <ProjectItem>
+      <Name>DataSourcehms.rds</Name>
+      <FullPath>DataSourcehms.rds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <DataSets />
+  <Reports>
+    <ProjectItem>
+      <Name>CHANGE_GUEST_INFO.rdl</Name>
+      <FullPath>CHANGE_GUEST_INFO.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>CHECKOUT.rdl</Name>
+      <FullPath>CHECKOUT.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Checkoutsfortheday.rdl</Name>
+      <FullPath>Checkoutsfortheday.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Date wise Tax_Report.rdl</Name>
+      <FullPath>Date wise Tax_Report.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Departures.rdl</Name>
+      <FullPath>Departures.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Discount_Date_Wise.rdl</Name>
+      <FullPath>Discount_Date_Wise.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Discount_Month_Wise.rdl</Name>
+      <FullPath>Discount_Month_Wise.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Front_Office_Sale.rdl</Name>
+      <FullPath>Front_Office_Sale.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>GUESTADVANCE.rdl</Name>
+      <FullPath>GUESTADVANCE.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Guestinhouse.rdl</Name>
+      <FullPath>Guestinhouse.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>MonthWise_Tax_Report.rdl</Name>
+      <FullPath>MonthWise_Tax_Report.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>MonthWiseRoomTarrif.rdl</Name>
+      <FullPath>MonthWiseRoomTarrif.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>OUTSTANDING BALANCE.rdl</Name>
+      <FullPath>OUTSTANDING BALANCE.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Pending_Bill_Report.rdl</Name>
+      <FullPath>Pending_Bill_Report.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>RESERVATION.rdl</Name>
+      <FullPath>RESERVATION.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>RESERVATIONCANCEL.rdl</Name>
+      <FullPath>RESERVATIONCANCEL.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Reservatonlist.rdl</Name>
+      <FullPath>Reservatonlist.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>RoomChangeReport.rdl</Name>
+      <FullPath>RoomChangeReport.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>RoomOccupency.rdl</Name>
+      <FullPath>RoomOccupency.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>RoomRateList.rdl</Name>
+      <FullPath>RoomRateList.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Tarrif.rdl</Name>
+      <FullPath>Tarrif.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>TarrifPostedForTheDay.rdl</Name>
+      <FullPath>TarrifPostedForTheDay.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>TransactionList.rdl</Name>
+      <FullPath>TransactionList.rdl</FullPath>
+    </ProjectItem>
+  </Reports>
+  <Configurations>
+    <Configuration>
+      <Name>Debug</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\Debug</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetServerURL>http://srikar/ReportServer</TargetServerURL>
+        <TargetFolder>SSRSReporting</TargetFolder>
+        <TargetDataSourceFolder>DATASOURCE</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>DebugLocal</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\DebugLocal</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetFolder>Reports</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>Release</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <OutputPath>bin\Release</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetFolder>Reports</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+      </Options>
+    </Configuration>
+  </Configurations>
+</Project>

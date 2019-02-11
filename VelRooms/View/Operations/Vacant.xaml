@@ -1,0 +1,33 @@
+﻿<Page x:Class="HMS.View.Operations.Vacant"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMS.View.Operations"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      Height="460" Width="800" Loaded="Page_Loaded"
+      Title="Vacant" Background="White">
+    <material:Card Height="460" >
+        <Grid >
+            <GroupBox BorderBrush="Gray"  BorderThickness="2" Margin="5">
+                <GroupBox.Header>
+                    <Label FontSize="13" Height="23.888">Vacant Rooms</Label>
+                </GroupBox.Header>
+                <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Auto" Foreground="Black">
+                    <WrapPanel Orientation="Vertical">
+                        <WrapPanel Name="WRAP" Orientation="Vertical"/>
+                        <StackPanel Name="countstk" Margin="10,36,0,0" Orientation="Horizontal">
+                            <TextBlock Name="count" Width="600" Margin="46,0,0,0" FontSize="18" TextAlignment="Center"/>
+                        </StackPanel>
+                    </WrapPanel>
+                </ScrollViewer>
+            </GroupBox>
+            <Popup Name="popup"  Placement="Center" IsOpen="False" Margin="327,230,77,160" >
+                <Border BorderBrush="Black" BorderThickness="1" Background="White" Height="70" Width="249">
+                    <TextBlock Name="tb" Margin="9"></TextBlock>
+                </Border>
+            </Popup>
+        </Grid>
+    </material:Card>
+</Page>

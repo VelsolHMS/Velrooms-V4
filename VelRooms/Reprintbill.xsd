@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Reprintbill" targetNamespace="http://tempuri.org/Reprintbill.xsd" xmlns:mstns="http://tempuri.org/Reprintbill.xsd" xmlns="http://tempuri.org/Reprintbill.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Reprintbill" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Reprintbill" msprop:Generator_UserDSName="Reprintbill">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="INSERT_DATE" msprop:Generator_ColumnVarNameInTable="columnINSERT_DATE" msprop:Generator_ColumnPropNameInRow="INSERT_DATE" msprop:Generator_ColumnPropNameInTable="INSERT_DATEColumn" msprop:Generator_UserColumnName="INSERT_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ROOM_TARRIF" msprop:Generator_ColumnVarNameInTable="columnROOM_TARRIF" msprop:Generator_ColumnPropNameInRow="ROOM_TARRIF" msprop:Generator_ColumnPropNameInTable="ROOM_TARRIFColumn" msprop:Generator_UserColumnName="ROOM_TARRIF" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ADVANCE" msprop:Generator_ColumnVarNameInTable="columnADVANCE" msprop:Generator_ColumnPropNameInRow="ADVANCE" msprop:Generator_ColumnPropNameInTable="ADVANCEColumn" msprop:Generator_UserColumnName="ADVANCE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CHARGES" msprop:Generator_ColumnVarNameInTable="columnCHARGES" msprop:Generator_ColumnPropNameInRow="CHARGES" msprop:Generator_ColumnPropNameInTable="CHARGESColumn" msprop:Generator_UserColumnName="CHARGES" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TAX" msprop:Generator_ColumnVarNameInTable="columnTAX" msprop:Generator_ColumnPropNameInRow="TAX" msprop:Generator_ColumnPropNameInTable="TAXColumn" msprop:Generator_UserColumnName="TAX" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

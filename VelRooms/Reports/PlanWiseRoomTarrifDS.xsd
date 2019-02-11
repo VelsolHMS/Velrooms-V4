@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PlanWiseRoomTarrifDS" targetNamespace="http://tempuri.org/PlanWiseRoomTarrifDS.xsd" xmlns:mstns="http://tempuri.org/PlanWiseRoomTarrifDS.xsd" xmlns="http://tempuri.org/PlanWiseRoomTarrifDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PlanWiseRoomTarrifDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PlanWiseRoomTarrifDS" msprop:Generator_UserDSName="PlanWiseRoomTarrifDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HOTEL" msprop:Generator_TableClassName="HOTELDataTable" msprop:Generator_TableVarName="tableHOTEL" msprop:Generator_TablePropName="HOTEL" msprop:Generator_RowDeletingName="HOTELRowDeleting" msprop:Generator_RowChangingName="HOTELRowChanging" msprop:Generator_RowEvHandlerName="HOTELRowChangeEventHandler" msprop:Generator_RowDeletedName="HOTELRowDeleted" msprop:Generator_UserTableName="HOTEL" msprop:Generator_RowChangedName="HOTELRowChanged" msprop:Generator_RowEvArgName="HOTELRowChangeEvent" msprop:Generator_RowClassName="HOTELRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Hotel" msprop:Generator_ColumnVarNameInTable="columnHotel" msprop:Generator_ColumnPropNameInRow="Hotel" msprop:Generator_ColumnPropNameInTable="HotelColumn" msprop:Generator_UserColumnName="Hotel" type="xs:string" minOccurs="0" />
+              <xs:element name="HotelAddress" msprop:Generator_ColumnVarNameInTable="columnHotelAddress" msprop:Generator_ColumnPropNameInRow="HotelAddress" msprop:Generator_ColumnPropNameInTable="HotelAddressColumn" msprop:Generator_UserColumnName="HotelAddress" type="xs:string" minOccurs="0" />
+              <xs:element name="GstNo" msprop:Generator_ColumnVarNameInTable="columnGstNo" msprop:Generator_ColumnPropNameInRow="GstNo" msprop:Generator_ColumnPropNameInTable="GstNoColumn" msprop:Generator_UserColumnName="GstNo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PLANS" msprop:Generator_TableClassName="PLANSDataTable" msprop:Generator_TableVarName="tablePLANS" msprop:Generator_TablePropName="PLANS" msprop:Generator_RowDeletingName="PLANSRowDeleting" msprop:Generator_RowChangingName="PLANSRowChanging" msprop:Generator_RowEvHandlerName="PLANSRowChangeEventHandler" msprop:Generator_RowDeletedName="PLANSRowDeleted" msprop:Generator_UserTableName="PLANS" msprop:Generator_RowChangedName="PLANSRowChanged" msprop:Generator_RowEvArgName="PLANSRowChangeEvent" msprop:Generator_RowClassName="PLANSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Room_x0020_No" msprop:Generator_ColumnVarNameInTable="columnRoom_No" msprop:Generator_ColumnPropNameInRow="Room_No" msprop:Generator_ColumnPropNameInTable="Room_NoColumn" msprop:Generator_UserColumnName="Room No" type="xs:int" minOccurs="0" />
+              <xs:element name="Plan_x0020_Code" msprop:Generator_ColumnVarNameInTable="columnPlan_Code" msprop:Generator_ColumnPropNameInRow="Plan_Code" msprop:Generator_ColumnPropNameInTable="Plan_CodeColumn" msprop:Generator_UserColumnName="Plan Code" type="xs:string" minOccurs="0" />
+              <xs:element name="SinglePlan" msprop:Generator_ColumnVarNameInTable="columnSinglePlan" msprop:Generator_ColumnPropNameInRow="SinglePlan" msprop:Generator_ColumnPropNameInTable="SinglePlanColumn" msprop:Generator_UserColumnName="SinglePlan" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DoublePlan" msprop:Generator_ColumnVarNameInTable="columnDoublePlan" msprop:Generator_ColumnPropNameInRow="DoublePlan" msprop:Generator_ColumnPropNameInTable="DoublePlanColumn" msprop:Generator_UserColumnName="DoublePlan" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TriplePlan" msprop:Generator_ColumnVarNameInTable="columnTriplePlan" msprop:Generator_ColumnPropNameInRow="TriplePlan" msprop:Generator_ColumnPropNameInTable="TriplePlanColumn" msprop:Generator_UserColumnName="TriplePlan" type="xs:decimal" minOccurs="0" />
+              <xs:element name="QuadPlan" msprop:Generator_ColumnVarNameInTable="columnQuadPlan" msprop:Generator_ColumnPropNameInRow="QuadPlan" msprop:Generator_ColumnPropNameInTable="QuadPlanColumn" msprop:Generator_UserColumnName="QuadPlan" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Room_x0020_Category" msprop:Generator_ColumnVarNameInTable="columnRoom_Category" msprop:Generator_ColumnPropNameInRow="Room_Category" msprop:Generator_ColumnPropNameInTable="Room_CategoryColumn" msprop:Generator_UserColumnName="Room Category" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

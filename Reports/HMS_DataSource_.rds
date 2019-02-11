@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="HMS_DataSource_">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>data source=.;database=HMS;</ConnectString>
+    <IntegratedSecurity>true</IntegratedSecurity>
+  </ConnectionProperties>
+  <DataSourceID>85df7c1e-694f-4c1c-983a-27c484efd0af</DataSourceID>
+</RptDataSource>

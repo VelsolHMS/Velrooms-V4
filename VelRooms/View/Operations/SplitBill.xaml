@@ -1,0 +1,224 @@
+﻿<Page x:Class="HMS.View.Operations.SplitBill"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMS.View.Operations"
+      xmlns:vm="clr-namespace:HMS.ViewModel"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" Background="White"
+      Title="SplitBill" Height="580" Width="700">
+    <material:Card Width="700" Height="580" material:ShadowAssist.ShadowDepth="Depth4">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="65*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Height="30" Background="#354766">
+                    <TextBlock TextAlignment="Center" Text="Split Bill" Foreground="White" FontSize="18" Padding="0,3,0,2" HorizontalAlignment="Center" FontFamily="Times New Roman" Cursor="None"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="35,15,35,0">
+                        <material:PackIcon Kind="DoorOpen" Width="25" Height="22" Margin="0,3,0,0"/>
+                        <TextBox x:Name="Room_no" TabIndex="1" MaxLength="40" Background="White" material:HintAssist.Hint="Room No *" Margin="15,0,0,0" Width="100" LostFocus="Room_no_LostFocus"/>
+                        <material:PackIcon Kind="Account"  Margin="15,0,0,0" Height="25" Width="25"/>
+                        <TextBox x:Name="first_name" MaxLength="40" TabIndex="2" IsEnabled="False" Background="White" material:HintAssist.Hint="Guest Name" Margin="15,0,0,0" Width="100"/>
+                        <material:PackIcon Kind="Phone"  Margin="15,0,0,0" Height="25" Width="25"/>
+                        <TextBox x:Name="mobile_no" MaxLength="10" TabIndex="3" IsEnabled="False" Background="White" material:HintAssist.Hint="Mobile No" Margin="15,0,0,0" Width="100"/>
+                        <material:PackIcon Kind="CashMultiple"  Margin="15,0,0,0" Height="25" Width="25"/>
+                        <TextBox x:Name="amount" MaxLength="10" TabIndex="4" IsEnabled="False" Background="White" material:HintAssist.Hint="Amount" Margin="15,0,0,0" Width="100"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="35,15,0,0">
+                        <TextBlock Text="Split By" FontSize="15" Width="80" Foreground="#354766" FontWeight="Bold" FontFamily="Times New Roman"/>
+                        <TextBlock Text=":" FontSize="15" Foreground="#354766" FontWeight="Bold" FontFamily="Times New Roman"/>
+                        <!--<RadioButton  x:Name="Split1" Content="1" Margin="15,0,0,0" Checked="Split1_Checked" FontFamily="Times New Roman" />-->
+                        <RadioButton x:Name="Split2" Content="2" Margin="15,0,0,0" Checked="Split2_Checked" FontFamily="Times New Roman"/>
+                        <RadioButton  x:Name="Split3" Content="3" Margin="15,0,0,0" Checked="Split3_Checked" FontFamily="Times New Roman" />
+                        <RadioButton x:Name="Split4" Content="4" Margin="15,0,0,0" Checked="Split4_Checked" FontFamily="Times New Roman"/>
+                        <RadioButton  x:Name="Split5" Content="5" Margin="15,0,0,0" Checked="Split5_Checked" FontFamily="Times New Roman" />
+                        <RadioButton x:Name="Split6" Content="6" Margin="15,0,0,0" Checked="Split6_Checked" FontFamily="Times New Roman"/>
+                        <RadioButton  x:Name="Split7" Content="7" Margin="15,0,0,0" Checked="Split7_Checked" FontFamily="Times New Roman" />
+                        <RadioButton x:Name="Split8" Content="8" Margin="15,0,0,0" Checked="Split8_Checked" FontFamily="Times New Roman"/>
+                        <RadioButton  x:Name="Split9" Content="9" Margin="15,0,0,0" Checked="Split9_Checked" FontFamily="Times New Roman" />
+                        <RadioButton x:Name="Split10" Content="10" Margin="15,0,0,0" Checked="Split10_Checked" FontFamily="Times New Roman"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="35,15,0,0">
+                        <TextBlock Text="Tax" Width="80" FontSize="15" Foreground="#354766" FontWeight="Bold" FontFamily="Times New Roman"/>
+                        <TextBlock Text=":" FontSize="15" Foreground="#354766" FontWeight="Bold" FontFamily="Times New Roman"/>
+                        <RadioButton  x:Name="with_tax" Content="With Tax" TabIndex="5" Checked="with_tax_Checked" IsChecked="True" Margin="15,0,0,0" FontFamily="Times New Roman" />
+                        <RadioButton x:Name="without_tax" Content="With out Tax" TabIndex="6" Checked="without_tax_Checked" Margin="15,0,0,0" FontFamily="Times New Roman"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Border Margin="35,0,35,0" BorderThickness="2" BorderBrush="#354766">
+                    <StackPanel >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Bill No" Width="126" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                            <TextBlock Text="Name" Width="126" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                            <TextBlock Text="Amount" Width="126" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                            <TextBlock Text="Tax" Width="126" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                            <TextBlock Text="Total" Width="126" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow1" Visibility="Hidden" Orientation="Horizontal" Margin="0,15,0,0">
+                            <TextBlock x:Name="billno1" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name1" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount1" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax1" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total1" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow2" Visibility="Hidden" Orientation="Horizontal" Margin="0,12,0,0">
+                            <TextBlock x:Name="billno2" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name2" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount2" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax2" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total2" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow3" Visibility="Hidden" Orientation="Horizontal" Margin="0,12,0,0">
+                            <TextBlock x:Name="billno3" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name3" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount3" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax3" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total3" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow4" Visibility="Hidden" Orientation="Horizontal" Margin="0,12,0,0">
+                            <TextBlock x:Name="billno4" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name4"  Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount4" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax4" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total4" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow5" Visibility="Hidden" Orientation="Horizontal" Margin="0,12,0,0">
+                            <TextBlock x:Name="billno5" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name5" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount5" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax5" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total5" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow6" Visibility="Hidden" Orientation="Horizontal" Margin="0,12,0,0">
+                            <TextBlock x:Name="billno6" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name6" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount6" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax6" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total6" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow7" Visibility="Hidden" Orientation="Horizontal" Margin="0,12,0,0">
+                            <TextBlock x:Name="billno7" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name7" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount7" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax7" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total7" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow8" Visibility="Hidden" Orientation="Horizontal" Margin="0,12,0,0">
+                            <TextBlock x:Name="billno8" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name8" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount8" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax8" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total8" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow9" Visibility="Hidden" Orientation="Horizontal" Margin="0,12,0,0">
+                            <TextBlock x:Name="billno9" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name9" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount9" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax9" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total9" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <StackPanel x:Name="stackrow10" Visibility="Hidden" Orientation="Horizontal" Margin="0,12,0,0">
+                            <TextBlock x:Name="billno10" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="name10" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="amount10" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="tax10" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="total10" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                        <Separator Margin="0,10,0,0"></Separator>
+                        <StackPanel Orientation="Horizontal" Margin="0,9,0,0">
+                            <TextBlock x:Name="final_amout_text" Width="480" Padding="0,0,20,0" TextAlignment="Right" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                            <TextBlock x:Name="final_amout" Width="125" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <!--<Grid Margin="35,0,35,0">
+                    -->
+                <!--<Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>-->
+                <!--
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Bill No" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                            <TextBlock Text="1)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,15,0,0"/>
+                            <TextBlock Text="2)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="3)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="4)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="5)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="6)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="7)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="8)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="9)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="10)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel>
+                            <TextBlock Text="Name" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                            <TextBlock   TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,15,0,0"/>
+                            <TextBlock   TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock   TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock   TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock   TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="6)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="7)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="8)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="9)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                            <TextBlock Text="10)" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" Foreground="#354766" Margin="0,12,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <StackPanel>
+                            <TextBlock Text="Amount" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <StackPanel>
+                            <TextBlock Text="Tax" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="4">
+                        <StackPanel>
+                            <TextBlock Text="Total" TextAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Background="#354766" Foreground="#ffffff" Padding="0,5,0,5"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>-->
+            </Grid>
+            <Grid Grid.Row="3">
+                <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center" Margin="0,-20,0,0">
+                    <Button Content="Clear" FontFamily="Times New Roman" TabIndex="8" FontSize="15" x:Name="Clearall" Click="Clearall_Click_1" Margin="0,0,100,0" Width="100"></Button>
+                    <Button Content="Print" FontFamily="Times New Roman" TabIndex="7" FontSize="15" x:Name="Print" Click="Print_Click" Width="100"></Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </material:Card>
+</Page>

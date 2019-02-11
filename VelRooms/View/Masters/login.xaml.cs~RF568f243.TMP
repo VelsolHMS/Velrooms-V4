@@ -1,0 +1,343 @@
+﻿using HMS.Model.Masters;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Data.SqlClient;
+
+
+namespace HMS.View.Masters
+{
+    /// <summary>
+    /// Interaction logic for login.xaml
+    /// </summary>
+    public partial class login : Window
+    {
+
+        public string dispusername, pwd;
+        public string username, password;
+        public Boolean U = true;
+        public Boolean P = true;
+        public static string u;
+        public DateTime d = DateTime.Today.Date;
+        public DateTime d1 = DateTime.Parse("2019/04/09");
+        public DateTime date = DateTime.Parse("2019/03/25");
+        public DateTime date1 = DateTime.Parse("2019/04/09");
+        public login()
+        {
+            InitializeComponent();
+            DateTime currdate = DateTime.Today.Date;
+            //TXTUSERNAME.Focus();
+            if (Process.GetProcesses().Count(p => p.ProcessName == "HMS") > 1)
+            {
+                foreach (var process in
+                Process.GetProcessesByName("HMS"))
+                {
+                    MessageBox.Show("Application is running Please check");
+                    process.Kill();
+                }
+            }
+            DataTable DT = rd.License();
+            string dur = DT.Rows[0]["DURATION"].ToString();
+            if(dur=="1Month")
+            {
+                DateTime One = currdate.AddMonths(1);
+                DateTime NDate1 = One.AddDays(-5);
+                if (currdate > One)
+                {
+                    popup.IsOpen = true;
+                }
+                else if (currdate < NDate1)
+                {
+                }
+                else if (currdate >= NDate1)
+                {
+                    if (NDate1 <= One)
+                    {
+                        pop1.IsOpen = true;
+                    }
+                    else { }
+                }
+            }
+            else if (dur == "3Months")
+            {
+                DateTime Three = currdate.AddMonths(3);
+                DateTime NDate3 = Three.AddDays(-5);
+                if (currdate > Three)
+                {
+                    popup.IsOpen = true;
+                }
+                else if (currdate < NDate3)
+                {
+                }
+                else if (currdate >= NDate3)
+                {
+                    if (NDate3 <= Three)
+                    {
+                        pop1.IsOpen = true;
+                    }
+                    else { }
+                }
+            }
+            else if (dur == "6Months")
+            {
+                DateTime Six = currdate.AddMonths(6);
+                DateTime NDate6 = Six.AddDays(-5);
+                if (currdate > Six)
+                {
+                    popup.IsOpen = true;
+                }
+                else if (currdate < NDate6)
+                {
+                }
+                else if (currdate >= NDate6)
+                {
+                    if (NDate6 <= Six)
+                    {
+                        pop1.IsOpen = true;
+                    }
+                    else { }
+                }
+            }
+            else if (dur == "9Months")
+            {
+                DateTime Nine = currdate.AddMonths(9);
+                DateTime NDate9 = Nine.AddDays(-5);
+                if (currdate > Nine)
+                {
+                    popup.IsOpen = true;
+                }
+                else if (currdate < NDate9)
+                {
+                }
+                else if (currdate >= NDate9)
+                {
+                    if (NDate9 <= Nine)
+                    {
+                        pop1.IsOpen = true;
+                    }
+                    else { }
+                }
+            }
+            else if (dur == "12Months")
+            {
+                DateTime Twelve = currdate.AddMonths(12);
+                DateTime NDate12 = Twelve.AddDays(-5);
+                if (currdate > Twelve)
+                {
+                    popup.IsOpen = true;
+                }
+                else if (currdate < NDate12)
+                {
+                }
+                else if (currdate >= NDate12)
+                {
+                    if (NDate12 <= Twelve)
+                    {
+                        pop1.IsOpen = true;
+                    }
+                    else { }
+                }
+            }
+            //if (d > d1)
+            //{
+            //    popup.IsOpen = true;
+            //}
+            //else if (currdate < date)
+            //{
+            //}
+            //else if (currdate >= date)
+            //{
+            //    if (date <= date1)
+            //    {
+            //        pop1.IsOpen = true;
+            //    }
+
+            //    else
+            //    {
+
+            //    }
+            //}
+        }
+        registration rd = new registration();
+        // public string  signin  ;
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            username = TXTUSERNAME.Text;
+            password = TXTPASSWORD.Password;
+            if (username != "")
+            {
+               
+                mf_popup.IsOpen = false;
+                DataTable dt = rd.signin();
+                if(dt.Rows.Count == 0)
+                {
+                    TXTPASSWORD.Password = "";
+
+                }
+                if (password != "" && password ==dt.Rows[0]["PASS_WORD"].ToString())
+                {
+                    mf_popup.IsOpen = false;
+                    try
+                    {
+                        rd.signin();
+                        Main m = new Main();
+                        m.Show();
+                        this.Close();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Enter correct username And password.");
+                    }
+                }
+                else
+                {
+                    mf_popup.IsOpen = true;
+                }
+            }
+            else
+            {
+                mf_popup.IsOpen = true;
+            }
+        }
+        public void TXTUSERNAME_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TXTUSERNAME.Text != "")
+            {
+                mf_popup.IsOpen = false;
+                try
+                {
+                    rd.USERNAME = TXTUSERNAME.Text;
+                    rd.PASSWORD = TXTPASSWORD.Password;
+                    //rd.user()
+                    DataTable DT = rd.user();
+                    if (DT.Rows.Count == 0)
+                    {
+                        MessageBox.Show("User dosenot exist");
+                        TXTUSERNAME.Text = "";
+                        U = false;
+                    }
+                    else if (DT.Rows[0]["USER_NAME"].ToString().Equals(TXTUSERNAME.Text.ToUpper()))
+                    {
+                        //username given small also converting uppercase value in database
+                        u = TXTUSERNAME.Text.ToUpper();
+                        dispusername = DT.Rows[0]["USER_NAME"].ToString();
+                        U = true ;
+                    }
+                    //U = true;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("please Check the username");
+                }
+            }
+            else
+            {
+                mf_popup.IsOpen = true;
+            }
+        }
+        private void TXTPASSWORD_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                rd.USERNAME = TXTUSERNAME.Text.ToUpper();
+                DataTable dt = rd.signin();
+                if (dt.Rows.Count == 0)
+                {
+                    TXTPASSWORD.Password = "";
+                    P = false;
+                }
+                else
+                {
+                    pwd = dt.Rows[0]["PASS_WORD"].ToString();
+
+                    if (pwd.Equals(TXTPASSWORD.Password))
+                    {
+                        P = true;
+                        // MessageBox.Show("Success");
+                    }
+                    else
+                    {
+                        MessageBox.Show("INCORRECT PASSWORD");
+                        TXTPASSWORD.Password = "";
+                        P = false;
+                    }
+                    //P = true;
+                } 
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("please Check the password");
+            }
+        }
+        private void tclink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+
+        }
+        private void tclink_RequestNavigate_1(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+
+        }
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+
+        }
+        private void ok_Click(object sender, RoutedEventArgs e)
+        {
+            popup.IsOpen = false;
+            this.Close();
+        }
+        private void btnexit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if(P == true)
+            {
+                
+            }
+            else
+            {
+                TXTPASSWORD.Focus();
+            }
+
+        }
+
+        private void TXTPASSWORD_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (U ==true)
+            {
+               
+            }
+            else
+            {
+                TXTUSERNAME.Focus();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+            TXTPASSWORD.Password = "";
+            mf_popup.IsOpen = false;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            pop1.IsOpen = false;
+        }
+    }
+}

@@ -1,0 +1,298 @@
+﻿<Page x:Class="HMS.View.Masters.RoomMaster"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:HMS.View.Masters"
+      xmlns:vm="clr-namespace:HMS.ViewModel"
+      mc:Ignorable="d" Background="White"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      Height="580"
+      Title="RoomMaster" Width="830">
+    <Page.Resources>
+        <vm:data x:Key="Viewmodel"></vm:data>
+        <!--<Style TargetType="Button">
+            <Setter Property="Background" Value="#354766"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DarkOrange" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>-->
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+        </Style>
+        <!--<Style TargetType="{x:Type TextBox}">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True" Name="errordock">
+                            <Border Background="White" DockPanel.Dock="Right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White">
+                                    <Image Name="im" Width="20">
+                                        <Image.Source>
+                                            <BitmapImage DecodePixelWidth="20" UriSource="/Images/error.png" />
+                                        </Image.Source>
+                                    </Image>
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" />
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="placeholder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent},
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource"
+                                 Background="Transparent"
+                                 Panel.ZIndex="2" />
+                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="#cecccc"/>
+                                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+    </Page.Resources>
+    <material:Card Height="580" material:ShadowAssist.ShadowDepth="Depth4">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22*"/>
+                <RowDefinition Height="587*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#354766">
+                <TextBlock  Text="Room Rate Definition" Foreground="White"  HorizontalAlignment="Center" FontFamily="Times New Roman"  Grid.ColumnSpan="2" Cursor="None" FontSize="20" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="59*"/>
+                        <ColumnDefinition Width="41*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Margin="0,0,0,0">
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,16,0,518">
+                            <material:PackIcon Kind="SeatFlatAngled" Height="24" Width="23" Margin="25,0,0,0"/>
+                            <TextBox Grid.Row="0" TabIndex="0" Grid.Column="0"  MaxLength="5" GotFocus="txtroomno_GotFocus" Height="24" LostFocus="txtroomno_LostFocus" KeyUp="txtroomno_KeyUp"  Name="txtroomno" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Rooms, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  TextChanged="txtroomno_TextChanged" Margin="20,0,0,0" HorizontalAlignment="Left"   Width="95" material:HintAssist.Hint="Room No*" material:HintAssist.IsFloating="True" Padding="1,-9,0,0" PreviewTextInput="txtroomno_PreviewTextInput" />
+                            <material:PackIcon Kind="VectorDifference" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <ComboBox x:Name="TXTCATEGORY" TabIndex="1" DisplayMemberPath="ROOM_CATEGORY"  Margin="12,0,0,0" ItemsSource="{Binding ROOM_CATEGORY}" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="135" RenderTransformOrigin="0.398,1.61" PreviewKeyUp="TXTCATEGORY_PreviewKeyUp" DropDownClosed="TXTCATEGORY_DropDownClosed" Padding="1,-9,0,0" material:HintAssist.Hint="Select RoomCategory*" material:HintAssist.IsFloating="True"/>
+                            <material:PackIcon Kind="SortNumeric" Height="24" Width="23" Margin="25,0,0,0"/>
+                            <TextBox Grid.Row="0" Grid.Column="0" TabIndex="2"  Height="22"  DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Pax, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Name="txtmaxpax"  Margin="2,0,0,0"  TextChanged="txtmaxpax_TextChanged" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="45" material:HintAssist.Hint="Max Pax"/>
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,56,0,478">
+                            <material:PackIcon Kind="ViewAgenda" Height="24" Width="23" Margin="25,0,0,0"/>
+                            <TextBox Name="txtroomview" TabIndex="3" MaxLength="15" HorizontalAlignment="Right" VerticalAlignment="Top" Width="96" Margin="20,0,0,0" material:HintAssist.Hint="Room View" material:HintAssist.IsFloating="True" Padding="1,-9,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Text="{Binding Path=View, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                            <material:PackIcon Kind="Calendar" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <DatePicker Grid.Row="0" TabIndex="4" Grid.Column="0" Name="date" SelectedDateChanged="date_SelectedDateChanged" DataContext="{Binding Source={StaticResource Viewmodel}}" Text="{Binding Path=Date, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"  Margin="11,0,0,0" HorizontalAlignment="Left" Width="133" Height="25" VerticalAlignment="Top" material:HintAssist.Hint="Active Date"  />
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,94,0,440">
+                            <material:PackIcon Kind="PlaneShield" Height="24" Width="23" Margin="25,0,0,0"/>
+                            <ComboBox TabIndex="5" ItemsSource="{Binding PLAN_CODE}" DisplayMemberPath="PLAN_CODE" x:Name="plancode" Width="96.007" DropDownClosed="plancode_DropDownClosed" Margin="20,1.5,0,1.5" Height="22"  Padding="1,-9,0,0" IsReadOnly="True"  material:HintAssist.Hint="Select a Plan" material:HintAssist.IsFloating="True">
+                            </ComboBox>
+                            <material:PackIcon Kind="CurrencyInr" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <ComboBox TabIndex="6" Name="currency" Width="135" SelectedIndex="0" Height="24" Padding="5"  Margin="10,0.5,0,0.5">
+                                <ComboBoxItem Content="INR Rupee" />
+                                <ComboBoxItem Content="USD Dollor"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <Separator Margin="15,121,15,423" Background="#FFBDBDBD"/>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,140,0,394">
+                            <material:PackIcon Kind="Numeric1BoxMultipleOutline" Height="24" Width="23" Margin="25,0,0,0"/>
+                            <TextBox Name="txtsinglerate" TabIndex="7" Width="96"  Margin="20,0,0,2" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" material:HintAssist.Hint="Single Bed Rate" Padding="1,-9,0,0" />
+                            <material:PackIcon  Kind="FloorPlan" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <TextBox Name="txtsinglerateplan" TabIndex="8" Width="134"  Margin="10,0,0,2" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount1, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Single Plan Bed Rate" Padding="1,-9,0,0"/>
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,186,0,348">
+                            <material:PackIcon Kind="Numeric2BoxMultipleOutline" Height="24" Width="23" Margin="25,0,0,0"/>
+                            <TextBox Name="txtdoublerate" TabIndex="9" Width="96"  Margin="20,0,0,2" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount2, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Double Bed Rate"  material:HintAssist.IsFloating="True" Padding="1,-9,0,0"/>
+                            <material:PackIcon Kind="FloorPlan" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <TextBox Name="txtdoublerateplan" TabIndex="10"  Width="134"  Margin="10,0,0,2" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount3, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Double Plan Bed Rate" material:HintAssist.IsFloating="True" Padding="1,-9,0,0"/>
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,236,0,298">
+                            <material:PackIcon Kind="Numeric3BoxMultipleOutline" Height="24" Width="23" Margin="25,0,0,0"/>
+                            <TextBox Name="txttriplerate" Width="95" TabIndex="11" Margin="20,0,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount4, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Triple Bed Rate" material:HintAssist.IsFloating="True" Padding="1,-9,0,0" />
+                            <material:PackIcon Kind="FloorPlan" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <TextBox x:Name="txttriplerateplan" TabIndex="12" Width="136" Margin="11,0,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount5, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Triple Plan Bed Rate" material:HintAssist.IsFloating="True" Padding="1,-9,0,0"/>
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,288,0,246">
+                            <material:PackIcon Kind="Numeric4BoxMultipleOutline" Height="24" Width="23" Margin="25,0,0,0"/>
+                            <TextBox Name="txtquadrate" Margin="20,0,0,0" TabIndex="13" Width="95" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount6, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Quard Bed Rate" material:HintAssist.IsFloating="True" Padding="1,-9,0,0"/>
+                            <material:PackIcon Kind="FloorPlan" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <TextBox Name="txtquadrateplan" Margin="11,-5,0,0" TabIndex="14" Width="135"   VerticalAlignment="Bottom" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount7, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Quard Plan Bed Rate" material:HintAssist.IsFloating="True" Padding="1,-9,0,0" />
+                        </StackPanel>
+                        <Separator Margin="15,321,15,225" Background="#FFBDBDBD" RenderTransformOrigin="0.5,0.5">
+                            <Separator.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Separator.RenderTransform>
+                        </Separator>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,345,0.204,189">
+                            <material:PackIcon Kind="Human" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <TextBox Name="txtadult"  Width="100" TabIndex="15" Margin="15,0,0,0"  Padding="1,-9,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount8, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Extra Bed - Adult" material:HintAssist.IsFloating="True"/>
+                            <material:PackIcon Kind="HumanChild" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <TextBox Name="txtchild" Width="110" TabIndex="16" Margin="15,0,0,0" Padding="1,-9,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount9, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Extra Bed - Child" material:HintAssist.IsFloating="True"/>
+                        </StackPanel>
+                        <StackPanel Height="25" Orientation="Horizontal" Margin="0,397,0.204,137">
+                            <material:PackIcon Kind="FormatListNumbers" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <TextBox Name="txtcommonprice" Width="100" TabIndex="17" Margin="15,0,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Amount10, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtcommonprice_TextChanged" Padding="1,-9,0,0" material:HintAssist.Hint="Common Tariff" material:HintAssist.IsFloating="True"/>
+                            <material:PackIcon Kind="PlaneShield" Height="24" Width="23" Margin="20,0,0,0"/>
+                            <TextBox x:Name="txtcommonplan" Width="110" TabIndex="18" TextChanged="txtcommonplan_TextChanged" DataContext="{Binding Source={StaticResource Viewmodel}}"  Text="{Binding Path=Tipamount, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="15,0,0,0" Padding="1,-9,0,0" material:HintAssist.Hint="Common Plan Tariff" material:HintAssist.IsFloating="True"/>
+                            <material:PackIcon Kind="Emoticon" Height="24" Width="23" Margin="15,0,0,0"/>
+                            <ComboBox Name="status"  Width="100" Margin="15,0,0,0" TabIndex="19" Height="24" SelectedIndex="0" Padding="1">
+                                <ComboBoxItem Content="Active"></ComboBoxItem>
+                                <ComboBoxItem Content="Inactive"></ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                        <!--<StackPanel Height="25" Orientation="Horizontal" Margin="0,380,0,182">
+                            <material:PackIcon Kind="Emoticon" Height="24" Width="23" Margin="25,0,0,0"/>
+                            <ComboBox Name="status"  Width="94.413" Margin="20,0.5,0,0.5" Height="24" SelectedIndex="0" >
+                                <ComboBoxItem Content="Active"></ComboBoxItem>
+                                <ComboBoxItem Content="Inactive"></ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>-->
+                        <StackPanel Name="wp" Margin="10,0,10.204,55" Orientation="Horizontal"   Height="59" VerticalAlignment="Bottom">
+                            <WrapPanel >
+                            </WrapPanel>
+                        </StackPanel>
+
+                        <!--<Button x:Name="Confirm" FontSize="15"  Click="Confirm_Click_1" Content="Confrim" Margin="380.852,348.5,20.852,197.824" Foreground="#DD000000" Background="White"  />-->
+
+                        <!--<DataGrid Name="datagrid" VerticalScrollBarVisibility="Visible" BorderBrush="Black" BorderThickness="1" IsReadOnly="True" HorizontalScrollBarVisibility="Visible" AutoGenerateColumns="False" Margin="3,0,2,63.001" Height="114.999" VerticalAlignment="Bottom">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="RoomNo"  Binding="{Binding ROOM_NO}"/>
+                                <DataGridTextColumn Header="RoomCategory" Binding="{Binding  ROOM_CATEGORY}"/>
+                                <DataGridTextColumn Header="RoomView" Binding="{Binding ROOM_VIEW}"/>
+                                <DataGridTextColumn Header="MaxPax" Binding="{Binding MAX_PAX}"/>
+                                <DataGridTextColumn Header="ActiveDate" Binding="{Binding ACTIVE_CALENDER}"/>
+                                <DataGridTextColumn Header="Currency" Binding="{Binding CURRENCY }"/>
+
+                                <DataGridTextColumn Header="PlanCode" Binding="{Binding  PLANCODE}"/>
+                                <DataGridTextColumn Header="SinglerateTarrif" Binding="{Binding  SINGLERATE_TARRIF}"/>
+                                <DataGridTextColumn Header="SingleratePlan" Binding="{Binding SINGLERATE_PLAN }"/>
+                                <DataGridTextColumn Header="DoublerateTarrif" Binding="{Binding DOUBLERATE_TARRIF}"/>
+                                <DataGridTextColumn Header="DoubleratePlan" Binding="{Binding DOUBLERATE_PLAN}"/>
+                                <DataGridTextColumn Header="TriplerateTarrif" Binding="{Binding   TRIPLERATE_TARRIF}"/>
+
+                                <DataGridTextColumn Header="TripleratePlan" Binding="{Binding TRIPLERATE_PLAN}"/>
+                                <DataGridTextColumn Header="QuadrateTarrif" Binding="{Binding QUADRATE_TARRIF}"/>
+                                <DataGridTextColumn Header="QuadratePlan" Binding="{Binding QUADRATE_PLAN}"/>
+                                <DataGridTextColumn Header="CommonPrice" Binding="{Binding COMMON_PRICE}"/>
+                                <DataGridTextColumn Header="Adult-ExtraBedCost" Binding="{Binding ADULT_EXTRABADCOST}"/>
+                                <DataGridTextColumn Header="Child-ExtraBedCost" Binding="{Binding CHILD_EXTRABEDCOST}"/>
+                                <DataGridTextColumn Header="Status" Binding="{Binding STATUS}"/>
+                                <DataGridTextColumn Header="Amenities" Binding="{Binding AMENITY_NAMES}"/>
+                                <DataGridTextColumn Header="CommonPlan" Binding="{Binding COMMON_PLAN}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>-->
+                        <!--<Button Name="modify" Content="Modify" FontSize="15" Width="80" Height="30" Click="modify_Click" Margin="14.351,530.5,396.352,17.824"/>-->
+                        <Button Name="save" Content="Save" FontSize="15" Width="80" Height="30" TabIndex="20" IsDefault="True" Click="save_Click" Margin="356.496,481.274,53.204,47.773"/>
+                        <!--<Button Name="clear" Content="Clear" FontSize="15" Width="80" Height="30"  Click="clear_Click" Margin="313.352,540.5,97.352,7.824"/>-->
+                        <Label Height="25" HorizontalAlignment="Center" Margin="298.748,486.274,147.952,47.773" Width="43" RenderTransformOrigin="0.471,-0.519">
+                            <Hyperlink FontSize="14" Name="hlClr" Click="hlClr_Click">Clear</Hyperlink>
+                        </Label>
+                    </Grid>
+                    <Popup Name="popup" IsOpen="False" Placement="Center" >
+                        <Border BorderBrush="Black" BorderThickness="1" Background="White"  Width="436" Height="124">
+                            <StackPanel Orientation="Horizontal" Margin="0,31,0,9">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock  Name="tb" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,-428,-39" Grid.RowSpan="3"/>
+                                    <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,40,-441,-75" Grid.Row="2">
+                                        <Line Width="122"></Line>
+                                        <Button Name="yes" Content="Yes" Width="59" Click="yes_Click" Margin="0,10,0,0"></Button>
+                                        <Line Width="25"></Line>
+                                        <Button Name="no" Content="No" Width="56" Click="no_Click" Margin="0,10,0,0" ></Button>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+                    <Popup Name="pop1" Width="300" Height="180" Placement="Center">
+                        <Border Background="#EF513A" Margin="449,21,-449,-21">
+                            <StackPanel>
+                                <StackPanel Height="50" Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Missing Fields" FontSize="25" FontFamily="Calibri" Foreground="White" Margin="0,10,0,10" Padding="0,0,0,0"/>
+                                </StackPanel>
+                                <StackPanel Height="120" Margin="10,0,10,0" Background="White">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Viewbox Width="35" Height="35" Margin="15,10,10,0">
+                                            <Canvas Width="24" Height="24">
+                                                <Path Data="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" Fill="#EF513A" />
+                                            </Canvas>
+                                        </Viewbox>
+                                        <TextBlock Text="Please fill all Fields !" FontSize="20" Margin="0,15,0,0" TextAlignment="Center" FontFamily="Calibri"/>
+                                    </StackPanel>
+                                    <Button HorizontalAlignment="Center" Width="100" Click="Button_Click"  Foreground="#EF513A" FontSize="17" Background="White" BorderThickness="1" BorderBrush="#EF513A" Content="OK" FontWeight="Bold" Margin="0,20,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+                    <Popup Name="pop2" Height="100" Width="200" Placement="Center">
+                        <Border Background="White" BorderThickness="1" BorderBrush="Green" >
+                            <StackPanel Height="100">
+                                <Label Name="insert" Content="" FontSize="18" Width="170" Margin="0,10,0,0"></Label>
+
+                                <Button Width="80" Height="25" Content="Ok" Name="insertpop" FontSize="15" Click="insertpop_Click"  Margin="0,20,0,0"></Button>
+                            </StackPanel>
+                        </Border>
+                    </Popup>
+                    <Grid Grid.Column="1"  >
+                        <DataGrid Name="dgroomrate" Margin="0,10,10,10" BorderBrush="#89040404" BorderThickness="1" Background="White" AutoGenerateColumns="False" CanUserAddRows="False" MouseLeftButtonUp="DataGrid_MouseLeftButtonUp">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="RoomNo" Binding="{Binding ROOM_NO}"/>
+                                <DataGridTextColumn Header="RoomType" Binding="{Binding ROOM_CATEGORY}"/>
+                                <DataGridTextColumn Header="MaxPax" Binding="{Binding MAX_PAX}"/>
+                                <DataGridTextColumn Header="ActiveDate" Binding="{Binding ACTIVE_DATE, StringFormat=dd/MM/yyyy}"/>
+                                <DataGridTextColumn Header="Status" Binding="{Binding STATUS}" CanUserSort="False"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </material:Card>
+</Page>

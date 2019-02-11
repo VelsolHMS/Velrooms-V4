@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RoomTarrifDS" targetNamespace="http://tempuri.org/RoomTarrifDS.xsd" xmlns:mstns="http://tempuri.org/RoomTarrifDS.xsd" xmlns="http://tempuri.org/RoomTarrifDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RoomTarrifDS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="RoomTarrifDS" msprop:Generator_UserDSName="RoomTarrifDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Hotel" msprop:Generator_ColumnVarNameInTable="columnHotel" msprop:Generator_ColumnPropNameInRow="Hotel" msprop:Generator_ColumnPropNameInTable="HotelColumn" msprop:Generator_UserColumnName="Hotel" type="xs:string" minOccurs="0" />
+              <xs:element name="HotelAddress" msprop:Generator_ColumnVarNameInTable="columnHotelAddress" msprop:Generator_ColumnPropNameInRow="HotelAddress" msprop:Generator_ColumnPropNameInTable="HotelAddressColumn" msprop:Generator_UserColumnName="HotelAddress" type="xs:string" minOccurs="0" />
+              <xs:element name="GstNo" msprop:Generator_ColumnVarNameInTable="columnGstNo" msprop:Generator_ColumnPropNameInRow="GstNo" msprop:Generator_ColumnPropNameInTable="GstNoColumn" msprop:Generator_UserColumnName="GstNo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable2" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_TableVarName="tableDataTable2" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_TablePropName="DataTable2" msprop:Generator_RowDeletingName="DataTable2RowDeleting" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_RowClassName="DataTable2Row" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RoomNo" msprop:Generator_ColumnVarNameInTable="columnRoomNo" msprop:Generator_ColumnPropNameInRow="RoomNo" msprop:Generator_ColumnPropNameInTable="RoomNoColumn" msprop:Generator_UserColumnName="RoomNo" type="xs:int" minOccurs="0" />
+              <xs:element name="SingleT" msprop:Generator_ColumnVarNameInTable="columnSingleT" msprop:Generator_ColumnPropNameInRow="SingleT" msprop:Generator_ColumnPropNameInTable="SingleTColumn" msprop:Generator_UserColumnName="SingleT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DoubleT" msprop:Generator_ColumnVarNameInTable="columnDoubleT" msprop:Generator_ColumnPropNameInRow="DoubleT" msprop:Generator_ColumnPropNameInTable="DoubleTColumn" msprop:Generator_UserColumnName="DoubleT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TripleT" msprop:Generator_ColumnVarNameInTable="columnTripleT" msprop:Generator_ColumnPropNameInRow="TripleT" msprop:Generator_ColumnPropNameInTable="TripleTColumn" msprop:Generator_UserColumnName="TripleT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="QuadT" msprop:Generator_ColumnVarNameInTable="columnQuadT" msprop:Generator_ColumnPropNameInRow="QuadT" msprop:Generator_ColumnPropNameInTable="QuadTColumn" msprop:Generator_UserColumnName="QuadT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ExBedA" msprop:Generator_ColumnVarNameInTable="columnExBedA" msprop:Generator_ColumnPropNameInRow="ExBedA" msprop:Generator_ColumnPropNameInTable="ExBedAColumn" msprop:Generator_UserColumnName="ExBedA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ExBedC" msprop:Generator_ColumnVarNameInTable="columnExBedC" msprop:Generator_ColumnPropNameInRow="ExBedC" msprop:Generator_ColumnPropNameInTable="ExBedCColumn" msprop:Generator_UserColumnName="ExBedC" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Room_x0020_Category" msprop:Generator_ColumnVarNameInTable="columnRoom_Category" msprop:Generator_ColumnPropNameInRow="Room_Category" msprop:Generator_ColumnPropNameInTable="Room_CategoryColumn" msprop:Generator_UserColumnName="Room Category" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

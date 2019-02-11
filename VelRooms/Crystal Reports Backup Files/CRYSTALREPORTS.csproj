@@ -1,0 +1,884 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2AA6EBF-3968-41E2-A8E4-57D205A31FEB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRYSTALREPORTS</RootNamespace>
+    <AssemblyName>CRYSTALREPORTS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Prototyping.Runtime, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DataVisualization.Design" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=3.5.40128.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WPFToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ADVANCE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ADVANCESDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADVANCESDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ADVANCESREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADVANCESREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AMENITy.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLOCK_ROOM.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKIN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKOUT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKOUTFORTHEDAY.cs">
+      <DependentUpon>CHECKOUTFORTHEDAY.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKOUTFORTHEDAY.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHECKOUTFORTHEDAY.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKOUTFRNTOFCSALEDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHECKOUTFRNTOFCSALEDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKOUTSTATEMENTDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHECKOUTSTATEMENTDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CHECKOUTSTATEMENTREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CHECKOUTSTATEMENTREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="COMPANYMASTER.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DEPARTMENT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISCOUNT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISCOUNTDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DISCOUNTDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DISCOUNTREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DISCOUNTREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EXPECTEDARRIVALSDATASET.cs">
+      <DependentUpon>EXPECTEDARRIVALSDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EXPECTEDARRIVALSDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EXPECTEDARRIVALSDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EXPECTEDARRIVALSREPORTS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EXPECTEDARRIVALSREPORTS.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EXPECTEDDEPARTURE.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EXPECTEDDEPARTURE.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EXPECTEDDEPARTURES.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EXPECTEDDEPARTURES.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FRNTOFCSALE.cs">
+      <DependentUpon>FRNTOFCSALE.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FRNTOFCSALE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FRNTOFCSALE.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frontofcsalesreport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frontofcsalesreport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FRONTOFCTRANSACTIONLISTREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frontofficetransactionlistreportcrystal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frontofficetransactionlistreportcrystal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frontofficetransactionlistreportcrystal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FRONTOFCTRLISTDST.cs">
+      <DependentUpon>FRONTOFCTRLISTDST.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FRONTOFCTRLISTDST.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FRONTOFCTRLISTDST.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GUESTINHOUSED.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GUESTINHOUSED.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GUESTINHOUSEREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GUESTINHOUSEREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="home.xaml.cs">
+      <DependentUpon>home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HotelInfo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hotelinfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelinfo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HOTELINFORMATION.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HOTELINFORMATION.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="INGUESTHOUSEINFO.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListExtensions.cs" />
+    <Compile Include="MISCELLENOU.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="night_audit.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page2.xaml.cs">
+      <DependentUpon>Page2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PAIDOUT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PAIDOUT_OPENINGBALANCE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PLANCODE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSTCHARGE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PRINT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFUND.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REFUNDDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>REFUNDDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RESCANCELLEDREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RESCANCELLEDREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RESERVATION.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RESERVATIONCANCEL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RESERVATIONCANCEL.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RESERVATIONLIST REPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RESERVATIONLIST REPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RETENTION.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REVENUE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMCATEGORY.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMCHANGEDDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ROOMCHANGEDDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMCHANGETYPEREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ROOMCHANGETYPEREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ROOMMASTER.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMMASTER_AMENITY.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMMASTER_PLAN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMOCCUPANCY.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ROOMOCCUPANCY.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ROOMOCCUPANCYDATASET.cs">
+      <DependentUpon>ROOMOCCUPANCYDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMOCCUPANCYDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ROOMOCCUPANCYDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMTARRIFDATASET.cs">
+      <DependentUpon>ROOMTARRIFDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMTARRIFDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ROOMTARRIFDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ROOMTARRIFMAINREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ROOMTARRIFMAINREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ROOM_CHANGE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SETTLE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SETTLE_OTHERPAY.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SETTLE_TRANSFERPAY.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tariffpostedperday.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tariffpostedperday.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TAXREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TAXREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TAXREPORTDATASET.cs">
+      <DependentUpon>TAXREPORTDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TAXREPORTDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TAXREPORTDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TAX_CODE.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TODAYCHECKOUTSREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TODAYCHECKOUTSREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="todayres.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>todayres.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TODAYS ARRIVALDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TODAYS ARRIVALDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="todaysarrivalreport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>todaysarrivalreport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TRANSACTIONLISTDATASET.cs">
+      <DependentUpon>TRANSACTIONLISTDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TRANSACTIONLISTDATASET.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TRANSACTIONLISTDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TRANSACTIONLISTREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TRANSACTIONLISTREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Page Include="home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="ADVANCESREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CHECKOUTSTATEMENTREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CHECKOUTSTATEMENTREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DISCOUNTREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DISCOUNTREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EXPECTEDARRIVALSREPORTS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EXPECTEDARRIVALSREPORTS.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EXPECTEDDEPARTURE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EXPECTEDDEPARTURE.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frontofcsalesreport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>frontofcsalesreport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frontofficetransactionlistreportcrystal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>frontofficetransactionlistreportcrystal.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUESTINHOUSEREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>GUESTINHOUSEREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HOTELINFORMATION.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HOTELINFORMATION.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RESCANCELLEDREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RESCANCELLEDREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RESERVATIONLIST REPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RESERVATIONLIST REPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ROOMCHANGETYPEREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ROOMCHANGETYPEREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ROOMOCCUPANCY.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ROOMOCCUPANCY.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ROOMTARRIFMAINREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ROOMTARRIFMAINREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TAXREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TAXREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TODAYCHECKOUTSREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TODAYCHECKOUTSREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="todaysarrivalreport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>todaysarrivalreport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRANSACTIONLISTREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TRANSACTIONLISTREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ADVANCESDATASET.xsc">
+      <DependentUpon>ADVANCESDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="ADVANCESDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ADVANCESDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ADVANCESDATASET.xss">
+      <DependentUpon>ADVANCESDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="CHECKOUTFORTHEDAY.xsc">
+      <DependentUpon>CHECKOUTFORTHEDAY.xsd</DependentUpon>
+    </None>
+    <None Include="CHECKOUTFORTHEDAY.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CHECKOUTFORTHEDAY.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CHECKOUTFORTHEDAY.xss">
+      <DependentUpon>CHECKOUTFORTHEDAY.xsd</DependentUpon>
+    </None>
+    <None Include="CHECKOUTFRNTOFCSALEDATASET.xsc">
+      <DependentUpon>CHECKOUTFRNTOFCSALEDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="CHECKOUTFRNTOFCSALEDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CHECKOUTFRNTOFCSALEDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CHECKOUTFRNTOFCSALEDATASET.xss">
+      <DependentUpon>CHECKOUTFRNTOFCSALEDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="CHECKOUTSTATEMENTDATASET.xsc">
+      <DependentUpon>CHECKOUTSTATEMENTDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="CHECKOUTSTATEMENTDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CHECKOUTSTATEMENTDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CHECKOUTSTATEMENTDATASET.xss">
+      <DependentUpon>CHECKOUTSTATEMENTDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="DISCOUNTDATASET.xsc">
+      <DependentUpon>DISCOUNTDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="DISCOUNTDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DISCOUNTDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DISCOUNTDATASET.xss">
+      <DependentUpon>DISCOUNTDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="EXPECTEDARRIVALSDATASET.xsc">
+      <DependentUpon>EXPECTEDARRIVALSDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="EXPECTEDARRIVALSDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EXPECTEDARRIVALSDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="EXPECTEDARRIVALSDATASET.xss">
+      <DependentUpon>EXPECTEDARRIVALSDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="EXPECTEDDEPARTURES.xsc">
+      <DependentUpon>EXPECTEDDEPARTURES.xsd</DependentUpon>
+    </None>
+    <None Include="EXPECTEDDEPARTURES.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EXPECTEDDEPARTURES.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="EXPECTEDDEPARTURES.xss">
+      <DependentUpon>EXPECTEDDEPARTURES.xsd</DependentUpon>
+    </None>
+    <None Include="FRNTOFCSALE.xsc">
+      <DependentUpon>FRNTOFCSALE.xsd</DependentUpon>
+    </None>
+    <None Include="FRNTOFCSALE.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FRNTOFCSALE.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="FRNTOFCSALE.xss">
+      <DependentUpon>FRNTOFCSALE.xsd</DependentUpon>
+    </None>
+    <None Include="FRONTOFCTRLISTDST.xsc">
+      <DependentUpon>FRONTOFCTRLISTDST.xsd</DependentUpon>
+    </None>
+    <None Include="FRONTOFCTRLISTDST.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FRONTOFCTRLISTDST.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="FRONTOFCTRLISTDST.xss">
+      <DependentUpon>FRONTOFCTRLISTDST.xsd</DependentUpon>
+    </None>
+    <None Include="GUESTINHOUSED.xsc">
+      <DependentUpon>GUESTINHOUSED.xsd</DependentUpon>
+    </None>
+    <None Include="GUESTINHOUSED.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GUESTINHOUSED.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="GUESTINHOUSED.xss">
+      <DependentUpon>GUESTINHOUSED.xsd</DependentUpon>
+    </None>
+    <None Include="hotelinfo.xsc">
+      <DependentUpon>hotelinfo.xsd</DependentUpon>
+    </None>
+    <None Include="hotelinfo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelinfo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="hotelinfo.xss">
+      <DependentUpon>hotelinfo.xsd</DependentUpon>
+    </None>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="REFUNDDATASET.xsc">
+      <DependentUpon>REFUNDDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="REFUNDDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>REFUNDDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="REFUNDDATASET.xss">
+      <DependentUpon>REFUNDDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="RESERVATIONCANCEL.xsc">
+      <DependentUpon>RESERVATIONCANCEL.xsd</DependentUpon>
+    </None>
+    <None Include="RESERVATIONCANCEL.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RESERVATIONCANCEL.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="RESERVATIONCANCEL.xss">
+      <DependentUpon>RESERVATIONCANCEL.xsd</DependentUpon>
+    </None>
+    <None Include="ROOMCHANGEDDATASET.xsc">
+      <DependentUpon>ROOMCHANGEDDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="ROOMCHANGEDDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ROOMCHANGEDDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ROOMCHANGEDDATASET.xss">
+      <DependentUpon>ROOMCHANGEDDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="ROOMOCCUPANCYDATASET.xsc">
+      <DependentUpon>ROOMOCCUPANCYDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="ROOMOCCUPANCYDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ROOMOCCUPANCYDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ROOMOCCUPANCYDATASET.xss">
+      <DependentUpon>ROOMOCCUPANCYDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="ROOMTARRIFDATASET.xsc">
+      <DependentUpon>ROOMTARRIFDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="ROOMTARRIFDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ROOMTARRIFDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ROOMTARRIFDATASET.xss">
+      <DependentUpon>ROOMTARRIFDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="tariffpostedperday.xsc">
+      <DependentUpon>tariffpostedperday.xsd</DependentUpon>
+    </None>
+    <None Include="tariffpostedperday.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tariffpostedperday.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="tariffpostedperday.xss">
+      <DependentUpon>tariffpostedperday.xsd</DependentUpon>
+    </None>
+    <None Include="TAXREPORTDATASET.xsc">
+      <DependentUpon>TAXREPORTDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="TAXREPORTDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TAXREPORTDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TAXREPORTDATASET.xss">
+      <DependentUpon>TAXREPORTDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="todayres.xsc">
+      <DependentUpon>todayres.xsd</DependentUpon>
+    </None>
+    <None Include="todayres.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>todayres.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="todayres.xss">
+      <DependentUpon>todayres.xsd</DependentUpon>
+    </None>
+    <None Include="TODAYS ARRIVALDATASET.xsc">
+      <DependentUpon>TODAYS ARRIVALDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="TODAYS ARRIVALDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TODAYS ARRIVALDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TODAYS ARRIVALDATASET.xss">
+      <DependentUpon>TODAYS ARRIVALDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="TRANSACTIONLISTDATASET.xsc">
+      <DependentUpon>TRANSACTIONLISTDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="TRANSACTIONLISTDATASET.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TRANSACTIONLISTDATASET.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TRANSACTIONLISTDATASET.xss">
+      <DependentUpon>TRANSACTIONLISTDATASET.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Combo Chart_48px.png" />
+    <Resource Include="Images\error.png" />
+    <Resource Include="Images\Exit_50px.png" />
+    <Resource Include="Images\icons8-admin.png" />
+    <Resource Include="Images\icons8-Content-96.png" />
+    <Resource Include="Images\icons8-Department-100.png" />
+    <Resource Include="Images\icons8-home.png" />
+    <Resource Include="Images\icons8-password.png" />
+    <Resource Include="Images\Info_48px.png" />
+    <Resource Include="Images\Services_48px.png" />
+    <Resource Include="Images\User Groups_48px.png" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\DAL\DAL.csproj">
+      <Project>{8644135f-6429-4ad3-add4-8badd840b589}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

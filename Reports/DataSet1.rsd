@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>HMS(DataSource)</DataSourceReference>
+      <CommandText>SELECT        NAME, CAST(PLOT_NO AS VARCHAR(20)) + ' ,' + LANDMARK + ' ,' + CITY + ' ,' + STATE + ' -' + CAST(PINCODE AS VARCHAR(20)) AS CADDRESS
+FROM            HotelInfo</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="NAME">
+        <DataField>NAME</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CADDRESS">
+        <DataField>CADDRESS</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

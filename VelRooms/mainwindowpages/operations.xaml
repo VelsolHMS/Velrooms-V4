@@ -1,0 +1,156 @@
+﻿<Page x:Class="HMS.mainwindowpages.operations"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMS.mainwindowpages"
+      mc:Ignorable="d" 
+   d:DesignHeight="600" d:DesignWidth="1080"
+      Title="operations" Background="White">
+
+
+    <!--styles-->
+    <Page.Resources>
+
+        <Style x:Key="txtbox" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="leftpanestyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Georige"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#354766"/>
+            <Setter Property="Effect" >
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="5" Color="LightGray"/>
+                </Setter.Value>
+            </Setter>
+
+
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter/>
+                        </Grid>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#e5b300"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Trigger>
+
+            </Style.Triggers>
+
+
+
+        </Style>
+    </Page.Resources>
+
+    <!--window divider-->
+
+    <Viewbox Margin="0,0,0,0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="925"/>
+                <ColumnDefinition />
+
+            </Grid.ColumnDefinitions>
+            <!--<Grid.RowDefinitions>
+            <RowDefinition Height="479*"></RowDefinition>
+            <RowDefinition Height="129*"></RowDefinition>
+        </Grid.RowDefinitions>-->
+
+
+
+            <!--Rightpane-->
+
+            <StackPanel Width="130"  Grid.Column="1" >
+
+                <Button x:Name="btnresv"  Height="30" Margin="0,0,0,0" Style="{StaticResource leftpanestyle}" Grid.Column="1" Click="btnresvclick" >
+                    <Border Name="bdrresv">
+                        <TextBlock  Text="Reservation"   FontSize="17" Foreground="White"  Grid.Column="1" Style="{StaticResource txtbox}" >
+                        </TextBlock>
+                    </Border>
+                </Button>
+                <Button x:Name="btncin"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btncinclick"  >
+                    <TextBlock Text="Check-In's" FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btnrescin"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnrescinclick"  >
+                    <TextBlock Text="Res - CheckIn"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btngrpcin"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btngrpcin_Click"  >
+                    <TextBlock Text="Grp CheckIn's" FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btnadv"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnadvclick" >
+                    <TextBlock Text="Advance"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btnchrgs"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnchrgsclick" >
+                    <TextBlock Text="Postcharges" FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btnpaidouts"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnpdotclick"  >
+                    <TextBlock Text="Paidouts"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btnrmcng"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnhmcngclick"  >
+                    <TextBlock Text="Room Change"  FontSize="17" Foreground="White"  Width="102" Style="{StaticResource txtbox}"  />
+                </Button>
+                <Button x:Name="btnrefund"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnrefndclick">
+                    <TextBlock Text="Refund"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btnblkrm"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnblkrmclick"  >
+                    <TextBlock Text="Block Room"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btndis"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btndosclick" >
+                    <TextBlock Text="Discount"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btngsinf"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btngsinfclick"  >
+                    <TextBlock Text="Guest Info"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"  />
+                </Button>
+                <Button Name="btnrmsts" IsEnabled="False"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnrmstsClick"  >
+                    <TextBlock Text="Change Status"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button x:Name="btnmis"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnmisclick"  >
+                    <TextBlock Text="MIS Sales"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"  />
+                </Button>
+                <Button Name="btnpbcollection" Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnpbcollectionClick"  >
+                    <TextBlock Text="PB Collection"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"   />
+                </Button>
+                <Button Name="btncheckout" Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnckotclick" >
+                    <TextBlock Text="Check Out's" FontSize="17" Foreground="White" Style="{StaticResource txtbox}"  />
+                </Button>
+                <Button  Name="btnsettle" Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnsettle_Click"  >
+                    <TextBlock Text="Bill Settle"  FontSize="17" Foreground="White" Style="{StaticResource txtbox}"  />
+                </Button>
+                <Button Name="btnreprint"  Height="30" Margin="0,2,0,0" Style="{StaticResource leftpanestyle}" Click="btnreprint_Click"  >
+                    <TextBlock Text="Re-Print" FontSize="17" Foreground="White" Style="{StaticResource txtbox}"  />
+                </Button>
+
+            </StackPanel>
+
+
+
+            <ScrollViewer Name="scrfam" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+
+                <Frame Name="frame1" Height="585.722"    >
+
+                </Frame>
+
+            </ScrollViewer>
+
+        </Grid>
+    </Viewbox>
+</Page>

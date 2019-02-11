@@ -1,0 +1,181 @@
+﻿<Window x:Class="HMS.View.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:local="clr-namespace:HMS.View"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local1="clr-namespace:PreLoader.CustomControls"
+      mc:Ignorable="d"
+      Title="Front Office" d:DesignHeight="600" d:DesignWidth="1080" WindowState="Maximized"  WindowStyle="None">
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+            <!--Slide navigate-->
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="Viewframe">
+                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="60,0,0,0"/>
+                <SplineThicknessKeyFrame KeyTime="00:00:0.5" Value="200,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="Viewframe">
+                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="200,0,0,0"/>
+                <SplineThicknessKeyFrame KeyTime="00:00:0.5" Value="60,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnopenmenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="Btnclsmenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <local1:PreLoaderControl Height="32" Width="32" x:Name="loader" Visibility="Hidden"/>
+        <Grid Height="30" VerticalAlignment="Top" Background="#354766">
+            <TextBlock Text="{Binding NAME}" Padding="2" Name="txtblock" FontSize="25"  FontFamily="Gabriola"  Margin="398,0,124,0" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock x:Name="user" Text="User Name" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="White" ToolTip="User" />
+                <material:PopupBox HorizontalAlignment="Right" Foreground="White" Margin="2" PlacementMode="BottomAndAlignRightEdges" Width="26" StaysOpen="False">
+                    <StackPanel Width="150">
+                        <Button x:Name="popupMasteropen" Content="Masters" Click="popupMasteropen_Click"/>
+                        <Button x:Name="btnpermissions" Content="User Permissions" Click="btnpermissions_Click"/>
+                        <Separator/>
+                        <Button x:Name="minimize" Content="Minimize" Click="minimize_Click"></Button>
+                        <Separator/>
+                        <Button x:Name="logout" Content="Logout" Click="logout_Click"/>
+                    </StackPanel>
+                </material:PopupBox>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#354766">
+            <StackPanel>
+                <Grid Height="30" Background="White" >
+                    <Button x:Name="Btnclsmenu" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Hidden" Click="Btnclsmenu_Click" >
+                        <material:PackIcon Kind="ArrowLeft" Foreground="#354766" Height="25" Width="25" />
+                    </Button>
+                    <Button x:Name="btnopenmenu" Height="30" Width="60" VerticalAlignment="Top" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Visible" Click="btnopenmenu_Click" >
+                        <material:PackIcon Kind="Menu" Foreground="#354766" Height="25" Width="25" />
+                    </Button>
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" Foreground="#354766"    >
+                    <ListViewItem Height="50" Margin="0,10,0,0" >
+                        <Button Name="btndashboard" Background="{x:Null}" Height="50" BorderBrush="{x:Null}" Margin="-10,-15,0,0" Click="btndashboard_Click" ToolTip="Dashboard">
+                            <StackPanel Orientation="Horizontal"  Width="140" Margin="-10" Height="50"  >
+                                <material:PackIcon Kind="ViewDashboard" Height="25" Width="25" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#DDFFFFFF" />
+                                <TextBlock Text="DashBoard" VerticalAlignment="Center"  Margin="20,0,0,0" FontWeight="Bold" FontFamily="Constantia" FontSize="16" Foreground="#DDFFFFFF"/>
+                            </StackPanel>
+                        </Button>
+                    </ListViewItem>
+                    <ListViewItem x:Name="mainoperation" Height="50" Margin="0,10,0,0" >
+                        <Button Name="btnhome" Background="{x:Null}" Height="50" BorderBrush="{x:Null}" Margin="-10,-15,0,0" Command="{Binding OperationCommand}" Click="btnhome_Click" ToolTip="Home">
+                            <StackPanel Orientation="Horizontal" Width="140" Margin="-10" Height="50" >
+                                <material:PackIcon Kind="Home" Height="25" Width="25" VerticalAlignment="Center" Margin="10,12.5,0,0" Foreground="#DDFFFFFF" />
+                                <TextBlock Text="Home" VerticalAlignment="Center"  Margin="20,22.235,0,8.235" FontWeight="Bold" FontFamily="Constantia" FontSize="16" Width="70.043" Foreground="#DDFFFFFF"/>
+                            </StackPanel>
+                        </Button>
+                    </ListViewItem>
+                    <ListViewItem Height="50" Margin="0,20,0,0">
+                        <Button Name="btnopr" Background="{x:Null}" Height="50" BorderBrush="{x:Null}" Margin="-10,-25,0,0" Click="btnopr_Click"  ToolTip="Operation">
+                            <StackPanel Orientation="Horizontal" Margin="-10" Height="50">
+                                <material:PackIcon Kind="CalendarPlus" Height="24.765" Width="26.5" VerticalAlignment="Center" Margin="10,15.235,0,10" Foreground="#DDFFFFFF" />
+                                <TextBlock Text="Operations" VerticalAlignment="Center"  Margin="20,0,0,0" FontWeight="Bold" FontFamily="Constantia" FontSize="16" Foreground="#DDFFFFFF"/>
+                            </StackPanel>
+                        </Button>
+                    </ListViewItem>
+                    <!--<ListViewItem Height="50" Margin="0,20,0,0">
+                        <Button Name="btnrpt" Background="{x:Null}" Height="50" BorderBrush="{x:Null}" Margin="-10,-22,0,0" Click="btnrpt_Click" ToolTip="Reports" >
+                            <StackPanel Orientation="Horizontal" Margin="-10" Height="50" >
+                                <material:PackIcon Kind="FileChart" Height="25" Width="25" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#DDFFFFFF" />
+                                <TextBlock Text="Reports" VerticalAlignment="Center"  Margin="20,0,0,0" FontWeight="Bold" FontFamily="Constantia" FontSize="16" Foreground="#DDFFFFFF"/>
+                            </StackPanel>
+                        </Button>
+                    </ListViewItem>-->
+                    <ListViewItem x:Name="Report" Height="50" Margin="0,10,0,0">
+                        <StackPanel Orientation="Horizontal" Margin="6,0,0,0">
+                            <material:PackIcon Kind="CloudPrint" Height="30" Width="30" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock Text="Reports" VerticalAlignment="Center"  Margin="20,0,0,0" FontWeight="Bold" FontFamily="Constantia" FontSize="16" Foreground="White"/>
+                        </StackPanel>
+                        <ListViewItem.ContextMenu>
+                       
+                            <ContextMenu Name="CTXReport" StaysOpen="False" Background="#354766" Foreground="White">
+                                <MenuItem x:Name="btnexprt" Header="Export" Click="btnexprt_Click"/>
+                                <MenuItem x:Name="FOT" Header="Front Office Transaction" Click="FOT_Click"/>
+                                <MenuItem x:Name="PB" Header="Pending Bill" Click="PB_Click"/>
+                                <MenuItem x:Name="mDep" Header="Today Checkouts" Click="mDep_Click"/>
+                                <MenuItem x:Name="mTodayRes" Header="Today Bookings" Click="mTodayRes_Click"/>
+                                <MenuItem x:Name="mGuestInHouse" Header="Guest in the House" Click="mGuestInHouse_Click"/>
+                                <MenuItem x:Name="mDailyCheckouts" Header="Checkouts for the Day" Click="mDailyCheckouts_Click"/>
+                                <MenuItem x:Name="mRoomRate" Header="Room Rate List" Click="mRoomRate_Click"/>
+                                <MenuItem x:Name="mPlan" Header="Plan List" Click="mPlan_Click"/>
+                                <MenuItem x:Name="mRoomOccu" Header="Room Occupancy" Click="mRoomOccu_Click"/>
+                                <MenuItem x:Name="mDailyDis" Header="Daily Discout" Click="mDailyDis_Click"/>
+                                <MenuItem x:Name="mResList" Header="Day Wise Bookings" Click="mResList_Click"/>
+                                <MenuItem x:Name="mCanlRes" Header="Cancelled Reservations" Click="mCanlRes_Click"/>
+                                <MenuItem x:Name="mOutStandBalance" Header="Out Standing Balance" Click="mOutStandBalance_Click"/>
+                                <MenuItem x:Name="mTransList" Header="Transaction List" Click="mTransList_Click"/>
+                                <MenuItem x:Name="mGuestAdvance" Header="Guest Advances" Click="mGuestAdvance_Click"/>
+                                <MenuItem x:Name="mMWRoomTariff" Header="Month Wise Room Tariff" Click="mMWRoomTariff_Click"/>
+                                <MenuItem x:Name="mMontlyDis" Header="Montly Discout" Click="mMontlyDis_Click"/>
+
+                                <MenuItem x:Name="mDailyTar" Header="Daily Tariff" Click="mDailyTar_Click"/>
+                                <!--<MenuItem x:Name="mMontlyTar" Header="Montly Tariff" Click="mMontlyTar_Click"/>-->
+                                <MenuItem x:Name="mDailyTax" Header="Daily Tax" Click="mDailyTax_Click"/>
+                                <MenuItem x:Name="mMonthlyTax" Header="Monthly Gst" Click="mMonthlyTax_Click"/>
+                                <!--<MenuItem x:Name="mChangeGuestInfo" Header="Change Guest Info" Click="mChangeGuestInfo_Click"/>
+                                <MenuItem x:Name="mRoomChange" Header="Room Change" Click="mRoomChange_Click"/>-->
+
+                                <!--<MenuItem x:Name="mCheckout" Header="Checkout Details" Click="mCheckout_Click"/>
+                                <MenuItem x:Name="mReprint" Header="Reprint" Click="mReprint_Click"/>-->
+                            </ContextMenu>
+                        </ListViewItem.ContextMenu>
+                    </ListViewItem>
+                    <!--<ListViewItem Height="50" Margin="0,20,0,0" Width="223">
+                        <Button Name="btnexprt" Background="{x:Null}" Height="50" BorderBrush="{x:Null}" Click="btnexprt_Click" Margin="-6,-22,0,0" ToolTip="Export Details" >
+                            <StackPanel Orientation="Horizontal" Margin="-10" Height="50">
+                                <material:PackIcon Kind="FileExcel" Height="25" Width="25" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#DDFFFFFF"/>
+                                <TextBlock Text="Export Details" VerticalAlignment="Center" Margin="20,0,0,0" FontWeight="Bold" FontFamily="Constantia" FontSize="16" Foreground="#DDFFFFFF"/>
+                            </StackPanel>
+                        </Button>
+                    </ListViewItem>-->
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <Viewbox x:Name="Viewframe" Margin="60,0,0,0" >
+            <Frame x:Name="frame" Background="White" NavigationUIVisibility="Hidden" Content="" Margin="0,30,0,0"/>
+        </Viewbox>
+        <Popup Name="PreLoaderPopup" Width="450" Height="300" Placement="Center">
+            <material:Card Background="White" Width="450" Height="300" material:ShadowAssist.ShadowDepth="Depth5">
+                <Border BorderBrush="White" BorderThickness="1">
+                    <Grid>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="Guest Details" HorizontalAlignment="Center" TextAlignment="Center" FontSize="25" FontFamily="Sitka Display" FontWeight="Bold"></TextBlock>
+                            <Image gif:ImageBehavior.AnimatedSource="/HMS;component/Images/Loader.gif" Height="120"/>
+                            <TextBlock Text="Please wait..!" Foreground="Black" Margin="0,0,0,0" HorizontalAlignment="Center" FontFamily="Sitka Display" TextAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Loading data to Excel Sheet...!" Foreground="Black" Margin="0,0,0,0" FontFamily="Sitka Display" HorizontalAlignment="Center" TextAlignment="Center" FontSize="20" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </material:Card>
+        </Popup>
+        <material:Card Name="preloader" Background="#7F112233" Visibility="Hidden" Width="1080" Height="600">
+            <Grid>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <Image gif:ImageBehavior.AnimatedSource="/HMS;component/Images/Loader.gif" Width="250"/>
+                    <TextBlock Text="Please wait..! The Excel Sheet is Generating...!" Foreground="White" Padding="80,0,80,00" Height="50" HorizontalAlignment="Center" TextAlignment="Center" FontSize="25" FontWeight="Bold" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </material:Card>
+    </Grid>
+</Window>

@@ -1,0 +1,194 @@
+﻿<Page x:Class="HMS.View.Operations.Checkout"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMS.View.Operations"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" Background="White"
+      Title="CheckOut" Height="620" Width="800"  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" >
+    <Page.Resources>
+        <!--<Style x:Key="leftpanestyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Georige"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#354766"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="DarkOrange" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>-->
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+        </Style>
+    </Page.Resources>
+    <Border BorderBrush="Gray" BorderThickness="1">
+        <Grid Name="PRINTGRID">
+            <TextBlock Name="date" Margin="00,580,550,0" Visibility="Hidden" Height="20" Width="150" ></TextBlock>
+            <TextBlock Name="time" Margin="00,550,500,0" Visibility="Hidden" Height="20" Width="150" ></TextBlock>
+            <StackPanel Height="25" Orientation="Horizontal" Margin="0,1,0,594" Background="#354766">
+                <TextBlock  Text="Room Check-Out's" Foreground="White" FontSize="18" Margin="350,0,0,0" FontFamily="Times New Roman"  Grid.ColumnSpan="2" Background="#354766" Cursor="None" />
+            </StackPanel>
+            <Rectangle Margin="10,31,660,79" Stroke="#FFBBB9B9" Fill="#FFF4F4F7"  >
+                <Rectangle.Effect>
+                    <DropShadowEffect Color="#FFF1F1F1" BlurRadius="10" RenderingBias="Quality"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <StackPanel Orientation="Vertical" Margin="15,31,670,79">
+                <Button Name="btndiscount" Width="100" Height="25" Content="Discount" Margin="5,30,5,0" Click="btndiscount_Click" >
+                </Button>
+                <Button Name="btnprovbill" Width="100" Height="25" Content="Prov bill" Margin="5,30,5,0" Click="btnprovbill_Click">
+                </Button>
+                <Button Name="btnprintbill" Width="100" Height="25" Content="Print bill" Margin="5,30,5,0" Click="btnprintbill_Click">
+                </Button>
+                <Button Name="btnviewbill" Width="100" Height="25" Content="View bill" Margin="5,30,5,0" Click="btnviewbill_Click">
+                </Button>
+                <Button x:Name="btnsplitbill" Height="25" Width="100" Content="Split bill" Margin="7,30,6,0" Click="btnsplitbill_Click" />
+                <Button Name="btnsettlebill" Width="100" Height="25" Content="Settle bill" Margin="5,30,5,0" Click="btnsettlebill_Click">
+                </Button>
+                <Button Name="btncharges" Width="100" Height="25" Content="Charges" Margin="5,30,5,0" Click="btncharges_Click">
+                </Button>
+                <Button Name="btnadvance" Width="100" Height="25" Content="Advance" Margin="5,30,5,0" Click="btnadvance_Click">
+                </Button>
+                <Button Name="btnclear" Width="100" Height="25" Content="Clear" Margin="5,30,5,0" Click="btnclear_Click">
+                </Button>
+            </StackPanel>
+            <GroupBox Header="Room's" BorderThickness="1" BorderBrush="Black" Margin="152,31,18,370">
+                <ScrollViewer>
+                    <WrapPanel Name="WRAP" Margin="0" Orientation="Vertical"></WrapPanel>
+                </ScrollViewer>
+            </GroupBox>
+            <DataGrid Name="grdpaymentdetails" AutoGenerateColumns="False" CanUserResizeColumns="False" AreRowDetailsFrozen="True" CanUserAddRows="False" BorderThickness="1" BorderBrush="Black" Margin="152,272,22,231" MouseLeftButtonUp="grdpaymentdetails_MouseLeftButtonUp">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Room No" Binding="{Binding Roomno}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tariff" Binding="{Binding Tarrif}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Charges" Binding="{Binding Charges}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="CGST" Binding="{Binding Cgst}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="SGST" Binding="{Binding Sgst}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Advance" Binding="{Binding Advance}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Discount" Binding="{Binding Discount}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Refund" Binding="{Binding Refund}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Pending Amount" Binding="{Binding Pending_Amount}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid Name="grduserdetails" AutoGenerateColumns="False" CanUserResizeColumns="False" AreRowDetailsFrozen="True" CanUserAddRows="False" BorderThickness="1" BorderBrush="Black" Margin="152,412,22,79">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="95" Header="Room No" Binding="{Binding ROOM_NO}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Guest Name" Binding="{Binding FIRSTNAME}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Arrival Date" Binding="{Binding ARRIVAL_DATE,StringFormat=dd/MM/yyyy}"></DataGridTextColumn>
+                    <DataGridTextColumn Width="100" Header="Arrival Time" Binding="{Binding ARRIVAL_TIME,StringFormat= hh:mm}"></DataGridTextColumn>
+                    <DataGridTextColumn Width="110" Header="Departure Date" Binding="{Binding DEPARTURE_DATE,StringFormat=dd/MM/yyyy}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Name="btnback" Height="56" Width="56" Margin="0,0,10,2" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Click="btnback_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="/HMS;component/Images/back.png"/>
+                </Button.Background>
+                <!--<StackPanel Height="56" Width="88">
+                    <Image HorizontalAlignment="Stretch" Height="39" Margin="0,0,0,0" Source="/Images/back.png"/>
+                    <TextBlock Margin="24,0,-4,0" Text="Go Back" FontSize="12" Height="17"/>
+                </StackPanel>-->
+            </Button>
+            <Popup Name="pop1" Height="310" Width="500" Placement="Center">
+                <material:Card Height="310" Width="500" Background="White" material:ShadowAssist.ShadowDepth="Depth4" Foreground="White">
+                    <Border BorderThickness="1" BorderBrush="#FF354766">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                                <Label Content="Room No :" FontSize="15" Margin="0,0,0,0" Foreground="Black" FontWeight="Bold"></Label>
+                                <TextBlock FontWeight="Bold" Foreground="#FF354766" Padding="0,0,0,0" TextAlignment="Left" VerticalAlignment="Center" Name="Roomno"  Width="135" Margin="0,0,0,0"></TextBlock>
+                                <Label Content="Room Category :" FontSize="15" Margin="15,0,0,0" Foreground="Black" FontWeight="Bold"></Label>
+                                <TextBlock FontWeight="Bold" Foreground="#FF354766" Padding="0,0,0,0" Name="roomcategory" VerticalAlignment="Center" Width="120" Margin="0,0,0,0"></TextBlock>
+                            </StackPanel>
+                            <Separator BorderBrush="#f1f1f1" BorderThickness="1" Margin="0,5,0,0"/>
+                            <TextBlock x:Name="transfered_txt" Visibility="Hidden" Foreground="Red" HorizontalAlignment="Right" Margin="0,5,50,5"/>
+                            <Border BorderBrush="#123" BorderThickness="0.6" Margin="15,0,15,10">
+                                <StackPanel Orientation="Vertical">
+                                    <DataGrid AutoGenerateColumns="False" CanUserResizeColumns="False" AreRowDetailsFrozen="True" CanUserAddRows="False" BorderBrush="Wheat"  CanUserDeleteRows="False"  Name="checkoutgrid" Height="172"  >
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Date" Binding="{Binding Date}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Tariff" Binding="{Binding Tariff}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="CGST (%)" Binding="{Binding CGST}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="SGST (%)" Binding="{Binding SGST}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="Advance" Binding="{Binding Advance}"></DataGridTextColumn>
+                                            <DataGridTextColumn Header="PostCharges" Binding="{Binding PostCharges}"></DataGridTextColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </StackPanel>
+                            </Border>
+                            <Button Content="Back" FontSize="15"  Margin="188,5,186,15" Height="30" Click="Button_Click" ></Button>
+                        </StackPanel>
+                    </Border>
+                </material:Card>
+            </Popup>
+            <Popup Name="popup" Width="390" Height="180" Placement="Center">
+                <material:Card Background="#FF354766" Width="390" Height="180" material:ShadowAssist.ShadowDepth="Depth4">
+                    <StackPanel>
+                        <StackPanel Height="50" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Print  " FontSize="25" FontFamily="Calibri" Foreground="White" Margin="0,10,0,10" Padding="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Height="120" Margin="10,0,10,0" Background="White">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Width="35" Height="35" Margin="15,10,10,0">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Data="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" Fill="#FF354766" />
+                                    </Canvas>
+                                </Viewbox>
+                                <TextBlock Text="Do u want to Print Report?" FontSize="20" Margin="0,15,0,0" TextAlignment="Center" FontFamily="Calibri"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button Name="yes" Content="Yes" Width="100" Height="30" Click="yes_Click" Foreground="#FF354766" FontSize="17" Background="White" BorderThickness="1" BorderBrush="#FF354766" Margin="0,20,30,0"></Button>
+                                <Button Name="no" Content="No" Width="100" Height="30" Foreground="#FF354766" FontSize="17" Background="White" BorderThickness="1" BorderBrush="#FF354766" Click="no_Click" Margin="0,20,0,0"></Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </material:Card>
+            </Popup>
+            <Popup Name="popamount" Height="150" Width="270" Placement="Center"  >
+                <material:Card Height="150" Width="270" material:ShadowAssist.ShadowDepth="Depth4" Foreground="White" Background="#FF354766">
+                    <Border BorderThickness="1" >
+                        <StackPanel>
+                            <StackPanel Margin="0,0,0,0" Height="30">
+                                <TextBlock FontWeight="Bold" Foreground="White" Name="PendingAmount" Padding="9" FontSize="10" FontFamily="Sitka Dispaly" Width="150" ></TextBlock>
+                            </StackPanel>
+                            <StackPanel Background="White" Margin="10,0,10,0" Height="92">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0" Background="White">
+                                    <Label Content="Pending Amount :" FontSize="15" Margin="15,0,0,0" ></Label>
+                                    <TextBlock FontWeight="Bold" Foreground="Black" Name="pamount" Padding="9"  Width="135" Margin="0,0,0,0"></TextBlock>
+                                </StackPanel>
+
+                                <!--<Button Content="Advance" Name="btnadv" FontSize="15"  Margin="15,20,133,15" Height="30" RenderTransformOrigin="0.479,1.413" Click="Btnadv_Click" />-->
+                                <Button Content="Refund" Name="btnref" FontSize="15"  Margin="3,0,15,0" Height="30" Width="100" Click="Btnref_Click" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </material:Card>
+            </Popup>
+        </Grid>
+    </Border>
+</Page>

@@ -1,0 +1,165 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using HMS.Model.Others;
+using VELROOMS.mainwindowpages;
+
+namespace HMS.mainwindowpages
+{
+    /// <summary>
+    /// Interaction logic for DB.xaml
+    /// </summary>
+    public partial class DB : Page
+    {
+
+        db cs = new db();
+        public static string FIRSTNAME, ARRIVAL_DATE, DEPARTURE_DATE, tarrif, advance, blnc;
+        public static int ROOM_NO;
+        public static string time;
+        public static decimal a, a1, b, b1, a2, b2, c=0;
+        public static decimal CHARGED_TARRIF, BALANCE, AMOUNT_RECEIVED;
+        ListView listrem = new ListView();
+        public DB()
+        {
+
+            InitializeComponent();
+            time =DateTime.Today.TimeOfDay.Ticks.ToString();
+            DataTable advcount = cs.advance();
+            if (advcount.Rows.Count == 0)
+            {
+                lbladv.Content = "0.00";
+            }
+            else
+            {
+                lbladv.Content = cs.advtotal;
+            }
+
+            DataTable porcount = cs.Charged();
+            if (porcount.Rows.Count == 0)
+            {
+                lblcharge.Content = "0.00";
+            }
+            else
+            {
+                lblcharge.Content = cs.porctotal;
+            }
+            DataTable tarcount = cs.Tariff();
+            if (tarcount.Rows.Count == 0)
+            {
+                lblroom.Content = "0.00";
+            }
+            else
+            {
+                lblroom.Content = cs.tartotal;
+            }
+            DataTable ds = cs.Todaysale();
+            if (ds.Rows.Count == 0)
+            { }
+            else
+            {
+                    if (ds.Rows[0]["AMOUNT_RECEIVED"].ToString() == "0" || ds.Rows[0]["AMOUNT_RECEIVED"].ToString() == "")
+                    { }
+                    else
+                    {
+                         a = Convert.ToDecimal(ds.Rows[0]["AMOUNT_RECEIVED"]);
+                    }
+                    if (ds.Rows[0]["POSTCHARGES"].ToString() == "0" || ds.Rows[0]["POSTCHARGES"].ToString() == "")
+                    { }
+                    else
+                    {
+                         a1 = Convert.ToDecimal(ds.Rows[0]["POSTCHARGES"]);
+                    }
+                    if (ds.Rows[0]["PAIDOUT"].ToString() == "0" || ds.Rows[0]["PAIDOUT"].ToString() == "")
+                    { }
+                    else
+                    {
+                         b = Convert.ToDecimal(ds.Rows[0]["PAIDOUT"]);
+                    }
+                    if (ds.Rows[0]["REFUND"].ToString() == "0" || ds.Rows[0]["REFUND"].ToString() == "")
+                    { }
+                    else
+                    {
+                         b1 = Convert.ToDecimal(ds.Rows[0]["REFUND"]);
+                    }
+                    a2 = a + a1;
+                    b2 = b + b1;
+                    c = a2 - b2;
+                lblsale.Content = c;
+            }
+            DataTable CHECK = cs.CHECKINS();
+            DataTable dt1 = new DataTable();
+            dt1.Columns.Add("ROOM_NO", typeof(int));
+            dt1.Columns.Add("FIRSTNAME", typeof(string));
+            dt1.Columns.Add("ARRIVAL_DATE", typeof(string));
+            dt1.Columns.Add("DEPARTURE_DATE", typeof(string));
+            dt1.Columns.Add("CHARGED_TARRIF", typeof(decimal));
+            dt1.Columns.Add("AMOUNT_RECEIVED", typeof(decimal));
+            dt1.Columns.Add("BALANCE", typeof(decimal));
+            for (int i=0;i< CHECK.Rows.Count;i++)
+            {
+                ROOM_NO =Convert.ToInt32(CHECK.Rows[i]["ROOM_NO"]);
+                FIRSTNAME = CHECK.Rows[i]["FIRSTNAME"].ToString();
+                ARRIVAL_DATE =(CHECK.Rows[i]["ARRIVAL_DATE"]).ToString();
+                DEPARTURE_DATE = (CHECK.Rows[i]["DEPARTURE_DATE"]).ToString();
+                CHARGED_TARRIF =Convert.ToDecimal(CHECK.Rows[i]["CHARGED_TARRIF"]);
+                if (CHECK.Rows[i]["AMOUNT_RECEIVED"].ToString() == "" || CHECK.Rows[i]["AMOUNT_RECEIVED"].ToString() == "0")
+                {
+                    AMOUNT_RECEIVED =Convert.ToDecimal(0.00);
+                }
+                else
+                {
+                    AMOUNT_RECEIVED = Convert.ToDecimal(CHECK.Rows[i]["AMOUNT_RECEIVED"]);
+                }
+                BALANCE =Convert.ToDecimal(CHARGED_TARRIF - AMOUNT_RECEIVED);
+                DataRow row = dt1.NewRow();
+                row["ROOM_NO"] = ROOM_NO;
+                row["FIRSTNAME"] =FIRSTNAME;
+                row["ARRIVAL_DATE"] = ARRIVAL_DATE;
+                row["DEPARTURE_DATE"] = DEPARTURE_DATE;
+                row["CHARGED_TARRIF"] = CHARGED_TARRIF;
+                row["AMOUNT_RECEIVED"] = AMOUNT_RECEIVED;
+                row["BALANCE"] = BALANCE;
+                dt1.Rows.Add(row);
+            }
+            LISTCHECK.ItemsSource = dt1.DefaultView;
+            //listview();
+            DataTable dt = cs.CHECKOUTS();
+            //listrem.DataContext = dt;
+            //grid.Columns.Clear();
+            //foreach (var colum in dt.Columns)
+            //{
+            //    DataColumn dc = (DataColumn)colum;
+            //    GridViewColumn column = new GridViewColumn();
+            //    column.DisplayMemberBinding = new Binding(dc.ColumnName);
+            //    column.Header = dc.ColumnName;
+            //    grid.Columns.Add(column);
+            //}
+            listrem1.ItemsSource = dt.DefaultView;
+        }
+        public void listview()
+        {
+            ListView listrem = new ListView();
+            GridView grd = new GridView();
+            DataTable dr = cs.CHECKOUTS();
+            GridViewColumn col = new GridViewColumn();
+            col.Width = 100;
+            col.DisplayMemberBinding = new Binding("ROOM_NO");
+            col.DisplayMemberBinding = new Binding("FIRSTNAME");
+            col.DisplayMemberBinding = new Binding("MOBILE_NO");
+            listrem.ItemsSource = dr.DefaultView;
+            //strem.Children.Add(listrem);
+        }
+    }
+}

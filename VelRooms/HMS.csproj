@@ -1,0 +1,2278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FFA14366-5CAB-4620-B5EC-2558963AD55E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HMS</RootNamespace>
+    <AssemblyName>HMS</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>
+    </DocumentationFile>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>HMS.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetPlatformVersion>8.0</TargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.Engine.13.0.3501\lib\net20\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CrystalDecisions.Data.AdoDotNetInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.DataSetConversion.13.0.3501\lib\net20\CrystalDecisions.ReportAppServer.DataSetConversion.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportAppServer.XmlSerialize.13.0.3501\lib\net20\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.ReportSource.13.0.3501\lib\net20\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\Cfee.CrystalReports.Shared.13.0.3501.1\lib\net20\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <HintPath>packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\FlashControlV71.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <HintPath>packages\Cfee.CrystalReports.Log4Net.13.0.3501.1\lib\net20\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\DAL\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>bin\Debug\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\DAL\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.expression.prototyping.runtime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\microsoft.expression.prototyping.runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\Debug\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="sapbusinessobjects.wpf.viewer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.WPF.Viewer.13.0.3501\lib\net20\SAPBusinessObjects.WPF.Viewer.dll</HintPath>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>packages\CrystalReports.WPF.ViewerShared.13.0.3501\lib\net20\SAPBusinessObjects.WPF.ViewerShared.dll</HintPath>
+    </Reference>
+    <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <HintPath>packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\ShockwaveFlashObjects.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.WindowsRuntime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Documents\System.Runtime.WindowsRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DataVisualization.Design" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=3.5.40128.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\..\..\..\source\repos\VFN.1\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit">
+      <HintPath>..\..\..\..\source\repos\VFN.1\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\DAL\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WebCam_Capture, Version=1.0.2395.24959, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\WebCam_Capture.dll</HintPath>
+    </Reference>
+    <Reference Include="Windows.Media">
+      <HintPath>C:\WINDOWS\System32\WinMetadata\Windows.Media.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Security">
+      <HintPath>C:\WINDOWS\System32\WinMetadata\Windows.Security.winmd</HintPath>
+    </Reference>
+    <Reference Include="Windows.Storage">
+      <HintPath>C:\WINDOWS\System32\WinMetadata\Windows.Storage.winmd</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\WpfAnimatedGif.1.4.17\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ZKWeb.System.Drawing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ZKWeb.System.Drawing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ADVANCEDATASET.cs">
+      <DependentUpon>ADVANCEDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ADVANCEDATASET.Designer.cs">
+      <DependentUpon>ADVANCEDATASET.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ADVANCESREPORT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADVANCESREPORT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="checkoutbill.cs">
+      <DependentUpon>checkoutbill.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="checkoutbill.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>checkoutbill.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Checkoutbilling.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Checkoutbilling.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CheckoutbillReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckoutbillReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Checkoutdata.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Checkoutdata.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="checkoutDataSet1.cs">
+      <DependentUpon>checkoutDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="checkoutDataSet1.Designer.cs">
+      <DependentUpon>checkoutDataSet1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckoutReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckoutReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forentooffice1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>forentooffice1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="froentoffice.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>froentoffice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frontofficemangement.cs">
+      <DependentUpon>frontofficemangement.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frontofficemangement.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frontofficemangement.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frontofficereport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frontofficereport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GuestDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuestDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Guestdetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Guestdetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GuestdetailsReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuestdetailsReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="hotelinfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>hotelinfo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HOTELINFORMATION.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HOTELINFORMATION.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mainwindowpages\dashboard.xaml.cs">
+      <DependentUpon>dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\DB.xaml.cs">
+      <DependentUpon>DB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\home.xaml.cs">
+      <DependentUpon>home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\HotelName.xaml.cs">
+      <DependentUpon>HotelName.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\info.xaml.cs">
+      <DependentUpon>info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\masters.xaml.cs">
+      <DependentUpon>masters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\operations.xaml.cs">
+      <DependentUpon>operations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="mainwindowpages\reports.xaml.cs">
+      <DependentUpon>reports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Masters\amenity.cs" />
+    <Compile Include="Model\Masters\companymaster.cs" />
+    <Compile Include="Model\Masters\Passwordreset.cs" />
+    <Compile Include="Model\Masters\Userpermission.cs" />
+    <Compile Include="Model\Operations\Enquiry.cs" />
+    <Compile Include="Model\Operations\gruopcheckin.cs" />
+    <Compile Include="Model\Operations\Pendingbill.cs" />
+    <Compile Include="Model\Operations\pendinggrid.cs" />
+    <Compile Include="Model\Operations\Print.cs" />
+    <Compile Include="Model\Operations\rcs1.cs" />
+    <Compile Include="Model\Operations\Settle.cs" />
+    <Compile Include="Model\Others\dashboard.cs" />
+    <Compile Include="Model\Masters\DEPARTMENT.cs" />
+    <Compile Include="Model\Masters\plancode.cs" />
+    <Compile Include="Model\Masters\registration.cs" />
+    <Compile Include="Model\Masters\revenue.cs" />
+    <Compile Include="Model\Masters\ROOMCATEGORY.cs" />
+    <Compile Include="Model\Masters\RoomMaster.cs" />
+    <Compile Include="Model\Masters\TAXCODE.cs" />
+    <Compile Include="Model\Operations\advance.cs" />
+    <Compile Include="Model\Operations\blockroom.cs" />
+    <Compile Include="Model\Operations\CheckIN.cs" />
+    <Compile Include="Model\Operations\Checkout.cs" />
+    <Compile Include="Model\Operations\discount.cs" />
+    <Compile Include="Model\Operations\Entireroom.cs" />
+    <Compile Include="Model\Operations\INGUESTHOUSEINFO.cs" />
+    <Compile Include="Model\Operations\miscellenous.cs" />
+    <Compile Include="Model\Operations\Paidout.cs" />
+    <Compile Include="Model\Operations\Postcharges.cs" />
+    <Compile Include="Model\Operations\REFUND.cs" />
+    <Compile Include="Model\Operations\RESERVATION.cs" />
+    <Compile Include="Model\Operations\ROOMCHANGE.cs" />
+    <Compile Include="Model\Others\db.cs" />
+    <Compile Include="Model\Others\Helper.cs" />
+    <Compile Include="Model\Others\home.cs" />
+    <Compile Include="Model\Others\Report.cs" />
+    <Compile Include="Model\Others\WebCam.cs" />
+    <Compile Include="OpenCVDotNet\CVCapture.cs" />
+    <Compile Include="pendingbillDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pendingbillDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PENDINGBILLReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PENDINGBILLReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\CancelledReservations.xaml.cs">
+      <DependentUpon>CancelledReservations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ChangeGuestInfo.xaml.cs">
+      <DependentUpon>ChangeGuestInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CheckoutDay.xaml.cs">
+      <DependentUpon>CheckoutDay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CheckoutDayDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckoutDayDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CheckoutDayReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckoutDayReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\CheckoutDayReport2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckoutDayReport2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\CheckoutDetails.xaml.cs">
+      <DependentUpon>CheckoutDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DateWisetax.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DateWisetax.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DateWisetaxreport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DateWisetaxreport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DayWiseAdvanceMainReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DayWiseAdvanceMainReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DayWiseAdvanceReportDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DayWiseAdvanceReportDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DayWiseAdvanceSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DayWiseAdvanceSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Daywisetax1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Daywisetax1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Departuretoday.xaml.cs">
+      <DependentUpon>Departuretoday.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DiscountDateWise.xaml.cs">
+      <DependentUpon>DiscountDateWise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DiscountDatewiseDataset.cs">
+      <DependentUpon>DiscountDatewiseDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DiscountDatewiseDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiscountDatewiseDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DiscountdatewiseDataSet1.cs">
+      <DependentUpon>DiscountdatewiseDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DiscountdatewiseDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiscountdatewiseDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DiscountDateWiseReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiscountDateWiseReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DiscountDateWiseReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiscountDateWiseReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeAdvanceSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeAdvanceSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeCheckinAdvanceSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeCheckinAdvanceSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeDataSet.cs">
+      <DependentUpon>FrontOfficeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeMiscollSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeMiscollSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FrontOfficePaidoutsSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficePaidoutsSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FrontOfficePostChargesSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficePostChargesSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeRefundSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeRefundSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\frontofficeReport.xaml.cs">
+      <DependentUpon>frontofficeReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeResAdvanceSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeResAdvanceSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeResCancelSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeResCancelSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FrontOfficeSettleSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeSettleSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\GstMonthReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GstMonthReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\GstMonthReportDataSet.cs">
+      <DependentUpon>GstMonthReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GstMonthReportDataSet1.cs">
+      <DependentUpon>GstMonthReportDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GstMonthReportDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GstMonthReportDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GstMonthReportDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GstMonthReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GstMonthSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GstMonthSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\GuestAdvance.xaml.cs">
+      <DependentUpon>GuestAdvance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GuestInHouse.xaml.cs">
+      <DependentUpon>GuestInHouse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GuestInHouseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuestInHouseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\GuestInHouseReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuestInHouseReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\GuestInHouseSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuestInHouseSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MonthWiseDiscount.xaml.cs">
+      <DependentUpon>MonthWiseDiscount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MonthWiseDiscountDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthWiseDiscountDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MonthWiseDiscountMainReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthWiseDiscountMainReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MonthWiseDiscountSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthWiseDiscountSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MonthWiseGSTReport.xaml.cs">
+      <DependentUpon>MonthWiseGSTReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MonthWiseRoomTariff.xaml.cs">
+      <DependentUpon>MonthWiseRoomTariff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MonthWiseTaxReport.xaml.cs">
+      <DependentUpon>MonthWiseTaxReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Oustandingbal.xaml.cs">
+      <DependentUpon>Oustandingbal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OutstandingbalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OutstandingbalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\OutstandingbalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OutstandingbalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Plan Wise Room Tarrif.xaml.cs">
+      <DependentUpon>Plan Wise Room Tarrif.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PlanWise Room Tarrif MainReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlanWise Room Tarrif MainReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PlanWise RoomTarrif SubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlanWise RoomTarrif SubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PlanWiseRoomTarrifDS.cs">
+      <DependentUpon>PlanWiseRoomTarrifDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PlanWiseRoomTarrifDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlanWiseRoomTarrifDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReprintCheckout.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReprintCheckout.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReprintCheckoutDataSet.cs">
+      <DependentUpon>ReprintCheckoutDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReprintCheckoutDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReprintCheckoutDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReprintCheckoutSubRpt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReprintCheckoutSubRpt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReservationCancel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReservationCancel1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReservationCancel2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReservationCancel2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReservationList.xaml.cs">
+      <DependentUpon>ReservationList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Reservationlist1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reservationlist1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReservationlistDS1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReservationlistDS1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Reservationlist2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reservationlist2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReservationlistDS2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReservationlistDS2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RoomChangeReport.xaml.cs">
+      <DependentUpon>RoomChangeReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RoomOccupancy.xaml.cs">
+      <DependentUpon>RoomOccupancy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RoomOccupency.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomOccupency.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RoomOccupency2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomOccupency2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RoomOccupencyDataset.cs">
+      <DependentUpon>RoomOccupencyDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RoomOccupencyDataset.Designer.cs">
+      <DependentUpon>RoomOccupencyDataset.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reports\RoomOccupencyDataset2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomOccupencyDataset2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RoomTariffMonthwiseReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomTariffMonthwiseReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RoomTariffMonthWiseSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomTariffMonthWiseSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RoomTarrif.xaml.cs">
+      <DependentUpon>RoomTarrif.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RoomTarrifDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomTarrifDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RoomTarrifMainReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomTarrifMainReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RoomTarrifSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RoomTarrifSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TarrifFortheDay.xaml.cs">
+      <DependentUpon>TarrifFortheDay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TarrifPostedFortheDay.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TarrifPostedFortheDay.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Tarrifpostedfortheday.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tarrifpostedfortheday.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TarrifPostedFortheDay1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TarrifPostedFortheDay1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Taxdatewise.xaml.cs">
+      <DependentUpon>Taxdatewise.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TaxMonthDataset.cs">
+      <DependentUpon>TaxMonthDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TaxMonthDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaxMonthDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TaxMonthReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaxMonthReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TaxMonthReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TaxMonthReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TodayBookings.xaml.cs">
+      <DependentUpon>TodayBookings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TodayBookings1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TodayBookings1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TodayBookings2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TodayBookings2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TodayBookingsDS1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TodayBookingsDS1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TodayBookingsDS2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TodayBookingsDS2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TodayDepartures.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TodayDepartures.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Todaydepartures.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Todaydepartures.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TodayDepartures1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TodayDepartures1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransactionAdvanceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionAdvanceReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransactioncoutsubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactioncoutsubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransactionDiscsubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionDiscsubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransactionList.xaml.cs">
+      <DependentUpon>TransactionList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TransactionListDataSet1.cs">
+      <DependentUpon>TransactionListDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TransactionListDataSet1.Designer.cs">
+      <DependentUpon>TransactionListDataSet1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TransactionListReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionListReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransactionPCsubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionPCsubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransactionRefundsubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionRefundsubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reprintbill.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reprintbill.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reprintbilling.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reprintbilling.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REPRINTDATASET.cs">
+      <DependentUpon>REPRINTDATASET.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="REPRINTDATASET.Designer.cs">
+      <DependentUpon>REPRINTDATASET.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReprintDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReprintDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reprintreport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reprintreport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewModel\data.cs" />
+    <Compile Include="View\Block.xaml.cs">
+      <DependentUpon>Block.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\frontoffice.xaml.cs">
+      <DependentUpon>frontoffice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GuestDetails.xaml.cs">
+      <DependentUpon>GuestDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\Amenities.xaml.cs">
+      <DependentUpon>Amenities.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\Company_Master.xaml.cs">
+      <DependentUpon>Company_Master.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\DEPARTMENT.xaml.cs">
+      <DependentUpon>DEPARTMENT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\Planecode.xaml.cs">
+      <DependentUpon>Planecode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\REGISTRATION.xaml.cs">
+      <DependentUpon>REGISTRATION.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\resetpassword.xaml.cs">
+      <DependentUpon>resetpassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\Revenue.xaml.cs">
+      <DependentUpon>Revenue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\RoomCategory.xaml.cs">
+      <DependentUpon>RoomCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\RoomMaster.xaml.cs">
+      <DependentUpon>RoomMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\TAXCODE.xaml.cs">
+      <DependentUpon>TAXCODE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Masters\UserPermissions.xaml.cs">
+      <DependentUpon>UserPermissions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Advance.xaml.cs">
+      <DependentUpon>Advance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Block_Room.xaml.cs">
+      <DependentUpon>Block_Room.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\changeguestinfo.xaml.cs">
+      <DependentUpon>changeguestinfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Checkin.xaml.cs">
+      <DependentUpon>Checkin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\CheckinDeparture.xaml.cs">
+      <DependentUpon>CheckinDeparture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Checkout.xaml.cs">
+      <DependentUpon>Checkout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Discount.xaml.cs">
+      <DependentUpon>Discount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\enquiry.xaml.cs">
+      <DependentUpon>enquiry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\EntireRoom.xaml.cs">
+      <DependentUpon>EntireRoom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\GroupCheckinDeparture.xaml.cs">
+      <DependentUpon>GroupCheckinDeparture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\grpchkn.xaml.cs">
+      <DependentUpon>grpchkn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\INGUESTHOUSEINFO.xaml.cs">
+      <DependentUpon>INGUESTHOUSEINFO.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Miscellenous_Collection.xaml.cs">
+      <DependentUpon>Miscellenous_Collection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\othersettlement.xaml.cs">
+      <DependentUpon>othersettlement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Paidouts.xaml.cs">
+      <DependentUpon>Paidouts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\PendingBill.xaml.cs">
+      <DependentUpon>PendingBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Pendingbillgrid.xaml.cs">
+      <DependentUpon>Pendingbillgrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\PostChargesxaml.xaml.cs">
+      <DependentUpon>PostChargesxaml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\rcs.xaml.cs">
+      <DependentUpon>rcs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Refund.xaml.cs">
+      <DependentUpon>Refund.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Reprint.xaml.cs">
+      <DependentUpon>Reprint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\ReprintViewer.xaml.cs">
+      <DependentUpon>ReprintViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\RESERVATIONS.xaml.cs">
+      <DependentUpon>RESERVATIONS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\RESERVSTIONCHECKIN.xaml.cs">
+      <DependentUpon>RESERVSTIONCHECKIN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\ROOMCHANGE.xaml.cs">
+      <DependentUpon>ROOMCHANGE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\settle.xaml.cs">
+      <DependentUpon>settle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\SplitBill.xaml.cs">
+      <DependentUpon>SplitBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Operations\Vacant.xaml.cs">
+      <DependentUpon>Vacant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pendingbillreport.xaml.cs">
+      <DependentUpon>Pendingbillreport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PreLoaderControl.xaml.cs">
+      <DependentUpon>PreLoaderControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="mainwindowpages\dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\DB.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mainwindowpages\home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\HotelName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="mainwindowpages\info.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\masters.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\operations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="mainwindowpages\reports.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\CancelledReservations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\ChangeGuestInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\CheckoutDay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\CheckoutDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Departuretoday.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\DiscountDateWise.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\frontofficeReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\GuestAdvance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\GuestInHouse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\MonthWiseDiscount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\MonthWiseGSTReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\MonthWiseRoomTariff.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\MonthWiseTaxReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Oustandingbal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\Plan Wise Room Tarrif.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\ReservationList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\RoomChangeReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\RoomOccupancy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\RoomTarrif.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\TarrifFortheDay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Taxdatewise.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\TodayBookings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\TransactionList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Block.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\frontoffice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GuestDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Masters\Amenities.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\Company_Master.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\DEPARTMENT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\Planecode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\REGISTRATION.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\resetpassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\Revenue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\RoomCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\RoomMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\TAXCODE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\UserPermissions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Operations\Advance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Operations\Block_Room.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\changeguestinfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\HotelInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App Code\ListExtentions.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Masters\HotelInfo.cs" />
+    <Compile Include="View\Masters\HotelInfo.xaml.cs">
+      <DependentUpon>HotelInfo.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Checkin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\CheckinDeparture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Checkout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Discount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\enquiry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Operations\EntireRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\GroupCheckinDeparture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\grpchkn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\INGUESTHOUSEINFO.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Miscellenous_Collection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\othersettlement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Paidouts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\PendingBill.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Operations\Pendingbillgrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\PostChargesxaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\rcs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Refund.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Reprint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Operations\ReprintViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\RESERVATIONS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\RESERVSTIONCHECKIN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\ROOMCHANGE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\settle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\SplitBill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Operations\Vacant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pendingbillreport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PreLoaderControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ADVANCESREPORT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ADVANCESREPORT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Checkoutbilling.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Checkoutbilling.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckoutbillReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CheckoutbillReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckoutReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CheckoutReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forentooffice1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>forentooffice1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="froentoffice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>froentoffice.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frontofficereport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>frontofficereport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guestdetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Guestdetails.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuestdetailsReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>GuestdetailsReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HOTELINFORMATION.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HOTELINFORMATION.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PENDINGBILLReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PENDINGBILLReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <AppDesigner Include="Properties\" />
+    <EmbeddedResource Include="Reports\CheckoutDayReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CheckoutDayReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CheckoutDayReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CheckoutDayReport2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DateWisetaxreport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DateWisetaxreport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DayWiseAdvanceMainReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DayWiseAdvanceMainReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DayWiseAdvanceSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DayWiseAdvanceSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Daywisetax1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Daywisetax1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DiscountDateWiseReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DiscountDateWiseReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\DiscountDateWiseReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DiscountDateWiseReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficeAdvanceSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficeAdvanceSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficeCheckinAdvanceSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficeCheckinAdvanceSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficeMiscollSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficeMiscollSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficePaidoutsSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficePaidoutsSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficePostChargesSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficePostChargesSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficeRefundSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficeRefundSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficeReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficeReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficeResAdvanceSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficeResAdvanceSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficeResCancelSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficeResCancelSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficeSettleSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficeSettleSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GstMonthReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>GstMonthReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GstMonthSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>GstMonthSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GuestInHouseReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>GuestInHouseReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\GuestInHouseSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>GuestInHouseSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MonthWiseDiscountMainReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthWiseDiscountMainReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MonthWiseDiscountSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthWiseDiscountSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OutstandingbalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OutstandingbalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OutstandingbalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OutstandingbalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PlanWise Room Tarrif MainReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PlanWise Room Tarrif MainReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PlanWise RoomTarrif SubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PlanWise RoomTarrif SubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReprintCheckout.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReprintCheckout.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReprintCheckoutSubRpt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReprintCheckoutSubRpt.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReservationCancel1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReservationCancel1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReservationCancel2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReservationCancel2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Reservationlist1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reservationlist1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Reservationlist2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reservationlist2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RoomOccupency.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RoomOccupency.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RoomOccupency2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RoomOccupency2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RoomTariffMonthwiseReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RoomTariffMonthwiseReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RoomTariffMonthWiseSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RoomTariffMonthWiseSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RoomTarrifMainReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RoomTarrifMainReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RoomTarrifSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RoomTarrifSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TarrifPostedFortheDay.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TarrifPostedFortheDay.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TarrifPostedFortheDay1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TarrifPostedFortheDay1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TaxMonthReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TaxMonthReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TaxMonthReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TaxMonthReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TodayBookings1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TodayBookings1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TodayBookings2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TodayBookings2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TodayDepartures.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TodayDepartures.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TodayDepartures1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TodayDepartures1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactionAdvanceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransactionAdvanceReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactioncoutsubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransactioncoutsubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactionDiscsubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransactionDiscsubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactionListReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransactionListReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactionPCsubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransactionPCsubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactionRefundsubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransactionRefundsubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reprintbilling.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reprintbilling.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reprintreport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Reprintreport.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Loader.gif" />
+    <Resource Include="Images\rpt.png" />
+    <None Include="ADVANCEDATASET.xsc">
+      <DependentUpon>ADVANCEDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="ADVANCEDATASET.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ADVANCEDATASET.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ADVANCEDATASET.xss">
+      <DependentUpon>ADVANCEDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="checkoutbill.xsc">
+      <DependentUpon>checkoutbill.xsd</DependentUpon>
+    </None>
+    <None Include="checkoutbill.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>checkoutbill.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="checkoutbill.xss">
+      <DependentUpon>checkoutbill.xsd</DependentUpon>
+    </None>
+    <None Include="Checkoutdata.xsc">
+      <DependentUpon>Checkoutdata.xsd</DependentUpon>
+    </None>
+    <None Include="Checkoutdata.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Checkoutdata.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Checkoutdata.xss">
+      <DependentUpon>Checkoutdata.xsd</DependentUpon>
+    </None>
+    <None Include="checkoutDataSet1.xsc">
+      <DependentUpon>checkoutDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="checkoutDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>checkoutDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="checkoutDataSet1.xss">
+      <DependentUpon>checkoutDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Design\projectGuides.guides" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <None Include="frontofficemangement.xsc">
+      <DependentUpon>frontofficemangement.xsd</DependentUpon>
+    </None>
+    <None Include="frontofficemangement.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>frontofficemangement.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="frontofficemangement.xss">
+      <DependentUpon>frontofficemangement.xsd</DependentUpon>
+    </None>
+    <None Include="GuestDataSet1.xsc">
+      <DependentUpon>GuestDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="GuestDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GuestDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GuestDataSet1.xss">
+      <DependentUpon>GuestDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="hotelinfo.xsc">
+      <DependentUpon>hotelinfo.xsd</DependentUpon>
+    </None>
+    <None Include="hotelinfo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>hotelinfo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="hotelinfo.xss">
+      <DependentUpon>hotelinfo.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="pendingbillDataSet1.xsc">
+      <DependentUpon>pendingbillDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="pendingbillDataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>pendingbillDataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="pendingbillDataSet1.xss">
+      <DependentUpon>pendingbillDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\CheckoutDayDataSet1.xsc">
+      <DependentUpon>CheckoutDayDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\CheckoutDayDataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CheckoutDayDataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\CheckoutDayDataSet1.xss">
+      <DependentUpon>CheckoutDayDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DateWisetax.xsc">
+      <DependentUpon>DateWisetax.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DateWisetax.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DateWisetax.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DateWisetax.xss">
+      <DependentUpon>DateWisetax.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DayWiseAdvanceReportDS.xsc">
+      <DependentUpon>DayWiseAdvanceReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DayWiseAdvanceReportDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DayWiseAdvanceReportDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DayWiseAdvanceReportDS.xss">
+      <DependentUpon>DayWiseAdvanceReportDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DiscountDatewiseDataset.xsc">
+      <DependentUpon>DiscountDatewiseDataset.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DiscountDatewiseDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DiscountDatewiseDataset.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DiscountDatewiseDataset.xss">
+      <DependentUpon>DiscountDatewiseDataset.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DiscountdatewiseDataSet1.xsc">
+      <DependentUpon>DiscountdatewiseDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DiscountdatewiseDataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DiscountdatewiseDataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DiscountdatewiseDataSet1.xss">
+      <DependentUpon>DiscountdatewiseDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\FrontOfficeDataSet.xsc">
+      <DependentUpon>FrontOfficeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\FrontOfficeDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FrontOfficeDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\FrontOfficeDataSet.xss">
+      <DependentUpon>FrontOfficeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GstMonthReportDataSet.xsc">
+      <DependentUpon>GstMonthReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GstMonthReportDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GstMonthReportDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\GstMonthReportDataSet.xss">
+      <DependentUpon>GstMonthReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GstMonthReportDataSet1.xsc">
+      <DependentUpon>GstMonthReportDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GstMonthReportDataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GstMonthReportDataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\GstMonthReportDataSet1.xss">
+      <DependentUpon>GstMonthReportDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GuestInHouseDataSet.xsc">
+      <DependentUpon>GuestInHouseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\GuestInHouseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GuestInHouseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\GuestInHouseDataSet.xss">
+      <DependentUpon>GuestInHouseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\MonthWiseDiscountDS.xsc">
+      <DependentUpon>MonthWiseDiscountDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\MonthWiseDiscountDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MonthWiseDiscountDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\MonthWiseDiscountDS.xss">
+      <DependentUpon>MonthWiseDiscountDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\OustandingbalDataSet.xsc">
+      <DependentUpon>OustandingbalDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\OustandingbalDataSet.xsd" />
+    <None Include="Reports\OustandingbalDataSet.xss">
+      <DependentUpon>OustandingbalDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\OutstandingbalDataSet1.xsc">
+      <DependentUpon>OutstandingbalDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\OutstandingbalDataSet1.xsd" />
+    <None Include="Reports\OutstandingbalDataSet1.xss">
+      <DependentUpon>OutstandingbalDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\PlanWiseRoomTarrifDS.xsc">
+      <DependentUpon>PlanWiseRoomTarrifDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\PlanWiseRoomTarrifDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PlanWiseRoomTarrifDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\PlanWiseRoomTarrifDS.xss">
+      <DependentUpon>PlanWiseRoomTarrifDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ReprintCheckoutDataSet.xsc">
+      <DependentUpon>ReprintCheckoutDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ReprintCheckoutDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReprintCheckoutDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ReprintCheckoutDataSet.xss">
+      <DependentUpon>ReprintCheckoutDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ReservationlistDS1.xsc">
+      <DependentUpon>ReservationlistDS1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ReservationlistDS1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReservationlistDS1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ReservationlistDS1.xss">
+      <DependentUpon>ReservationlistDS1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ReservationlistDS2.xsc">
+      <DependentUpon>ReservationlistDS2.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\ReservationlistDS2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReservationlistDS2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\ReservationlistDS2.xss">
+      <DependentUpon>ReservationlistDS2.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\RoomOccupencyDataset.xsc">
+      <DependentUpon>RoomOccupencyDataset.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\RoomOccupencyDataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RoomOccupencyDataset.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\RoomOccupencyDataset.xss">
+      <DependentUpon>RoomOccupencyDataset.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\RoomOccupencyDataset2.xsc">
+      <DependentUpon>RoomOccupencyDataset2.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\RoomOccupencyDataset2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RoomOccupencyDataset2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reports\RoomOccupencyDataset2.xss">
+      <DependentUpon>RoomOccupencyDataset2.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\RoomTarrifDS.xsc">
+      <DependentUpon>RoomTarrifDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\RoomTarrifDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RoomTarrifDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\RoomTarrifDS.xss">
+      <DependentUpon>RoomTarrifDS.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\Tarrifpostedfortheday.xsc">
+      <DependentUpon>Tarrifpostedfortheday.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\Tarrifpostedfortheday.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Tarrifpostedfortheday.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\Tarrifpostedfortheday.xss">
+      <DependentUpon>Tarrifpostedfortheday.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TaxMonthDataset.xsc">
+      <DependentUpon>TaxMonthDataset.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TaxMonthDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TaxMonthDataset.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\TaxMonthDataset.xss">
+      <DependentUpon>TaxMonthDataset.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TodayBookingsDS1.xsc">
+      <DependentUpon>TodayBookingsDS1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TodayBookingsDS1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TodayBookingsDS1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\TodayBookingsDS1.xss">
+      <DependentUpon>TodayBookingsDS1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TodayBookingsDS2.xsc">
+      <DependentUpon>TodayBookingsDS2.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TodayBookingsDS2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TodayBookingsDS2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\TodayBookingsDS2.xss">
+      <DependentUpon>TodayBookingsDS2.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\Todaydepartures.xsc">
+      <DependentUpon>Todaydepartures.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\Todaydepartures.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Todaydepartures.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\Todaydepartures.xss">
+      <DependentUpon>Todaydepartures.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TransactionListDataSet.xsc">
+      <DependentUpon>TransactionListDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TransactionListDataSet.xsd" />
+    <None Include="Reports\TransactionListDataSet.xss">
+      <DependentUpon>TransactionListDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TransactionListDataSet1.xsc">
+      <DependentUpon>TransactionListDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\TransactionListDataSet1.xsd" />
+    <None Include="Reports\TransactionListDataSet1.xss">
+      <DependentUpon>TransactionListDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reprintbill.xsc">
+      <DependentUpon>Reprintbill.xsd</DependentUpon>
+    </None>
+    <None Include="Reprintbill.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Reprintbill.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reprintbill.xss">
+      <DependentUpon>Reprintbill.xsd</DependentUpon>
+    </None>
+    <None Include="REPRINTDATASET.xsc">
+      <DependentUpon>REPRINTDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="REPRINTDATASET.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>REPRINTDATASET2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="REPRINTDATASET.xss">
+      <DependentUpon>REPRINTDATASET.xsd</DependentUpon>
+    </None>
+    <None Include="ReprintDataSet1.xsc">
+      <DependentUpon>ReprintDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ReprintDataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReprintDataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReprintDataSet1.xss">
+      <DependentUpon>ReprintDataSet1.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-admin.png" />
+    <Resource Include="Images\icons8-password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Accounting_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Briefcase_50px.png" />
+    <Resource Include="Images\Combo Chart_48px.png" />
+    <Resource Include="Images\Exit_50px.png" />
+    <Resource Include="Images\Hotel Check In_50px.png" />
+    <Resource Include="Images\Hotel Check Out_50px.png" />
+    <Resource Include="Images\icons8-Content-96.png" />
+    <Resource Include="Images\icons8-Department-100.png" />
+    <Resource Include="Images\icons8-home.png" />
+    <Resource Include="Images\Info_48px.png" />
+    <Resource Include="Images\Inspection_64px.png" />
+    <Resource Include="Images\Paper Money_50px.png" />
+    <Resource Include="Images\Photo Gallery_50px.png" />
+    <Resource Include="Images\Schedule_50px.png" />
+    <Resource Include="Images\Services_48px.png" />
+    <Resource Include="Images\Today_50px.png" />
+    <Resource Include="Images\User Groups_48px.png" />
+    <Resource Include="Images\User_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-about.png" />
+    <Resource Include="Images\icons8-minimize-window.png" />
+    <Resource Include="Images\icons8-sign-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\align.png" />
+    <Resource Include="Images\back.png" />
+    <Resource Include="Images\checkin.png" />
+    <Resource Include="Images\checkout.png" />
+    <Resource Include="Images\enquiry.png" />
+    <Resource Include="Images\icons8-menu-vertical-96.png" />
+    <Resource Include="Images\icons8-price-tag-96.png" />
+    <Resource Include="Images\icons8-settings-96.png" />
+    <Resource Include="Images\icons8-speech-bubble-50.png" />
+    <Resource Include="Images\pbcollection.png" />
+    <Resource Include="Images\reserv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\advance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-homestuck-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-home-alarm-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{8644135f-6429-4ad3-add4-8badd840b589}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{8644135f-6429-4ad3-add4-8badd840b589}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{8644135f-6429-4ad3-add4-8badd840b589}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-logout-rounded-up-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-info-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\hotel1320x742.jpg" />
+    <Resource Include="Images\icons8-minimize-window-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\aprt.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rr.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rrd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bgwhitr.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\useit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\loginusr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\inf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\usr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cls.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

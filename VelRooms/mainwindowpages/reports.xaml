@@ -1,0 +1,51 @@
+﻿<Window
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMS.mainwindowpages"
+      xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+      xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"  
+      xmlns:FlowGraph="clr-namespace:Microsoft.Expression.Prototyping.FlowGraph;assembly=Microsoft.Expression.Prototyping.Runtime" xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="HMS.mainwindowpages.reports"
+      mc:Ignorable="d" 
+     Height="620" Width="1055"
+      Title="reports" Background="WhiteSmoke" ResizeMode="NoResize" >
+
+    <Grid>
+        <!--<Viewer:CrystalReportsViewer x:Name="reportviewer" Margin="10,64,10,10" Background="#FFABEAE7" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" BorderThickness="0" />-->
+        <StackPanel Orientation="Horizontal" Height="35" Margin="0,0,0,530">
+            <Label Height="27" Name="lable" Visibility="Visible" Content="Select A report :" Margin="300,0,0,0"/>
+            <ComboBox Name="Reports" Height="23" Visibility="Visible" Width="150" Margin="0,0,0,0" Padding="0,0,0,0">
+                <ComboBoxItem Content="Tariff Posted For The Day"/>
+                <ComboBoxItem Content="Room Occupancy"/>
+                <ComboBoxItem Content="Discount (Day Wise Report)"/>
+                <ComboBoxItem Content="Discount (Month Wise Report)"/>
+                <ComboBoxItem Content="Expected Arrivals"/>
+                <ComboBoxItem Content="Expected Departures"/>
+                <ComboBoxItem Content="Cancelled Reservations"/>
+                <!--<ComboBoxItem Content="Todays Arrivals"/>-->
+                <ComboBoxItem Content="Checkouts For The Day"/>
+                <ComboBoxItem Content="Guest Advances"/>
+                <ComboBoxItem Content="Guest In House"/>
+                <ComboBoxItem Content="Room Rate List"/>
+                <ComboBoxItem Content="Reservation List"/>
+                <ComboBoxItem Content="Transaction List"/>
+                <ComboBoxItem Content="Tax Report"/>
+                <!--<ComboBoxItem Content="Front Office Transaction List"/>-->
+                <ComboBoxItem Content="Change Guest Info"/>
+                <ComboBoxItem Content="Room Change Report"/>
+                <ComboBoxItem Content="Out Standing Balance"/>
+                <ComboBoxItem Content="Month Wise Room Tariff"/>
+                <!--<ComboBoxItem Content="Pending Bill Report"/>-->
+            </ComboBox>
+            <Button Name="btnreport" Visibility="Visible" Content="Get Report" Height="23" Width="90" Margin="40,0,0,0" Padding="1" Click="btnreport_Click"/>
+        </StackPanel>
+        <WindowsFormsHost Name="ssrsreport" Margin="10,90,10,10">
+            <WindowsFormsHost.Child>
+                <wf:WebBrowser/>
+            </WindowsFormsHost.Child>
+        </WindowsFormsHost>
+        <!--<WebBrowser Name="ssrsreporting" Margin="0,60,0,0"/>-->
+    </Grid>
+</Window>
+

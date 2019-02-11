@@ -1,0 +1,53 @@
+﻿<Page x:Class="HMS.View.Operations.Reprint"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMS.View.Operations"
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      Height="500" Width="600"
+      Title="Reprint" Background="White" >
+    <material:Card Height="500" Width="600" material:ShadowAssist.ShadowDepth="Depth4">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="74*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Height="35" Background="#354766">
+                    <TextBlock Text="Re-Print" Foreground="White" FontSize="18" Padding="0,4,0,0" HorizontalAlignment="Center"  FontFamily="Times New Roman" Cursor="None"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0" HorizontalAlignment="Center">
+                        <material:PackIcon Kind="AccountSearch" Height="25" Width="25" Margin="0,0,0,0"/>
+                        <TextBox Name="txtsearch" TabIndex="0" Background="White" TextAlignment="Justify" LostFocus="txtsearch_LostFocus" Width="117" Margin="15,0,0,0"  Padding="1,-8,0,0" material:HintAssist.Hint="Search By CheckInID" material:HintAssist.IsFloating="True"/>
+                        <material:PackIcon Kind="CalendarToday" Height="25" Width="25" Margin="30,0,0,0"/>
+                        <DatePicker Name="DATEPICKER" Width="110" Height="23" Margin="15,0,0,0" LostFocus="DATEPICKER_LostFocus"></DatePicker>
+                        <material:PackIcon Kind="Account" Height="25" Width="25" Margin="30,0,0,0"/>
+                        <TextBox Name="txtname" TabIndex="0" Background="White" TextAlignment="Justify" Width="110" Margin="15,0,0,0"  Padding="1,-8,0,0" material:HintAssist.Hint="Name" material:HintAssist.IsFloating="True" IsReadOnly="True"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2" >
+                <DataGrid Name="DATAGRID" CanUserAddRows="False" MouseLeftButtonUp="DATAGRID_MouseLeftButtonUp" ItemsSource="{Binding}" Margin="10,0,10,10" BorderBrush="Orange" BorderThickness="1" AutoGenerateColumns="False" CanUserResizeColumns="False" AreRowDetailsFrozen="True" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Check In-Id" Binding="{Binding CHECKIN_ID}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Guest Name" Binding="{Binding GUEST_NAME}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Room No" Binding="{Binding ROOM_NO}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Arrival" Binding="{Binding ARRIVAL_DATE, StringFormat=dd/MM/yyyy}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Departure" Binding="{Binding INSERT_DATE, StringFormat=dd/MM/yyyy}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <Grid Grid.Row="3">
+                <TextBox Name="chkId" Width="100" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Margin="25,0,0,0" material:HintAssist.Hint="Checkin Id" material:HintAssist.IsFloating="True"></TextBox>
+                <Button Name="btn" Content="Print" Height="30" Width="100" Padding="0,0,0,0" IsEnabled="False" HorizontalAlignment="Right" Margin="0,0,20,0" Click="btn_Click" ></Button>
+            </Grid>
+        </Grid>
+    </material:Card>
+</Page>
