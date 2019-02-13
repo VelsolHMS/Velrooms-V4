@@ -40,17 +40,25 @@ namespace HMS.Reports
             }
             else
             {
-                rep.FromDate = fromdate.Text;
-                rep.ToDate = todate.Text;
-                ReportDocument re = new ReportDocument();
-                DataTable d1 = report();
-                re.Load("../../Reports/GstMonthSubreport.rpt");
-                DataTable d = report1();
-                re.Load("../../Reports/GstMonthReport.rpt");
-                re.Subreports[0].SetDataSource(d1);
-                re.SetDataSource(d);
-                re.PrintToPrinter(1, false, 0, 0);
-                re.Refresh();
+                DataTable dr = rep.monthwisegst();
+                if (dr.Rows.Count == 0)
+                {
+                    MessageBox.Show("There is No Data (Unable to Print Report)");
+                }
+                else
+                {
+                    rep.FromDate = fromdate.Text;
+                    rep.ToDate = todate.Text;
+                    ReportDocument re = new ReportDocument();
+                    DataTable d1 = report();
+                    re.Load("../../Reports/GstMonthSubreport.rpt");
+                    DataTable d = report1();
+                    re.Load("../../Reports/GstMonthReport.rpt");
+                    re.Subreports[0].SetDataSource(d1);
+                    re.SetDataSource(d);
+                    re.PrintToPrinter(1, false, 0, 0);
+                    re.Refresh();
+                }
             }
         }
         public static string fd, td;

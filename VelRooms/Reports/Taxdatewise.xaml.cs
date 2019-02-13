@@ -37,18 +37,26 @@ namespace HMS.Reports
             }
             else
             {
-                repor.datetax = todate.Text;
-                ReportDocument re = new ReportDocument();
-                DataTable d = report1();
-                DataTable d1 = report();
-                //re.Load("../../Reports/Daywisetax1.rpt");
-                //re.Load("../../HOTELINFORMATION.rpt");
-                re.Load("../../Reports/Daywisetax1.rpt");
-                re.Load("../../Reports/DateWisetaxreport.rpt");
-                re.Subreports[0].SetDataSource(d1);
-                re.SetDataSource(d);
-                re.PrintToPrinter(1, false, 0, 0);
-                re.Refresh();
+                DataTable dr = repor.datewisetax();
+                if (dr.Rows.Count == 0)
+                {
+                    MessageBox.Show("There is No Data (Unable to Print Report)");
+                }
+                else
+                {
+                    repor.datetax = todate.Text;
+                    ReportDocument re = new ReportDocument();
+                    DataTable d = report1();
+                    DataTable d1 = report();
+                    //re.Load("../../Reports/Daywisetax1.rpt");
+                    //re.Load("../../HOTELINFORMATION.rpt");
+                    re.Load("../../Reports/Daywisetax1.rpt");
+                    re.Load("../../Reports/DateWisetaxreport.rpt");
+                    re.Subreports[0].SetDataSource(d1);
+                    re.SetDataSource(d);
+                    re.PrintToPrinter(1, false, 0, 0);
+                    re.Refresh();
+                }
             }
         }
         public DataTable report()

@@ -27,15 +27,23 @@ namespace HMS.Reports
         public TodayBookings()
         {
             InitializeComponent();
-            ReportDocument re = new ReportDocument();
-            DataTable d1 = report();
-            re.Load("../../Reports/TodayBookings2.rpt");
-            DataTable d = report1();
-            re.Load("../../Reports/TodayBookings1.rpt");
-            re.Subreports[0].SetDataSource(d1);
-            re.SetDataSource(d);
-            re.PrintToPrinter(1, false, 0, 0);
-            re.Refresh();
+            DataTable dr = rp.TodayBookings2();
+            if (dr.Rows.Count == 0)
+            {
+                MessageBox.Show("There is No Data (Unable to Print Report)");
+            }
+            else
+            {
+                ReportDocument re = new ReportDocument();
+                DataTable d1 = report();
+                re.Load("../../Reports/TodayBookings2.rpt");
+                DataTable d = report1();
+                re.Load("../../Reports/TodayBookings1.rpt");
+                re.Subreports[0].SetDataSource(d1);
+                re.SetDataSource(d);
+                re.PrintToPrinter(1, false, 0, 0);
+                re.Refresh();
+            }
         }
         private DataTable report1()
         {

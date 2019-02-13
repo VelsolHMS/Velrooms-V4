@@ -38,15 +38,23 @@ namespace HMS.Reports
             }
             else
             {
-                ReportDocument re = new ReportDocument();
-                DataTable d1 = report();
-                re.Load("../../Reports/TaxMonthReport1.rpt");
-                DataTable d = report1();
-                re.Load("../../Reports/TaxMonthReport.rpt");
-                re.Subreports[0].SetDataSource(d1);
-                re.SetDataSource(d);
-                re.PrintToPrinter(1, false, 0, 0);
-                re.Refresh();
+                DataTable dr = rep.monthwisetax();
+                if (dr.Rows.Count == 0)
+                {
+                    MessageBox.Show("There is No Data (Unable to Print Report)");
+                }
+                else
+                {
+                    ReportDocument re = new ReportDocument();
+                    DataTable d1 = report();
+                    re.Load("../../Reports/TaxMonthReport1.rpt");
+                    DataTable d = report1();
+                    re.Load("../../Reports/TaxMonthReport.rpt");
+                    re.Subreports[0].SetDataSource(d1);
+                    re.SetDataSource(d);
+                    re.PrintToPrinter(1, false, 0, 0);
+                    re.Refresh();
+                }
             }
         }
         public static string fd, td;

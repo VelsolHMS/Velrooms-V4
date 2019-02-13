@@ -38,17 +38,25 @@ namespace HMS.Reports
             }
             else
             {
-                repor.MWFromDate = fromdate.Text;
-                repor.MWToDate = todate.Text;
-                ReportDocument re = new ReportDocument();
-                DataTable d = report1();
-                re.Load("../../Reports/RoomTariffMonthWiseSubReport.rpt");
-                DataTable dd = report();
-                re.Load("../../Reports/RoomTariffMonthwiseReport.rpt");
-                re.Subreports[0].SetDataSource(d);
-                re.SetDataSource(dd);
-                re.PrintToPrinter(1, false, 0, 0);
-                re.Refresh();
+                DataTable dr = repor.MWRoomTariff();
+                if (dr.Rows.Count == 0)
+                {
+                    MessageBox.Show("There is No Data (Unable to Print Report)");
+                }
+                else
+                {
+                    repor.MWFromDate = fromdate.Text;
+                    repor.MWToDate = todate.Text;
+                    ReportDocument re = new ReportDocument();
+                    DataTable d = report1();
+                    re.Load("../../Reports/RoomTariffMonthWiseSubReport.rpt");
+                    DataTable dd = report();
+                    re.Load("../../Reports/RoomTariffMonthwiseReport.rpt");
+                    re.Subreports[0].SetDataSource(d);
+                    re.SetDataSource(dd);
+                    re.PrintToPrinter(1, false, 0, 0);
+                    re.Refresh();
+                }
             }
             //select ROOM_NO,MAX(ROOM_CATEGORY)AS ROOM_CATEGORY,Count(ROOM_NO)AS COU , SUM(CHARGED_TARRIF) as TARIFF from CHECKIN where INSERT_DATE between '2018-11-11' and '2018-12-11' group by ROOM_NO
         }

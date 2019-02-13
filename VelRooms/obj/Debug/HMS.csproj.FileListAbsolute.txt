@@ -3049,7 +3049,6 @@ C:\Users\surya\Source\Repos\Velrooms-V2\VelRooms\obj\Debug\HMS.exe
 C:\Users\surya\Source\Repos\Velrooms-V2\VelRooms\obj\Debug\HMS.pdb
 C:\Users\surya\Source\Repos\Velrooms-V2\VelRooms\obj\Debug\Reports\FOSale.g.cs
 C:\Users\surya\Source\Repos\Velrooms-V2\VelRooms\obj\Debug\Reports\FOSale.baml
-C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\Microsoft.ReportViewer.Common.dll
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\HMS.exe.config
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\HMS.exe
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\HMS.pdb
@@ -3079,6 +3078,7 @@ C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\CrystalDecisions.Repo
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\Microsoft.ReportViewer.Common.dll
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\Windows.Foundation.winmd
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\Windows.System.winmd
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\Windows.Devices.winmd

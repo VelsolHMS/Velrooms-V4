@@ -38,17 +38,25 @@ namespace HMS.Reports
             }
             else
             {
-                rp.RoomOCCfromdate = txtfromdate.Text;
-                rp.RoomOCCtodate = txttodate.Text;
-                ReportDocument re = new ReportDocument();
-                DataTable d1 = report();
-                re.Load("../../Reports/RoomOccupency2.rpt");
-                DataTable d = report1();
-                re.Load("../../Reports/RoomOccupency.rpt");
-                re.Subreports[0].SetDataSource(d1);
-                re.SetDataSource(d);
-                re.PrintToPrinter(1, false, 0, 0);
-                re.Refresh();
+                DataTable dr = rp.RoomOccupency1();
+                if (dr.Rows.Count == 0)
+                {
+                    MessageBox.Show("There is No Data (Unable to Print Report)");
+                }
+                else
+                {
+                    rp.RoomOCCfromdate = txtfromdate.Text;
+                    rp.RoomOCCtodate = txttodate.Text;
+                    ReportDocument re = new ReportDocument();
+                    DataTable d1 = report();
+                    re.Load("../../Reports/RoomOccupency2.rpt");
+                    DataTable d = report1();
+                    re.Load("../../Reports/RoomOccupency.rpt");
+                    re.Subreports[0].SetDataSource(d1);
+                    re.SetDataSource(d);
+                    re.PrintToPrinter(1, false, 0, 0);
+                    re.Refresh();
+                }
             }
         }
         public DataTable report()

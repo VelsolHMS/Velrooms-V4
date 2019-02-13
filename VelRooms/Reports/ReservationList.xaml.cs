@@ -37,19 +37,26 @@ namespace HMS.Reports
             }
             else
             {
-                rp.ReservDate = txtdate.Text;
-                ReportDocument re = new ReportDocument();
-                DataTable d1 = report();
-                re.Load("../../Reports/Reservationlist2.rpt");
-                DataTable d = report1();
-                re.Load("../../Reports/Reservationlist1.rpt");
-                re.Subreports[0].SetDataSource(d1);
-                re.SetDataSource(d);
-                re.PrintToPrinter(1, false, 0, 0);
-                re.Refresh();
+                DataTable dr = rp.Reservlist2();
+                if (dr.Rows.Count == 0)
+                {
+                    MessageBox.Show("There is No Data (Unable to Print Report)");
+                }
+                else
+                {
+                    rp.ReservDate = txtdate.Text;
+                    ReportDocument re = new ReportDocument();
+                    DataTable d1 = report();
+                    re.Load("../../Reports/Reservationlist2.rpt");
+                    DataTable d = report1();
+                    re.Load("../../Reports/Reservationlist1.rpt");
+                    re.Subreports[0].SetDataSource(d1);
+                    re.SetDataSource(d);
+                    re.PrintToPrinter(1, false, 0, 0);
+                    re.Refresh();
+                }
             }
         }
-
         private DataTable report1()
         {
             DataTable d = new DataTable();
@@ -66,7 +73,6 @@ namespace HMS.Reports
             d.Rows.Add(row);
             return d;
         }
-
         private DataTable report()
         {
             DataTable D = new DataTable();

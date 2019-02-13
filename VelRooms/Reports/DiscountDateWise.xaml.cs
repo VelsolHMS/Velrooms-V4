@@ -26,16 +26,24 @@ namespace HMS.Reports
             }
             else
             {
-                repor.Discountdaywisedate = txtdate.Text;
-                ReportDocument re = new ReportDocument();
-                DataTable d = report1();
-                re.Load("../../Reports/DiscountDateWiseReport1.rpt");
-                DataTable dd = report();
-                re.Load("../../Reports/DiscountDateWiseReport.rpt");
-                re.Subreports[0].SetDataSource(d);
-                re.SetDataSource(dd);
-                re.PrintToPrinter(1, false, 0, 0);
-                re.Refresh();
+                DataTable dr = repor.DiscountDateWise();
+                if (dr.Rows.Count == 0)
+                {
+                    MessageBox.Show("There is No Data (Unable to Print Report)");
+                }
+                else
+                {
+                    repor.Discountdaywisedate = txtdate.Text;
+                    ReportDocument re = new ReportDocument();
+                    DataTable d = report1();
+                    re.Load("../../Reports/DiscountDateWiseReport1.rpt");
+                    DataTable dd = report();
+                    re.Load("../../Reports/DiscountDateWiseReport.rpt");
+                    re.Subreports[0].SetDataSource(d);
+                    re.SetDataSource(dd);
+                    re.PrintToPrinter(1, false, 0, 0);
+                    re.Refresh();
+                }
             }
         }
         public DataTable report()

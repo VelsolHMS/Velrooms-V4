@@ -26,15 +26,23 @@ namespace HMS.Reports
         public GuestInHouse()
         {
             InitializeComponent();
-            ReportDocument re = new ReportDocument();
-            DataTable d = report1();
-            DataTable d1 = report();
-            re.Load("../../Reports/GuestInHouseSubReport.rpt");
-            re.Load("../../Reports/GuestInHouseReport.rpt");
-            re.Subreports[0].SetDataSource(d1);
-            re.SetDataSource(d);
-            re.PrintToPrinter(0, false, 0, 0);
-            re.Refresh();
+            DataTable dr = repor.GuestInHouse();
+            if (dr.Rows.Count == 0)
+            {
+                MessageBox.Show("There is No Data (Unable to Print Report)");
+            }
+            else
+            {
+                ReportDocument re = new ReportDocument();
+                DataTable d = report1();
+                DataTable d1 = report();
+                re.Load("../../Reports/GuestInHouseSubReport.rpt");
+                re.Load("../../Reports/GuestInHouseReport.rpt");
+                re.Subreports[0].SetDataSource(d1);
+                re.SetDataSource(d);
+                re.PrintToPrinter(0, false, 0, 0);
+                re.Refresh();
+            }
         }
         Report repor = new Report();
         public DataTable report()

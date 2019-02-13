@@ -37,16 +37,24 @@ namespace HMS.Reports
             }
             else
             {
-                repor.tarrifposteddate = todate.Text;
-                ReportDocument re = new ReportDocument();
-                DataTable d = report1();
-                DataTable d1 = report();
-                re.Load("../../Reports/TarrifPostedFortheDay1.rpt");
-                re.Load("../../Reports/TarrifPostedFortheDay.rpt");
-                re.Subreports[0].SetDataSource(d1);
-                re.SetDataSource(d);
-                re.PrintToPrinter(1, false, 0, 0);
-                re.Refresh();
+                DataTable dr = repor.TarrifPostedDay();
+                if (dr.Rows.Count == 0)
+                {
+                    MessageBox.Show("There is No Data (Unable to Print Report)");
+                }
+                else
+                {
+                    repor.tarrifposteddate = todate.Text;
+                    ReportDocument re = new ReportDocument();
+                    DataTable d = report1();
+                    DataTable d1 = report();
+                    re.Load("../../Reports/TarrifPostedFortheDay1.rpt");
+                    re.Load("../../Reports/TarrifPostedFortheDay.rpt");
+                    re.Subreports[0].SetDataSource(d1);
+                    re.SetDataSource(d);
+                    re.PrintToPrinter(1, false, 0, 0);
+                    re.Refresh();
+                }
             }
         }
         public DataTable report()

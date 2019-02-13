@@ -2,6 +2,7 @@
 using HMS.Model.Others;
 using System;
 using System.Data;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace HMS.Reports
@@ -14,15 +15,23 @@ namespace HMS.Reports
         public Departuretoday()
         {
             InitializeComponent();
-            ReportDocument re = new ReportDocument();
-            DataTable d = report1();
-            DataTable d1 = report();
-            re.Load("../../Reports/TodayDepartures1.rpt");
-            re.Load("../../Reports/TodayDepartures.rpt");
-            re.Subreports[0].SetDataSource(d1);
-            re.SetDataSource(d);
-            re.PrintToPrinter(0, false, 0, 0);
-            re.Refresh();
+            DataTable dr = repor.todaydeparture();
+            if (dr.Rows.Count == 0)
+            {
+                MessageBox.Show("There is No Data (Unable to Print Report)");
+            }
+            else
+            {
+                ReportDocument re = new ReportDocument();
+                DataTable d = report1();
+                DataTable d1 = report();
+                re.Load("../../Reports/TodayDepartures1.rpt");
+                re.Load("../../Reports/TodayDepartures.rpt");
+                re.Subreports[0].SetDataSource(d1);
+                re.SetDataSource(d);
+                re.PrintToPrinter(0, false, 0, 0);
+                re.Refresh();
+            }
         }
         Report repor = new Report();
         public DataTable report()
