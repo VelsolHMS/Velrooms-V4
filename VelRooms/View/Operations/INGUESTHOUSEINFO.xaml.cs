@@ -106,7 +106,7 @@ namespace HMS.View.Operations
             {
                 if (error != 0 || txtroomno.Text == "" || txtcontactno.Text == "")
                 {
-                    //         pop1.IsOpen = true;
+                    //pop1.IsOpen = true;
                     if (txtroomno.Text == "")
                     { txtroomno.Text = ""; }
                     if (txtcontactno.Text == "")
@@ -126,13 +126,10 @@ namespace HMS.View.Operations
                     IN.EMAIL = txtemail.Text;
                     IN.ID_TYPE = idproof.Text;
                     IN.ID_DATA = txtproof.Text;
-
                     //11/15/2017 dddd
                     //IN.USER_NAME = login.u;
                     IN.INSERT_BY = login.u;
                     IN.INSERT_DATE = DateTime.Today;
-
-
                     string a1 = "Save", b1 = Convert.ToString(Save.Content);
                     if (b1 == a1)
                     {
@@ -190,6 +187,8 @@ namespace HMS.View.Operations
                     txtdeparturetime.Text = I.DEPARTURE_TIME;
                     txtcontactno.Text = I.CONTACT_NO;
                     txtemail.Text = I.EMAIL;
+                    idproof.Text = I.ID_TYPE;
+                    txtproof.Text = I.ID_DATA;
                 }
             }
             catch (Exception)

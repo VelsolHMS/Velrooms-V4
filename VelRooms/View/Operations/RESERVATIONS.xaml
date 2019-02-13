@@ -348,7 +348,7 @@
                                 <material:PackIcon Kind="PhoneClassic" Height="23" Width="25" Margin="130,0,0,0"/>
                                 <TextBox Name="txtcontactno" Margin="20,0,0,0" Padding="1,-9,0,0" MaxLength="10" Width="140" material:HintAssist.Hint="Contact No" material:HintAssist.IsFloating="True" IsReadOnly="True"></TextBox>
                             </StackPanel>
-                            <Separator Margin="0,59,0,-8" Background="#FFAAAAAA"/>
+                            <Separator Margin="0,67,0,-2" Background="#FFAAAAAA" RenderTransformOrigin="0.49,1"/>
                         </Grid>
                         <Grid Grid.Row="2">
                             <StackPanel Height="25" Orientation="Horizontal" Margin="0,8.75,0,214.75">

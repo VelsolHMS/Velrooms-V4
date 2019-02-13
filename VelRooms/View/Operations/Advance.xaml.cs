@@ -104,7 +104,14 @@ namespace HMS.View.Operations
         public static DataTable crystal1;
         private void btnsave_Click(object sender, RoutedEventArgs e)
         {
-            popup.IsOpen = true;
+            if(txtroomno.Text == "" || txtamountreceived.Text == "")
+            {
+                MessageBox.Show("Please Fill all Fields");
+            }
+            else
+            {
+                popup.IsOpen = true;
+            }
         }
         private void yes_Click(object sender, RoutedEventArgs e)
         {

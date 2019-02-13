@@ -73,7 +73,6 @@ namespace HMS.Reports
             d.Rows.Add(row);
             return d;
         }
-
         private DataTable report()
         {
             DataTable D = new DataTable();

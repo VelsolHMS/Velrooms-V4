@@ -203,6 +203,9 @@ namespace HMS.View.Operations
         {
             popreservation.IsOpen = false;
             popup.IsOpen = true;
+            txtguestname.Text = txtfirstname.Text;
+            txtcontactno.Text = txtmobileno.Text;
+            txtcompanyname.Text = txtcompany.Text;
         }
         private void NO_Click_1(object sender, RoutedEventArgs e)
         {
