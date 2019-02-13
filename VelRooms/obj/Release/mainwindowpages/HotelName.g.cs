@@ -10,14 +10,12 @@
 //------------------------------------------------------------------------------
 
 using HMS.mainwindowpages;
-using PreLoader.CustomControls;
 using RootLibrary.WPF.Localization;
 using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
-using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;

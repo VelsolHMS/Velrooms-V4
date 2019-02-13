@@ -48,15 +48,18 @@ namespace HMS.Reports
                 re.Load("../../Reports/FrontOfficeSettleSubReport.rpt");
                 DataTable d_Rescancel = ResCancel();
                 re.Load("../../Reports/FrontOfficeResCancelSubReport.rpt");
+                DataTable d_OB = FS_OpeningBalance();
+                re.Load("../../Reports/FrontOfficeResCancelSubReport.rpt");
                 DataTable d = report();
                 re.Load("../../Reports/FrontOfficeReport.rpt");
                 //re.SetDataSource
-                re.Subreports[8].SetDataSource(d_Settle);
-                re.Subreports[7].SetDataSource(d_Rescancel);
-                re.Subreports[6].SetDataSource(d_ResAdvance);
-                re.Subreports[5].SetDataSource(d_Refund);
-                re.Subreports[4].SetDataSource(d_PostCharges);
-                re.Subreports[3].SetDataSource(d_Paidouts);
+                re.Subreports[9].SetDataSource(d_Settle);
+                re.Subreports[8].SetDataSource(d_Rescancel);
+                re.Subreports[7].SetDataSource(d_ResAdvance);
+                re.Subreports[6].SetDataSource(d_Refund);
+                re.Subreports[5].SetDataSource(d_PostCharges);
+                re.Subreports[4].SetDataSource(d_Paidouts);
+                re.Subreports[3].SetDataSource(d_OB);
                 re.Subreports[2].SetDataSource(d_MisCollection);
                 re.Subreports[1].SetDataSource(d_CheckinAdvance);
                 re.Subreports[0].SetDataSource(d_ExtraAdvance);
@@ -710,7 +713,7 @@ namespace HMS.Reports
                 {
                     //ROOM_NO,PAYTYPE,AMOUNT,INSERT_BY
                     r["Room"] = d1.Rows[i]["ROOM_NO"].ToString();
-                    r["Name"] = "";
+                    r["Name"] = d1.Rows[i]["Guest_Name"].ToString();
                     r["Amount"] = Math.Round(Convert.ToDecimal(d1.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero) + " (" + d1.Rows[i]["PAYTYPE"].ToString() + ")";
                     r["User"] = d1.Rows[i]["INSERT_BY"].ToString();
                     if (d1.Rows[i]["PAYTYPE"].ToString() == "Bill On Hold")
@@ -751,6 +754,41 @@ namespace HMS.Reports
                     r["ResId"] = d.Rows[i]["RESERVATION_ID"].ToString();
                     r["Name"] = d.Rows[i]["GUESTNAME"].ToString();
                     r["User"] = d.Rows[i]["INSERT_BY"].ToString();
+                    D.Rows.Add(r);
+                }
+            }
+            return D;
+        }
+        public DataTable FS_OpeningBalance()
+        {
+            DataTable D = new DataTable();
+            D.Columns.Add("VocherNo", typeof(Int32));
+            D.Columns.Add("Name", typeof(string));
+            D.Columns.Add("Amount", typeof(decimal));
+            D.Columns.Add("InsertBy", typeof(string));
+            DataTable d = rp.FOOpeningBalance();
+            for (int i = 0; i < d.Rows.Count; i++)
+            {
+                DataRow r = D.NewRow();
+                if (d.Rows.Count == 0)
+                {
+                    r["VocherNo"] = 0;
+                    r["Name"] = 0;
+                    r["Amount"] = 0;
+                    r["InsertBy"] = 0;
+                }
+                else
+                {
+                    r["VocherNo"] = Convert.ToInt32(d.Rows[i]["VOCHERNUMBER"].ToString());
+                    r["Name"] = d.Rows[i]["AUTHORIZATIONS"].ToString();
+                    if(d.Rows[i]["AMOUNT"].ToString() == null || d.Rows[i]["AMOUNT"].ToString() == ""){
+                        r["Amount"] = "0.0";
+                    }
+                    else
+                    {
+                        r["Amount"] = Math.Round(Convert.ToDecimal(d.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero);
+                    }
+                    r["InsertBy"] = d.Rows[i]["INSERT_BY"].ToString();
                     D.Rows.Add(r);
                 }
             }

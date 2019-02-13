@@ -9,13 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using HMS.View;
-using HMS.View.Operations;
-using HMS.ViewModel;
 using PreLoader.CustomControls;
 using RootLibrary.WPF.Localization;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Automation;
@@ -26,7 +22,6 @@ using System.Windows.Documents;
 using System.Windows.Forms.Integration;
 using System.Windows.Ink;
 using System.Windows.Input;
-using System.Windows.Interactivity;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;

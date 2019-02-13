@@ -10,7 +10,6 @@
 //------------------------------------------------------------------------------
 
 using HMS.View.Operations;
-using HMS.ViewModel;
 using Microsoft.Reporting.WinForms;
 using RootLibrary.WPF.Localization;
 using SAPBusinessObjects.WPF.Viewer;
@@ -25,7 +24,6 @@ using System.Windows.Documents;
 using System.Windows.Forms.Integration;
 using System.Windows.Ink;
 using System.Windows.Input;
-using System.Windows.Interactivity;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;

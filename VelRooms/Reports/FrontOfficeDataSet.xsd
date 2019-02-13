@@ -125,6 +125,16 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="OpeningBalance" msprop:Generator_TableClassName="OpeningBalanceDataTable" msprop:Generator_TableVarName="tableOpeningBalance" msprop:Generator_RowChangedName="OpeningBalanceRowChanged" msprop:Generator_TablePropName="OpeningBalance" msprop:Generator_RowDeletingName="OpeningBalanceRowDeleting" msprop:Generator_RowChangingName="OpeningBalanceRowChanging" msprop:Generator_RowEvHandlerName="OpeningBalanceRowChangeEventHandler" msprop:Generator_RowDeletedName="OpeningBalanceRowDeleted" msprop:Generator_RowClassName="OpeningBalanceRow" msprop:Generator_UserTableName="OpeningBalance" msprop:Generator_RowEvArgName="OpeningBalanceRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="VocherNo" msprop:Generator_ColumnVarNameInTable="columnVocherNo" msprop:Generator_ColumnPropNameInRow="VocherNo" msprop:Generator_ColumnPropNameInTable="VocherNoColumn" msprop:Generator_UserColumnName="VocherNo" type="xs:int" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="InsertBy" msprop:Generator_ColumnVarNameInTable="columnInsertBy" msprop:Generator_ColumnPropNameInRow="InsertBy" msprop:Generator_ColumnPropNameInTable="InsertByColumn" msprop:Generator_UserColumnName="InsertBy" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

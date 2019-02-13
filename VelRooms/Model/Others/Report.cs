@@ -962,7 +962,7 @@ namespace HMS.Model.Others
         public DataTable FOOtherSettlements()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT ROOM_NO,PAYTYPE,AMOUNT,INSERT_BY from SETTLE_OTHERPAY where INSERT_DATE = '" + SelectedDate + "' AND AMOUNT > 0";
+            string s = "SELECT ROOM_NO,PAYTYPE,AMOUNT,INSERT_BY,(SELECT GUEST_NAME from PRINTSTATUS where BILL_NO = so.BILL_NO) as Guest_Name from SETTLE_OTHERPAY so where INSERT_DATE = '" + SelectedDate + "' AND AMOUNT > 0";
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
@@ -970,6 +970,14 @@ namespace HMS.Model.Others
         {
             var list = new List<SqlParameter>();
             string s = "SELECT RESERVATION_ID,GUESTNAME,INSERT_BY FROM RESERVATIONCANCEL WHERE INSERT_DATE = '" + SelectedDate + "' ";
+            DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
+            return d;
+        }
+        public DataTable FOOpeningBalance()
+        {
+            //select VOCHERNUMBER, AUTHORIZATIONS, AMOUNT, INSERT_BY from PAIDOUT_OPENINGBALANCE where STATUS = 'MANUAL' and INSERT_DATE = '2019-02-12'
+            var list = new List<SqlParameter>();
+            string s = "SELECT VOCHERNUMBER, AUTHORIZATIONS, AMOUNT, INSERT_BY from PAIDOUT_OPENINGBALANCE where STATUS = 'MANUAL' and INSERT_DATE = '" + SelectedDate + "' ";
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }

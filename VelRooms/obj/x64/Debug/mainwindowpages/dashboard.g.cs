@@ -34,6 +34,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
 using VELROOMS.mainwindowpages;
+using WpfAnimatedGif;
 
 
 namespace VELROOMS.mainwindowpages {

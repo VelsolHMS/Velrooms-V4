@@ -521,6 +521,12 @@
       <DependentUpon>FrontOfficeMiscollSubReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\FrontOfficeOBSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FrontOfficeOBSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\FrontOfficePaidoutsSubReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1525,6 +1531,10 @@
     <EmbeddedResource Include="Reports\FrontOfficeMiscollSubReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>FrontOfficeMiscollSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrontOfficeOBSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FrontOfficeOBSubReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\FrontOfficePaidoutsSubReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
