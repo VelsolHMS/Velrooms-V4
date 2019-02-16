@@ -246,10 +246,9 @@
                                 <TextBox Name="txtidproof1" Width="90" MaxLength="15" Padding="0,-9,0,0" TabIndex="19" Margin="15,0,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" CharacterCasing="Upper" Validation.Error="Validation_Error" Tag="Id Number*" LostFocus="txtidproof1_LostFocus" TextChanged="txtidproof1_TextChanged" ></TextBox>-->
                             </StackPanel>
                             <!--<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
-                                
                             </StackPanel>-->
                             <StackPanel Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Center">
-                                <Button Content="Cancel" Name="Cancel" Click="Cancel_Click" Height="Auto" Width="90" />
+                                <Button Content="Cancel" Name="Cancel" Click="Cancel_Click" Height="Auto" Width="90"/>
                                 <Button Content="Clear"  Name="Clear" Click="Clear_Click" Margin="50,0,50,0" Grid.Column="1" Height="Auto" Width="90" />
                                 <Button Content="Save" Name="save" VerticalAlignment="Top" Width="90" TabIndex="21" IsDefault="True" Grid.ColumnSpan="2" Click="save_Click_1" />
                             </StackPanel>

@@ -47,6 +47,11 @@ namespace HMS.View.Operations
             Checkout.adv34 = 0;
             if (Checkout.ref34 == 1)
             {
+                refund.IsChecked = true;
+                amount.IsEnabled = false;
+                balance_amount.IsEnabled = false;
+                retensioncharges.IsChecked = false;
+                retensioncharges.IsEnabled = false;
                 ADVANCEAMOUNT.Text = Checkout.Ch_Advance.ToString();
                 ROOMNO.Text = Checkout.roomno;
                 cout.ROOM_NO = Checkout.roomno;
@@ -90,6 +95,13 @@ namespace HMS.View.Operations
                     //ba = Convert.ToDecimal((aa - ta));
                     //balance_amount.Text =  Convert.ToString(Math.Round(ba, 2, MidpointRounding.AwayFromZero));
                 }
+            }
+            if(RESERVATIONS.ResRef == 1)
+            {
+                amount.IsEnabled = false;
+                refund.IsChecked = true;
+                //retensioncharges.IsChecked = false;
+                balance_amount.IsEnabled = false;
             }
         }
         public void disable()
@@ -243,57 +255,74 @@ namespace HMS.View.Operations
         }
         private void refund_Checked(object sender, RoutedEventArgs e)
         {
-            if (a != 0)
+            if(RESERVATIONS.ResRef == 1)
             {
-                retensioncharges.IsEnabled = true;
+                balance_amount.IsEnabled = false;
+                amount.IsEnabled = false;
+                balance_amount.Text = ADVANCEAMOUNT.Text;
+                amount.Text = "0.00";
             }
-            else
-            {
-                retensioncharges.IsEnabled = false;
-                amount.Text = "";
-                reason.Text = "";
-            }
+            //if (a != 0)
+            //{
+            //    retensioncharges.IsEnabled = true;
+            //}
+            //else
+            //{
+            //    retensioncharges.IsEnabled = false;
+            //    amount.Text = "";
+            //    reason.Text = "";
+            //}
         }
         private void retensioncharges_Checked(object sender, RoutedEventArgs e)
         {
-            try
+            if(RESERVATIONS.ResRef == 1)
             {
-                if (a != 0)
+                amount.Text = "0.00";
+                amount.IsEnabled = false;
+                balance_amount.IsEnabled = true;
+                balance_amount.Text = ADVANCEAMOUNT.Text;
+            }
+            else
+            {
+                try
                 {
-                    refund.IsEnabled = true;
-                }
-                if (retensioncharges.IsChecked == true)
-                {
-                    //  BIND();
-                    R.RESERVATION_ID = Convert.ToInt32(RESERVATION_ID.Text);
-                    R.GUEST_NAME = GUESTNAME.Text;
-                    R.PAX = Convert.ToInt32(PAX.Text);
-                    R.ADVANCE_AMOUNT = Convert.ToDecimal(ADVANCEAMOUNT.Text);
-                    R.ARRIVAL_DATE = Convert.ToDateTime(ARRIVAL_DATE.Text);
-                    R.DEPATURE_DATE = Convert.ToDateTime(DEPARTURE_DATE.Text);
-                    R.COMPANY_NAME = COMPANYNAME.Text;
-                    //R.AMOUNT = Convert.ToDecimal(amount.Text);
-                    //R.BALANCE_AMOUNT = Convert.ToDecimal(balance_amount.Text);
-                    //R.REASON = reason.Text;
-                    R.advanceamount();
-                    //R.IRETENSION();
-                    FETCH();
-                    amount.Text = "";
-                    balance_amount.Text = "";
-                    reason.Text = "";
-                    if (ADVANCEAMOUNT.Text == "0.00")
+                    if (a != 0)
                     {
-                        canc.IsOpen = true;
+                        refund.IsEnabled = true;
+                    }
+                    if (retensioncharges.IsChecked == true)
+                    {
+                        //  BIND();
+                        R.RESERVATION_ID = Convert.ToInt32(RESERVATION_ID.Text);
+                        R.GUEST_NAME = GUESTNAME.Text;
+                        R.PAX = Convert.ToInt32(PAX.Text);
+                        R.ADVANCE_AMOUNT = Convert.ToDecimal(ADVANCEAMOUNT.Text);
+                        R.ARRIVAL_DATE = Convert.ToDateTime(ARRIVAL_DATE.Text);
+                        R.DEPATURE_DATE = Convert.ToDateTime(DEPARTURE_DATE.Text);
+                        R.COMPANY_NAME = COMPANYNAME.Text;
+                        //R.AMOUNT = Convert.ToDecimal(amount.Text);
+                        //R.BALANCE_AMOUNT = Convert.ToDecimal(balance_amount.Text);
+                        //R.REASON = reason.Text;
+                        R.advanceamount();
+                        //R.IRETENSION();
+                        FETCH();
+                        amount.Text = "";
+                        balance_amount.Text = "";
+                        reason.Text = "";
+                        if (ADVANCEAMOUNT.Text == "0.00")
+                        {
+                            canc.IsOpen = true;
+                        }
+                    }
+                    else
+                    {
+                        refund.IsEnabled = false;
+                        amount.Text = "";
+                        reason.Text = "";
                     }
                 }
-                else
-                {
-                    refund.IsEnabled = false;
-                    amount.Text = "";
-                    reason.Text = "";
-                }
+                catch (Exception) { }
             }
-            catch (Exception) { }
         }
         private void amount_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -355,7 +384,7 @@ namespace HMS.View.Operations
                 //11/15/2017
                 //R.USER_NAME = login.u;
                 R.INSERT_BY = login.u;
-                R.INSERT_DATE = DateTime.Today;
+                R.INSERT_DATE = DateTime.Today.Date;
                 //}
             }
             if (RESERVATION_ID.Text == "")
@@ -428,14 +457,27 @@ namespace HMS.View.Operations
                     BIND();
                     if (RESERVATION_ID.Text != "")
                     {
-                        R.IREFUND();
-                    }
-                    if (ROOMNO.Text != "")
+                        if (refund.IsChecked == true)
+                        {
+                            if (balance_amount.Text == "0.00" || balance_amount.Text == "0.0" || balance_amount.Text == "0")
+                            {
+                                MessageBox.Show("Refund amount Should not be Zero");
+                            }
+                            else
+                            {
+                                R.IREFUND();
+                            }
+                        }
+                        else if (retensioncharges.IsChecked == true)
+                        {
+                            R.IREFUND();
+                            R.IRETENSION();
+                        }
+                    }else if (ROOMNO.Text != "")
                     {
                         R.COUTREFUND();
                         // R.updatepamount();
                     }
-
                     if (balance_amount.Text == "0.00")
                     {
                         canc.IsOpen = true;
@@ -538,10 +580,28 @@ namespace HMS.View.Operations
             }
             catch (Exception) { }
         }
+        public decimal num1, num2, num3;
+        private void balance_amount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(retensioncharges.IsChecked == true)
+            {
+                num1 = Convert.ToDecimal(ADVANCEAMOUNT.Text);
+                num2 = Convert.ToDecimal(balance_amount.Text);
+                num3 = num1 - num2;
+                amount.Text = Math.Round(num3, 2, MidpointRounding.AwayFromZero).ToString();
+            }
+            else
+            {
+                if(RESERVATIONS.ResRef == 1)
+                {
+                    amount.Text = "0.00";
+                    balance_amount.Text = ADVANCEAMOUNT.Text;
+                }
+            }
+        }
         public void clear()
         {
-            ROOMNO.Text = ""; amount.Text = ""; reason.Text = ""; balance_amount.Text = ""; refund.IsChecked = false; retensioncharges.IsChecked = false; RERF = 1; refundmod.Text = ""
-                     ; retensionmod.Text = ""; RERF = 0;
+            ROOMNO.Text = ""; amount.Text = ""; reason.Text = ""; balance_amount.Text = ""; refund.IsChecked = false; retensioncharges.IsChecked = false; RERF = 1; refundmod.Text = ""; retensionmod.Text = ""; RERF = 0;
             //ADD.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
             mod.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
         }
@@ -568,15 +628,12 @@ namespace HMS.View.Operations
                 {
                     if (refundmod.Text != "")
                     {
-
                         decimal a = Convert.ToDecimal(ADVANCEAMOUNT.Text);
                         if (refundmod.Text == ".")
                         {
                             refundmod.Text = 0 + refundmod.Text;
                         }
                         decimal b = Convert.ToDecimal(refundmod.Text);
-
-
                         if (crt != 0)
                         {
                             decimal limit = RET_AMOUNT + ref_model;
@@ -584,7 +641,6 @@ namespace HMS.View.Operations
                             {
                                 if (b < limit)
                                 {
-
                                     if (b <= ref_mod)
                                     {
                                         c = ref_mod - b;
@@ -605,7 +661,6 @@ namespace HMS.View.Operations
                                                 ADVANCEAMOUNT.Text = (c + RET_AMOUNT).ToString();
                                             }
                                         }
-
                                     }
                                     else if (b > ref_mod)
                                     {
@@ -840,7 +895,17 @@ namespace HMS.View.Operations
             }
             catch (Exception) { }
         }
-        public decimal readv = 0; public decimal REF_AMOUNT = 0; public decimal RET_AMOUNT = 0;
+        public decimal readv = 0;
+
+        private void ADVANCEAMOUNT_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        public decimal REF_AMOUNT = 0; public decimal RET_AMOUNT = 0;
+
+        
+
         public decimal ref_mod = 0; public decimal ret_mode = 0; public decimal ret_model = 0; public decimal ref_model = 0;
         private void refundmod_LostFocus(object sender, RoutedEventArgs e)
         {

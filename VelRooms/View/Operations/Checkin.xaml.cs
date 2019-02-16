@@ -857,7 +857,7 @@ namespace HMS.View.Operations
         {
             try
             {
-                if (txtfirstname.Text == null || txtlastname.Text == null || ADDRESS.Text == null || ZIP.Text == null || txtcity.Text == null || txtmobileno.Text == null || idproof.Text == null || txtproof.Text == null || txtpax.Text == null || txtadult.Text == null || txtchild.Text == null || txtextrabed.Text == null || EADULT.Text == null || ECHILD.Text == null || TAXPER.Text == null || RACKTARRIF.Text == null || RACKCHILD.Text == null || RACKADULT.Text == null || CHARGETARRIF.Text == null || CHARGEADULT.Text == null || CHARGECHILD.Text == null)
+                if (error!= 0 || txtfirstname.Text == null || txtlastname.Text == null || ADDRESS.Text == null || ZIP.Text == null || txtcity.Text == null || txtmobileno.Text == null || idproof.Text == null || txtproof.Text == null || txtpax.Text == null || txtadult.Text == null || txtchild.Text == null || txtextrabed.Text == null || EADULT.Text == null || ECHILD.Text == null || TAXPER.Text == null || RACKTARRIF.Text == null || RACKCHILD.Text == null || RACKADULT.Text == null || CHARGETARRIF.Text == null || CHARGEADULT.Text == null || CHARGECHILD.Text == null)
                 {
                     MessageBox.Show("FILL ALL COLUMNS ");
                 }
@@ -990,7 +990,7 @@ namespace HMS.View.Operations
         {
             try
             {
-                if (error != 0)
+                if (error != 0 || txtamntrecivd.Text == "0" || txtamntrecivd.Text == "0.0" || txtamntrecivd.Text == "0.00")
                 {
                     pop1.IsOpen = true;
                 }
@@ -1014,8 +1014,8 @@ namespace HMS.View.Operations
                     //ch.RESERVATION_ID = int.Parse(reservationid.Text);
 
                     // ch.advanceupdate();
-                    popup_insert.IsOpen = true;
                     ADVANCEPOPUP.IsOpen = false;
+                    popup_insert.IsOpen = true;
                     Send_SMS();
                 }
             }

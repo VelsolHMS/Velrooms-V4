@@ -45,6 +45,7 @@ namespace HMS.View.Operations
         public static string x;
         public static string y;
         public static string z;
+        public static int ResRef = 0;
         public int ad;
         public int ch;
         public int p;
@@ -882,14 +883,12 @@ namespace HMS.View.Operations
             txtcompanynamename1.Text = "";
             txtreservationid.Text = "";
             txtmobilenumber.Text = "";
-         //   x = dt2.Text;
+            //x = dt2.Text;
         }
-
         private void btnroomtarrif_Click(object sender, RoutedEventArgs e)
         {
             popup2.IsOpen = true;
         }
-
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -897,7 +896,7 @@ namespace HMS.View.Operations
                 save.IsEnabled = true;
                 Clear.IsEnabled = true;
                 Cancel.IsEnabled = true;
-                //   popup1.IsOpen = true;
+                // popup1.IsOpen = true;
                 cancel.IsOpen = true;
                 advres = "Cancel";
                 txtguestname1.IsEnabled = false;
@@ -905,7 +904,6 @@ namespace HMS.View.Operations
                 txtreservationid.IsEnabled = false;
                 txtmobilenumber.IsEnabled = false;
                 dt2.IsEnabled = false;
-
                 Cancel.Background = new SolidColorBrush(Colors.Orange);
             }
             catch (Exception) { }
@@ -1141,7 +1139,6 @@ namespace HMS.View.Operations
                     rf.ARRIVAL_DATE.Text = dt.Rows[0]["ARRIVAL_DATE"].ToString();
                     rf.DEPARTURE_DATE.Text = dt.Rows[0]["DEPARTURE_DATE"].ToString();
                     rf.ADVANCEAMOUNT.Text = dt.Rows[0]["AMOUNT_RECEIVED"].ToString();
-
                 }
             }
             catch (Exception) { }
@@ -1155,31 +1152,45 @@ namespace HMS.View.Operations
                 cancel.IsOpen = false;
                 id = aa.Text;
                 DataTable da = RE.AdvanceAmount();
-                amount = da.Rows[0]["AMOUNT_RECEIVED"].ToString();
-                if (amount == "0.00")
+                //amount = da.Rows[0]["AMOUNT_RECEIVED"].ToString();
+                //if (amount == "0.00")
+                //{
+                //}
+                if (da.Rows.Count == 0)
                 {
                     canc.IsOpen = true;
                 }
                 else
                 {
-                    num = aa.Text;
-                    Refund.receivedid = selectedid;
-                    Refund.a = 1;
-                    this.NavigationService.Navigate(rf);
-                    DataTable dt = RE.Res();
-                    if (dt.Rows.Count == 0)
-                    { }
+                    DataTable RC = RE.RefundCheck();
+                    if (RC.Rows.Count > 0)
+                    {
+                        canc.IsOpen = true;
+                    }
                     else
                     {
-                        rf.GUESTNAME.Text = dt.Rows[0]["FIRSTNAME"].ToString();
-                        rf.COMPANYNAME.Text = dt.Rows[0]["COMPANY_NAME"].ToString();
-                        rf.RESERVATION_ID.Text = dt.Rows[0]["RESERVATION_ID"].ToString();
-                        rf.ROOMS.Text = dt.Rows[0]["NO_OF_ROOMS"].ToString();
-                        rf.PAX.Text = dt.Rows[0]["PAX"].ToString();
-                        rf.ARRIVAL_DATE.Text = dt.Rows[0]["ARRIVAL_DATE"].ToString();
-                        rf.DEPARTURE_DATE.Text = dt.Rows[0]["DEPARTURE_DATE"].ToString();
-                        rf.ADVANCEAMOUNT.Text = dt.Rows[0]["AMOUNT_RECEIVED"].ToString();
-
+                        num = aa.Text;
+                        Refund.receivedid = selectedid;
+                        Refund.a = 1;
+                        this.NavigationService.Navigate(rf);
+                        DataTable dt = RE.Res();
+                        if (dt.Rows.Count == 0)
+                        { }
+                        else
+                        {
+                            ResRef = 1;
+                            rf.GUESTNAME.Text = dt.Rows[0]["FIRSTNAME"].ToString();
+                            rf.COMPANYNAME.Text = dt.Rows[0]["COMPANY_NAME"].ToString();
+                            rf.RESERVATION_ID.Text = dt.Rows[0]["RESERVATION_ID"].ToString();
+                            rf.ROOMS.Text = dt.Rows[0]["NO_OF_ROOMS"].ToString();
+                            rf.PAX.Text = dt.Rows[0]["PAX"].ToString();
+                            rf.ARRIVAL_DATE.Text = dt.Rows[0]["ARRIVAL_DATE"].ToString();
+                            rf.DEPARTURE_DATE.Text = dt.Rows[0]["DEPARTURE_DATE"].ToString();
+                            rf.ADVANCEAMOUNT.Text = dt.Rows[0]["AMOUNT_RECEIVED"].ToString();
+                            rf.amount.Text = "0.00";
+                            rf.balance_amount.Text = dt.Rows[0]["AMOUNT_RECEIVED"].ToString();
+                            rf.refund.IsChecked = true;
+                        }
                     }
                 }
             }
@@ -1202,7 +1213,6 @@ namespace HMS.View.Operations
                     datatable = RE.Grid();
                     dgres.ItemsSource = datatable.DefaultView;
                 }
-                
             }
             catch(SystemException )
             { }

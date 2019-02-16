@@ -613,7 +613,15 @@ namespace HMS.Model
         public DataTable AdvanceAmount()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT CONVERT(decimal(17,2), sum(AMOUNT_RECEIVED)) as AMOUNT_RECEIVED  FROM ADVANCE  WHERE RESERVATION_ID = '" + RESERVATIONS.id+ "'";
+            string s = "SELECT * FROM ADVANCE WHERE RESERVATION_ID = '" + RESERVATIONS.id+ "'";
+            DataTable dt = DbFunctions.ExecuteCommand<DataTable>(s, list);
+            return dt;
+        }
+        public DataTable RefundCheck()
+        {
+            //select* from REFUND where RESERVATION_ID = '15186'
+            var list = new List<SqlParameter>();
+            string s = "Select * from REFUND where RESERVATION_ID = '"+ RESERVATIONS.id+"'";
             DataTable dt = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return dt;
         }

@@ -71,7 +71,6 @@ namespace HMS.Model
                 D = DbFunctions.ExecuteCommand<DataTable>(sT, L);
             }
             return D;
-
         }
         public void IREFUND()
         {
@@ -165,10 +164,8 @@ namespace HMS.Model
             string s = "UPDATE ADVANCE SET AMOUNT_RECEIVED ='" + BALANCE_AMOUNT + "' WHERE RESERVATION_ID = '" + RESERVATION_ID + "'";
             DbFunctions.ExecuteCommand<int>(s, li);
         }
-
         public void IRETENSION()
         {
-
             var lis = new List<SqlParameter>();
             lis.AddSqlParameter("@RESERVATION_ID", RESERVATION_ID);
             lis.AddSqlParameter("@GUEST_NAME", GUEST_NAME);
