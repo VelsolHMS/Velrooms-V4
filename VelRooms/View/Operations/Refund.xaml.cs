@@ -486,11 +486,8 @@ namespace HMS.View.Operations
                     {
                         ADVANCEAMOUNT.Text = balance_amount.Text;
                         //MessageBox.Show("Saved Successfully");
-                        popup_insert.IsOpen = true;
                     }
-
-                    clear();
-                    this.NavigationService.Refresh();
+                    popup_insert.IsOpen = true;
                     //if (Checkout.ref34 == 1)
                     //{
                     //    Checkout check = new Checkout();
@@ -605,6 +602,7 @@ namespace HMS.View.Operations
             ROOMNO.Text = ""; amount.Text = ""; reason.Text = ""; balance_amount.Text = ""; refund.IsChecked = false; retensioncharges.IsChecked = false; RERF = 1; refundmod.Text = ""; retensionmod.Text = ""; RERF = 0;
             //ADD.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
             mod.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            this.NavigationService.Refresh();
         }
         private void MODIFY_Click(object sender, RoutedEventArgs e)
         {
@@ -906,6 +904,8 @@ namespace HMS.View.Operations
         private void insertpop_Click(object sender, RoutedEventArgs e)
         {
             popup_insert.IsOpen = false;
+            clear();
+            this.NavigationService.Refresh();
         }
 
         public decimal REF_AMOUNT = 0; public decimal RET_AMOUNT = 0;

@@ -1298,6 +1298,7 @@ namespace HMS.View.Operations
                 //this.NavigationService.Navigate(re);
                 DataTable dt = r.Grid();
                 dgres.ItemsSource = dt.DefaultView;
+                this.NavigationService.Refresh();
             }
             catch (Exception) { }
         }
@@ -1322,7 +1323,6 @@ namespace HMS.View.Operations
         {
             popup_update.IsOpen = false;
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             cancelpopup.IsOpen = false;
