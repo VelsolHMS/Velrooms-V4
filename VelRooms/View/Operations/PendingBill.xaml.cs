@@ -196,7 +196,8 @@ namespace HMS.View.Operations
                 b.insert1();
                 clear1();
                 //  this.NavigationService.Refresh();
-                MessageBox.Show("Saved Successfully");
+                //MessageBox.Show("Saved Successfully");
+                popup_insert.IsOpen = true;
             }
             catch (Exception) { }
         }
@@ -239,7 +240,8 @@ namespace HMS.View.Operations
                         p.status_update();
                         clear();
                         this.NavigationService.Refresh();
-                        MessageBox.Show("Saved Successfully");
+                        //MessageBox.Show("Saved Successfully");
+                        popup_insert.IsOpen = true;
                     }
                     else
                     {
@@ -247,11 +249,22 @@ namespace HMS.View.Operations
                         p.balance_update();
                         clear();
                         this.NavigationService.Refresh();
-                        MessageBox.Show("Updated Successfully");
+                        //MessageBox.Show("Updated Successfully");
+                        popup_update.IsOpen = true;
                     }
                 }
             }
             catch (Exception) { }
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
         }
     }
 }

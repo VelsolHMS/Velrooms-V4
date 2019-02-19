@@ -109,7 +109,8 @@ namespace HMS.View.Operations
                             {
                                 disc.Insert();
                                 disc.A();
-                                MessageBox.Show("Inserted sucessfully");
+                                //MessageBox.Show("Inserted sucessfully");
+                                popup_insert.IsOpen = true;
                             }
                             else
                             {
@@ -150,7 +151,8 @@ namespace HMS.View.Operations
                             {
                                 disc.Insert();
                                 disc.A();
-                                MessageBox.Show("inserted sucessfully");
+                                //MessageBox.Show("inserted sucessfully");
+                                popup_insert.IsOpen = true;
                             }
                             else
                             {
@@ -172,7 +174,8 @@ namespace HMS.View.Operations
                     disc.PERCENTAGE = txtpercentage.Text;
                     disc.PARTICULARS = txtparticular.Text;
                     disc.UpdateDiscount();
-                    MessageBox.Show("Updated sucessfully");
+                    //MessageBox.Show("Updated sucessfully");
+                    popup_update.IsOpen = true;
                     clearing();
                     this.NavigationService.Refresh();
                 }
@@ -301,6 +304,17 @@ namespace HMS.View.Operations
                 txtpercentage.IsEnabled = false;
             }
         }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
+        }
+
         private void txtpercentage_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txtpercentage.Text == "" || txtpercentage.Text == "0" || txtpercentage.Text == "00")

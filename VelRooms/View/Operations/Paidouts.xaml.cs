@@ -75,7 +75,8 @@ namespace HMS.View.Operations
                     if (rbtn1.IsChecked == true)
                     {
                         P.INSERT();
-                        MessageBox.Show("Saved sucessfully");
+                        //MessageBox.Show("Saved sucessfully");
+                        popup_insert.IsOpen = true;
                         txtvochernumber.Visibility = Visibility.Visible;
                         //lablle.Visibility = Visibility.Hidden;
                         clearr();
@@ -85,7 +86,8 @@ namespace HMS.View.Operations
                     {
                         P.AMOUNT_TYPE = "Cash";
                         P.INSERT1();
-                        MessageBox.Show("Saved sucessfully");
+                        //MessageBox.Show("Saved sucessfully");
+                        popup_insert.IsOpen = true;
                         clearr();
                         this.NavigationService.Refresh();
                     }
@@ -143,6 +145,11 @@ namespace HMS.View.Operations
             txtvochernumber.Content = ""; txtparticualr.Clear(); txtamount.Clear(); txtauthorization.Clear();
            /* disable()*/ CB.SelectedIndex = 0;
             this.NavigationService.Refresh();
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
         }
     }
 }
