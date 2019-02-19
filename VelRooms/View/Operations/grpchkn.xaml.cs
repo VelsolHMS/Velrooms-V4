@@ -121,7 +121,7 @@ namespace HMS.View.Operations
                 txtpax.Text = RESERVSTIONCHECKIN.pax;
                 txtadult.Text = RESERVSTIONCHECKIN.adult;
                 txtchildd.Text = RESERVSTIONCHECKIN.child;
-                RESERVSTIONCHECKIN.p = 0;
+                //RESERVSTIONCHECKIN.p = 0;
             }
             else
             {

@@ -149,8 +149,8 @@ namespace HMS.View.Operations
                     dgres.ItemsSource = dtt.DefaultView;
                     //clear();
                     this.NavigationService.Refresh();
-                    MessageBox.Show("Saved Successfully");
-
+                    //MessageBox.Show("Saved Successfully");
+                    popup_insert.IsOpen = true;
                 }
                 else
                 {
@@ -159,8 +159,8 @@ namespace HMS.View.Operations
                     dgres.ItemsSource = dt1.DefaultView;
                     //clear();
                     this.NavigationService.Refresh();
-                    MessageBox.Show("Updated Successfully");
-
+                    //MessageBox.Show("Updated Successfully");
+                    popup_update.IsOpen = true;
                     save.Content = "Save";
                 }
                 RE.R();
@@ -1311,6 +1311,16 @@ namespace HMS.View.Operations
                 txtchild.Text = (p - ad).ToString();
             }
         }
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
+        }
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             cancelpopup.IsOpen = false;
