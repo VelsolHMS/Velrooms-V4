@@ -389,7 +389,8 @@ namespace HMS
                             hinfo.HOURS24 = rs24;
                             hinfo.EXTRAHOURS = txthours.Text;
                             hinfo.Insert();
-                            System.Windows.MessageBox.Show("Updated sucessfully");
+                            //System.Windows.MessageBox.Show("Updated sucessfully");
+                            popup_update.IsOpen = true;
                             btnSave.Content = "Save";
                             clrtextfield();
                             this.NavigationService.Refresh();
@@ -407,10 +408,12 @@ namespace HMS
                             string a1 = "Save", b1 = Convert.ToString(btnSave.Content);
                             if (b1 == a1)
                             {
-                                // insert.Content = "Inserted Sucessfully";
-                                //pop3.IsOpen = true;
-                                //btnSave.Content = "Save";
-                                System.Windows.MessageBox.Show("Saved sucuessfully");
+                            // insert.Content = "Inserted Sucessfully";
+                            //pop3.IsOpen = true;
+                            //btnSave.Content = "Save";
+                            //System.Windows.MessageBox.Show("Saved sucuessfully");
+                            popup_insert.IsOpen = true;
+                                
 
                             }
                             clrtextfield();
@@ -485,10 +488,18 @@ namespace HMS
             this.NavigationService.Refresh();
         }
 
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
+        }
+
         private void insertpop_Click(object sender, RoutedEventArgs e)
         {
-            pop3.IsOpen = false;
+            popup_insert.IsOpen = false;
         }
+
+       
+        
         //Image Upload Code...
         //private void btnupload_Click(object sender, RoutedEventArgs e)
         //{
