@@ -485,7 +485,8 @@ namespace HMS.View.Operations
                     else if (balance_amount.Text != "0.00")
                     {
                         ADVANCEAMOUNT.Text = balance_amount.Text;
-                        MessageBox.Show("Saved Successfully");
+                        //MessageBox.Show("Saved Successfully");
+                        popup_insert.IsOpen = true;
                     }
 
                     clear();
@@ -900,6 +901,11 @@ namespace HMS.View.Operations
         private void ADVANCEAMOUNT_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
         }
 
         public decimal REF_AMOUNT = 0; public decimal RET_AMOUNT = 0;

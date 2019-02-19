@@ -256,7 +256,8 @@ namespace HMS.View.Operations
                     RE.INSERT();
                     DataTable dtt = RE.Grid();
                     dgres.ItemsSource = dtt.DefaultView;
-                    MessageBox.Show("Saved Successfully");
+                    //MessageBox.Show("Saved Successfully");
+                    popup_insert.IsOpen = true;
                     //clear();
                     this.NavigationService.Refresh();
                 }
@@ -265,7 +266,8 @@ namespace HMS.View.Operations
                     RE.UPDATE1();
                     DataTable dt1 = RE.Grid();
                     dgres.ItemsSource = dt1.DefaultView;
-                    MessageBox.Show("Updated Successfully");
+                    //MessageBox.Show("Updated Successfully");
+                    popup_update.IsOpen = true;
                     //clear();
                     this.NavigationService.Refresh();
                     //  save.Content = "Save";

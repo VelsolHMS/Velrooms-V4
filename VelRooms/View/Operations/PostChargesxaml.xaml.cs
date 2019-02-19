@@ -129,7 +129,8 @@ namespace HMS.View.Operations
                     pc.INSERT();
                     pc.postextar();
                     pc.A();
-                    MessageBox.Show("inserted sucessfully");
+                    //MessageBox.Show("inserted sucessfully");
+                    popup_insert.IsOpen = true;
                     CLEARall();
                     BUT = "S";
                     BUT = null;
@@ -182,6 +183,11 @@ namespace HMS.View.Operations
         private void charges_LostFocus(object sender, RoutedEventArgs e)
         {
             totalamount.Content = charges.Text;
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
         }
     }
 }

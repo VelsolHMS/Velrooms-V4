@@ -173,7 +173,8 @@ namespace HMS.View.Operations
                         clear();
                         btnsave.Content = "Save";
                         popup.IsOpen = false;
-                        MessageBox.Show("inserted sucessfully");
+                        //MessageBox.Show("inserted sucessfully");
+                        popup_insert.IsOpen = true;
                         clear();
                         this.NavigationService.Refresh();
                     }
@@ -223,7 +224,8 @@ namespace HMS.View.Operations
                         adv.company_contact();
                         popup.IsOpen = false;
                         cc = adv.COMPANY_CONTACT;
-                        MessageBox.Show("inserted sucessfully");
+                        //MessageBox.Show("inserted sucessfully");
+                        popup_insert.IsOpen = true;
                         this.NavigationService.Refresh();
                         clear();
                     }
@@ -461,6 +463,12 @@ namespace HMS.View.Operations
             }
             catch (Exception) { }
         }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
         private void txtgustname_GotFocus(object sender, RoutedEventArgs e)
         {
             if(rbroom.IsChecked == true)
@@ -523,10 +531,6 @@ namespace HMS.View.Operations
                 }
             }
             catch (Exception) { }
-        }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = false;
         }
         private void btnclear_Click(object sender, RoutedEventArgs e)
         {

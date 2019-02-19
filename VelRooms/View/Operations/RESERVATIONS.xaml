@@ -12,7 +12,7 @@
       Height="600"
       Title="RESERVATIONS" Width="890" Background="White">
     <Page.Resources>
-        <vm:data x:Key="Viewmodel"></vm:data>
+        <!--<vm:data x:Key="Viewmodel"></vm:data>-->
         <!--<CollectionViewSource x:Key="cvs" Source="{Binding fill_grid}">
             <CollectionViewSource.SortDescriptions>
                 <scm:SortDescription PropertyName="dt" Direction="Ascending" />
