@@ -142,14 +142,16 @@ namespace HMS.View.Masters
                         ROOM.insert();
                         DataTable dt = ROOM.fill_grid();
                         dgroomcategory.ItemsSource = dt.DefaultView;
-                        MessageBox.Show("Saved Successfully");
+                        //MessageBox.Show("Saved Successfully");
+                        popup_insert.IsOpen = true;
                     }
                     else
                     {
                         ROOM.insert();
                         DataTable dt = ROOM.fill_grid(); 
                         dgroomcategory.ItemsSource = dt.DefaultView;
-                        MessageBox.Show("Updated Successfully");
+                        //MessageBox.Show("Updated Successfully");
+                        popup_update.IsOpen = true;
                         SAVE.Content = "Save";
                     }
                     //string a1 = "SAVE", b1 = Convert.ToString(SAVE.Content);
@@ -283,10 +285,6 @@ namespace HMS.View.Masters
                 txtactivedate.Text = Convert.ToString(DateTime.Today.Date);
             }
         }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = false;
-        }
         private void dgroomcategory_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
         {
             try
@@ -339,6 +337,16 @@ namespace HMS.View.Masters
             //        row.Foreground = Brushes.Red;
             //    }
             //}
+        }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
         }
     }
 }
