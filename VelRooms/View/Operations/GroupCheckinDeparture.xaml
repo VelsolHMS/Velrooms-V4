@@ -12,7 +12,6 @@
 
     <Page.Resources>
         <vm:data x:Key="Viewmodel"></vm:data>
-
         <!--<Style TargetType="Button">
         <Setter Property="Background" Value="#354766"/>
         <Setter Property="Foreground" Value="White"/>

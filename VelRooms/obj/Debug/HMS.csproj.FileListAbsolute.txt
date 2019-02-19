@@ -3049,6 +3049,7 @@ C:\Users\surya\Source\Repos\Velrooms-V2\VelRooms\obj\Debug\HMS.exe
 C:\Users\surya\Source\Repos\Velrooms-V2\VelRooms\obj\Debug\HMS.pdb
 C:\Users\surya\Source\Repos\Velrooms-V2\VelRooms\obj\Debug\Reports\FOSale.g.cs
 C:\Users\surya\Source\Repos\Velrooms-V2\VelRooms\obj\Debug\Reports\FOSale.baml
+C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\obj\Debug\HMS.g.resources
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\HMS.exe.config
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\HMS.exe
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\bin\Debug\HMS.pdb
@@ -3263,7 +3264,6 @@ C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\obj\Debug\View\Operations\Split
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\obj\Debug\View\Operations\Vacant.baml
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\obj\Debug\View\Pendingbillreport.baml
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\obj\Debug\View\PreLoaderControl.baml
-C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\obj\Debug\HMS.g.resources
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\obj\Debug\HMS.Properties.Resources.resources
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\obj\Debug\HMS.csproj.GenerateResource.cache
 C:\Users\Swamy\source\repos\Velrooms-V3\VelRooms\obj\Debug\HMS.csproj.CoreCompileInputs.cache

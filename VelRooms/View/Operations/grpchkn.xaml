@@ -144,13 +144,12 @@
                                 <material:PackIcon Kind="Gmail" Height="25" Width="25" Margin="25,0,0,0"/>
                                 <TextBox Name="txtemail" TabIndex="9" Background="White" TextAlignment="Justify" Width="120" Margin="15,0,0,0"  Padding="1,-8,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Emailid, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Email" material:HintAssist.IsFloating="True" />
                                 <material:PackIcon Kind="AccountCardDetails" Height="25" Width="25" Margin="25,0,0,0"/>
-                                <ComboBox x:Name="idproof" TabIndex="10" Width="120" Padding="0,0,0,0" Margin="15,0,0,0" Height="25" >
+                                <ComboBox x:Name="idproof" TabIndex="10" Width="120" Padding="0,4,0,0" SelectedIndex="0" Margin="15,0,0,0" Height="25" >
                                     <ComboBoxItem Content="Aadhar"/>
                                     <ComboBoxItem Content="Pancard"/>
                                     <ComboBoxItem Content="Passport"/>
                                     <ComboBoxItem Content="Voterid"/>
                                     <ComboBoxItem Content="DrivingLicense"/>
-                                    <ComboBoxItem Content="GovernmentId"/>
                                 </ComboBox>
                                 <TextBox Name="txtproof" TabIndex="11" Background="White" TextAlignment="Justify" Width="120" Margin="15,0,0,0"  Padding="1,-8,0,0"  LostFocus="txtproof_LostFocus" TextChanged="txtproof_TextChanged" material:HintAssist.Hint="ID proof *" material:HintAssist.IsFloating="True" />
                             </StackPanel>
@@ -207,7 +206,7 @@
                         <Label Name="txtmarketseg" Padding="4,0,0,0" FontSize="14" FontWeight="Bold" Width="200"  Margin="8,0,0,0"/>
                     </StackPanel>
                     <StackPanel>
-                        <Button Width="100" Margin="0,10,0,0" TabIndex="15" IsDefault="True" Content="Save" FontSize="15" Click="Button_Click"/>
+                        <Button Width="100" Name="Button" Margin="0,10,0,0" IsEnabled="False" TabIndex="15" IsDefault="True" Content="Save" FontSize="15" Click="Button_Click"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>

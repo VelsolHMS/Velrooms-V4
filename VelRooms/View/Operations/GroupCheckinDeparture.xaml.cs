@@ -106,9 +106,23 @@ namespace HMS.View.Operations
                 else
                 {
                     rooms = int.Parse(txtrooms.Text);
+                    if(rooms > 4)
+                    {
+                        txtrooms.Text = "";
+                        MessageBox.Show("You can't book more than 4 rooms.!");
+                    }
+                    else if(rooms < 2)
+                    {
+                        txtrooms.Text = "";
+                        MessageBox.Show("You need to book atleast 2 Rooms.!");
+                    }
                 }
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+                txtrooms.Text = "";
+                MessageBox.Show("Please type only numbers.!");
+            }
         }
     }
 }

@@ -102,7 +102,7 @@ namespace HMS.View.Operations
                         var button = sender as Button;
                         if (button.Background == Brushes.Gray)
                         {
-                            MessageBox.Show("This Room is already Selected !");
+                            MessageBox.Show("This Room is already Selected!");
                         }
                         else
                         {

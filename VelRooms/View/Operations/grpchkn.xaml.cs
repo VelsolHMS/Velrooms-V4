@@ -40,7 +40,7 @@ namespace HMS.View.Operations
         public decimal racktarrif = 0, chargedtarrif = 0, extrabedadult = 0;
         public string tcextad, tcextch;
         public decimal tpax = 0, tadult = 0, tchild = 0, trtarrif = 0, trextad = 0, trextch = 0, tctarrif = 0;
-
+        int NoOfRooms;
         data daa = new data();
         public Timer t = new Timer();
         Checksin ch = new Checksin();
@@ -64,6 +64,7 @@ namespace HMS.View.Operations
             string r = Vacant.roomnos.ToString();
             value = r.Split(' ');
             string ss = value.Length.ToString();
+            NoOfRooms = int.Parse(ss) - 1;
             j = int.Parse(ss) - 1;
             for (int i = 1; i < value.Length; i++)
             {
@@ -341,10 +342,11 @@ namespace HMS.View.Operations
             //this.NavigationService.Refresh();
         }
         public DataRow r;
+        public decimal AdvanceAmount = 0,SubAdvanceAmount = 0;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 if (error != 0 || txtfirstname.Text == "" || txtlastname.Text == "" || ADDRESS.Text == "" || ZIP.Text == "" || txtcity.Text == "" || txtmobileno.Text == "")
                 {
                     pop1.IsOpen = true;
@@ -374,10 +376,12 @@ namespace HMS.View.Operations
                         if (RESERVSTIONCHECKIN.p == 1)
                         {
                             r["reservationid"] = RESERVSTIONCHECKIN.res_id;
+                            gc.RESERVATION_ID = RESERVSTIONCHECKIN.res_id;
                         }
                         else
                         {
                             r["reservationid"] = "0";
+                            gc.RESERVATION_ID = "0";
                         }
                         r["groupcheckin"] = tbgckn.Text;
                         r["roomno"] = dt1.Rows[i]["room"].ToString();
@@ -417,6 +421,19 @@ namespace HMS.View.Operations
                         r["market"] = txtmarketseg.Content;
                         dt.Rows.Add(r);
                     }
+                    if(Convert.ToInt32(gc.RESERVATION_ID) > 0)
+                    {
+                        DataTable dt_ad_amount = gc.GetAdvanceAmount();
+                        if (dt_ad_amount.Rows[0]["AMOUNT_RECEIVED"].ToString() == "0.00" || dt_ad_amount.Rows[0]["AMOUNT_RECEIVED"].ToString() == null)
+                        {
+                            AdvanceAmount = 0;
+                        }
+                        else
+                        {
+                            AdvanceAmount = Convert.ToDecimal(dt_ad_amount.Rows[0]["AMOUNT_RECEIVED"]);
+                            SubAdvanceAmount = Math.Round((AdvanceAmount / NoOfRooms),2,MidpointRounding.AwayFromZero);
+                        }
+                    }
                     for (int l = 0; l < dt.Rows.Count; l++)
                     {
                         gc.RESERVATION_ID = dt.Rows[l]["reservationid"].ToString();
@@ -446,7 +463,9 @@ namespace HMS.View.Operations
                         gc.EXTRABEDADULT = dt.Rows[l]["adult"].ToString();
                         gc.EXTRABEDCHILD = dt.Rows[l]["child"].ToString();
                         gc.PLANCODE = dt.Rows[l]["plancode"].ToString();
-                        gc.TAX = dt.Rows[l]["tax"].ToString();
+                        ch.FETCH_TAX(dt.Rows[l]["racktarrif"].ToString());
+                        gc.TAX = ch.TAX;
+                        //gc.TAX = dt.Rows[l]["tax"].ToString();
                         gc.RACK_TARIFF = Convert.ToDecimal(dt.Rows[l]["racktarrif"].ToString());
                         gc.RACK_ADULT = Convert.ToDecimal(dt.Rows[l]["rextraadult"].ToString());
                         gc.RACK_CHILD = Convert.ToDecimal(dt.Rows[l]["rextrachild"].ToString());
@@ -460,6 +479,19 @@ namespace HMS.View.Operations
                         gc.Insert1();
                         gc.coloruppdate();
                         gc.Night_Insert();
+                        if (AdvanceAmount > 0)
+                        {
+                            if (l == 0)
+                            {
+                                gc.SplitedAdvance = SubAdvanceAmount.ToString();
+                                gc.AdvanceUpdate();
+                            }
+                            else
+                            {
+                                gc.SplitedAdvance = SubAdvanceAmount.ToString();
+                                gc.InsertAdvance();
+                            }
+                        }
                         gc.RESERID = RESERVSTIONCHECKIN.res_id;
                         gc.Updatereservtion();
                     }
@@ -473,9 +505,10 @@ namespace HMS.View.Operations
                     t.Start();
                     popup_insert.IsOpen = true;
                     //this.NavigationService.Refresh();
+                    Button.IsEnabled = false;
                 }
-            //}
-            //catch (Exception) { }
+            }
+            catch (Exception) { }
         }
         public void Send_SMS()
         {
@@ -544,7 +577,7 @@ namespace HMS.View.Operations
                 tctarrif = 0;
                 tcextad = "0";
                 tcextch = "0";
-
+                Button.IsEnabled = true;
                 for (int i = 1; i < value.Length; i++)
                 {
                     var room = string.Format("txtroom{0}", i);
@@ -866,7 +899,6 @@ namespace HMS.View.Operations
                             {
                                 ((TextBox)txtcharge).Text = a;
                             }
-
                         }
                         else if (((TextBox)pax).Text == "2")
                         {
@@ -991,7 +1023,6 @@ namespace HMS.View.Operations
                 }
             }
         }
-
         public void Tax()               //To Display Tax In Tarrof Popup
         {
             for(int i = 1; i < value.Length; i++)
@@ -1000,7 +1031,7 @@ namespace HMS.View.Operations
                 var txttarrif = this.FindName(textbox);
 
                 gc.ROOM_NO =value[i];
-                gc.RACK_TARIFF =Convert.ToDecimal(((TextBox)txttarrif).Text);
+                gc.RACK_TARIFF = Convert.ToDecimal(((TextBox)txttarrif).Text);
                 gc.GetTax();
 
                 var textboxtax = string.Format("tax{0}", i);

@@ -278,7 +278,6 @@ namespace HMS.Model
         }
         public void FETCH_TAX(String S)
         {
-
             String STR = "SELECT FACTOR FROM TAX_CODE WHERE FROM_AMOUNT < '" + S + "' AND TO_AMOUNT >= '" + S + "'";
             var l = new List<SqlParameter>();
             DataTable D = DbFunctions.ExecuteCommand<DataTable>(STR, l);

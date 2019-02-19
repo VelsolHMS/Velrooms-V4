@@ -61,7 +61,7 @@ namespace HMS.Model.Operations
         public DateTime INSERT_DATE { get; set; }
         public decimal rsingle, rdouble, rtriple, rquad, rextraadult, rextrachild;
         public int a = 0;
-        
+
         public void Insert1()
         {
             var list = new List<SqlParameter>();
@@ -108,13 +108,13 @@ namespace HMS.Model.Operations
             list.AddSqlParameter("@CHECK_OUT", "0");
             list.AddSqlParameter("@PHOTO", IMAGE);
             string s = "INSERT INTO CHECKIN (RESERVATION_ID,ROOM_NO,ROOM_CATEGORY,ARRIVAL_DATE,ARRIVAL_TIME,DEPARTURE_DATE,SUFFIX,FIRSTNAME,LASTNAME,ADDRESS,ZIP,CITY,STATE,COUNTRY," +
-                       "MOBILE_NO,EMAIL,ID_TYPE,ID_DATA,PAX,PAX_ADULT,PAX_CHILD,EXTRA_BED,EXTRA_ADULT,EXTRA_CHILD,PLANCODE,TAX,RACK_TARRIF,RACK_EBED_ADULT,RACK_EBED_CHILD,PHOTO,"+
+                       "MOBILE_NO,EMAIL,ID_TYPE,ID_DATA,PAX,PAX_ADULT,PAX_CHILD,EXTRA_BED,EXTRA_ADULT,EXTRA_CHILD,PLANCODE,TAX,RACK_TARRIF,RACK_EBED_ADULT,RACK_EBED_CHILD,PHOTO," +
                        "CHARGED_TARRIF,CHARGED_EBED_ADULT,CHARGED_EBED_CHILD,INSERT_BY,INSERT_DATE,MARKET_SEGMENT,SCANTY_BAGGAGE,STATUS,GROUP_CHECKINID,CHECK_OUT) " +
                        "VALUES (@RESERVATION_ID,@ROOM_NO,@ROOM_CATEGORY,@ARRIVAL_DATE,@ARRIVAL_TIME,@DEPARTURE_DATE,@SUFFIX,@FIRSTNAME," +
-                       "@LASTNAME,@ADDRESS,@ZIP,@CITY,@STATE,@COUNTRY,"+
-                       "@MOBILE_NO,@EMAIL,@ID_TYPE,@ID_DATA,@PAX,@PAX_ADULT,@PAX_CHILD,@EXTRA_BED,@EXTRA_ADULT,"+
-                       "@EXTRA_CHILD,@PLANCODE,@TAX,@RACK_TARRIF,@RACK_EBED_ADULT,@RACK_EBED_CHILD,@PHOTO,"+
-                       "@CHARGED_TARRIF,@CHARGED_EBED_ADULT,@CHARGED_EBED_CHILD,@INSERT_BY,@INSERT_DATE,@MARKET_SEGMENT,"+
+                       "@LASTNAME,@ADDRESS,@ZIP,@CITY,@STATE,@COUNTRY," +
+                       "@MOBILE_NO,@EMAIL,@ID_TYPE,@ID_DATA,@PAX,@PAX_ADULT,@PAX_CHILD,@EXTRA_BED,@EXTRA_ADULT," +
+                       "@EXTRA_CHILD,@PLANCODE,@TAX,@RACK_TARRIF,@RACK_EBED_ADULT,@RACK_EBED_CHILD,@PHOTO," +
+                       "@CHARGED_TARRIF,@CHARGED_EBED_ADULT,@CHARGED_EBED_CHILD,@INSERT_BY,@INSERT_DATE,@MARKET_SEGMENT," +
                        "@SCANTY_BAGGAGE,@STATUS,@GROUP_CHECKINID,@CHECK_OUT)";
             DbFunctions.ExecuteCommand<int>(s, list);
         }
@@ -138,7 +138,7 @@ namespace HMS.Model.Operations
             return a;
         }
 
-       public void NIGHTT(string S)
+        public void NIGHTT(string S)
         {
             DateTime dt = DateTime.Today;
 
@@ -168,8 +168,51 @@ namespace HMS.Model.Operations
             list.AddSqlParameter("@insert", dt.ToShortDateString());
             list.AddSqlParameter("@time", ARRIVAL_TIME);
             list.AddSqlParameter("@night", 0);
-            S = "INSERT INTO NIGHT_AUDIT (ROOM_NO,ROOM_TARRIF,EXTRABED_ADULT,EXTRABED_CHILD,CHECKIN_ID,INSERT_DATE,INSERT_TIME,NIGHT) " +
-                           "VALUES (@roomno,@roomtarrif,@eadult,@echild,(SELECT CHECKIN_ID FROM CHECKIN WHERE GROUP_CHECKINID = @gid AND ROOM_NO=@roomno AND CHECK_OUT=0),@insert,@time,@night)";
+            list.AddSqlParameter("@TAX", TAX);
+            S = "INSERT INTO NIGHT_AUDIT (ROOM_NO,ROOM_TARRIF,EXTRABED_ADULT,EXTRABED_CHILD,CHECKIN_ID,INSERT_DATE,INSERT_TIME,NIGHT,GST) " +
+                           "VALUES (@roomno,@roomtarrif,@eadult,@echild,(SELECT CHECKIN_ID FROM CHECKIN WHERE GROUP_CHECKINID = @gid AND ROOM_NO=@roomno AND CHECK_OUT=0),@insert,@time,@night,@TAX)";
+            DbFunctions.ExecuteCommand<int>(S, list);
+        }
+        public DataTable GetAdvance()
+        {
+            //select* from ADVANCE where RESERVATION_ID = ''
+            var list = new List<SqlParameter>();
+            string s = "Select * from ADVANCE where RESERVATION_ID = '" + RESERVATION_ID + "'";
+            DataTable dt = DbFunctions.ExecuteCommand<DataTable>(s, list);
+            return dt;
+        }
+        public DataTable GetAdvanceAmount()
+        {
+            //select* from ADVANCE where RESERVATION_ID = ''
+            var list = new List<SqlParameter>();
+            string s = "Select Sum(AMOUNT_RECEIVED) as AMOUNT_RECEIVED from ADVANCE where RESERVATION_ID = '" + RESERVATION_ID + "'";
+            DataTable dt = DbFunctions.ExecuteCommand<DataTable>(s, list);
+            return dt;
+        }
+        public string SplitedAdvance { get; set; }
+        public string CheckinId { get; set; }
+        public void AdvanceUpdate()
+        {
+            //Update ADVANCE set CHECKIN_ID = '',ADVANCE_FOR = 'ROOM',ROOM_NO = '',AMOUNT_RECEIVED = '',UPDATE_BY = '',UPDATE_DATE = '' where RESERVATION_ID = ''
+            var list = new List<SqlParameter>();
+            list.AddSqlParameter("@SplitedAdvance", SplitedAdvance);
+            list.AddSqlParameter("@ROOM_NO", ROOM_NO);
+            list.AddSqlParameter("@UPDATE_BY", login.u);
+            list.AddSqlParameter("@UPDATE_DATE", DateTime.Today.Date);
+            string S = "Update ADVANCE set CHECKIN_ID = (Select CHECKIN_ID from CHECKIN where ROOM_NO = @ROOM_NO and CHECK_OUT = 0),ADVANCE_FOR = 'ROOM',ROOM_NO = @ROOM_NO,AMOUNT_RECEIVED = @SplitedAdvance,UPDATE_BY = @UPDATE_BY,UPDATE_DATE = @UPDATE_DATE where RESERVATION_ID = '" + RESERVATION_ID + "'";
+            DbFunctions.ExecuteCommand<int>(S, list);
+        }
+        public void InsertAdvance()
+        {
+            var list = new List<SqlParameter>();
+            list.AddSqlParameter("@SplitedAdvance", SplitedAdvance);
+            list.AddSqlParameter("@RESERVATION_ID", RESERVATION_ID);
+            list.AddSqlParameter("@ROOM_NO", ROOM_NO);
+            string S = "INSERT INTO ADVANCE (CHECKIN_ID,RESERVATION_ID,ADVANCE_FOR,ROOM_NO,PAYTYPE,CURRENCY_CODE,AMOUNT_RECEIVED,PARTICULARS,TRANSACTION_NO,CHEQUE_NO,ADVANCE,INSERT_BY,INSERT_DATE)"+
+                    "VALUES((Select CHECKIN_ID from CHECKIN where ROOM_NO = @RESERVATION_ID AND CHECK_OUT = 0),@RESERVATION_ID,'ROOM',@ROOM_NO," +
+                    "(Select distinct PAYTYPE from ADVANCE where RESERVATION_ID = @RESERVATION_ID AND ADVANCE = 0),(Select distinct CURRENCY_CODE from ADVANCE where RESERVATION_ID = @RESERVATION_ID AND ADVANCE = 0)," +
+                    "@SplitedAdvance,(Select distinct PARTICULARS from ADVANCE where RESERVATION_ID = @RESERVATION_ID AND ADVANCE = 0),(Select distinct TRANSACTION_NO from ADVANCE where RESERVATION_ID = @RESERVATION_ID AND ADVANCE = 0)," +
+                    "(Select distinct CHEQUE_NO from ADVANCE where RESERVATION_ID = @RESERVATION_ID AND ADVANCE = 0),0,(Select distinct INSERT_BY from ADVANCE where RESERVATION_ID = @RESERVATION_ID AND ADVANCE = 0),(Select distinct INSERT_DATE from ADVANCE where RESERVATION_ID = @RESERVATION_ID AND ADVANCE = 0))";
             DbFunctions.ExecuteCommand<int>(S, list);
         }
         public void coloruppdate()
