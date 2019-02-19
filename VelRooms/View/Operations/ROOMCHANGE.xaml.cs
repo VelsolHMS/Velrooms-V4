@@ -68,7 +68,8 @@ namespace HMS.View.Operations
                     if (txtmainroom.Text == txttransferroom.Text)
                     {
                         txttransferroom.Text = "";
-                        MessageBox.Show("please enter the vacant room ?");
+                        //MessageBox.Show("please enter the vacant room ?");
+                        pop2.IsOpen = true;
                     }
                     else
                     {
@@ -77,7 +78,8 @@ namespace HMS.View.Operations
                 else
                 {
                     txttransferroom.Text = "";
-                    MessageBox.Show("please enter the vacant room");
+                    //MessageBox.Show("please enter the vacant room");
+                    pop2.IsOpen = true;
                 }
             }
             catch (Exception) { }
@@ -95,6 +97,16 @@ namespace HMS.View.Operations
             //txtmainroom.Text = "";
             //txtswap.Text = "";
         }
+        private void Error_Click(object sender, RoutedEventArgs e)
+        {
+            pop2.IsOpen = false;
+        }
+
+        private void Error1_Click(object sender, RoutedEventArgs e)
+        {
+            pop3.IsOpen = false;
+        }
+
         private void txtmainroom_LostFocus(object sender, RoutedEventArgs e)
         {
             try
@@ -105,7 +117,8 @@ namespace HMS.View.Operations
                 if (dt.Rows.Count == 0)
                 {
                     txtmainroom.Text = "";
-                    MessageBox.Show("Please Enter the Occupied Room");
+                    pop3.IsOpen = true;
+                    //MessageBox.Show("Please Enter the Occupied Room");
                 }
                 else
                 {
