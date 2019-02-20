@@ -25,8 +25,19 @@ namespace HMS.View.Operations
     {
         RESERVATION re = new RESERVATION();
         public DataTable datatable;
-        public static int rooms,group,days,noofrooms, p = 0;
-        public static String res_id,pax,adult,child,gueststatus,firstname,lastname,company_name,company_address,zip,city,state,country,address,mobile,email,arraivaldate,departuredate,roomcategory;//,Idproof,IdNumber
+        public static int rooms, group, days, noofrooms, p = 0;
+
+        private void Error1_Click(object sender, RoutedEventArgs e)
+        {
+            pop1.IsOpen = false;
+        }
+
+        private void Error2_Click(object sender, RoutedEventArgs e)
+        {
+            pop2.IsOpen = false;
+        }
+
+        public static String res_id, pax, adult, child, gueststatus, firstname, lastname, company_name, company_address, zip, city, state, country, address, mobile, email, arraivaldate, departuredate, roomcategory;//,Idproof,IdNumber
         public DataTable getDetails;
         public RESERVSTIONCHECKIN()
         {
@@ -67,7 +78,8 @@ namespace HMS.View.Operations
                 child = getDetails.Rows[0]["CHILD"].ToString();
                 if (arraivaldate != DateTime.Today.ToShortDateString())
                 {
-                    MessageBox.Show(" This reservation will not get check-In today. Please check the arrival date.");
+                    //MessageBox.Show("This reservation will not get check-In today. Please check the arrival date.");
+                    pop1.IsOpen = true;
                 }
                 else
                 {
@@ -79,7 +91,8 @@ namespace HMS.View.Operations
                     }
                     else if (noofrooms == 0)
                     {
-                        MessageBox.Show("No of Rooms Should not be zero please Update.!");
+                        pop2.IsOpen = true;
+                        //MessageBox.Show("No of Rooms Should not be zero please Update.!");
                     }
                     else if (noofrooms > 1)
                     {
