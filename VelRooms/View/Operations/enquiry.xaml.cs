@@ -113,7 +113,8 @@ namespace HMS.View.Operations
                     EN.insert();
                     DataTable dt = EN.fill_enquirygrid();
                     dg.ItemsSource = dt.DefaultView;
-                    MessageBox.Show("Saved sucessfully");
+                    //MessageBox.Show("Saved sucessfully");
+                    popup_insert.IsOpen = true;
                     clear();
                 }
                 else
@@ -122,7 +123,8 @@ namespace HMS.View.Operations
                     EN.UPDATE();
                     DataTable dt = EN.fetch_data();
                     dg.ItemsSource = dt.DefaultView;
-                    MessageBox.Show("Updated sucessfully");
+                    //MessageBox.Show("Updated sucessfully");
+                    popup_update.IsOpen = true;
                     clear();
                     Save.Content = "Save";
                 }
@@ -196,7 +198,8 @@ namespace HMS.View.Operations
         {
             if (txtdate.SelectedDate < DateTime.Today)
             {
-                MessageBox.Show("Active from date cannot be less than the current date");
+                //MessageBox.Show("Active from date cannot be less than the current date");
+                pop1.IsOpen = true;
                 txtdate.Text = "";
             }
             else if (date.SelectedDate == DateTime.Today)
@@ -213,10 +216,6 @@ namespace HMS.View.Operations
             else
             {
             }
-        }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = true;
         }
         private void dg_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -344,6 +343,17 @@ namespace HMS.View.Operations
         {
         }
         public static DateTime datet, datet1;
+
+        private void insertpop_Click_1(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
+        }
+
         private void btnsearch_Click(object sender, RoutedEventArgs e)
         {
             Enquiry1 n = new Enquiry1();

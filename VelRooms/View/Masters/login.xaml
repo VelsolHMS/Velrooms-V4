@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="VelRooms" Height="500" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent" >
     <Window.Resources>
-        <!--<Style x:Key="leftpanestyle" TargetType="Button">
+        <Style x:Key="leftpanestyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontFamily" Value="Georige"/>
@@ -60,7 +60,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>-->
+        </Style>
     </Window.Resources>
     <Grid>
         <material:Card Height="500">

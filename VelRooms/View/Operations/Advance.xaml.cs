@@ -97,7 +97,7 @@ namespace HMS.View.Operations
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            pop1.IsOpen = false;
+            pop2.IsOpen = false;
             clear();
             this.NavigationService.Refresh();
         }
@@ -106,7 +106,8 @@ namespace HMS.View.Operations
         {
             if(txtroomno.Text == "" || txtamountreceived.Text == "")
             {
-                MessageBox.Show("Please Fill all Fields");
+                //MessageBox.Show("Please Fill all Fields");
+                pop2.IsOpen = true;
             }
             else
             {
@@ -119,7 +120,7 @@ namespace HMS.View.Operations
             {
                 if (error != 0 || (rbroom.IsChecked == true && txtroomno.Text == "") || (rbresr.IsChecked == true && txtreservation.Text == ""))
                 {
-                    pop1.IsOpen = true;
+                    pop2.IsOpen = true;
                     popup.IsOpen = false;
                 }
                 else
@@ -189,7 +190,7 @@ namespace HMS.View.Operations
             {
                 if (error != 0 || (rbroom.IsChecked == true && txtroomno.Text == "") || (rbresr.IsChecked == true && txtreservation.Text == ""))
                 {
-                    pop1.IsOpen = true;
+                    pop2.IsOpen = true;
                     popup.IsOpen = false;
                 }
                 else
@@ -457,7 +458,8 @@ namespace HMS.View.Operations
                     txtcompany.Text = "";
                     txtcompany1.Text = "";
                     txtcontactno.Text = "";
-                    MessageBox.Show("Please Enter Valid Room No");
+                    //MessageBox.Show("Please Enter Valid Room No");
+                    pop2.IsOpen = true;
                     txtroomno.Foreground = Brushes.Black;
                 }
             }
@@ -467,6 +469,11 @@ namespace HMS.View.Operations
         private void insertpop_Click(object sender, RoutedEventArgs e)
         {
             popup_insert.IsOpen = false;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            pop2.IsOpen = false;
         }
 
         private void txtgustname_GotFocus(object sender, RoutedEventArgs e)

@@ -182,7 +182,8 @@ namespace HMS.View.Operations
             }
             else
             {
-                MessageBox.Show("Please fill all fields");
+                //MessageBox.Show("Please fill all fields");
+                pop1.IsOpen = true;
             }
             //}
             //catch (Exception)

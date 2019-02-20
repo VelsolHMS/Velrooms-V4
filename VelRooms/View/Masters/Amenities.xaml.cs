@@ -149,7 +149,8 @@ namespace HMS.View.Masters
                         Clear();
                         DataTable dt = amenity.grid();
                         Dgamenity.ItemsSource = dt.DefaultView;
-                        MessageBox.Show("inserted sucessfully");
+                        //MessageBox.Show("inserted sucessfully");
+                        popup_insert.IsOpen = true;
                         //string a1 = "Close", b1 = Convert.ToString(insertpop.Content);
                         //if (b1 == a1)
                         //{
@@ -171,7 +172,8 @@ namespace HMS.View.Masters
                         Clear();
                         DataTable dt = amenity.grid();
                         Dgamenity.ItemsSource = dt.DefaultView;
-                        MessageBox.Show("update sucessfully");
+                        //MessageBox.Show("update sucessfully");
+                        popup_update.IsOpen = true;
                     }
                     //this.NavigationService.Refresh();
                 }
@@ -441,10 +443,6 @@ namespace HMS.View.Masters
                 }
             }
         }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = false;
-        }
         private void Dgamenity_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Binding b = new Binding();
@@ -467,6 +465,16 @@ namespace HMS.View.Masters
             {
                 MessageBox.Show("please check the fileds.");
             }
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
         }
     }
 }

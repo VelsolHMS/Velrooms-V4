@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       Title="RESERVSTIONCHECKIN" Height="500" Width="850" Background="White">
     <Page.Resources>
-        <!--<Style x:Key="rbstyle" TargetType="RadioButton">
+        <Style x:Key="rbstyle" TargetType="RadioButton">
             <Setter Property="RenderTransform">
                 <Setter.Value>
                     <ScaleTransform ScaleX="1.2" ScaleY="1.3"/>
@@ -34,7 +34,7 @@
                     <Setter Property="Background" Value="DarkOrange" />
                 </Trigger>
             </Style.Triggers>
-        </Style>-->
+        </Style>
 
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Times New Roman"/>
