@@ -145,7 +145,8 @@ namespace HMS.View.Operations
                     string a1 = "Save", b1 = Convert.ToString(btnsave.Content);
                     if (b1 == a1)
                     {
-                        MessageBox.Show("Saved sucessfully");
+                        //MessageBox.Show("Saved sucessfully");
+                        pop2.IsOpen = true;
                         clear();
                         this.NavigationService.Refresh();
                         //insert.Content = "Inserted Sucessfully";
@@ -162,7 +163,8 @@ namespace HMS.View.Operations
             }
             catch (Exception)
             {
-                MessageBox.Show("please check the values");
+                //MessageBox.Show("please check the values");
+                pop1.IsOpen = true;
             }
         }
         //private void btnmodify_Click(object sender, RoutedEventArgs e)

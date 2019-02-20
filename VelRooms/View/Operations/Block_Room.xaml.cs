@@ -278,7 +278,8 @@ namespace HMS.View.Operations
                 }
                 else if (A == 0)
                 {
-                    MessageBox.Show("The Room No which you have entered is not vacant , You can't block this room");
+                    //MessageBox.Show("The Room No which you have entered is not vacant , You can't block this room");
+                    pop1.IsOpen = true;
                 }
             }
             catch (Exception) { }
@@ -373,16 +374,19 @@ namespace HMS.View.Operations
                         }
                         else
                         {
-                            MessageBox.Show("The Room No is inavlid , please check again");
+                            //MessageBox.Show("The Room No is inavlid , please check again");
+                            pop1.IsOpen = true;
                             btnblock.IsEnabled = false; btnrelease.IsEnabled = false;
                         }
                         // MessageBox.Show("The Room No Which you have entered is may be it is not vacant or incorrect");
+                        pop1.IsOpen = true;
                     }
                 }
             }
             catch(Exception)
             {
-                MessageBox.Show("Please Enter Valid Room No");
+                //MessageBox.Show("Please Enter Valid Room No");
+                pop1.IsOpen = true;
                 txtroomno.Foreground = Brushes.Red;
             }
         }

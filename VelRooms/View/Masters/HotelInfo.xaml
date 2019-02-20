@@ -10,7 +10,7 @@
     Title="Hotelinfo" Height="570" Width="600" FontFamily="Arial" FontSize="15" Background="White">
     
     <Page.Resources>
-        <!--<vm:data x:Key="Viewmodel"></vm:data>-->
+        <vm:data x:Key="Viewmodel"></vm:data>
         <CollectionViewSource Source="{Binding State}" x:Key="name">
             <CollectionViewSource.SortDescriptions>
                 <scm:SortDescription PropertyName="State" Direction="Ascending"/>

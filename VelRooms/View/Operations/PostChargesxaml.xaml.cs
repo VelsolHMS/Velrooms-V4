@@ -140,7 +140,8 @@ namespace HMS.View.Operations
             }
             catch (Exception)
             {
-                MessageBox.Show("please check the values");
+                //MessageBox.Show("please check the values");
+                pop1.IsOpen = true;
             }
         }
         private void revenuecode_SelectionChanged(object sender, SelectionChangedEventArgs e)

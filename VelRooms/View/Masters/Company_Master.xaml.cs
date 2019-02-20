@@ -208,24 +208,24 @@ namespace HMS.View.Masters
         {
             try
             {
-                if (error != 0 ||txtcompanycode.Text =="" ||txtcompanyname.Text =="" ||txtcontactpersonname.Text =="" ||txtcontactpersonnumber.Text==""||txtcontact.Text==""||txtplotno.Text==""||txtdiscount.Text == ""||yes.IsChecked == true)
+                if (error != 0 || txtcompanycode.Text == "" || txtcompanyname.Text == "" || txtcontactpersonname.Text == "" || txtcontactpersonnumber.Text == "" || txtcontact.Text == "" || txtplotno.Text == "" || txtdiscount.Text == "" || yes.IsChecked == true)
                 {
-                  //  pop1.IsOpen = true;
-                    if(txtcompanycode.Text =="")
+                    //  pop1.IsOpen = true;
+                    if (txtcompanycode.Text == "")
                     { txtcompanycode.Text = ""; }
-                    if(txtcompanyname.Text =="")
+                    if (txtcompanyname.Text == "")
                     { txtcompanyname.Text = ""; }
-                    if(txtcontactpersonname.Text =="")
+                    if (txtcontactpersonname.Text == "")
                     { txtcontactpersonname.Text = ""; }
-                    if(txtcontactpersonnumber.Text =="")
+                    if (txtcontactpersonnumber.Text == "")
                     { txtcontactpersonnumber.Text = ""; }
-                    if(txtcontact.Text=="")
+                    if (txtcontact.Text == "")
                     { txtcontact.Text = ""; }
-                    if(txtplotno.Text=="")
+                    if (txtplotno.Text == "")
                     { txtplotno.Text = ""; }
-                    if(txtdiscount.Text == "")
+                    if (txtdiscount.Text == "")
                     { txtdiscount.Text = ""; }
-                    if(yes.IsChecked == true)
+                    if (yes.IsChecked == true)
                     { txtblacklistedby.Text = ""; }
                 }
                 else
@@ -289,14 +289,16 @@ namespace HMS.View.Masters
                         //  insert.Content = "Inserted Sucessfully";
                         // pop2.IsOpen = true;
                         cm.Insert();
-                        MessageBox.Show("inserted sucessfully");
+                        //MessageBox.Show("inserted sucessfully");
+                        popup_insert.IsOpen = true;
                         clear();
                     }
                     string a = "Update", b = Convert.ToString(savee.Content);
                     if (b == a)
                     {
                         cm.Update();
-                        MessageBox.Show("updated sucessfully");
+                        //MessageBox.Show("updated sucessfully");
+                        popup_update.IsOpen = true;
                         clear();
                     }
                     //addd.IsEnabled = true;
@@ -304,7 +306,7 @@ namespace HMS.View.Masters
                     savee.IsEnabled = true;
                     clearr.IsEnabled = true;
                     searchh.IsEnabled = false;
-                //    clear();
+                    //    clear();
                     this.NavigationService.Refresh();
                     check.IsEnabled = false;
 
@@ -312,7 +314,7 @@ namespace HMS.View.Masters
                     no.IsEnabled = false;
 
                     savee.Content = "Save";
-                    
+
                     //addd.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
                     mod.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
                 }
@@ -321,11 +323,19 @@ namespace HMS.View.Masters
             {
                 MessageBox.Show("please Enter correct values");
             }
+
         }
+
         private void insertpop_Click(object sender, RoutedEventArgs e)
         {
-            pop2.IsOpen = false;
+            popup_insert.IsOpen = false;
         }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
+        }
+
         private void mod_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -411,7 +421,8 @@ namespace HMS.View.Masters
                 else
                 {
                     cm.Update();
-                    MessageBox.Show("Updated Successfully");
+                    //MessageBox.Show("Updated Successfully");
+                    popup_update.IsOpen = true;
                     mod.Content = "Modify";
                     clear();
                     this.NavigationService.Refresh();
