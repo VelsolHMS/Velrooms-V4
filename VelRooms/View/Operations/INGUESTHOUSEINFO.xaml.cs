@@ -135,19 +135,19 @@ namespace HMS.View.Operations
                     {
                         IN.INSERT();
                         IN.guestupdate();
-                        MessageBox.Show("Saved sucessfully");
+                        //MessageBox.Show("Saved sucessfully");
                         // Save.Content = "Save";
-                        //insert.Content = "Inserted Sucessfully";
-                        //pop2.IsOpen = true;
+                        insert.Text = "Data Inserted.!";
+                        pop2.IsOpen = true;
                     }
 
                     string a = "Update", b = Convert.ToString(Save.Content);
                     if (b == a)
                     {
                         IN.INSERT();
-                        //insert.Content = "Updated Sucessfully";
-                        //  pop2.IsOpen = true;
-                        MessageBox.Show("Updated sucessfully");
+                        insert.Text = "Data Updated.!";
+                        pop2.IsOpen = true;
+                        //MessageBox.Show("Updated sucessfully");
                     }
                     IN.UPDTE();
                     CLEAR();

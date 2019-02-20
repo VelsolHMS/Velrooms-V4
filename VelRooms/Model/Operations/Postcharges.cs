@@ -75,23 +75,19 @@ namespace HMS.Model
             string SS = "UPDATE POSTCHARGES SET POSTCHARGES=0 WHERE ROOM_NO ='" + ROOMNO + "' AND CHECKIN_ID='"+CHECKIN_ID+"' ";
             DbFunctions.ExecuteCommand<int>(SS, LIST);
         }
-
-      
         public int GET_MAX_NAME()
         {
             int A = 0;
-            String S = "SELECT MAX(CHECKIN_ID) FROM CHECKIN WHERE ROOM_NO=@ROOMNO";
             var LIS = new List<SqlParameter>();
             LIS.AddSqlParameter("@ROOMNO", ROOMNO);
+            String S = "SELECT CHECKIN_ID FROM CHECKIN WHERE ROOM_NO=@ROOMNO AND CHECK_OUT = 0";
             object C = DbFunctions.ExecuteCommand<object>(S, LIS);
             if (C != System.DBNull.Value)
             {
                 A = Convert.ToInt32(C);
             }
             return A;
-
         }
-
         public string GET_TAXFROM_REVENUE()
         {
             string S = "SELECT TAX_STRUCTURE FROM REVENUE WHERE REVENUE_CODE=@RVCODE";
