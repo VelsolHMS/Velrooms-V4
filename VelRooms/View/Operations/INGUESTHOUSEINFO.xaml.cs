@@ -136,20 +136,18 @@ namespace HMS.View.Operations
                         IN.INSERT();
                         IN.guestupdate();
                         //MessageBox.Show("Saved sucessfully");
-                        pop2.IsOpen = true;
                         // Save.Content = "Save";
-                        //insert.Content = "Inserted Sucessfully";
-                        //pop2.IsOpen = true;
+                        insert.Text = "Data Inserted.!";
+                        pop2.IsOpen = true;
                     }
 
                     string a = "Update", b = Convert.ToString(Save.Content);
                     if (b == a)
                     {
                         IN.INSERT();
-                        //insert.Content = "Updated Sucessfully";
-                        //  pop2.IsOpen = true;
+                        insert.Text = "Data Updated.!";
+                        pop2.IsOpen = true;
                         //MessageBox.Show("Updated sucessfully");
-                        popup_update.IsOpen = true;
                     }
                     IN.UPDTE();
                     CLEAR();
@@ -272,10 +270,9 @@ namespace HMS.View.Operations
             }
         }
 
-
-        private void updatepop_Click(object sender, RoutedEventArgs e)
+        private void insertpop_Click_1(object sender, RoutedEventArgs e)
         {
-            popup_update.IsOpen = false;
+
         }
     }
 }
