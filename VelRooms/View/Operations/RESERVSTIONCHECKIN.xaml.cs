@@ -25,7 +25,7 @@ namespace HMS.View.Operations
     {
         RESERVATION re = new RESERVATION();
         public DataTable datatable;
-        public static int rooms, group, days, noofrooms, p = 0;
+        public static int rooms,group,days,noofrooms, p = 0;
 
         private void Error1_Click(object sender, RoutedEventArgs e)
         {
@@ -37,7 +37,7 @@ namespace HMS.View.Operations
             pop2.IsOpen = false;
         }
 
-        public static String res_id, pax, adult, child, gueststatus, firstname, lastname, company_name, company_address, zip, city, state, country, address, mobile, email, arraivaldate, departuredate, roomcategory;//,Idproof,IdNumber
+        public static String res_id,pax,adult,child,gueststatus,firstname,lastname,company_name,company_address,zip,city,state,country,address,mobile,email,arraivaldate,departuredate,roomcategory;//,Idproof,IdNumber
         public DataTable getDetails;
         public RESERVSTIONCHECKIN()
         {

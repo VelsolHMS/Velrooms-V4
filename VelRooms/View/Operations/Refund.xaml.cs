@@ -486,6 +486,7 @@ namespace HMS.View.Operations
                     {
                         ADVANCEAMOUNT.Text = balance_amount.Text;
                         //MessageBox.Show("Saved Successfully");
+                        popup_insert.IsOpen = true;
                     }
                     popup_insert.IsOpen = true;
                     //if (Checkout.ref34 == 1)
