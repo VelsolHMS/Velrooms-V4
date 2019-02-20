@@ -263,7 +263,6 @@ C:\Users\Swamy\Documents\Visual Studio 2012\Projects\Velrooms-V3\DAL\obj\Debug\D
 C:\Users\Swamy\Documents\Visual Studio 2012\Projects\Velrooms-V3\DAL\obj\Debug\DAL.pdb
 C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\bin\Debug\DAL.exe
 C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\bin\Debug\DAL.pdb
-C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
 C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\MainWindow.g.cs
 C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\App.g.cs
 C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\DAL_MarkupCompile.cache
