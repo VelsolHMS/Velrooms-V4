@@ -139,7 +139,8 @@ namespace HMS.View.Masters
                         CODE.INSERT();
                         DataTable R = CODE.fill_taxgrid();
                         dgtax.ItemsSource = R.DefaultView;
-                        MessageBox.Show("Saved Successfully");
+                        //MessageBox.Show("Saved Successfully");
+                        popup_insert.IsOpen = true;
                     }
                     else
                     {
@@ -147,7 +148,8 @@ namespace HMS.View.Masters
                         CODE.UPDATE();
                         DataTable dt = CODE.fill_taxdata();
                         dgtax.ItemsSource = dt.DefaultView;
-                        MessageBox.Show("Updated Successfully");
+                        //MessageBox.Show("Updated Successfully");
+                        popup_update.IsOpen = true;
                         save.Content = "Save";
                     }
                     CLEAR();
@@ -226,10 +228,6 @@ namespace HMS.View.Masters
                 txtactivedate.Text = Convert.ToString(DateTime.Today.Date);
             }
         }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = false;
-        }
         private void dgtax_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             int i = dgtax.SelectedIndex;
@@ -261,6 +259,17 @@ namespace HMS.View.Masters
         }
         public decimal fromamount, toamount;
         public static decimal amount, amount1;
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
         private void txttoamount_LostFocus(object sender, RoutedEventArgs e)
         {
             Taxcode1 CODE = new Taxcode1();

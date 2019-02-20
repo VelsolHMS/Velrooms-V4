@@ -814,7 +814,8 @@ namespace HMS.View.Masters
                     rm.INSERT();
                     DataTable dt1 = rm.fill_mastergrid();
                     dgroomrate.ItemsSource = dt1.DefaultView;
-                    MessageBox.Show("Saved Successfully");
+                    //MessageBox.Show("Saved Successfully");
+                    popup_insert.IsOpen = true;
                     clearall();
                     this.NavigationService.Refresh();
 
@@ -824,7 +825,8 @@ namespace HMS.View.Masters
                     rm.UPDATE();
                     DataTable dt1 = rm.fill_mastergrid();
                     dgroomrate.ItemsSource = dt1.DefaultView;
-                    MessageBox.Show("Updated Successfully");
+                    //MessageBox.Show("Updated Successfully");
+                    popup_update.IsOpen = true;
                     clearall();
                     this.NavigationService.Refresh();
                 }
@@ -1191,6 +1193,7 @@ namespace HMS.View.Masters
         }
         private void insertpop_Click(object sender, RoutedEventArgs e)
         {
+            popup_insert.IsOpen = false;
         }
         private void hlClr_Click(object sender, RoutedEventArgs e)
         {
@@ -1345,5 +1348,11 @@ namespace HMS.View.Masters
         private void txtroomno_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
         }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
+        }
+
     }
 }

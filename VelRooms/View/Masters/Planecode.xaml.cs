@@ -178,8 +178,9 @@ namespace HMS.View.Masters
                             PCODE.INSERT();
                             DataTable dt = PCODE.fill_plangrid();
                             dgplancode.ItemsSource = dt.DefaultView;
-                            //   clearall();
-                            MessageBox.Show("Saved Successfully");
+                        //   clearall();
+                        //MessageBox.Show("Saved Successfully");
+                        popup_insert.IsOpen = true;
 
                         }
                         else
@@ -187,7 +188,8 @@ namespace HMS.View.Masters
                             PCODE.UPDATE();
                             DataTable dt = PCODE.fill_plandata();
                             dgplancode.ItemsSource = dt.DefaultView;
-                            MessageBox.Show("Updated Successfully");
+                        //MessageBox.Show("Updated Successfully");
+                        popup_update.IsOpen = true;
                             save.Content = "Save";
                         }
                         //if (BTN == "add")
@@ -360,11 +362,6 @@ namespace HMS.View.Masters
                 MessageBox.Show("please check the plancode");
             }
         }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = false;
-        }
-
         private void dgplancode_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             int i = dgplancode.SelectedIndex;
@@ -385,6 +382,16 @@ namespace HMS.View.Masters
                 else
                 { }
             }
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
         }
         //private void TXTPLANNAME_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{

@@ -11,7 +11,7 @@
       Title="ROOMCHANGE">
 
     <Page.Resources>
-        <vm:data x:Key="Viewmodel"></vm:data>
+        <!--<vm:data x:Key="Viewmodel"></vm:data>-->
         <!--<Style x:Key="placeholder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
                 <Setter.Value>

@@ -125,7 +125,8 @@ namespace HMS.View.Masters
                         rev.Insert();
                         DataTable dt = rev.fill_revenuegrid();
                         dgrevenue.ItemsSource = dt.DefaultView;
-                        MessageBox.Show("inserted sucessfully");
+                        //MessageBox.Show("inserted sucessfully");
+                        popup_insert.IsOpen = true;
                     }
                     string a = "Update", b = Convert.ToString(Save.Content);
                     if (b == a)
@@ -135,7 +136,8 @@ namespace HMS.View.Masters
                         rev.UPDATE();
                         DataTable dt = rev.fill_revenuegrid();
                         dgrevenue.ItemsSource = dt.DefaultView;
-                        MessageBox.Show("updated sucessfully");
+                        //MessageBox.Show("updated sucessfully");
+                        popup_update.IsOpen = true;
                     }
                     clearing();
                     this.NavigationService.Refresh();
@@ -215,10 +217,7 @@ namespace HMS.View.Masters
             }
             catch (Exception) { }
         }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = false;
-        }
+     
         private void dgrevenue_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             try
@@ -245,6 +244,17 @@ namespace HMS.View.Masters
                 }
             }
             catch (Exception) { }
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
+                
         }
     }
 }

@@ -64,10 +64,7 @@ namespace HMS.View.Masters
             else
                 error--;
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            pop1.IsOpen = false;
-        }
+     
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             DEPARTMENTS DE = new DEPARTMENTS();
@@ -104,7 +101,8 @@ namespace HMS.View.Masters
                         //    pop2.IsOpen = true;
                         DataTable dt = d.fill_deptgrid();
                         dgdept.ItemsSource = dt.DefaultView;
-                        MessageBox.Show("inserted sucessfully");
+                        //MessageBox.Show("inserted sucessfully");
+                        popup_insert.IsOpen = true;
                     }
                     DE.UPDATE();
                     string a = "Update", b = Convert.ToString(Save.Content);
@@ -114,7 +112,8 @@ namespace HMS.View.Masters
                      //    pop2.IsOpen = true;
                         DataTable dt = d.fill_deptgrid();
                         dgdept.ItemsSource = dt.DefaultView;
-                        MessageBox.Show("updated sucessfully");
+                        //MessageBox.Show("updated sucessfully");
+                        popup_update.IsOpen = true;
                     }
                     txtdepartmentcode.Text = "";
                     txtdepartmentname.Text = "";
@@ -195,10 +194,7 @@ namespace HMS.View.Masters
             //Add.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
             //Modify.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
         }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = false;
-        }
+      
         private void dgdept_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             int i = dgdept.SelectedIndex;
@@ -220,6 +216,16 @@ namespace HMS.View.Masters
                 {
                 }
             }
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+        }
+
+        private void updatepop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_update.IsOpen = false;
         }
     }
 }
