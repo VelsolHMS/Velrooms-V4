@@ -269,10 +269,5 @@ namespace HMS.View.Operations
                 }
             }
         }
-
-        private void insertpop_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
