@@ -85,7 +85,7 @@ namespace HMS.Model.Operations
         {
             var list = new List<SqlParameter>();
             string s = "SELECT c.INSERT_DATE,c.ROOM_TARRIF,(SELECT SUM(AMOUNT_RECEIVED) FROM ADVANCE WHERE ADVANCE = 1 AND CHECKIN_ID = c.CHECKIN_ID AND INSERT_DATE = c.INSERT_DATE) AS ADVANCE," +
-                "(select CHARGES from POSTCHARGES where POSTCHARGES = 1 AND  CHECKIN_ID = c.CHECKIN_ID AND INSERT_DATE = c.INSERT_DATE) AS CHARGES," +
+                "(Select SUM(CHARGES) from POSTCHARGES where POSTCHARGES = 1 AND  CHECKIN_ID = c.CHECKIN_ID AND INSERT_DATE = c.INSERT_DATE) AS CHARGES," +
                 "c.GST FROM night_audit c WHERE NIGHT = 1 AND CHECKIN_ID = '"+ ids + "'";
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d; 

@@ -311,7 +311,6 @@ namespace HMS.View.Operations
             }
             catch (Exception) { }
         }
-
         public string discountamount, chargedtarrif, advanceamount, totalpendingamount, totalcharges, Cgst;
         public static string roomno;
         public int gst;
@@ -555,7 +554,6 @@ namespace HMS.View.Operations
                 Ch_PendingAmount = Math.Round(rtotalpendingamnt, 2, MidpointRounding.AwayFromZero);
                 pd["Pending_Amount"] = totalpendingamount;
                 pd_grid.Rows.Add(pd);
-
                 grdpaymentdetails.ItemsSource = pd_grid.DefaultView;
                 RC_FinalTariff = 0;
                 RC_FinalTax = 0;
