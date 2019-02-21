@@ -278,8 +278,8 @@ namespace HMS.View.Operations
                 }
                 else if (A == 0)
                 {
-                    //MessageBox.Show("The Room No which you have entered is not vacant , You can't block this room");
-                    pop1.IsOpen = true;
+                    MessageBox.Show("The Room No which you have entered is not vacant , You can't block this room");
+
                 }
             }
             catch (Exception) { }
@@ -385,8 +385,7 @@ namespace HMS.View.Operations
             }
             catch(Exception)
             {
-                //MessageBox.Show("Please Enter Valid Room No");
-                pop1.IsOpen = true;
+                MessageBox.Show("Please Enter Valid Room No");
                 txtroomno.Foreground = Brushes.Red;
             }
         }
