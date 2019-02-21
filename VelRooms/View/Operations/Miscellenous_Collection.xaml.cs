@@ -146,7 +146,7 @@ namespace HMS.View.Operations
                     if (b1 == a1)
                     {
                         //MessageBox.Show("Saved sucessfully");
-                        pop2.IsOpen = true;
+                        popup_insert.IsOpen = true;
                         clear();
                         this.NavigationService.Refresh();
                         //insert.Content = "Inserted Sucessfully";
@@ -163,8 +163,8 @@ namespace HMS.View.Operations
             }
             catch (Exception)
             {
-                //MessageBox.Show("please check the values");
-                pop1.IsOpen = true;
+                MessageBox.Show("please check the values");
+
             }
         }
         //private void btnmodify_Click(object sender, RoutedEventArgs e)
@@ -239,10 +239,7 @@ namespace HMS.View.Operations
                 MessageBox.Show("please check the revenue and taxcode");
             }
         }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = false;
-        }
+      
         private void txttaxamount_TextChanged(object sender, TextChangedEventArgs e)
         {
         }
@@ -256,6 +253,12 @@ namespace HMS.View.Operations
                 mixtax.Content = s.Rows[0]["MIS_TAX_STRUCTURE"].ToString();
             }
             catch (Exception) { }
+        }
+
+        private void insertpop_Click(object sender, RoutedEventArgs e)
+        {
+            popup_insert.IsOpen = false;
+
         }
     }
 }
