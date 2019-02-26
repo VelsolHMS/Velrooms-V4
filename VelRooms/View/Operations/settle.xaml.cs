@@ -112,14 +112,13 @@ namespace HMS.View
                     S.printsupdate();
                     S.ColorUpdate("Blue");
                     c.ADVANCEINT();
-                    c.CC();
                     S.update();
-                    S.print();
                     c.DISCOUNTINT();
                     c.POSTCHARGESINT();
                     S.UP();
                     S.printsBILLLUPDATE();
                     S.roomstatus();
+                    c.CC();
                     clear1();
                     //String SS = await DELAY();
                     //var list = new List<SqlParameter>();
@@ -198,60 +197,34 @@ namespace HMS.View
             }
             catch (Exception) { }
         }
-        Settle1 s = new Settle1();
         private void CBOTHER_DropDownClosed(object sender, EventArgs e)
         {
             try
             {
                 if (CBOTHER.Text == "Payment Type")
                 {
-                    txttipamt1.IsEnabled = false;
-                    s.BILL_NO = txtbillno.Text;
-                    s.ROOM_NO = txtroom.Text;
-                    s.OTHER = CBOTHER.Text;
-                    s.AMOUNT = txtamt1.Text;
-                    s.TIP_AMOUNT = txttipamt.Text;
-                    s.REMARKS = txtremark.Text;
-                    s.TO_ROOMNO = txttipamt1.Text;
-                    // s.USER_NAME = login.u;
-                    s.INSERT_BY = login.u;
-                    s.INSERT_DATE = DateTime.Today;
+                    //txttipamt1.IsEnabled = false;
+                    //s.BILL_NO = txtbillno.Text;
+                    //s.ROOM_NO = txtroom.Text;
+                    //s.OTHER = CBOTHER.Text;
+                    //s.AMOUNT = txtamt1.Text;
+                    //s.TIP_AMOUNT = txttipamt.Text;
+                    //s.REMARKS = txtremark.Text;
+                    //s.TO_ROOMNO = txttipamt1.Text;
+                    //// s.USER_NAME = login.u;
+                    //s.INSERT_BY = login.u;
+                    //s.INSERT_DATE = DateTime.Today;
                 }
                 else if (CBOTHER.Text == "Bill On Hold")
                 {
                     txttipamt1.IsEnabled = false;
                     submit.Content = "Bill On Hold";
-                    s.BILL_NO = txtbillno.Text;
-                    s.ROOM_NO = txtroom.Text;
-                    s.GUEST_NAME = txtname.Text;
-                    s.OTHER = CBOTHER.Text;
-                    s.AMOUNT = txtamt1.Text;
-                    s.TIP_AMOUNT = txttipamt.Text;
-                    s.STATUS = "BOH";
-                    s.REMARKS = txtremark.Text;
-                    s.TO_ROOMNO = txttipamt1.Text;
-                    s.TO_GUEST = TXTTOROOM.Text;
-                    // s.USER_NAME = login.u;
-                    s.INSERT_BY = login.u;
-                    s.INSERT_DATE = DateTime.Today;
+                    
                 }
                 else if (CBOTHER.Text == "Complimentry")
                 {
                     txttipamt1.IsEnabled = false;
                     submit.Content = "Complimentry";
-                    s.BILL_NO = txtbillno.Text;
-                    s.ROOM_NO = txtroom.Text;
-                    s.GUEST_NAME = txtname.Text;
-                    s.OTHER = CBOTHER.Text;
-                    s.AMOUNT = txtamt1.Text;
-                    s.TIP_AMOUNT = txttipamt.Text;
-                    s.REMARKS = txtremark.Text;
-                    s.TO_ROOMNO = txttipamt1.Text;
-                    s.GUEST_NAME = TXTTOROOM.Text;
-                    s.STATUS = "CMP";
-                    //s.USER_NAME = login.u;
-                    s.INSERT_BY = login.u;
-                    s.INSERT_DATE = DateTime.Today;
                 }
                 else if (CBOTHER.Text == "Transfer")
                 {
@@ -261,170 +234,117 @@ namespace HMS.View
             }
             catch (Exception) { }
         }
+        Settle1 settle1 = new Settle1();
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
+                settle1.BILL_NO = txtbillno.Text;
+                settle1.ROOM_NO = txtroom.Text;
+                settle1.GUEST_NAME = txtname.Text;
+                settle1.OTHER = CBOTHER.Text;
+                settle1.AMOUNT = txtttlamt.Text;
+                settle1.TIP_AMOUNT = txttipamt.Text;
+                settle1.REMARKS = txtremark.Text;
+                settle1.TO_ROOMNO = txttipamt1.Text;
+                settle1.TO_GUEST = TXTTOROOM.Text;
+                settle1.BALANCE = txtamt1.Text;
+                settle1.INSERT_BY = login.u;
+                settle1.INSERT_DATE = DateTime.Today;
                 if (CBOTHER.Text == "Payment Type")
                 {
-                    Settle1 S = new Settle1();
-                    txttipamt1.IsEnabled = false;
-                    s.BILL_NO = txtbillno.Text;
-                    s.ROOM_NO = txtroom.Text;
-                    s.OTHER = CBOTHER.Text;
-                    s.AMOUNT = txtttlamt.Text;
-                    s.TIP_AMOUNT = txttipamt.Text;
-                    s.REMARKS = txtremark.Text;
-                    s.TO_ROOMNO = txttipamt1.Text;
-                    // s.USER_NAME = login.u;
-                    s.INSERT_BY = login.u;
-                    s.INSERT_DATE = DateTime.Today;
-                    s.otherinsert();
-                    pu.IsOpen = false;
-                    S.printsupdate();
-                    S.ColorUpdate("Green");
-                    Checkout1.RR = int.Parse(txtroom.Text);
-                    c.ADVANCEINT();
-                    c.CC();
-                    s.update();
-                    s.print();
-                    c.DISCOUNTINT();
-                    c.POSTCHARGESINT();
-                    S.UP();
-                    S.printsBILLLUPDATE();
-                    clear1();
-                    hm.truncate();
+                    MessageBox.Show("Please Select The Pay Type");
                 }
                 else if (CBOTHER.Text == "Bill On Hold")
                 {
-                    Settle1 S = new Settle1();
-                    txttipamt1.IsEnabled = false;
-                    submit.Content = "Bill On Hold";
-                    S.BILL_NO = txtbillno.Text;
-                    S.ROOM_NO = txtroom.Text;
-                    S.GUEST_NAME = txtname.Text;
-                    S.OTHER = CBOTHER.Text;
-                    S.AMOUNT = txtttlamt.Text;
-                    decimal amt1 = Convert.ToDecimal(txtttlamt.Text);
-                    S.TIP_AMOUNT = txttipamt.Text;
-                    S.REMARKS = txtremark.Text;
-                    S.TO_ROOMNO = txttipamt1.Text;
-                    S.TO_GUEST = TXTTOROOM.Text;
-                    S.STATUS = "BOH";
-                    S.BALANCE = txtamt1.Text;
-                    decimal blamt = Convert.ToDecimal(txtamt1.Text);
-                    S.ADVANCE = (amt1 - blamt).ToString();
-                    // s.USER_NAME = login.u;
-                    S.INSERT_BY = login.u;
-                    S.INSERT_DATE = DateTime.Today;
-                    S.otherinsert();
-                    S.printsupdate();
-                    S.ColorUpdate("Green");
+                    pu.IsOpen = false;
+                    settle1.STATUS = "BOH";
                     Checkout1.RR = int.Parse(txtroom.Text);
+                    c.Insert();
+                    settle1.otherinsert();
+                    settle1.printsupdate();
+                    settle1.ColorUpdate("Green");
+                    settle1.update();
                     c.ADVANCEINT();
-                    c.CC();
-                    S.update();
-                    S.print();
                     c.DISCOUNTINT();
                     c.POSTCHARGESINT();
-                    S.printsBILLLUPDATE();
-                    S.UP();
-                    pu.IsOpen = false;
+                    settle1.UP();
+                    settle1.printsBILLLUPDATE();
+                    c.CC();
                     clear1();
                     hm.truncate();
                 }
                 else if (CBOTHER.Text == "Complimentry")
                 {
-                    Settle1 S = new Settle1();
-                    txttipamt1.IsEnabled = false;
-                    submit.Content = "Complimentry";
-                    s.BILL_NO = txtbillno.Text;
-                    s.ROOM_NO = txtroom.Text;
-                    s.GUEST_NAME = txtname.Text;
-                    s.OTHER = CBOTHER.Text;
-                    s.AMOUNT = txtttlamt.Text;
-                    decimal amt11 = Convert.ToDecimal(txtttlamt.Text);
-                    s.TIP_AMOUNT = txttipamt.Text;
-                    s.REMARKS = txtremark.Text;
-                    s.TO_ROOMNO = txttipamt1.Text;
-                    s.GUEST_NAME = TXTTOROOM.Text;
-                    s.STATUS = "CMP";
-                    s.BALANCE = txtamt1.Text;
-                    decimal blamt1 = Convert.ToDecimal(txtamt1.Text);
-                    s.ADVANCE = (amt11 - blamt1).ToString();
-                    //s.USER_NAME = login.u;
-                    s.INSERT_BY = login.u;
-                    s.INSERT_DATE = DateTime.Today;
-                    s.otherinsert();
                     pu.IsOpen = false;
-                    S.printsupdate();
-                    S.ColorUpdate("Green");
+                    settle1.STATUS = "CMP";
                     Checkout1.RR = int.Parse(txtroom.Text);
+                    c.Insert();
+                    settle1.otherinsert();
+                    settle1.printsupdate();
+                    settle1.ColorUpdate("Green");
+                    settle1.update();
                     c.ADVANCEINT();
-                    c.CC();
-                    s.update();
-                    s.print();
                     c.DISCOUNTINT();
                     c.POSTCHARGESINT();
-                    S.UP();
+                    settle1.UP();
+                    settle1.printsBILLLUPDATE();
+                    c.CC();
                     clear1();
                     hm.truncate();
                 }
-                //else if (CBOTHER.Text == "Transfer")
-                //{
-                //    submit.Content = "transfer";
-                //}
                 else if (CBOTHER.Text == "Transfer")
                 {
-                    Settle1 S = new Settle1();
-                    S.BILL_NO = txtbillno.Text;
-                    S.ROOM_NO = txtroom.Text;
-                    S.GUEST_NAME = txtname.Text;
-                    S.OTHER = CBOTHER.Text;
-                    S.AMOUNT = txtttlamt.Text;
-                    S.TIP_AMOUNT = txttipamt.Text;
-                    S.REMARKS = txtremark.Text;
-                    S.TO_ROOMNO = txttipamt1.Text;
-                    //s.TO_GUEST = TXTTOROOM.Text;
-                    // s.USER_NAME = login.u;
-                    S.INSERT_BY = login.u;
-                    S.INSERT_DATE = DateTime.Today;
-
-                    submit.Content = "submit";
-                    //s.otherinsert();
-                    S.TRANSFER();
-                    pu.IsOpen = false;
-                    S.printsupdate();
-                    S.ColorUpdate("Green");
-                    Checkout1.RR = int.Parse(txtroom.Text);
-                    c.ADVANCEINT();
-                    c.CC();
-                    S.update();
-                    S.print();
-                    c.DISCOUNTINT();
-                    c.POSTCHARGESINT();
-                    S.Transfer_amunt();
-                    S.UP();
-                    S.printsBILLLUPDATE();
-                    clear1();
-                    hm.truncate();
+                    if(txttipamt1.Text.ToString() == "" || txttipamt1.Text.ToString() == null)
+                    {
+                        MessageBox.Show("Please enter occupied Room No");
+                    }
+                    else
+                    {
+                        pu.IsOpen = false;
+                        Checkout1.RR = int.Parse(txtroom.Text);
+                        c.Insert();
+                        settle1.TRANSFER();
+                        settle1.printsupdate();
+                        settle1.ColorUpdate("Green");
+                        settle1.update();
+                        c.ADVANCEINT();
+                        c.DISCOUNTINT();
+                        c.POSTCHARGESINT();
+                        settle1.UP();
+                        settle1.printsBILLLUPDATE();
+                        c.CC();
+                        clear1();
+                        hm.truncate();
+                    }
                 }
                 this.NavigationService.Refresh();
-            }
-            catch (Exception) { }
+            //}
+            //catch (Exception) { }
         }
         private void txttipamt1_LostFocus(object sender, RoutedEventArgs e)
         {
             try
             {
-                string a = "TRANSFER", b = Convert.ToString(submit.Content);
-                if (b == a)
+                Settle1 S = new Settle1();
+                S.ROOM_NO = txttipamt1.Text;
+                DataTable dt = S.OccupiedCheck();
+                if (dt.Rows.Count == 0)
                 {
-                    Checksin SS = new Checksin();
-                    SS.ROOM_NO = txttipamt1.Text;
-                    TXTTOROOM.Text = SS.FIRSTNAME;
-                    SS.roomchange();
+                    txttipamt1.Text = "";
+                    MessageBox.Show("Please Select the Occupied Room.!");
                 }
+                else
+                {
+                }
+                //string a = "TRANSFER", b = Convert.ToString(submit.Content);
+                //if (b == a)
+                //{
+                //    Checksin SS = new Checksin();
+                //    SS.ROOM_NO = txttipamt1.Text;
+                //    TXTTOROOM.Text = SS.FIRSTNAME;
+                //    SS.roomchange();
+                //}
             }
             catch (Exception) { }
         }
@@ -439,9 +359,9 @@ namespace HMS.View
         }
         private void txtroom_GotFocus(object sender, RoutedEventArgs e)
         {
-            s.ROOM_NO = txtroom.Text;
-            s.get_reservation_no();
-            txtreg.Text = s.REGISTRATIOIN_NO;
+            settle1.ROOM_NO = txtroom.Text;
+            settle1.get_reservation_no();
+            txtreg.Text = settle1.REGISTRATIOIN_NO;
         }
         private void CBPAYMENT_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -471,9 +391,9 @@ namespace HMS.View
                     blamnt1 = Convert.ToDecimal(dg.Rows[i]["BALANCE_AMOUNT"].ToString());
                     txtbillno.Text = dg.Rows[i]["BILL_NO"].ToString();
                     txtroom.Text = dg.Rows[i]["ROOM_NO"].ToString();
-                    s.ROOM_NO = txtroom.Text;
-                    s.get_reservation_no();
-                    txtreg.Text = s.REGISTRATIOIN_NO;
+                    settle1.ROOM_NO = txtroom.Text;
+                    settle1.get_reservation_no();
+                    txtreg.Text = settle1.REGISTRATIOIN_NO;
                     txtname.Text = dg.Rows[i]["GUEST_NAME"].ToString();
                     txtcompany.Text = dg.Rows[i]["COMPANYNAME"].ToString();
                     txtttlamt.Text = Convert.ToString(Math.Round(ttlamt1, 2, MidpointRounding.AwayFromZero));

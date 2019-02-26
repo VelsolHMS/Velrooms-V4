@@ -1591,6 +1591,8 @@ namespace HMS {
             
             private global::System.Data.DataColumn columnRefund;
             
+            private global::System.Data.DataColumn columnTransfer;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DataTable1DataTable() {
@@ -1850,6 +1852,14 @@ namespace HMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TransferColumn {
+                get {
+                    return this.columnTransfer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1913,7 +1923,8 @@ namespace HMS {
                         int PinCode, 
                         string Gst1, 
                         decimal DiscountAmount, 
-                        decimal Refund) {
+                        decimal Refund, 
+                        decimal Transfer) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
@@ -1943,7 +1954,8 @@ namespace HMS {
                         PinCode,
                         Gst1,
                         DiscountAmount,
-                        Refund};
+                        Refund,
+                        Transfer};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -1994,6 +2006,7 @@ namespace HMS {
                 this.columnGst1 = base.Columns["Gst1"];
                 this.columnDiscountAmount = base.Columns["DiscountAmount"];
                 this.columnRefund = base.Columns["Refund"];
+                this.columnTransfer = base.Columns["Transfer"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2059,6 +2072,8 @@ namespace HMS {
                 base.Columns.Add(this.columnDiscountAmount);
                 this.columnRefund = new global::System.Data.DataColumn("Refund", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRefund);
+                this.columnTransfer = new global::System.Data.DataColumn("Transfer", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransfer);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3590,6 +3605,22 @@ namespace HMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal Transfer {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDataTable1.TransferColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Transfer\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.TransferColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableDataTable1.NameColumn);
             }
@@ -3922,6 +3953,18 @@ namespace HMS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetRefundNull() {
                 this[this.tableDataTable1.RefundColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTransferNull() {
+                return this.IsNull(this.tableDataTable1.TransferColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTransferNull() {
+                this[this.tableDataTable1.TransferColumn] = global::System.Convert.DBNull;
             }
         }
         

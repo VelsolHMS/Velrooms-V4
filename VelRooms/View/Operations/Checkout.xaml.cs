@@ -237,7 +237,7 @@ namespace HMS.View.Operations
                     DataTable ch_p = co.check_prints();
                     if (ch_p.Rows.Count == 0)
                     {
-                        Ch_Total = (Ch_CSGST * 2) + Ch_Tarrif + Ch_Charges;
+                        Ch_Total = (Ch_CSGST * 2) + Ch_Tarrif + Ch_Charges + RC_TransferAmount;
                         if (Ch_PendingAmount < 0)
                         {
                             popamount.IsOpen = true;
@@ -295,7 +295,7 @@ namespace HMS.View.Operations
                         }
                         else
                         {
-                            Ch_Total = (Ch_CSGST * 2) + Ch_Tarrif + Ch_Charges;
+                            Ch_Total = (Ch_CSGST * 2) + Ch_Tarrif + Ch_Charges + RC_TransferAmount;
                             co.Prints_insert();
                             co.PrintStatus_Insert();
                             co.color();
@@ -327,6 +327,7 @@ namespace HMS.View.Operations
             pd_grid.Columns.Add("Advance", typeof(string));
             pd_grid.Columns.Add("Discount", typeof(string));
             pd_grid.Columns.Add("Refund", typeof(string));
+            pd_grid.Columns.Add("Transfer", typeof(string)); 
             pd_grid.Columns.Add("Pending_Amount", typeof(string));
 
             na_grid.Columns.Add("Date", typeof(string));
@@ -444,6 +445,7 @@ namespace HMS.View.Operations
             }
         }
         public decimal RC_Tariff1, RC_Tax1, RC_Tax2, RC_FinalTariff, RC_FinalTax, RC_Advance, RC_Discount, RC_Charges, RC_Dis_Per, RC_Refund;
+        public static decimal RC_TransferAmount;
         public string RC_CheckinId;
         public DateTime DepartureDate;
         private void BT_Click(object sender, RoutedEventArgs e)
@@ -453,6 +455,15 @@ namespace HMS.View.Operations
                 pd_grid.Rows.Clear();
                 Button btn = (Button)sender;
                 co.ROOM_NO = Convert.ToString(btn.Content);
+                DataTable dt = co.TransferAmount();
+                if (dt.Rows[0]["AMOUNT"].ToString() == "" || dt.Rows[0]["AMOUNT"].ToString() == null)
+                {
+                    RC_TransferAmount = 0;
+                }
+                else
+                {
+                    RC_TransferAmount = Convert.ToDecimal(dt.Rows[0]["AMOUNT"]);
+                }
                 roomno = co.ROOM_NO;
                 DataTable dt_user = co.UserDetails();
                 grduserdetails.ItemsSource = dt_user.DefaultView;
@@ -534,7 +545,7 @@ namespace HMS.View.Operations
                     rpercentage = (RC_FinalTariff * RC_Dis_Per) / 100;
                     discountamount = Convert.ToString(Math.Round(rpercentage, 2, MidpointRounding.AwayFromZero));
                 }
-                rtotalpendingamnt = RC_FinalTariff + RC_FinalTax + RC_Charges - RC_Advance - Convert.ToDecimal(discountamount) + RC_Refund;
+                rtotalpendingamnt = RC_FinalTariff + RC_FinalTax + RC_Charges - RC_Advance - Convert.ToDecimal(discountamount) + RC_Refund + RC_TransferAmount;
                 totalpendingamount = Convert.ToString(Math.Round(rtotalpendingamnt, 2, MidpointRounding.AwayFromZero));
                 DataRow pd = pd_grid.NewRow();
                 pd["Roomno"] = co.ROOM_NO;
@@ -552,6 +563,7 @@ namespace HMS.View.Operations
                 pd["Refund"] = Math.Round(RC_Refund, 2, MidpointRounding.AwayFromZero);
                 Ch_Refunds = Math.Round(RC_Refund, 2, MidpointRounding.AwayFromZero);
                 Ch_PendingAmount = Math.Round(rtotalpendingamnt, 2, MidpointRounding.AwayFromZero);
+                pd["Transfer"] = Math.Round(RC_TransferAmount, 2, MidpointRounding.AwayFromZero);
                 pd["Pending_Amount"] = totalpendingamount;
                 pd_grid.Rows.Add(pd);
                 grdpaymentdetails.ItemsSource = pd_grid.DefaultView;
@@ -696,6 +708,7 @@ namespace HMS.View.Operations
             d.Columns.Add("Signature", typeof(string));
             d.Columns.Add("DiscountAmount", typeof(decimal));
             d.Columns.Add("Refund", typeof(decimal));
+            d.Columns.Add("Transfer", typeof(decimal));
             co.hotel();
             DataRow r = d.NewRow();
             r["Name"] = Checkout1.N;
@@ -728,6 +741,7 @@ namespace HMS.View.Operations
             r["Signature"] = NumberToText(dsq);
             r["DiscountAmount"] = Ch_Discount;
             r["Refund"] = Ch_Refunds;
+            r["Transfer"] = RC_TransferAmount;
             d.Rows.Add(r);
             return d;
         }

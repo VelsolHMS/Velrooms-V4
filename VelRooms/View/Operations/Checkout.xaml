@@ -8,7 +8,7 @@
       mc:Ignorable="d" Background="White"
       Title="CheckOut" Height="620" Width="800"  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" >
     <Page.Resources>
-        <Style x:Key="leftpanestyle" TargetType="Button">
+        <!--<Style x:Key="leftpanestyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontFamily" Value="Georige"/>
@@ -43,7 +43,7 @@
                     <Setter Property="Background" Value="DarkOrange" />
                 </Trigger>
             </Style.Triggers>
-        </Style>
+        </Style>-->
         <Style TargetType="Label">
             <Setter Property="FontFamily" Value="Times New Roman"/>
         </Style>
@@ -94,6 +94,7 @@
                     <DataGridTextColumn Header="Advance" Binding="{Binding Advance}" ></DataGridTextColumn>
                     <DataGridTextColumn Header="Discount" Binding="{Binding Discount}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Refund" Binding="{Binding Refund}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Transferd" Binding="{Binding Transfer}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Pending Amount" Binding="{Binding Pending_Amount}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>

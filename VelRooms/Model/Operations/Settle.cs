@@ -87,7 +87,7 @@ namespace HMS.Model.Operations
             INSERT_BY = login.u;
             INSERT_DATE = DateTime.Today;
             string s = "INSERT INTO SETTLE_OTHERPAY (BILL_NO,ROOM_NO,PAYTYPE,AMOUNT,TIP_AMOUNT,REMARKS,TO_ROOMNO,STATUS,BALANCE,ADVANCE,INSERT_BY,INSERT_DATE,COMPANYNAME)" +
-                " VALUES (@BILL_NO,@ROOM_NO,@PAYTYPE,@AMOUNT,@TIP_AMOUNT,@REMARKS,@TO_ROOMNO,@STATUS,@BALANCE,@ADVANCE,@INSERT_BY,@INSERT_DATE,(SELECT COMPANY_NAME FROM CHECKIN WHERE  ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0))";
+                "VALUES (@BILL_NO,@ROOM_NO,@PAYTYPE,@AMOUNT,@TIP_AMOUNT,@REMARKS,@TO_ROOMNO,@STATUS,@BALANCE,(Select ADVANCE from PRINTSTATUS where BILL_NO = @BILL_NO),@INSERT_BY,@INSERT_DATE,(SELECT COMPANY_NAME FROM CHECKIN WHERE  ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0))";
             DbFunctions.ExecuteCommand<int>(s, list);
         }
         public void update_color()
@@ -102,7 +102,7 @@ namespace HMS.Model.Operations
         {
             var list = new List<SqlParameter>();
             list.AddSqlParameter("@ROOMNO", ROOM_NO);
-            string s = "UPDATE ROOMSTATUS SET STATUS=0 WHERE STATUS=1 AND ROOM_NO=@ROOMNO";
+            string s = "UPDATE ROOMSTATUS SET STATUS = 0 WHERE STATUS=1 AND ROOM_NO=@ROOMNO";
             DbFunctions.ExecuteCommand<int>(s, list);
         }
         public void get_reservation_no()
@@ -127,7 +127,7 @@ namespace HMS.Model.Operations
             list.AddSqlParameter("@TOROOM_NO", TO_ROOMNO);
             list.AddSqlParameter("@TOROOM_GUEST", TO_GUEST);
             list.AddSqlParameter("@PAYTYPE", OTHER);
-            list.AddSqlParameter("@AMOUNT", AMOUNT);
+            list.AddSqlParameter("@AMOUNT", BALANCE);
             list.AddSqlParameter("@REMARKS", REMARKS);
             //list.AddSqlParameter("@USER_NAME", USER_NAME);
             list.AddSqlParameter("@INSERT_BY", INSERT_BY);
@@ -174,40 +174,27 @@ namespace HMS.Model.Operations
         }
         public void update()
         {
+            //UPDATE night_audit SET NIGHT = 1 WHERE CHECKIN_ID =(select CHECKIN_ID FROM CHECKIN where ROOM_NO = '" + ROOM_NO + "' AND CHECK_OUT =0)
             var list = new List<SqlParameter>();
-            string u = "UPDATE night_audit SET NIGHT=1 WHERE ROOM_NO='" + ROOM_NO + "' ";
-            DbFunctions.ExecuteCommand<int>(u, list);
-        }
-        public void Transfer_amunt()
-        {
-            var list = new List<SqlParameter>();
-            list.AddSqlParameter("@ROOM", TOROOM);
-            list.AddSqlParameter("@AMOUNT", AMOUNT);
-            string s = "UPDATE CHECKOUT SET TRANSFER_AMOUNT = @AMOUNT WHERE ROOM_NO = @ROOM";
-            DbFunctions.ExecuteCommand<int>(s, list);
-        }
-        public void print()
-        {
-            var list = new List<SqlParameter>();
-            string u = "UPDATE CHECKOUT SET prints=1 WHERE ROOM_NO='" + ROOM_NO + "' ";
+            string u = "UPDATE night_audit SET NIGHT = 1 WHERE CHECKIN_ID =(select CHECKIN_ID FROM CHECKIN where ROOM_NO = '" + ROOM_NO + "' AND CHECK_OUT =0)";
             DbFunctions.ExecuteCommand<int>(u, list);
         }
         public void printsupdate()
         {
             var list = new List<SqlParameter>();
-            string s = "update PRINTS set PRINTSTATUS=1 WHERE ROOM_NO='" + ROOM_NO + "'";
+            string s = "Update PRINTS set PRINTSTATUS=1 WHERE ROOM_NO='" + ROOM_NO + "'";
             DbFunctions.ExecuteCommand<int>(s, list);
         }
         public void printsBILLLUPDATE()
         {
             var list = new List<SqlParameter>();
-            string s = "update PRINTSTATUS set BILLSETTLE=1 WHERE ROOM_NO='" + ROOM_NO + "'";
+            string s = "Update PRINTSTATUS set BILLSETTLE = 1 WHERE CHECKIN_ID =(Select CHECKIN_ID FROM CHECKIN where ROOM_NO = '" + ROOM_NO + "' AND CHECK_OUT =0)";
             DbFunctions.ExecuteCommand<int>(s, list);
         }
         public void UP()
         {
             var I = new List<SqlParameter>();
-            string S = "UPDATE INGUESTHOUSEINFO SET GUESTSTATUS = 1 WHERE ROOM_NO='" + ROOM_NO + "' AND GUEST_NAME='"+GUEST_NAME+"'  ";
+            string S = "UPDATE INGUESTHOUSEINFO SET GUESTSTATUS = 1 WHERE ROOM_NO='" + ROOM_NO + "' AND GUEST_NAME='"+GUEST_NAME+"'";
             DbFunctions.ExecuteCommand<int>(S, I);
         }
         public string pendingbillcompany;
@@ -248,6 +235,14 @@ namespace HMS.Model.Operations
             DataTable s = DbFunctions.ExecuteCommand<DataTable>(S, list);
             return s;
         }
+        public DataTable OccupiedCheck()
+        {
+            //select* from ROOMMASTER where ROOM_NO = '401' and BACKGROUND_COLOR = 'Blue'
+            var list = new List<SqlParameter>();
+            list.AddSqlParameter("@ROOM_NO", ROOM_NO);
+            string S = "Select * from ROOMMASTER where ROOM_NO = @ROOM_NO And BACKGROUND_COLOR = 'Orange'";
+            DataTable dt = DbFunctions.ExecuteCommand<DataTable>(S, list);
+            return dt;
+        }
     }
 }
-//srikar 18/11/2017
