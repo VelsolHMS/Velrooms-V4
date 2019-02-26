@@ -860,7 +860,8 @@ namespace HMS.View.Operations
             {
                 if (error!= 0 || txtfirstname.Text == null || txtlastname.Text == null || ADDRESS.Text == null || ZIP.Text == null || txtcity.Text == null || txtmobileno.Text == null || idproof.Text == null || txtproof.Text == null || txtpax.Text == null || txtadult.Text == null || txtchild.Text == null || txtextrabed.Text == null || EADULT.Text == null || ECHILD.Text == null || TAXPER.Text == null || RACKTARRIF.Text == null || RACKCHILD.Text == null || RACKADULT.Text == null || CHARGETARRIF.Text == null || CHARGEADULT.Text == null || CHARGECHILD.Text == null)
                 {
-                    MessageBox.Show("FILL ALL COLUMNS ");
+                    //MessageBox.Show("FILL ALL COLUMNS ");
+                    pop1.IsOpen = true;
                 }
                 else
                 {
@@ -939,6 +940,7 @@ namespace HMS.View.Operations
                 {
                     //MessageBox.Show("FILL ALL COLUMNS");
                     pop1.IsOpen = true;
+
 
                 }
                 else

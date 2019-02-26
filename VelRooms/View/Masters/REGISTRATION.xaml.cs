@@ -190,6 +190,7 @@ namespace HMS.View.Masters
                             dgreg.ItemsSource = dt.DefaultView;
                             popup1.IsOpen = true;
                             //MessageBox.Show("updated sucessfully");
+                            
                         }
                         this.NavigationService.Refresh();
                     }
@@ -243,10 +244,6 @@ namespace HMS.View.Masters
             TXTCONTACT.IsEnabled = false;
             rb.IsEnabled = false;
             rb1.IsEnabled = false;
-        }
-        private void insertpop_Click(object sender, RoutedEventArgs e)
-        {
-            pop2.IsOpen = false;
         }
         public static string st;
         private void dgreg_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

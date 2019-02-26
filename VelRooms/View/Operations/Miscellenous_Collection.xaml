@@ -174,7 +174,7 @@
                     </StackPanel>
                 </material:Card>
             </Popup>
-            <Popup Name="pop2" Width="300" Height="180" Placement="Center">
+            <Popup Name="popup_insert" Width="300" Height="180" Placement="Center">
                 <material:Card Background="#31B774" Width="300" Height="180" material:ShadowAssist.ShadowDepth="Depth3">
                     <StackPanel>
                         <StackPanel Height="50" Orientation="Horizontal" HorizontalAlignment="Center">
@@ -187,7 +187,7 @@
                                         <Path Data="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" Fill="#31B774" />
                                     </Canvas>
                                 </Viewbox>
-                                <TextBlock Name="insert" Text="Data Inserted !" FontSize="20" Margin="0,15,0,0" TextAlignment="Center" FontFamily="Calibri"/>
+                                <TextBlock Text="Data Inserted !" FontSize="20" Margin="0,15,0,0" TextAlignment="Center" FontFamily="Calibri"/>
                             </StackPanel>
                             <Button HorizontalAlignment="Center" Width="100" Name="insertpop" Click="insertpop_Click"  Foreground="#31B774" FontSize="17" Background="White" BorderThickness="1.5" BorderBrush="#31B774" Content="OK" FontWeight="Bold" Margin="0,20,0,0"/>
                         </StackPanel>

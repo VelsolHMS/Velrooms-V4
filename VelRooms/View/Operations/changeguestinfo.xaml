@@ -11,7 +11,7 @@
       Title="changeguestinfo" Height="407.447" Background="White">
 
     <Page.Resources>
-        <!--<vm:data x:Key="Viewmodel"></vm:data>-->
+        <vm:data x:Key="Viewmodel"></vm:data>
         <!--<Style TargetType="{x:Type TextBox}">
             <Setter Property="Validation.ErrorTemplate">
                 <Setter.Value>

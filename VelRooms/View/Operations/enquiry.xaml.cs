@@ -198,8 +198,7 @@ namespace HMS.View.Operations
         {
             if (txtdate.SelectedDate < DateTime.Today)
             {
-                //MessageBox.Show("Active from date cannot be less than the current date");
-                pop1.IsOpen = true;
+                MessageBox.Show("Active from date cannot be less than the current date");
                 txtdate.Text = "";
             }
             else if (date.SelectedDate == DateTime.Today)
