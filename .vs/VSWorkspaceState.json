@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
+    "",
     "\\DAL",
     "\\VelRooms",
     "\\VelRooms\\Crystal Reports Backup Files"
   ],
+  "SelectedNode": "\\DAL\\DbFunctions.cs",
   "PreviewInSolutionExplorer": false
 }
