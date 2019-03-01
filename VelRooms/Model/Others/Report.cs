@@ -966,6 +966,13 @@ namespace HMS.Model.Others
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
+        public DataTable FOTransferSettlements()
+        {
+            var list = new List<SqlParameter>();
+            string s = "SELECT FROMROOM_NO,TOROOM_NO,FROMROOM_GUEST,PAYTYPE,AMOUNT,INSERT_BY from SETTLE_TRANSFERPAY where INSERT_DATE = '" + SelectedDate + "'";
+            DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
+            return d;
+        }
         public DataTable FORescancel()
         {
             var list = new List<SqlParameter>();

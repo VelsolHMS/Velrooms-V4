@@ -57,8 +57,8 @@ namespace HMS.Model
             //    "(ROOM_NO, RESERVATION_NO, GUEST_NAME, DISCOUNT_ON_TAX, PARTICULAR, AMOUNT, PERCENTAGE, DISCOUNT_DATE, CHECKIN_ID,INSERT_BY,INSERT_DATE) VALUES (@ROOM_NO, @RESERVATION_NO, @GUEST_NAME," +
             //    " @DISCOUNT_ON_TAX, @PARTICULARS, @AMOUNT, @PERCENTAGE, @DISCOUNT_DATE, @CHECKIN_ID,@INSERT_BY,@INSERT_DATE)END";
             string query = " INSERT INTO DISCOUNT " +
-               "(ROOM_NO, RESERVATION_NO, GUEST_NAME, DISCOUNT_ON_TAX, PARTICULAR, AMOUNT, PERCENTAGE, DISCOUNT_DATE, CHECKIN_ID,INSERT_BY,INSERT_DATE) VALUES (@ROOM_NO, @RESERVATION_NO, @GUEST_NAME," +
-               " @DISCOUNT_ON_TAX, @PARTICULARS, @AMOUNT, @PERCENTAGE, @DISCOUNT_DATE, @CHECKIN_ID,@INSERT_BY,@INSERT_DATE)";
+               "(ROOM_NO, RESERVATION_NO, GUEST_NAME, DISCOUNT_ON_TAX, PARTICULAR, AMOUNT, PERCENTAGE, DISCOUNT_DATE, CHECKIN_ID,DISCOUNT,INSERT_BY,INSERT_DATE) VALUES (@ROOM_NO, @RESERVATION_NO, @GUEST_NAME," +
+               " @DISCOUNT_ON_TAX, @PARTICULARS, @AMOUNT, @PERCENTAGE, @DISCOUNT_DATE, @CHECKIN_ID,'0',@INSERT_BY,@INSERT_DATE)";
             DbFunctions.ExecuteCommand<int>(query, list);
         }
 
@@ -72,13 +72,6 @@ namespace HMS.Model
             DataTable dt = DbFunctions.ExecuteCommand<DataTable>(query, list);
 
             return dt;
-        }
-
-        public void A()
-        {
-            var LIST = new List<SqlParameter>();
-            string SS = "UPDATE DISCOUNT SET DISCOUNT=0 WHERE ROOM_NO ='" + ROOM_NO + "' AND CHECKIN_ID='"+ CHECKIN_ID +"' ";
-            DbFunctions.ExecuteCommand<int>(SS, LIST);
         }
         //Method To Retrive Guest Name And Checkin ID No Using Room No
         public DataTable Retrive_guestname()
@@ -128,8 +121,7 @@ namespace HMS.Model
             else
             {
                 result = "2";
-             DISCOUNT_ROOM = dt.Rows[0]["ROOM_NO"].ToString();
-         
+                DISCOUNT_ROOM = dt.Rows[0]["ROOM_NO"].ToString();
             }
 
             return dt;

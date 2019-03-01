@@ -645,6 +645,27 @@ namespace HMS.Reports
             //        D.Rows.Add(r);
             //    }
             //}
+            DataTable d2 = rp.FOTransferSettlements();
+            for (int i = 0; i < d2.Rows.Count; i++)
+            {
+                DataRow r = D.NewRow();
+                if (d2.Rows.Count == 0)
+                {
+                    r["Room"] = 0;
+                    r["Name"] = 0;
+                    r["Amount"] = 0;
+                    r["User"] = 0;
+                }
+                else
+                {
+                    //ROOM_NO,PAYTYPE,AMOUNT,INSERT_BY
+                    r["Room"] = d2.Rows[i]["FROMROOM_NO"].ToString();
+                    r["Name"] = d2.Rows[i]["FROMROOM_GUEST"].ToString();
+                    r["Amount"] = Math.Round(Convert.ToDecimal(d2.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero) + " (Transfered to "+ d2.Rows[i]["TOROOM_NO"] +")";
+                    r["User"] = d2.Rows[i]["INSERT_BY"].ToString();
+                    D.Rows.Add(r);
+                }
+            }
             DataTable d = rp.FOSettlements();
             for (int i = 0; i < d.Rows.Count; i++)
             {
