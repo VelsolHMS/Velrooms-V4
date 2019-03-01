@@ -108,7 +108,7 @@ namespace HMS.View.Operations
                             if (disc.result == "0")
                             {
                                 disc.Insert();
-                                disc.A();
+                                ///disc.A();
                                 //MessageBox.Show("Inserted sucessfully");
                                 popup_insert.IsOpen = true;
                             }
@@ -150,7 +150,7 @@ namespace HMS.View.Operations
                             if (disc.result == "0")
                             {
                                 disc.Insert();
-                                disc.A();
+                                ///disc.A();
                                 //MessageBox.Show("inserted sucessfully");
                                 popup_insert.IsOpen = true;
                             }

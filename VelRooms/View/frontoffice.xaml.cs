@@ -17,7 +17,6 @@ namespace HMS.View
         {
             InitializeComponent();
         }
-
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             if(todate.Text == "" || todate.Text == null)
