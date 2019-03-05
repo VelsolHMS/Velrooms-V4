@@ -176,7 +176,7 @@ namespace HMS.Model.Operations
         {
             //UPDATE night_audit SET NIGHT = 1 WHERE CHECKIN_ID =(select CHECKIN_ID FROM CHECKIN where ROOM_NO = '" + ROOM_NO + "' AND CHECK_OUT =0)
             var list = new List<SqlParameter>();
-            string u = "UPDATE night_audit SET NIGHT = 1 WHERE CHECKIN_ID =(select CHECKIN_ID FROM CHECKIN where ROOM_NO = '" + ROOM_NO + "' AND CHECK_OUT =0)";
+            string u = "UPDATE night_audit SET NIGHT = 1 WHERE CHECKIN_ID =(Select CHECKIN_ID FROM CHECKIN where ROOM_NO = '" + ROOM_NO + "' AND CHECK_OUT =0)";
             DbFunctions.ExecuteCommand<int>(u, list);
         }
         public void printsupdate()

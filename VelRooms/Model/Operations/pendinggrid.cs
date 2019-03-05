@@ -11,7 +11,6 @@ namespace HMS.Model.Operations
 {
     public class pendinggrid
     {
-
         public string ROOM_NO { get; set; }
         public string BILL_NO { get; set; }
         public string GUEST_NAME { get; set; }
@@ -19,7 +18,6 @@ namespace HMS.Model.Operations
         public string INSERT_DATE { get; set; }
         public string RESERVATION_NO { get; set; }
         public string PENDINGAMOUNT { get; set; }
-
         public DataTable GridData()
         {
             var list = new List<SqlParameter>();
@@ -27,7 +25,6 @@ namespace HMS.Model.Operations
             DataTable dt = DbFunctions.ExecuteCommand<DataTable>(s,list);
             return dt;
         }
-        
         public void Reservation_No()
         {
             var list = new List<SqlParameter>();
@@ -78,6 +75,5 @@ namespace HMS.Model.Operations
                 PENDINGAMOUNT = dt.Rows[0]["BALANCE"].ToString();
             }
         }
-        
     }
 }

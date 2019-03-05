@@ -235,7 +235,7 @@ namespace HMS.View.Operations
                 b.ValidatesOnDataErrors = true;
                 BindingOperations.SetBinding(txtproof, TextBox.TextProperty, b);
             }
-            else if (idproof.Text == "Driving License")
+            else if (idproof.Text == "DrivingLicense")
             {
                 b.Source = daa;
                 daa.Driving = txtproof.Text;
@@ -244,7 +244,7 @@ namespace HMS.View.Operations
                 b.ValidatesOnDataErrors = true;
                 BindingOperations.SetBinding(txtproof, TextBox.TextProperty, b);
             }
-            else if (idproof.Text == "VoterId")
+            else if (idproof.Text == "Voterid")
             {
                 b.Source = daa;
                 daa.Voterid = txtproof.Text;
@@ -454,7 +454,8 @@ namespace HMS.View.Operations
                         gc.MOBILE_NO = dt.Rows[l]["mobileno"].ToString();
                         gc.EMAIL = dt.Rows[l]["email"].ToString();
                         gc.ID_PROOF = dt.Rows[l]["idproof"].ToString();
-                        gc.ID_DATA = dt.Rows[l]["iddata"].ToString();
+                        //gc.ID_DATA = dt.Rows[l]["iddata"].ToString();
+                        gc.ID_DATA = txtproof.Text;
                         gc.PAX = txtpax.Text;
                         gc.PAXADULT = txtadult.Text;
                         gc.PAXCHILD = txtchildd.Text;

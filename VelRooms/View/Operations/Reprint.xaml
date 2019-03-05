@@ -38,7 +38,8 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Check In-Id" Binding="{Binding CHECKIN_ID}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Guest Name" Binding="{Binding GUEST_NAME}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Room No" Binding="{Binding ROOM_NO}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Mobile No" Binding="{Binding MOBILE_NO}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Room No" Binding="{Binding ROOM_NO}"></DataGridTextColumn> 
                         <DataGridTextColumn Header="Arrival" Binding="{Binding ARRIVAL_DATE, StringFormat=dd/MM/yyyy}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Departure" Binding="{Binding INSERT_DATE, StringFormat=dd/MM/yyyy}"></DataGridTextColumn>
                     </DataGrid.Columns>

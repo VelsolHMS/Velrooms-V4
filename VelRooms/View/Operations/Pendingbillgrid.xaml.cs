@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Data;
 using HMS.Model.Operations;
 
@@ -70,7 +59,6 @@ namespace HMS.View.Operations
                     pb.txtroomnno.Text = dt.Rows[i]["ROOM_NO"].ToString();
                     pb.txtname.Text = dt1.Rows[i]["GuestName"].ToString();
                     pb.txtcompanyname.Text = dt1.Rows[i]["Company"].ToString();
-
                     pb.txtpendingamount1.Text = dt.Rows[i]["Balance"].ToString();
                     //decimal pend = Convert.ToDecimal(pb.txtpendingamount1.Text);
                     //decimal amnt =Convert.ToDecimal(pb.txtamount1.Text);

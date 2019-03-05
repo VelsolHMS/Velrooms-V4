@@ -165,7 +165,7 @@
                 <!--<Button x:Name="ADD" FontSize="15" Width="80" Margin="35.587,508,520.43,10" Click="ADD_Click"  Content="Add"  />-->
                 <!--<Button x:Name="MODIFY" FontSize="15" Width="80" Margin="193.008,508,363.008,10" Click="MODIFY_Click"  Content="Modify"  />-->
                 <Button x:Name="CLEAR" FontSize="15" Margin="0,9,100,9" Width="100" Click="CLEAR_Click" Content="Clear" Height="Auto" />
-                <Button TabIndex="12" IsDefault="True" x:Name="SAVE" FontSize="15" Width="100" Click="SAVE_Click" Content="Save" Height="50" VerticalAlignment="Bottom" />
+                <Button TabIndex="12" IsDefault="True" x:Name="SAVE" Margin="0,9,0,9" FontSize="15" Width="100" Click="SAVE_Click" Content="Save" VerticalAlignment="Bottom" />
             </StackPanel>
             <Popup Name="pop1" Width="300" Height="180" Placement="Center">
                 <material:Card Background="#EF513A" Width="300" Height="180" material:ShadowAssist.ShadowDepth="Depth4">
