@@ -173,12 +173,10 @@ namespace HMS.View.Operations
                         btnsearch.IsEnabled = false;
                         clear();
                         btnsave.Content = "Save";
-                        popup.IsOpen = false;
                         //MessageBox.Show("inserted sucessfully");
-                        popup_insert.IsOpen = true;
-                        clear();
-                        this.NavigationService.Refresh();
                     }
+                    popup_insert.IsOpen = true;
+                    clear();
                 }
                 this.NavigationService.Refresh();
             }
@@ -225,13 +223,11 @@ namespace HMS.View.Operations
                         adv.company_contact();
                         popup.IsOpen = false;
                         cc = adv.COMPANY_CONTACT;
-                        //MessageBox.Show("inserted sucessfully");
-                        popup_insert.IsOpen = true;
-                        this.NavigationService.Refresh();
-                        clear();
                     }
                 }
+                popup_insert.IsOpen = true;
                 this.NavigationService.Refresh();
+                clear();
             }
             catch (Exception) { }
         }
@@ -469,6 +465,7 @@ namespace HMS.View.Operations
         private void insertpop_Click(object sender, RoutedEventArgs e)
         {
             popup_insert.IsOpen = false;
+            this.NavigationService.Refresh();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

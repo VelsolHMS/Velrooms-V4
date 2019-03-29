@@ -164,19 +164,9 @@ namespace HMS.View.Operations
                     save.Content = "Save";
                 }
                 RE.R();
-                RE.A();
+                popup.IsOpen = false;
                 Send_SMS();
-                //     popup.IsOpen = false;
-                //A.RESERVATION_NO = aa.Text;
-                //A.PAYMENT_MODE = cbpaymnt.Text;
-                //A.CURRENCY_CODE = txtcountycode.Text;
-                //A.AMOUNT_RECEIVED = txtamountrecivd.Text;
-                //A.ONLINE_PAYMENT = cbonline.Text;
-                //A.PARTICULARS = txtparticulars.Text;
-                //A.TRANSACTION_NO = txttransactionno.Text;
-                //A.Insert();
                 //RE.A();
-
                 //DataTable d = report();
                 //RESERVATION.dt = d;
 
@@ -188,7 +178,6 @@ namespace HMS.View.Operations
                 //rr.Subreports[0].SetDataSource(hotel1);
                 //rr.SetDataSource(RESERVATION.dt);    
                 //rr.PrintToPrinter(1, false, 0, 0);
-
                 clear();
                 save.IsEnabled = true;
                 Clear.IsEnabled = true;
@@ -256,9 +245,7 @@ namespace HMS.View.Operations
                     RE.INSERT();
                     DataTable dtt = RE.Grid();
                     dgres.ItemsSource = dtt.DefaultView;
-                    //MessageBox.Show("Saved Successfully");
                     popup_insert.IsOpen = true;
-                    //clear();
                     this.NavigationService.Refresh();
                 }
                 else
@@ -266,26 +253,23 @@ namespace HMS.View.Operations
                     RE.UPDATE1();
                     DataTable dt1 = RE.Grid();
                     dgres.ItemsSource = dt1.DefaultView;
-                    //MessageBox.Show("Updated Successfully");
                     popup_update.IsOpen = true;
-                    //clear();
                     this.NavigationService.Refresh();
-                    //  save.Content = "Save";
                 }
                 //  RE.INSERT();
                 RE.R();
                 // RE.A();
                 popup.IsOpen = false;
 
-                A.RESERVATION_NO = aa.Text;
-                A.PAYMENT_MODE = cbpaymnt.Text;
-                A.CURRENCY_CODE = txtcountycode.Text;
-                A.AMOUNT_RECEIVED = txtamountrecivd.Text;
-                A.ONLINE_PAYMENT = cbonline.Text;
-                A.PARTICULARS = txtparticulars.Text;
-                A.TRANSACTION_NO = txttransactionno.Text;
-                A.Insert();
-                RE.A();
+                //A.RESERVATION_NO = aa.Text;
+                //A.PAYMENT_MODE = cbpaymnt.Text;
+                //A.CURRENCY_CODE = txtcountycode.Text;
+                //A.AMOUNT_RECEIVED = txtamountrecivd.Text;
+                //A.ONLINE_PAYMENT = cbonline.Text;
+                //A.PARTICULARS = txtparticulars.Text;
+                //A.TRANSACTION_NO = txttransactionno.Text;
+                //A.Insert();
+                //RE.A();
                 Send_SMS();
                 //DataTable d = report();
                 //RESERVATION.dt = d;
@@ -316,8 +300,17 @@ namespace HMS.View.Operations
             string no = "9848082999";
             String username = "9494433233";
             String password = "33233";
+            string Advance_Amount;
+            if(txtamountrecivd.Text == "")
+            {
+                Advance_Amount = "0.0";
+            }
+            else
+            {
+                Advance_Amount = txtamountrecivd.Text;
+            }
             String mobileNumber = "91" + txtmobileno.Text;
-            String customer = "Hi We Confirm your Reservation as follows : Arrival : "+dt.Text+"\nDeparture : "+dt1.Text+"\nRoom Type : "+cbroomtype.Text+"\nThankyou Very Much \nFor Assistance Call : "+ll_number+","+no+"";
+            String customer = "Hi "+ txtfirstname .Text+ " We Confirm your Reservation as follows : Arrival : "+dt.Text+ " " + Checkintime.Text + "\nDeparture : " + dt1.Text+"\nRoom Type : "+cbroomtype.Text+"\nNo of Rooms : "+ txtrooms.Text+ "\nAdvance : " + Advance_Amount + "\nFor Assistance Call : "+ll_number+","+no+"";
             String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + mobileNumber + "&from=VELSOL&text=" + customer + "";
 
             try

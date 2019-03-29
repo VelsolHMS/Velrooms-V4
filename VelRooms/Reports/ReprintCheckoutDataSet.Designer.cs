@@ -356,6 +356,8 @@ namespace HMS.Reports {
             
             private global::System.Data.DataColumn columnGrandTotal;
             
+            private global::System.Data.DataColumn columnTransfer;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public AddressDetailsDataTable() {
@@ -559,6 +561,14 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TransferColumn {
+                get {
+                    return this.columnTransfer;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -615,7 +625,8 @@ namespace HMS.Reports {
                         decimal SubTotal, 
                         decimal CGST, 
                         decimal SGST, 
-                        decimal GrandTotal) {
+                        decimal GrandTotal, 
+                        decimal Transfer) {
                 AddressDetailsRow rowAddressDetailsRow = ((AddressDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Hotel,
@@ -638,7 +649,8 @@ namespace HMS.Reports {
                         SubTotal,
                         CGST,
                         SGST,
-                        GrandTotal};
+                        GrandTotal,
+                        Transfer};
                 rowAddressDetailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAddressDetailsRow);
                 return rowAddressDetailsRow;
@@ -682,6 +694,7 @@ namespace HMS.Reports {
                 this.columnCGST = base.Columns["CGST"];
                 this.columnSGST = base.Columns["SGST"];
                 this.columnGrandTotal = base.Columns["GrandTotal"];
+                this.columnTransfer = base.Columns["Transfer"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -729,6 +742,8 @@ namespace HMS.Reports {
                 base.Columns.Add(this.columnSGST);
                 this.columnGrandTotal = new global::System.Data.DataColumn("GrandTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGrandTotal);
+                this.columnTransfer = new global::System.Data.DataColumn("Transfer", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTransfer);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1510,6 +1525,22 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal Transfer {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableAddressDetails.TransferColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Transfer\' in table \'AddressDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAddressDetails.TransferColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsHotelNull() {
                 return this.IsNull(this.tableAddressDetails.HotelColumn);
             }
@@ -1758,6 +1789,18 @@ namespace HMS.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetGrandTotalNull() {
                 this[this.tableAddressDetails.GrandTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTransferNull() {
+                return this.IsNull(this.tableAddressDetails.TransferColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTransferNull() {
+                this[this.tableAddressDetails.TransferColumn] = global::System.Convert.DBNull;
             }
         }
         

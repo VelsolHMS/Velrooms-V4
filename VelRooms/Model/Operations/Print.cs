@@ -75,7 +75,8 @@ namespace HMS.Model.Operations
             string s = "SELECT (SELECT SUM(AMOUNT_RECEIVED) from ADVANCE where CHECKIN_ID = c.CHECKIN_ID AND ADVANCE = 1) AS Advance," +
                     "(SELECT SUM(CHARGES) from POSTCHARGES where CHECKIN_ID = c.CHECKIN_ID AND POSTCHARGES = 1) As Charges," +
                     "(SELECT SUM(AMOUNT) from DISCOUNT where CHECKIN_ID = c.CHECKIN_ID AND DISCOUNT = 1) As Discount," +
-                    "(SELECT COUNT(ROOM_TARRIF) from night_audit where CHECKIN_ID = c.CHECKIN_ID AND NIGHT = 1) As AuditCount,"+
+                    "(SELECT COUNT(ROOM_TARRIF) from night_audit where CHECKIN_ID = c.CHECKIN_ID AND NIGHT = 1) As AuditCount," +
+                    "(SELECT SUM(AMOUNT) from SETTLE_TRANSFERPAY where TOROOMCHECKIN_ID = c.CHECKIN_ID) As TransferAmount,"+
                     "(SELECT SUM(BALANCE_AMOUNT) from REFUND where CHECKIN_ID = c.CHECKIN_ID) As Refund from CHECKIN c Where CHECKIN_ID = '" + id+"'";
             DataTable D = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return D;

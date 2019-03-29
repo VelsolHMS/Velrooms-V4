@@ -31,7 +31,6 @@ namespace HMS.Reports
             fromdate.DisplayDateEnd = DateTime.Today.Date;
             todate.DisplayDateEnd = DateTime.Today.Date;
         }
-
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             if(fromdate.Text == "" || todate.Text == "")
@@ -40,6 +39,8 @@ namespace HMS.Reports
             }
             else
             {
+                rep.FromDate = fromdate.Text;
+                rep.ToDate = todate.Text;
                 DataTable dr = rep.monthwisegst();
                 if (dr.Rows.Count == 0)
                 {
@@ -152,7 +153,6 @@ namespace HMS.Reports
             D.Columns.Add("GstSlab", typeof(string));
             D.Columns.Add("TotalTariff", typeof(string));
             D.Columns.Add("TotalGst", typeof(string));
-
             DataTable d = rep.monthwisegst();
             for (int i = 0; i < d.Rows.Count; i++)
             {

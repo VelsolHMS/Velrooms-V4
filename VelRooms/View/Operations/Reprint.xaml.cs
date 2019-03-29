@@ -134,7 +134,7 @@ namespace HMS.View.Operations
             }
             catch (Exception) { }
         }
-        public decimal rp_Discount, rp_Advance, rp_Refund, rp_Tarrif, rp_Charges, rp_Tariff, rp_Tax, rp_RoomTarrif, rp_Gst,rp_SubTotal, rp_GrandTotal, rp_FinalTax , rp_FinalAdvance, rp_FinalCharges;
+        public decimal rp_Discount, rp_Advance, rp_Refund, rp_Tarrif, rp_Charges, rp_Tariff, rp_Tax, rp_RoomTarrif, rp_Gst,rp_SubTotal, rp_GrandTotal, rp_FinalTax , rp_FinalAdvance, rp_FinalCharges,rp_TransferAmount;
 
         public DataTable MainReport()
         {
@@ -160,6 +160,7 @@ namespace HMS.View.Operations
             d.Columns.Add("CGST", typeof(decimal));
             d.Columns.Add("SGST", typeof(decimal));
             d.Columns.Add("GrandTotal", typeof(decimal));
+            d.Columns.Add("Transfer", typeof(decimal));
             DataRow row = d.NewRow();
             rp.TodayBookings1();
             row["Hotel"] = Report.Hotel;
@@ -194,17 +195,26 @@ namespace HMS.View.Operations
             {
                 rp_Refund = Convert.ToDecimal(cs.Rows[0]["Refund"]);
             }
+            if (cs.Rows[0]["TransferAmount"].ToString() == null || cs.Rows[0]["TransferAmount"].ToString() == "")
+            {
+                rp_TransferAmount = 0;
+            }
+            else
+            {
+                rp_TransferAmount = Convert.ToDecimal(cs.Rows[0]["TransferAmount"]);
+            }
             row["RoomTarrif"] = Math.Round(rp_RoomTarrif, 2, MidpointRounding.AwayFromZero);
             row["Advance"] = Math.Round(rp_FinalAdvance, 2, MidpointRounding.AwayFromZero);
             row["Charges"] = Math.Round(rp_FinalCharges, 2, MidpointRounding.AwayFromZero);
             row["Discount"] = Math.Round(rp_Discount, 2, MidpointRounding.AwayFromZero);
             row["Refund"] = Math.Round(rp_Refund, 2, MidpointRounding.AwayFromZero);
-            rp_SubTotal = rp_RoomTarrif + rp_FinalTax + rp_FinalCharges;
+            rp_SubTotal = rp_RoomTarrif + rp_FinalTax + rp_FinalCharges + rp_TransferAmount;
             row["SubTotal"] = Math.Round(rp_SubTotal, 2, MidpointRounding.AwayFromZero);
             row["CGST"] = Math.Round(rp_FinalTax / 2, 2, MidpointRounding.AwayFromZero);
             row["SGST"] = Math.Round(rp_FinalTax / 2, 2, MidpointRounding.AwayFromZero);
             rp_GrandTotal = rp_SubTotal - rp_FinalAdvance - rp_Discount + rp_Refund;
             row["GrandTotal"] = Math.Round(rp_GrandTotal, 2, MidpointRounding.AwayFromZero);
+            row["Transfer"] = Math.Round(rp_TransferAmount, 2, MidpointRounding.AwayFromZero);
             d.Rows.Add(row);
             return d;
         }

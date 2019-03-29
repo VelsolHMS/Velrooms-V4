@@ -704,6 +704,7 @@ namespace HMS.View.Operations
                 ch.ROOM_TYPE = Convert.ToString(roomcategory.Text);
                 ////TimeSpan ts = new TimeSpan(); 
                 ch.ARRIVAL_TIME = DateTime.Now.ToShortTimeString();
+                ch.Company_Gst = gst_no.Text;
                 ch.SUFFIX = select.Text;
                 ch.FIRSTNAME = txtfirstname.Text;
                 ch.LASTNAME = txtlastname.Text;
@@ -940,8 +941,6 @@ namespace HMS.View.Operations
                 {
                     //MessageBox.Show("FILL ALL COLUMNS");
                     pop1.IsOpen = true;
-
-
                 }
                 else
                 {
@@ -1045,12 +1044,11 @@ namespace HMS.View.Operations
             String mobileNumber = "91"+txtmobileno.Text;
             String customer = "Thank you very much for choosing us! \nYour Room No : "+roomno.Text+"\nAdvance Paid : "+AdvanceAmount+"\nFor Assistance Call : "+ll_number+","+no+"";
             String url = "http://sms.zestwings.com/smpp.sms?username="+username+"&password="+password+"&to="+mobileNumber+"&from=VELSOL&text="+customer+"";
-
             try
             {
                 HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url);
                 
-                //Prepare and Add URL Encoded data
+                // Prepare and Add URL Encoded data
                 UTF8Encoding encoding = new UTF8Encoding();
                 httpWReq.Method = "GET";
                 httpWReq.ContentType = "application/x-www-form-urlencoded";
@@ -1059,7 +1057,7 @@ namespace HMS.View.Operations
                 StreamReader reader = new StreamReader(response.GetResponseStream());
                 string responseString = reader.ReadToEnd();
 
-                //Close the response
+                // Close the response
                 reader.Close();
                 response.Close();
             }
@@ -1067,7 +1065,7 @@ namespace HMS.View.Operations
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            //     popup.IsOpen = false;
+            // popup.IsOpen = false;
         }
         public void BIND_ADVANCE()
         {
