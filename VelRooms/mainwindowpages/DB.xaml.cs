@@ -33,7 +33,6 @@ namespace HMS.mainwindowpages
         ListView listrem = new ListView();
         public DB()
         {
-
             InitializeComponent();
             time =DateTime.Today.TimeOfDay.Ticks.ToString();
             DataTable advcount = cs.advance();
@@ -69,33 +68,33 @@ namespace HMS.mainwindowpages
             { }
             else
             {
-                    if (ds.Rows[0]["AMOUNT_RECEIVED"].ToString() == "0" || ds.Rows[0]["AMOUNT_RECEIVED"].ToString() == "")
-                    { }
-                    else
-                    {
-                         a = Convert.ToDecimal(ds.Rows[0]["AMOUNT_RECEIVED"]);
-                    }
-                    if (ds.Rows[0]["POSTCHARGES"].ToString() == "0" || ds.Rows[0]["POSTCHARGES"].ToString() == "")
-                    { }
-                    else
-                    {
-                         a1 = Convert.ToDecimal(ds.Rows[0]["POSTCHARGES"]);
-                    }
-                    if (ds.Rows[0]["PAIDOUT"].ToString() == "0" || ds.Rows[0]["PAIDOUT"].ToString() == "")
-                    { }
-                    else
-                    {
-                         b = Convert.ToDecimal(ds.Rows[0]["PAIDOUT"]);
-                    }
-                    if (ds.Rows[0]["REFUND"].ToString() == "0" || ds.Rows[0]["REFUND"].ToString() == "")
-                    { }
-                    else
-                    {
-                         b1 = Convert.ToDecimal(ds.Rows[0]["REFUND"]);
-                    }
-                    a2 = a + a1;
-                    b2 = b + b1;
-                    c = a2 - b2;
+                if (ds.Rows[0]["AMOUNT_RECEIVED"].ToString() == "0" || ds.Rows[0]["AMOUNT_RECEIVED"].ToString() == "")
+                { }
+                else
+                {
+                    a = Convert.ToDecimal(ds.Rows[0]["AMOUNT_RECEIVED"]);
+                }
+                if (ds.Rows[0]["POSTCHARGES"].ToString() == "0" || ds.Rows[0]["POSTCHARGES"].ToString() == "")
+                { }
+                else
+                {
+                    a1 = Convert.ToDecimal(ds.Rows[0]["POSTCHARGES"]);
+                }
+                if (ds.Rows[0]["PAIDOUT"].ToString() == "0" || ds.Rows[0]["PAIDOUT"].ToString() == "")
+                { }
+                else
+                {
+                    b = Convert.ToDecimal(ds.Rows[0]["PAIDOUT"]);
+                }
+                if (ds.Rows[0]["REFUND"].ToString() == "0" || ds.Rows[0]["REFUND"].ToString() == "")
+                { }
+                else
+                {
+                    b1 = Convert.ToDecimal(ds.Rows[0]["REFUND"]);
+                }
+                a2 = a + a1;
+                b2 = b + b1;
+                c = a2 - b2;
                 lblsale.Content = c;
             }
             DataTable CHECK = cs.CHECKINS();

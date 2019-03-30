@@ -38,6 +38,8 @@ namespace HMS.Reports
             }
             else
             {
+                fd = fromdate.Text;
+                td = todate.Text;
                 DataTable dr = rep.monthwisetax();
                 if (dr.Rows.Count == 0)
                 {

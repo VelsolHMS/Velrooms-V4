@@ -38,6 +38,8 @@ namespace HMS.Reports
             }
             else
             {
+                repor.MWFromDate = fromdate.Text;
+                repor.MWToDate = todate.Text;
                 DataTable dr = repor.MWRoomTariff();
                 if (dr.Rows.Count == 0)
                 {
@@ -45,8 +47,6 @@ namespace HMS.Reports
                 }
                 else
                 {
-                    repor.MWFromDate = fromdate.Text;
-                    repor.MWToDate = todate.Text;
                     ReportDocument re = new ReportDocument();
                     DataTable d = report1();
                     re.Load("../../Reports/RoomTariffMonthWiseSubReport.rpt");

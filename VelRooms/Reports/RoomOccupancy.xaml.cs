@@ -38,6 +38,8 @@ namespace HMS.Reports
             }
             else
             {
+                rp.RoomOCCfromdate = txtfromdate.Text;
+                rp.RoomOCCtodate = txttodate.Text;
                 DataTable dr = rp.RoomOccupency1();
                 if (dr.Rows.Count == 0)
                 {
@@ -45,8 +47,6 @@ namespace HMS.Reports
                 }
                 else
                 {
-                    rp.RoomOCCfromdate = txtfromdate.Text;
-                    rp.RoomOCCtodate = txttodate.Text;
                     ReportDocument re = new ReportDocument();
                     DataTable d1 = report();
                     re.Load("../../Reports/RoomOccupency2.rpt");

@@ -39,6 +39,8 @@ namespace HMS.Reports
             }
             else
             {
+                rp.MWDFromDate = fromdate.Text;
+                rp.MWDToDate = todate.Text;
                 DataTable dr = rp.MonthWiseDiscount2();
                 if (dr.Rows.Count == 0)
                 {
@@ -46,8 +48,6 @@ namespace HMS.Reports
                 }
                 else
                 {
-                    rp.MWDFromDate = fromdate.Text;
-                    rp.MWDToDate = todate.Text;
                     ReportDocument re = new ReportDocument();
                     DataTable d1 = report();
                     re.Load("../../Reports/MonthWiseDiscountSubReport.rpt");

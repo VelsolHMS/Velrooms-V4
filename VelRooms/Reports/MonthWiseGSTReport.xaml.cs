@@ -48,8 +48,6 @@ namespace HMS.Reports
                 }
                 else
                 {
-                    rep.FromDate = fromdate.Text;
-                    rep.ToDate = todate.Text;
                     ReportDocument re = new ReportDocument();
                     DataTable d1 = report();
                     re.Load("../../Reports/GstMonthSubreport.rpt");

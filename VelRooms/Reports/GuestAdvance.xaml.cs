@@ -37,6 +37,7 @@ namespace HMS.Reports
             }
             else
             {
+                rp.DayWiseAdvanceDate = txtdate.Text;
                 DataTable dr = rp.DAY1();
                 if (dr.Rows.Count == 0)
                 {
@@ -44,7 +45,6 @@ namespace HMS.Reports
                 }
                 else
                 {
-                    rp.DayWiseAdvanceDate = txtdate.Text;
                     ReportDocument re = new ReportDocument();
                     DataTable d1 = report();
                     re.Load("../../Reports/DayWiseAdvanceSubReport.rpt");

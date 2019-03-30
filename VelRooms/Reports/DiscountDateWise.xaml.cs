@@ -26,6 +26,7 @@ namespace HMS.Reports
             }
             else
             {
+                repor.Discountdaywisedate = txtdate.Text;
                 DataTable dr = repor.DiscountDateWise();
                 if (dr.Rows.Count == 0)
                 {
@@ -33,7 +34,6 @@ namespace HMS.Reports
                 }
                 else
                 {
-                    repor.Discountdaywisedate = txtdate.Text;
                     ReportDocument re = new ReportDocument();
                     DataTable d = report1();
                     re.Load("../../Reports/DiscountDateWiseReport1.rpt");

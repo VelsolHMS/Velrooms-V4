@@ -37,6 +37,7 @@ namespace HMS.Reports
             }
             else
             {
+                repor.datetax = todate.Text;
                 DataTable dr = repor.datewisetax();
                 if (dr.Rows.Count == 0)
                 {
@@ -44,7 +45,6 @@ namespace HMS.Reports
                 }
                 else
                 {
-                    repor.datetax = todate.Text;
                     ReportDocument re = new ReportDocument();
                     DataTable d = report1();
                     DataTable d1 = report();

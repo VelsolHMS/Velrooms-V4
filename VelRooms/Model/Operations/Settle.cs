@@ -219,7 +219,7 @@ namespace HMS.Model.Operations
             string S = "SELECT MAX(BILL_NO) as b FROM PRINTSTATUS";
             var L = new List<SqlParameter>();
             DataTable c = DbFunctions.ExecuteCommand<DataTable>(S, L);
-            if (c.Rows.Count == 0)
+            if (c.Rows[0]["b"].ToString() == null || c.Rows[0]["b"].ToString() == "")
             {
                 f = 0;
             }
