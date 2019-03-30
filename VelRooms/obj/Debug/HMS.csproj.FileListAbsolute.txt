@@ -3737,6 +3737,7 @@ C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\mainwindowpages\info
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\mainwindowpages\masters.g.cs
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\mainwindowpages\operations.g.cs
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\mainwindowpages\reports.g.cs
+C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\Reports\BillWiseGst.g.cs
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\Reports\CancelledReservations.g.cs
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\Reports\ChangeGuestInfo.g.cs
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\Reports\CheckoutDay.g.cs
@@ -3821,6 +3822,7 @@ C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\mainwindowpages\info
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\mainwindowpages\masters.baml
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\mainwindowpages\operations.baml
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\mainwindowpages\reports.baml
+C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\Reports\BillWiseGst.baml
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\Reports\CancelledReservations.baml
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\Reports\ChangeGuestInfo.baml
 C:\Users\Velsol\source\repos\Velrooms-V3\VelRooms\obj\Debug\Reports\CheckoutDay.baml

@@ -128,7 +128,7 @@
                                 <MenuItem x:Name="mGuestAdvance" Header="Guest Advances" Click="mGuestAdvance_Click"/>
                                 <MenuItem x:Name="mMWRoomTariff" Header="Month Wise Room Tariff" Click="mMWRoomTariff_Click"/>
                                 <MenuItem x:Name="mMontlyDis" Header="Montly Discout" Click="mMontlyDis_Click"/>
-
+                                <MenuItem x:Name="mMonthlyBillGst" Header="Bill Wise Gst" Click="MMonthlyBillGst_Click"/>
                                 <MenuItem x:Name="mDailyTar" Header="Daily Tariff" Click="mDailyTar_Click"/>
                                 <!--<MenuItem x:Name="mMontlyTar" Header="Montly Tariff" Click="mMontlyTar_Click"/>-->
                                 <MenuItem x:Name="mDailyTax" Header="Daily Tax" Click="mDailyTax_Click"/>

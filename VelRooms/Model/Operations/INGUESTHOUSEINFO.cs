@@ -16,6 +16,7 @@ namespace HMS.Model
         public string ROOM_NO { get; set; }
         public string GUEST_NAME { get; set; }
         public string COMPANY_NAME { get; set; }
+        public string Company_Gst { get; set; }
         public string ARRIVAL_DATE { get; set; }
         public string ARRIVAL_TIME { get; set; }
         public string DEPARTURE_DATE { get; set; }
@@ -37,6 +38,7 @@ namespace HMS.Model
             list.AddSqlParameter("@ROOM_NO", ROOM_NO);
             list.AddSqlParameter("@GUEST_NAME", GUEST_NAME);
             list.AddSqlParameter("@COMPANY_NAME", COMPANY_NAME);
+            list.AddSqlParameter("@Company_Gst", Company_Gst);
             list.AddSqlParameter("@ARRIVAL_DATE", ARRIVAL_DATE);
             list.AddSqlParameter("@ARRIVAL_TIME", ARRIVAL_TIME);
             list.AddSqlParameter("@DEPARTURE_DATE", DEPARTURE_DATE);
@@ -78,10 +80,11 @@ namespace HMS.Model
         {
             var list = new List<SqlParameter>();
 
-            string s = "SELECT FIRSTNAME,COMPANY_NAME,ARRIVAL_DATE,ARRIVAL_TIME,DEPARTURE_DATE,MOBILE_NO,EMAIL,ID_TYPE,ID_DATA FROM CHECKIN WHERE ROOM_NO = '"+ROOM_NO+"' AND CHECK_OUT = 0";
+            string s = "SELECT FIRSTNAME,COMPANY_NAME,ARRIVAL_DATE,ARRIVAL_TIME,DEPARTURE_DATE,MOBILE_NO,EMAIL,ID_TYPE,ID_DATA,Company_Gst FROM CHECKIN WHERE ROOM_NO = '" + ROOM_NO+"' AND CHECK_OUT = 0";
             DataTable DW= DbFunctions.ExecuteCommand<DataTable>(s, list);
             if (DW.Rows.Count == 0)
             {
+                Company_Gst = "";
                 GUEST_NAME = "";
                 COMPANY_NAME = "";
                 ARRIVAL_DATE = "";
@@ -95,6 +98,7 @@ namespace HMS.Model
             }
             else
             {
+                Company_Gst = DW.Rows[0]["Company_Gst"].ToString();
                 GUEST_NAME = DW.Rows[0]["FIRSTNAME"].ToString();
                 COMPANY_NAME = DW.Rows[0]["COMPANY_NAME"].ToString();
                 ARRIVAL_DATE = DW.Rows[0]["ARRIVAL_DATE"].ToString();
@@ -119,6 +123,7 @@ namespace HMS.Model
             var list = new List<SqlParameter>();
             list.AddSqlParameter("@GUEST_NAME", GUEST_NAME);
             list.AddSqlParameter("@COMPANY_NAME", COMPANY_NAME);
+            list.AddSqlParameter("@Company_Gst", Company_Gst);
             list.AddSqlParameter("@ARRIVAL_DATE", ARRIVAL_DATE);
             list.AddSqlParameter("@ARRIVAL_TIME", ARRIVAL_TIME);
             list.AddSqlParameter("@DEPARTURE_DATE", DEPARTURE_DATE);
@@ -127,9 +132,8 @@ namespace HMS.Model
             list.AddSqlParameter("@EMAIL", EMAIL);
             list.AddSqlParameter("@ID_TYPE", ID_TYPE);
             list.AddSqlParameter("@ID_DATA", ID_DATA);
-            string s = "UPDATE CHECKIN SET FIRSTNAME=@GUEST_NAME,COMPANY_NAME=@COMPANY_NAME,DEPARTURE_DATE=@DEPARTURE_DATE,MOBILE_NO=@CONTACT_NO,EMAIL=@EMAIL,ID_TYPE=@ID_TYPE,ID_DATA=@ID_DATA WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0  ";
+            string s = "UPDATE CHECKIN SET FIRSTNAME=@GUEST_NAME,COMPANY_NAME=@COMPANY_NAME,DEPARTURE_DATE=@DEPARTURE_DATE,Company_Gst=@Company_Gst,MOBILE_NO=@CONTACT_NO,EMAIL=@EMAIL,ID_TYPE=@ID_TYPE,ID_DATA=@ID_DATA WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0  ";
             DbFunctions.ExecuteCommand<int>(s,list);
         }
-
     }
 }
