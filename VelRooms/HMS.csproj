@@ -398,6 +398,29 @@
       <DependentUpon>PENDINGBILLReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\BillWiseCrystal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillWiseCrystal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\BillWiseGst.xaml.cs">
+      <DependentUpon>BillWiseGst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillWiseGstDataSet.cs">
+      <DependentUpon>BillWiseGstDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillWiseGstDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillWiseGstDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BillWiseGstSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillWiseGstSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\CancelledReservations.xaml.cs">
       <DependentUpon>CancelledReservations.xaml</DependentUpon>
     </Compile>
@@ -1139,6 +1162,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Reports\BillWiseGst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Reports\CancelledReservations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1488,6 +1515,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <AppDesigner Include="Properties\" />
+    <EmbeddedResource Include="Reports\BillWiseCrystal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BillWiseCrystal.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BillWiseGstSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BillWiseGstSubReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\CheckoutDayReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CheckoutDayReport1.cs</LastGenOutput>
@@ -1817,6 +1852,17 @@
     </None>
     <None Include="pendingbillDataSet1.xss">
       <DependentUpon>pendingbillDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\BillWiseGstDataSet.xsc">
+      <DependentUpon>BillWiseGstDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\BillWiseGstDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BillWiseGstDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\BillWiseGstDataSet.xss">
+      <DependentUpon>BillWiseGstDataSet.xsd</DependentUpon>
     </None>
     <None Include="Reports\CheckoutDayDataSet1.xsc">
       <DependentUpon>CheckoutDayDataSet1.xsd</DependentUpon>

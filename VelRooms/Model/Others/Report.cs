@@ -1054,5 +1054,15 @@ namespace HMS.Model.Others
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
+        public DataTable GetBillWiseDetails()
+        {
+            var list = new List<SqlParameter>();
+            string s = "select BILL_NO,DATE,ROOM_TARRIF,CGST,SGST," +
+                    "(select Company_Gst from CHECKIN where CHECKIN_ID = A.CHECKIN_ID) AS Company_Gst,"+
+                    "(select TAX from CHECKIN where CHECKIN_ID = A.CHECKIN_ID) As TaxPer"+
+                    " from PRINTSTATUS A where INSERT_DATE between '" + FromDate + "' AND '" + ToDate + "'";
+            DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
+            return d;
+        }
     }
 }

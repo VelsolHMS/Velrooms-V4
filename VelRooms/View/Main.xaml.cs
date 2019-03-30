@@ -294,6 +294,10 @@ namespace HMS.View
             ds.Tables.Add(t);
             ExportDataSetToExcel(ds, Selected_Path); //Forms.Application.StartupPath
         }
+        private void MMonthlyBillGst_Click(object sender, RoutedEventArgs e)
+        {
+            this.frame.Navigate(new Uri("Reports/BillWiseGst.xaml", UriKind.RelativeOrAbsolute));
+        }
         private void worker_DoWorkHome(object sender, DoWorkEventArgs e)
         {
             //this.frame.Navigate(new Uri("mainwindowpages/home.xaml", UriKind.RelativeOrAbsolute));

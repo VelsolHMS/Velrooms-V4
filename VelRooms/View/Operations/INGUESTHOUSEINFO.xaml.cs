@@ -118,6 +118,7 @@ namespace HMS.View.Operations
                     IN.ROOM_NO = txtroomno.Text;
                     IN.GUEST_NAME = txtname.Text;
                     IN.COMPANY_NAME = txtcompanyname.Text;
+                    IN.Company_Gst = txtcompanygst.Text;
                     IN.ARRIVAL_DATE = dt.Text;
                     IN.ARRIVAL_TIME = txtarrivaltime.Text;
                     IN.DEPARTURE_DATE = dt1.Text;
