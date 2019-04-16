@@ -61,7 +61,6 @@ namespace HMS.Model.Operations
         public DateTime INSERT_DATE { get; set; }
         public decimal rsingle, rdouble, rtriple, rquad, rextraadult, rextrachild;
         public int a = 0;
-
         public void Insert1()
         {
             var list = new List<SqlParameter>();
@@ -118,7 +117,6 @@ namespace HMS.Model.Operations
                        "@SCANTY_BAGGAGE,@STATUS,@GROUP_CHECKINID,@CHECK_OUT)";
             DbFunctions.ExecuteCommand<int>(s, list);
         }
-
         public int Group_Checkinid()
         {
             var list = new List<SqlParameter>();
@@ -137,13 +135,10 @@ namespace HMS.Model.Operations
             }
             return a;
         }
-
         public void NIGHTT(string S)
         {
             DateTime dt = DateTime.Today;
-
             //ARRIVAL_TIME = dt.ToShortDateString();
-
             var list = new List<SqlParameter>();
             list.AddSqlParameter("@gid", GROUP_CHECKINID);
             list.AddSqlParameter("@roomno", ROOM_NO);
