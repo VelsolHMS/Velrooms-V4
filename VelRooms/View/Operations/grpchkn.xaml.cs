@@ -425,7 +425,7 @@ namespace HMS.View.Operations
                     if(Convert.ToInt32(gc.RESERVATION_ID) > 0)
                     {
                         DataTable dt_ad_amount = gc.GetAdvanceAmount();
-                        if (dt_ad_amount.Rows[0]["AMOUNT_RECEIVED"].ToString() == "0.00" || dt_ad_amount.Rows[0]["AMOUNT_RECEIVED"].ToString() == null)
+                        if (dt_ad_amount.Rows[0]["AMOUNT_RECEIVED"].ToString() == "0.00" || dt_ad_amount.Rows[0]["AMOUNT_RECEIVED"].ToString() == null || dt_ad_amount.Rows[0]["AMOUNT_RECEIVED"].ToString() == "")
                         {
                             AdvanceAmount = 0;
                         }
