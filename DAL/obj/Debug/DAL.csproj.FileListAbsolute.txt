@@ -275,6 +275,7 @@ C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.csproj.Generate
 C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.exe
 C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.pdb
+C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
 C:\Users\Velsol\source\repos\Velrooms-V3\DAL\bin\Debug\DAL.exe
 C:\Users\Velsol\source\repos\Velrooms-V3\DAL\bin\Debug\DAL.pdb
 C:\Users\Velsol\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
@@ -289,4 +290,3 @@ C:\Users\Velsol\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.csproj.GenerateResour
 C:\Users\Velsol\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\Velsol\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.exe
 C:\Users\Velsol\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.pdb
-C:\Users\user3.VELSOL\source\repos\Velrooms-V3\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

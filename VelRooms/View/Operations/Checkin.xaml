@@ -230,6 +230,7 @@
                                     <ComboBoxItem Content="Passport"></ComboBoxItem>
                                     <ComboBoxItem Content="Voterid"></ComboBoxItem>
                                     <ComboBoxItem Content="DrivingLicense"></ComboBoxItem>
+                                    <ComboBoxItem Content="Other"></ComboBoxItem>
                                     <!--<ComboBoxItem Content="Government Id"></ComboBoxItem>-->
                                 </ComboBox>
                                 <TextBox Name="txtproof" Width="130" CharacterCasing="Upper" TabIndex="15" Margin="15,0,0,0" Padding="0,-2,0,0" Validation.Error="Validation_Error" LostFocus="txtproof_LostFocus" TextChanged="txtproof_TextChanged" material:HintAssist.Hint="Id Proof Number"  />
@@ -271,7 +272,7 @@
                                 <material:PackIcon Kind="Cash" Width="25"  Margin="15,0,0,0" Height="25"/>
                                 <TextBox Name="RACKTARRIF" TabIndex="23" Width="150" Margin="15,0,0,0" material:HintAssist.Hint="Rack Tarrif" Padding="1,-7,0,0" material:HintAssist.IsFloating="True"></TextBox>
                                 <material:PackIcon Kind="Calculator" Margin="15,0,0,0" HorizontalAlignment="Stretch" Height="25" Width="25"/>
-                                <TextBox Name="CHARGETARRIF" TabIndex="26" Width="150" Margin="15,0,0,0" material:HintAssist.Hint="ChargeTarrif" Padding="1,-6,0,0" material:HintAssist.IsFloating="True"></TextBox>
+                                <TextBox Name="CHARGETARRIF" TabIndex="26" Width="150" Margin="15,0,0,0" material:HintAssist.Hint="ChargeTarrif" LostFocus="CHARGETARRIF_LostFocus" Padding="1,-6,0,0" material:HintAssist.IsFloating="True"></TextBox>
                                 <material:PackIcon Kind="HumanMale"  Margin="15,0,0,0" Height="25" Width="25"/>
                                 <TextBox Name="RACKADULT" TabIndex="24" Width="150" Margin="15,0,0,0" material:HintAssist.Hint="Rack Extra Bed Adult" Padding="1,-5,0,0" material:HintAssist.IsFloating="True"></TextBox>
                                 <material:PackIcon Kind="HumanChild"  Margin="15,0,0,0" Height="25" Width="25"/>

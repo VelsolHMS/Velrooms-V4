@@ -727,6 +727,8 @@ namespace HMS.View.Operations
                 ch.EXTRA_ADULT = Convert.ToInt16(EADULT.Text);
                 ch.EXTRA_CHILD = Convert.ToInt16(ECHILD.Text);
                 ch.PLANCODE = plancode.Text;
+                //ch.FETCH_TAX(CHARGETARRIF.Text);
+                //TAXPER.Text = ch.TAX;
                 ch.TAX = TAXPER.Text.ToString();
                 ch.RACK_TARRIF = Convert.ToDecimal(RACKTARRIF.Text);
                 ch.RACK_ECHILD = Convert.ToDecimal(RACKCHILD.Text);
@@ -1322,6 +1324,13 @@ namespace HMS.View.Operations
         {
             txtproof.Text = "";
         }
+
+        private void CHARGETARRIF_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ch.FETCH_TAX(CHARGETARRIF.Text);
+            TAXPER.Text = ch.TAX;
+        }
+
         private void plancode_DropDownClosed(object sender, EventArgs e)
         {
             try

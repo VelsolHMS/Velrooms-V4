@@ -262,6 +262,7 @@ namespace HMS.View.Operations
                 b.ValidatesOnDataErrors = true;
                 BindingOperations.SetBinding(txtproof, TextBox.TextProperty, b);
             }
+            else { }
         }
         private void errbtn_Click(object sender, RoutedEventArgs e)
         {

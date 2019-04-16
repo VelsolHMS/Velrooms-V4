@@ -709,6 +709,8 @@ namespace HMS.View.Operations
             d.Columns.Add("DiscountAmount", typeof(decimal));
             d.Columns.Add("Refund", typeof(decimal));
             d.Columns.Add("Transfer", typeof(decimal));
+            d.Columns.Add("Company", typeof(string));
+            d.Columns.Add("Time", typeof(DateTime));
             co.hotel();
             DataRow r = d.NewRow();
             r["Name"] = Checkout1.N;
@@ -728,6 +730,7 @@ namespace HMS.View.Operations
             r["RoomNo"] = roomno;
             r["RoomType"] = d1.Rows[0]["ROOM_CATEGORY"].ToString();
             r["CheckInDate"] = d1.Rows[0]["ARRIVAL_DATE"].ToString();
+            r["Time"] = d1.Rows[0]["ARRIVAL_TIME"].ToString();
             time.Text = d1.Rows[0]["ARRIVAL_TIME"].ToString();
             r["CheckoutDate"] = DateTime.Today.Date;
             r["StayDays"] = count;
@@ -742,6 +745,13 @@ namespace HMS.View.Operations
             r["DiscountAmount"] = Ch_Discount;
             r["Refund"] = Ch_Refunds;
             r["Transfer"] = RC_TransferAmount;
+            if(d1.Rows[0]["COMPANY_NAME"].ToString() == null || d1.Rows[0]["COMPANY_NAME"].ToString() == "" || d1.Rows[0]["COMPANY_NAME"].ToString() == "Select a Compny")
+            {
+                r["Company"] = d1.Rows[0]["Company_Gst"].ToString();
+            }else
+            {
+                r["Company"] = d1.Rows[0]["Company_Gst"].ToString() + " (" + d1.Rows[0]["COMPANY_NAME"].ToString() + ")";
+            }
             d.Rows.Add(r);
             return d;
         }

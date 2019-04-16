@@ -115,6 +115,7 @@ namespace HMS.View.Operations
                 else
                 {
                     INGUESTHOUSEINFOS IN = new INGUESTHOUSEINFOS();
+                    Checksin ch = new Checksin();
                     IN.ROOM_NO = txtroomno.Text;
                     IN.GUEST_NAME = txtname.Text;
                     IN.COMPANY_NAME = txtcompanyname.Text;
@@ -131,11 +132,15 @@ namespace HMS.View.Operations
                     //IN.USER_NAME = login.u;
                     IN.INSERT_BY = login.u;
                     IN.INSERT_DATE = DateTime.Today;
+                    IN.CHARGED_TARRIF = Math.Round(Convert.ToDecimal(txttariff.Text),2,MidpointRounding.AwayFromZero);
+                    ch.FETCH_TAX(txttariff.Text);
+                    IN.TAX = Math.Round(Convert.ToDecimal(ch.TAX),2,MidpointRounding.AwayFromZero);
                     string a1 = "Save", b1 = Convert.ToString(Save.Content);
                     if (b1 == a1)
                     {
                         IN.INSERT();
                         IN.guestupdate();
+                        IN.NightAuditUpdate();
                         //MessageBox.Show("Saved sucessfully");
                         // Save.Content = "Save";
                         insert.Text = "Data Inserted.!";
@@ -181,6 +186,7 @@ namespace HMS.View.Operations
                     txtroomno.IsReadOnly = true;
                     Save.IsEnabled = true;
                     txtname.Text = I.GUEST_NAME;
+                    txttariff.Text = I.CHARGED_TARRIF.ToString();
                     txtcompanyname.Text = I.COMPANY_NAME;
                     dt.Text = I.ARRIVAL_DATE;
                     txtarrivaltime.Text = I.ARRIVAL_TIME;
@@ -252,6 +258,9 @@ namespace HMS.View.Operations
                 b.NotifyOnValidationError = true;
                 b.ValidatesOnDataErrors = true;
                 BindingOperations.SetBinding(txtproof, TextBox.TextProperty, b);
+            }
+            else
+            {
             }
         }
         private void txtproof_TextChanged(object sender, TextChangedEventArgs e)

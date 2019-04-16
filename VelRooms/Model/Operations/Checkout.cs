@@ -258,7 +258,7 @@ namespace HMS.Model.Operations
         public DataTable guestinfo()
         {
             var list = new List<SqlParameter>();
-            string s = "Select DATEDIFF(DAY,ARRIVAL_DATE,DEPARTURE_DATE) as DAYS,ARRIVAL_DATE,ARRIVAL_TIME,FIRSTNAME,COMPANY_NAME,MOBILE_NO,ADDRESS,RESERVATION_ID,ROOM_CATEGORY,CITY,STATE,ZIP,COUNTRY FROM CHECKIN WHERE ROOM_NO = '" + ROOM_NO+"' AND CHECK_OUT=0 ";
+            string s = "Select DATEDIFF(DAY,ARRIVAL_DATE,DEPARTURE_DATE) as DAYS,ARRIVAL_DATE,ARRIVAL_TIME,FIRSTNAME,COMPANY_NAME,MOBILE_NO,ADDRESS,RESERVATION_ID,ROOM_CATEGORY,CITY,STATE,ZIP,COUNTRY,COMPANY_NAME,Company_Gst FROM CHECKIN WHERE ROOM_NO = '" + ROOM_NO+"' AND CHECK_OUT=0 ";
             DataTable DT = DbFunctions.ExecuteCommand<DataTable>(s, list);
             if (DT.Rows.Count == 0)
             {

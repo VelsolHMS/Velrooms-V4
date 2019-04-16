@@ -31,6 +31,8 @@ namespace HMS.Model
         public DateTime INSERT_DATE { get; set; }
         public string UPDATE_BY { get; set; }
         public DateTime UPDTAE_DATE { get; set; }
+        public decimal TAX { get; set; }
+        public decimal CHARGED_TARRIF { get; set; }
         public void INSERT()
         {
             var list = new List<SqlParameter>();
@@ -80,7 +82,7 @@ namespace HMS.Model
         {
             var list = new List<SqlParameter>();
 
-            string s = "SELECT FIRSTNAME,COMPANY_NAME,ARRIVAL_DATE,ARRIVAL_TIME,DEPARTURE_DATE,MOBILE_NO,EMAIL,ID_TYPE,ID_DATA,Company_Gst FROM CHECKIN WHERE ROOM_NO = '" + ROOM_NO+"' AND CHECK_OUT = 0";
+            string s = "SELECT FIRSTNAME,COMPANY_NAME,ARRIVAL_DATE,ARRIVAL_TIME,DEPARTURE_DATE,MOBILE_NO,EMAIL,ID_TYPE,ID_DATA,Company_Gst,CHARGED_TARRIF FROM CHECKIN WHERE ROOM_NO = '" + ROOM_NO+"' AND CHECK_OUT = 0";
             DataTable DW= DbFunctions.ExecuteCommand<DataTable>(s, list);
             if (DW.Rows.Count == 0)
             {
@@ -95,9 +97,11 @@ namespace HMS.Model
                 EMAIL = "";
                 ID_TYPE = "";
                 ID_DATA = "";
+                CHARGED_TARRIF = 0;
             }
             else
             {
+                CHARGED_TARRIF = Math.Round(Convert.ToDecimal(DW.Rows[0]["CHARGED_TARRIF"]),2,MidpointRounding.AwayFromZero);
                 Company_Gst = DW.Rows[0]["Company_Gst"].ToString();
                 GUEST_NAME = DW.Rows[0]["FIRSTNAME"].ToString();
                 COMPANY_NAME = DW.Rows[0]["COMPANY_NAME"].ToString();
@@ -132,8 +136,18 @@ namespace HMS.Model
             list.AddSqlParameter("@EMAIL", EMAIL);
             list.AddSqlParameter("@ID_TYPE", ID_TYPE);
             list.AddSqlParameter("@ID_DATA", ID_DATA);
-            string s = "UPDATE CHECKIN SET FIRSTNAME=@GUEST_NAME,COMPANY_NAME=@COMPANY_NAME,DEPARTURE_DATE=@DEPARTURE_DATE,Company_Gst=@Company_Gst,MOBILE_NO=@CONTACT_NO,EMAIL=@EMAIL,ID_TYPE=@ID_TYPE,ID_DATA=@ID_DATA WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0  ";
+            list.AddSqlParameter("@CHARGED_TARRIF", CHARGED_TARRIF);
+            list.AddSqlParameter("@TAX", TAX);
+            string s = "UPDATE CHECKIN SET FIRSTNAME=@GUEST_NAME,COMPANY_NAME=@COMPANY_NAME,DEPARTURE_DATE=@DEPARTURE_DATE,Company_Gst=@Company_Gst,MOBILE_NO=@CONTACT_NO,EMAIL=@EMAIL,ID_TYPE=@ID_TYPE,ID_DATA=@ID_DATA,CHARGED_TARRIF=@CHARGED_TARRIF,TAX=@TAX WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0";
             DbFunctions.ExecuteCommand<int>(s,list);
+        }
+        public void NightAuditUpdate()
+        {
+            var list = new List<SqlParameter>();
+            list.AddSqlParameter("@CHARGED_TARRIF", CHARGED_TARRIF);
+            list.AddSqlParameter("@TAX", TAX);
+            string s = "Update night_audit set ROOM_TARRIF=@CHARGED_TARRIF,GST=@TAX where ROOM_NO = '" + ROOM_NO + "' and NIGHT = 0";
+            DbFunctions.ExecuteCommand<int>(s, list);
         }
     }
 }

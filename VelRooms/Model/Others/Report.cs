@@ -955,14 +955,14 @@ namespace HMS.Model.Others
         public DataTable FOSettlements()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT ROOM_NO,RESERVATION_NO,GUEST_NAME,BALANCE_AMOUNT,INSERT_BY,PAYMENT_MODE from SETTLE where INSERT_DATE = '" + SelectedDate + "'";//AND BALANCE_AMOUNT > 0
+            string s = "SELECT ROOM_NO,RESERVATION_NO,GUEST_NAME,BALANCE_AMOUNT,INSERT_BY,PAYMENT_MODE,BILL_NO from SETTLE where INSERT_DATE = '" + SelectedDate + "'";//AND BALANCE_AMOUNT > 0
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
         public DataTable FOOtherSettlements()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT ROOM_NO,PAYTYPE,AMOUNT,INSERT_BY,(SELECT GUEST_NAME from PRINTSTATUS where BILL_NO = so.BILL_NO) as Guest_Name from SETTLE_OTHERPAY so where INSERT_DATE = '" + SelectedDate + "' AND AMOUNT > 0";
+            string s = "SELECT ROOM_NO,PAYTYPE,AMOUNT,INSERT_BY,BILL_NO,(SELECT GUEST_NAME from PRINTSTATUS where BILL_NO = so.BILL_NO) as Guest_Name from SETTLE_OTHERPAY so where INSERT_DATE = '" + SelectedDate + "' AND AMOUNT > 0";
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
@@ -990,9 +990,10 @@ namespace HMS.Model.Others
         }
         public DataTable PendingBillAmount()
         {
-            //SELECT SUM(Amount_Recevied) AS PendingBill from PENDINGBILL where Insert_Date = '2018-12-28' AND Amount_Recevied > 0
+            //select Distinct (select SUM(Amount_Recevied) from PENDINGBILL where Insert_Date = '" + SelectedDate + "' AND Payment_Type = 'Cash') AS PendingBillCash, (select SUM(Amount_Recevied) from PENDINGBILL where Insert_Date = '" + SelectedDate + "' AND Payment_Type != 'Cash') AS PendingBillCard from PENDINGBILL
             var list = new List<SqlParameter>();
-            string s = "SELECT SUM(Amount_Recevied) AS PendingBill from PENDINGBILL where Insert_Date = '" + SelectedDate + "' AND Amount_Recevied > 0";
+            //string s = "SELECT SUM(Amount_Recevied) AS PendingBill from PENDINGBILL where Insert_Date = '" + SelectedDate + "' AND Amount_Recevied > 0";
+            string s = "select Distinct (select SUM(Amount_Recevied) from PENDINGBILL where Insert_Date = '" + SelectedDate + "' AND Payment_Type = 'Cash') AS PendingBillCash, (select SUM(Amount_Recevied) from PENDINGBILL where Insert_Date = '" + SelectedDate + "' AND Payment_Type != 'Cash') AS PendingBillCard from PENDINGBILL";
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }

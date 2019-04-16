@@ -14,7 +14,8 @@ namespace HMS.Reports
     {
         Report rp = new Report();
         public decimal Acard = 0, Acash = 0, ATotal = 0,SCash = 0,SCard = 0, STotal = 0,SBOH = 0,SComplimentry = 0,PendingAmount = 0,Paidouts = 0;
-        public decimal OpeningBalance = 0, Advances = 0, RoomCollection = 0, MisCollections = 0, Refunds = 0, Cash = 0, Card = 0;
+        public decimal OpeningBalanceCash = 0, OpeningBalanceCard = 0, Advances = 0, RoomCollection = 0, MisCollections = 0, Refunds = 0, Cash = 0, Card = 0;
+        public decimal PendingBillCash = 0, PendingBillCard = 0, PaidoutCash = 0, PaidoutCard = 0;
         public frontofficeReport()
         {
             InitializeComponent();
@@ -68,8 +69,8 @@ namespace HMS.Reports
                 re.Refresh();
             }
             txtdate.Text = "";
-            Acard = 0; Acash = 0; ATotal = 0; SCash = 0; SCard = 0; STotal = 0; SBOH = 0; SComplimentry = 0; PendingAmount = 0; Paidouts = 0;
-            OpeningBalance = 0; Advances = 0; RoomCollection = 0; MisCollections = 0; Refunds = 0; Cash = 0; Card = 0;
+            Acard = 0; Acash = 0; ATotal = 0; SCash = 0; SCard = 0; STotal = 0; SBOH = 0; SComplimentry = 0;
+            OpeningBalanceCash = 0; OpeningBalanceCard = 0; Advances = 0; RoomCollection = 0; MisCollections = 0; Refunds = 0; Cash = 0; Card = 0; PendingBillCash = 0; PendingBillCard = 0; PaidoutCash = 0; PaidoutCard = 0;
         }
         private DataTable report()
         {
@@ -101,6 +102,8 @@ namespace HMS.Reports
             d.Columns.Add("Company", typeof(string));
             d.Columns.Add("BOH", typeof(decimal));
             d.Columns.Add("Complimentry", typeof(decimal));
+            d.Columns.Add("TodayCash", typeof(decimal));
+            d.Columns.Add("TodayCard", typeof(decimal));
             DataRow row = d.NewRow();
             rp.Address();
             row["Name"] = Report.Name;
@@ -126,18 +129,34 @@ namespace HMS.Reports
             row["Cash"] = Math.Round(Cash_Total, 2, MidpointRounding.AwayFromZero);
             row["Card"] = Math.Round(Card_Total, 2, MidpointRounding.AwayFromZero);
             row["Misc"] = Math.Round(MisCollections, 2, MidpointRounding.AwayFromZero);
-            row["PaidOuts"] = Math.Round(Paidouts, 2, MidpointRounding.AwayFromZero);
+            row["PaidOuts"] = Math.Round(PaidoutCash + PaidoutCard, 2, MidpointRounding.AwayFromZero);
             row["Refunds"] = Math.Round(Refunds, 2, MidpointRounding.AwayFromZero);
             DataTable d1 = rp.PendingBillAmount();
-            if(d1.Rows[0]["PendingBill"].ToString() == null || d1.Rows[0]["PendingBill"].ToString() == "")
+            if (d1.Rows.Count > 0)
             {
-                PendingAmount = 0;
+                if (d1.Rows[0]["PendingBillCash"].ToString() == null || d1.Rows[0]["PendingBillCash"].ToString() == "")
+                {
+                    PendingBillCash = 0;
+                }
+                else
+                {
+                    PendingBillCash = Convert.ToDecimal(d1.Rows[0]["PendingBillCash"]);
+                }
+                if (d1.Rows[0]["PendingBillCard"].ToString() == null || d1.Rows[0]["PendingBillCard"].ToString() == "")
+                {
+                    PendingBillCard = 0;
+                }
+                else
+                {
+                    PendingBillCard = Convert.ToDecimal(d1.Rows[0]["PendingBillCard"]);
+                }
             }
             else
             {
-                PendingAmount = Convert.ToDecimal(d1.Rows[0]["PendingBill"]);
+                PendingBillCash = 0;
+                PendingBillCard = 0;
             }
-            row["PendingBills"] = Math.Round(PendingAmount, 2, MidpointRounding.AwayFromZero);
+            row["PendingBills"] = Math.Round((PendingBillCash + PendingBillCard), 2, MidpointRounding.AwayFromZero);
             row["Advances"] = Math.Round(Advances, 2, MidpointRounding.AwayFromZero);
             row["RoomCollection"] = Math.Round(RoomCollection, 2, MidpointRounding.AwayFromZero);
             row["BOH"] = Math.Round(SBOH, 2, MidpointRounding.AwayFromZero);
@@ -220,20 +239,19 @@ namespace HMS.Reports
                         ob_Settle = Convert.ToDecimal(OB.Rows[0]["Settle"]);
                     }
                     ob_Amount = ob_pendingbill + ob_R_advance + ob_C_advance + ob_E_Advance + ob_Mis - ob_Paidouts - ob_Refunds + ob_Settle;
-                    OpeningBalance = ob_Amount;
+                    OpeningBalanceCash = ob_Amount;
                 }
                 else
                 {
-                    OpeningBalance = 0;
+                    OpeningBalanceCash = 0;
                 }
             }
             else
             {
-                OpeningBalance = Convert.ToDecimal(OB_Amount.Rows[0]["AMOUNT"]);
+                OpeningBalanceCash = Convert.ToDecimal(OB_Amount.Rows[0]["AMOUNT"]);
             }
-            row["OpeningBalance"] = Math.Round(OpeningBalance,2,MidpointRounding.AwayFromZero);
-
-            OpeningBalance = 0;
+            row["OpeningBalance"] = Math.Round(OpeningBalanceCash, 2,MidpointRounding.AwayFromZero);
+            
             DataTable OB_Amount_Card = rp.OpeningBalance_Card();
             if (OB_Amount_Card.Rows[0]["AMOUNT"].ToString() == null || OB_Amount_Card.Rows[0]["AMOUNT"].ToString() == "")
             {
@@ -300,18 +318,20 @@ namespace HMS.Reports
                         ob_Settle1 = Convert.ToDecimal(OB1.Rows[0]["Settle"]);
                     }
                     ob_Amount1 = ob_pendingbill1 + ob_R_advance1 + ob_C_advance1 + ob_E_Advance1 + ob_Mis1 + ob_Settle1 - ob_Paidouts1;
-                    OpeningBalance = ob_Amount1;
+                    OpeningBalanceCard = ob_Amount1;
                 }
                 else
                 {
-                    OpeningBalance = 0;
+                    OpeningBalanceCard = 0;
                 }
             }
             else
             {
-                OpeningBalance = Convert.ToDecimal(OB_Amount_Card.Rows[0]["AMOUNT"]);
+                OpeningBalanceCard = Convert.ToDecimal(OB_Amount_Card.Rows[0]["AMOUNT"]);
             }
-            row["OpeningBalanceB"] = Math.Round(OpeningBalance, 2, MidpointRounding.AwayFromZero);
+            row["OpeningBalanceB"] = Math.Round(OpeningBalanceCard, 2, MidpointRounding.AwayFromZero);
+            row["TodayCash"] = Acash + SCash + MisCollections - PaidoutCash - Refunds + OpeningBalanceCash;
+            row["TodayCard"] = Acard + SCard - PaidoutCard + OpeningBalanceCard;
             d.Rows.Add(row);
             return d;
         }
@@ -566,7 +586,14 @@ namespace HMS.Reports
                     r["Amount"] = Math.Round(Convert.ToDecimal(d.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero).ToString()+" ("+ d.Rows[i]["PAY_TYPE"]+")";
                     r["User"] = d.Rows[i]["INSERT_BY"].ToString();
                     r["Name"] = d.Rows[i]["AUTHORIZATIONS"].ToString();
-                    Paidouts += Math.Round(Convert.ToDecimal(d.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero);
+                    if(d.Rows[i]["PAY_TYPE"].ToString() == "Cash")
+                    {
+                        PaidoutCash += Math.Round(Convert.ToDecimal(d.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero);
+                    }
+                    else
+                    {
+                        PaidoutCard += Math.Round(Convert.ToDecimal(d.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero);
+                    }
                     D.Rows.Add(r);
                 }
             }
@@ -680,16 +707,17 @@ namespace HMS.Reports
                 else
                 {
                     //ROOM_NO,RESERVATION_NO,GUEST_NAME,BALANCE_AMOUNT,INSERT_BY,PAYMENT_MODE
-                    string Res_Room;
-                    if(d.Rows[i]["RESERVATION_NO"].ToString() == "0")
-                    {
-                        Res_Room = d.Rows[i]["ROOM_NO"].ToString();
-                    }
-                    else
-                    {
-                        Res_Room = d.Rows[i]["ROOM_NO"]+" ("+d.Rows[i]["RESERVATION_NO"]+")";
-                    }
-                    r["Room"] = Res_Room;
+                    //string Res_Room;
+                    //if(d.Rows[i]["BILL_NO"].ToString() == "0")
+                    //{
+                    //    Res_Room = d.Rows[i]["ROOM_NO"].ToString();
+                    //}
+                    //else
+                    //{
+                    //    Res_Room = d.Rows[i]["ROOM_NO"]+" ("+d.Rows[i]["BILL_NO"] +")";
+                    //}
+                    //r["Room"] = Res_Room;
+                    r["Room"] = d.Rows[i]["ROOM_NO"] + " (" + d.Rows[i]["BILL_NO"] + ")";
                     r["Name"] = d.Rows[i]["GUEST_NAME"].ToString();
                     if(d.Rows[i]["BALANCE_AMOUNT"].ToString()==null || d.Rows[i]["BALANCE_AMOUNT"].ToString() == "")
                     {
@@ -733,7 +761,7 @@ namespace HMS.Reports
                 else
                 {
                     //ROOM_NO,PAYTYPE,AMOUNT,INSERT_BY
-                    r["Room"] = d1.Rows[i]["ROOM_NO"].ToString();
+                    r["Room"] = d1.Rows[i]["ROOM_NO"].ToString()+" ("+d1.Rows[i]["BILL_NO"].ToString()+")";
                     r["Name"] = d1.Rows[i]["Guest_Name"].ToString();
                     r["Amount"] = Math.Round(Convert.ToDecimal(d1.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero) + " (" + d1.Rows[i]["PAYTYPE"].ToString() + ")";
                     r["User"] = d1.Rows[i]["INSERT_BY"].ToString();

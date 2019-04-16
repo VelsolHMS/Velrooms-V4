@@ -161,6 +161,8 @@ namespace HMS.View.Operations
             d.Columns.Add("SGST", typeof(decimal));
             d.Columns.Add("GrandTotal", typeof(decimal));
             d.Columns.Add("Transfer", typeof(decimal));
+            d.Columns.Add("CompanyName", typeof(string));
+            d.Columns.Add("CompanyGst", typeof(string));
             DataRow row = d.NewRow();
             rp.TodayBookings1();
             row["Hotel"] = Report.Hotel;
@@ -178,6 +180,16 @@ namespace HMS.View.Operations
             row["CheckinDate"] = Convert.ToDateTime(ss.Rows[0]["ARRIVAL_DATE"]);
             row["CheckinTime"] = Convert.ToDateTime(ss.Rows[0]["ARRIVAL_TIME"]);
             row["CheckoutDate"] = Convert.ToDateTime(ss.Rows[0]["CHECKOUT"]);
+            row["CompanyName"] = ss.Rows[0]["COMPANY_NAME"];
+            if(ss.Rows[0]["COMPANY_NAME"].ToString() == "Select a Compny")
+            {
+                row["CompanyName"] = "";
+            }
+            else
+            {
+                row["CompanyName"] = ss.Rows[0]["COMPANY_NAME"];
+            }
+            row["CompanyGst"] = ss.Rows[0]["Company_Gst"];
             DataTable cs = P.CheckoutCharges();
             if (cs.Rows[0]["Discount"].ToString() == null || cs.Rows[0]["Discount"].ToString() == "")
             {

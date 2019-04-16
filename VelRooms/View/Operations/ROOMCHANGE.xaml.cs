@@ -204,7 +204,6 @@ namespace HMS.View.Operations
                     {
                         MessageBox.Show("This room is vacant");
                     }
-
                     //old code for Room Transfer.
                     //ROOMCHANGE1 RM = new ROOMCHANGE1();
                     //RM.MAINROOM = txtmainroom.Text;

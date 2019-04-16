@@ -1494,6 +1494,10 @@ namespace HMS.Reports {
             
             private global::System.Data.DataColumn columnOpeningBalanceB;
             
+            private global::System.Data.DataColumn columnTodayCash;
+            
+            private global::System.Data.DataColumn columnTodayCard;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public HotelDetailsDataTable() {
@@ -1745,6 +1749,22 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TodayCashColumn {
+                get {
+                    return this.columnTodayCash;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TodayCardColumn {
+                get {
+                    return this.columnTodayCard;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1807,7 +1827,9 @@ namespace HMS.Reports {
                         decimal RoomCollection, 
                         decimal SBOH, 
                         decimal SComplimentry, 
-                        decimal OpeningBalanceB) {
+                        decimal OpeningBalanceB, 
+                        decimal TodayCash, 
+                        decimal TodayCard) {
                 HotelDetailsRow rowHotelDetailsRow = ((HotelDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
@@ -1836,7 +1858,9 @@ namespace HMS.Reports {
                         RoomCollection,
                         SBOH,
                         SComplimentry,
-                        OpeningBalanceB};
+                        OpeningBalanceB,
+                        TodayCash,
+                        TodayCard};
                 rowHotelDetailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowHotelDetailsRow);
                 return rowHotelDetailsRow;
@@ -1886,6 +1910,8 @@ namespace HMS.Reports {
                 this.columnSBOH = base.Columns["SBOH"];
                 this.columnSComplimentry = base.Columns["SComplimentry"];
                 this.columnOpeningBalanceB = base.Columns["OpeningBalanceB"];
+                this.columnTodayCash = base.Columns["TodayCash"];
+                this.columnTodayCard = base.Columns["TodayCard"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1945,6 +1971,10 @@ namespace HMS.Reports {
                 base.Columns.Add(this.columnSComplimentry);
                 this.columnOpeningBalanceB = new global::System.Data.DataColumn("OpeningBalanceB", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOpeningBalanceB);
+                this.columnTodayCash = new global::System.Data.DataColumn("TodayCash", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTodayCash);
+                this.columnTodayCard = new global::System.Data.DataColumn("TodayCard", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTodayCard);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4499,6 +4529,38 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal TodayCash {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableHotelDetails.TodayCashColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TodayCash\' in table \'HotelDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHotelDetails.TodayCashColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal TodayCard {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableHotelDetails.TodayCardColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TodayCard\' in table \'HotelDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHotelDetails.TodayCardColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableHotelDetails.NameColumn);
             }
@@ -4819,6 +4881,30 @@ namespace HMS.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetOpeningBalanceBNull() {
                 this[this.tableHotelDetails.OpeningBalanceBColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTodayCashNull() {
+                return this.IsNull(this.tableHotelDetails.TodayCashColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTodayCashNull() {
+                this[this.tableHotelDetails.TodayCashColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTodayCardNull() {
+                return this.IsNull(this.tableHotelDetails.TodayCardColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTodayCardNull() {
+                this[this.tableHotelDetails.TodayCardColumn] = global::System.Convert.DBNull;
             }
         }
         

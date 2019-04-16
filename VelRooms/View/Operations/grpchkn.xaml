@@ -150,6 +150,7 @@
                                     <ComboBoxItem Content="Passport"/>
                                     <ComboBoxItem Content="Voterid"/>
                                     <ComboBoxItem Content="DrivingLicense"/>
+                                    <ComboBoxItem Content="Other"/>
                                 </ComboBox>
                                 <TextBox Name="txtproof" TabIndex="11" Background="White" TextAlignment="Justify" Width="120" Margin="15,0,0,0"  Padding="1,-8,0,0"  LostFocus="txtproof_LostFocus" TextChanged="txtproof_TextChanged" material:HintAssist.Hint="ID proof *" material:HintAssist.IsFloating="True" />
                             </StackPanel>

@@ -106,7 +106,7 @@
                     <TextBlock Text="Guest Details" Width="550" Padding="42,15,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF354766"/>
                     <!--Trasfer-->
                     <Border Width="500" Name="groupbox" Visibility="Hidden" BorderBrush="#123" BorderThickness="1.5" Margin="0,45,0,0" Padding="0,20,0,20" CornerRadius="10">
-                        <StackPanel >
+                        <StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                                 <material:PackIcon Kind="Account" Height="25" Width="25" Margin="50,0,0,0"/>
                                 <TextBox Name="txtguestname" TabIndex="3" Background="White" TextAlignment="Justify" Width="130" Margin="20,0,0,0"  Padding="1,-8,0,0" material:HintAssist.Hint="Guest Name" material:HintAssist.IsFloating="True" />
