@@ -65,7 +65,7 @@ namespace HMS.Model.Operations
         public DataTable REPRINT()
         {
             var list = new List<SqlParameter>();
-            string s = "select FIRSTNAME,ADDRESS,ROOM_NO,CHARGED_TARRIF,TAX,RESERVATION_ID,ROOM_CATEGORY,ARRIVAL_DATE,ARRIVAL_TIME,COMPANY_NAME,Company_Gst,(SELECT BILL_NO FROM PRINTSTATUS WHERE CHECKIN_ID='" + id+"') AS INVOICENO,(SELECT INSERT_DATE FROM PRINTSTATUS WHERE CHECKIN_ID='"+id+"') AS CHECKOUT from CHECKIN where CHECKIN_ID='"+id+"'";
+            string s = "select FIRSTNAME,ADDRESS,ROOM_NO,CHARGED_TARRIF,TAX,RESERVATION_ID,ROOM_CATEGORY,ARRIVAL_DATE,ARRIVAL_TIME,COMPANY_NAME,Company_Gst,(select Checkout_Time from CHECKOUT where CHECKIN_ID='"+id+"') AS Checkout_Time,(SELECT BILL_NO FROM PRINTSTATUS WHERE CHECKIN_ID='" + id+"') AS INVOICENO,(SELECT INSERT_DATE FROM PRINTSTATUS WHERE CHECKIN_ID='"+id+"') AS CHECKOUT from CHECKIN where CHECKIN_ID='"+id+"'";
             DataTable D = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return D;
         }
