@@ -129,11 +129,9 @@ namespace HMS.Model.Others
             list.AddSqlParameter("@STATUS", STATUS);
             list.AddSqlParameter("@INSERT_BY", INSERT_BY);
             list.AddSqlParameter("@INSERT_DATE", INSERT_DATE);
-
             string SS = "INSERT INTO PAIDOUT_OPENINGBALANCE(AUTHORIZATIONS,AMOUNT,STATUS,AMOUNT_TYPE,INSERT_BY,INSERT_DATE)VALUES(@AUTHORIZATIONS,@AMOUNT,'AUDIT',@AMOUNT_TYPE,@INSERT_BY,@INSERT_DATE)";
             DbFunctions.ExecuteCommand<int>(SS, list);
         }
-
         public DataTable MaxInsertDate()
         {
             //select max(INSERT_DATE) as INSERT_DATE from PAIDOUT_OPENINGBALANCE where STATUS = 'AUDIT'
@@ -141,6 +139,49 @@ namespace HMS.Model.Others
             string s = "SELECT max(INSERT_DATE) as INSERT_DATE from PAIDOUT_OPENINGBALANCE where STATUS = 'AUDIT'";
             DataTable reserve = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return reserve;
+        }
+        public DateTime TodaysDate { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+        public DataTable GettingDataUsingTime()
+        {
+            var list = new List<SqlParameter>();
+            string s = "select DISTINCT (select COUNT(CHECKIN_ID) from checkin where INSERT_DATE = '"+ TodaysDate + "' and ARRIVAL_TIME Between '"+ StartTime + "' and '"+EndTime+"')  As Checkins," +
+                        "(select COUNT(CHECKOUT_ID) from CHECKOUT where INSERT_DATE = '" + TodaysDate + "' and Checkout_Time Between '" + StartTime + "' and '" + EndTime + "') As Checkouts," +
+                        "(select COUNT(RESERVATION_ID) from RESERVATION where INSERT_DATE = '" + TodaysDate + "' and Reservation_Time Between '" + StartTime + "' and '" + EndTime + "') As Reservations," +
+                        "(select Sum(AMOUNT) from SETTLE where INSERT_DATE = '" + TodaysDate + "' and Settle_Time Between '" + StartTime + "' and '" + EndTime + "') As Settlements," +
+                        "(select Sum(BALANCE_AMOUNT) from REFUND where INSERT_DATE = '" + TodaysDate + "' and REFUND_Time Between '" + StartTime + "' and '" + EndTime + "') As Refunds," +
+                        "(select Sum(AMOUNT_RECEIVED) from ADVANCE where INSERT_DATE = '" + TodaysDate + "' and ADVANCE_Time Between '" + StartTime + "' and '" + EndTime + "') As Advances," +
+                        "(select Sum(AMOUNT) from PAIDOUT where INSERT_DATE = '" + TodaysDate + "' and Paidout_Time Between '" + StartTime + "' and '" + EndTime + "') As Paidouts from CHECKIN";
+            DataTable dt = DbFunctions.ExecuteCommand<DataTable>(s, list);
+            return dt;
+        }
+        public string SmsMessage { get; set; }
+        public string SmsTime { get; set; }
+        public string TimeZone { get; set; }
+        public string PhoneNo { get; set; }
+        public string InsertDate { get; set; }
+        public string InsertBy { get; set; }
+        public void SmsStatusInsert()
+        {
+            var list = new List<SqlParameter>();
+            list.AddSqlParameter("@SmsMessage", SmsMessage);
+            list.AddSqlParameter("@SmsTime", DateTime.Now.ToShortTimeString());
+            list.AddSqlParameter("@TimeZone", TimeZone);
+            list.AddSqlParameter("@PhoneNo", PhoneNo);
+            list.AddSqlParameter("@InsertDate", DateTime.Today.Date);
+            list.AddSqlParameter("@InsertBy", login.u);
+            string SS = "INSERT INTO SMSSTATUS(SmsMessage,SmsTime,TimeZone,PhoneNo,InsertDate,InsertBy)VALUES(@SmsMessage,@SmsTime,@TimeZone,@PhoneNo,@InsertDate,@InsertBy)";
+            DbFunctions.ExecuteCommand<int>(SS, list);
+        }
+        public DataTable CheckingSms()
+        {
+            var list = new List<SqlParameter>();
+            list.AddSqlParameter("@InsertDate", DateTime.Today.Date);
+            list.AddSqlParameter("@TimeZone", TimeZone);
+            string s = "Select * from SMSSTATUS where InsertDate = @InsertDate and TimeZone = @TimeZone";
+            DataTable dt = DbFunctions.ExecuteCommand<DataTable>(s, list);
+            return dt;
         }
     }
 }

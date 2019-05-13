@@ -39,6 +39,7 @@ namespace HMS.Model.Operations
             list.AddSqlParameter("@AMOUNT", AMOUNT);
             list.AddSqlParameter("@PAYTYPE", PAYTYPE);
             list.AddSqlParameter("@PARTICULAR", PARTICULAR);
+            list.AddSqlParameter("@Paidout_Time", DateTime.Now.ToShortTimeString());
             // USER INSERT SRI INSERTBY
             //list.AddSqlParameter("@USER_NAME", USER_NAME);
             INSERT_BY = login.u;
@@ -46,7 +47,7 @@ namespace HMS.Model.Operations
             list.AddSqlParameter("@INSERT_BY", INSERT_BY);
             list.AddSqlParameter("@INSERT_DATE", INSERT_DATE);
             //USER_NAME = login.u;
-            string S = "INSERT INTO PAIDOUT(OUTLETCODE,VOCHERNUMBER,AUTHORIZATIONS,AMOUNT,PARTICULAR,INSERT_BY,INSERT_DATE,PAY_TYPE)VALUES(@OUTLETCODE,@VOCHERNUMBER,@AUTHORIZATIONS,@AMOUNT,@PARTICULAR,@INSERT_BY,@INSERT_DATE,@PAYTYPE)";
+            string S = "INSERT INTO PAIDOUT(OUTLETCODE,VOCHERNUMBER,AUTHORIZATIONS,AMOUNT,PARTICULAR,INSERT_BY,INSERT_DATE,PAY_TYPE,Paidout_Time)VALUES(@OUTLETCODE,@VOCHERNUMBER,@AUTHORIZATIONS,@AMOUNT,@PARTICULAR,@INSERT_BY,@INSERT_DATE,@PAYTYPE,@Paidout_Time)";
             DbFunctions.ExecuteCommand<int>(S, list);
         }
         public void INSERT1()

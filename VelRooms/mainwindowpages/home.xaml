@@ -107,7 +107,6 @@
                 </Button.Background>
                 <!--<StackPanel  Height="79" VerticalAlignment="Bottom">
                     <Image HorizontalAlignment="Stretch" Height="60" Source="/Images/pbcollection.png" />
-                   
                 </StackPanel>-->
             </Button>
             <TextBlock  Height="19"  Margin="2,582,0,0" FontSize="13" Foreground="Black" VerticalAlignment="Top" >

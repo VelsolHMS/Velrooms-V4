@@ -63,7 +63,7 @@ namespace HMS.Model.Masters
             list.AddSqlParameter("@Status", Status);
             // USER INSERT SRIKAR INSERTBY
             INSERT_BY = login.u;
-            INSERT_DATE = DateTime.Today;
+            INSERT_DATE = DateTime.Today.Date;
             list.AddSqlParameter("@INSERT_BY", INSERT_BY);
             list.AddSqlParameter("@INSERT_DATE", INSERT_DATE);
 

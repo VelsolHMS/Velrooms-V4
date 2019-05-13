@@ -195,7 +195,7 @@ namespace HMS.Model
         public DataTable getLandLinenumber()
         {
             var list = new List<SqlParameter>();
-            string landline = "SELECT LANDLINE1 FROM HotelInfo ";
+            string landline = "SELECT LANDLINE1,MOBILE_NO FROM HotelInfo ";
             DataTable ll = DbFunctions.ExecuteCommand<DataTable>(landline, list);
             return ll;
         }

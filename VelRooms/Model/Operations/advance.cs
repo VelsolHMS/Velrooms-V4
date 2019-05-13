@@ -32,6 +32,7 @@ namespace HMS.Model
         public string UPDATE_BY { get; set; }
         public DateTime UPDATE_DATE { get; set; }
         public static DataTable dt { get; set; }
+        public DateTime ADVANCE_Time { get; set; }
         //Insertion of data into database
         public void Insert()
         {
@@ -47,6 +48,7 @@ namespace HMS.Model
             list.AddSqlParameter("@RECEIPT_NO", RECEIPT_NO);
             list.AddSqlParameter("@ADVANCE_FOR", ADVANCE_FOR);
             list.AddSqlParameter("@CHEQUE_NO", CHEQUE_NO);
+            list.AddSqlParameter("@ADVANCE_Time", DateTime.Now.ToShortTimeString());
             // USER INSERT SRIKAR INSERTBY
             //list.AddSqlParameter("@USER_NAME", USER_NAME);
             INSERT_BY = login.u;
@@ -58,8 +60,8 @@ namespace HMS.Model
             list.AddSqlParameter("@UPDATE_BY", UPDATE_BY);
             list.AddSqlParameter("@UPDATE_DATE", UPDATE_DATE);
             string query = "INSERT INTO ADVANCE(RESERVATION_ID, CHECKIN_ID,ROOM_NO, PAYTYPE, CURRENCY_CODE, AMOUNT_RECEIVED, PARTICULARS, " +
-                           "TRANSACTION_NO,RECEIPT_NO,ADVANCE_FOR, CHEQUE_NO,INSERT_BY,INSERT_DATE,ADVANCE)VALUES (@RESERVATION_NO,(select CHECKIN_ID FROM CHECKIN WHERE ROOM_NO=@ROOM_NO AND CHECK_OUT != 1 ), @ROOM_NO, @PAYMENT_MODE, @CURRENCY_CODE, @AMOUNT_RECEIVED," +
-                           "@PARTICULARS, @TRANSACTION_NO, @RECEIPT_NO,@ADVANCE_FOR, @CHEQUE_NO,@INSERT_BY,@INSERT_DATE,'0')";
+                           "TRANSACTION_NO,RECEIPT_NO,ADVANCE_FOR, CHEQUE_NO,INSERT_BY,INSERT_DATE,ADVANCE,ADVANCE_Time)VALUES (@RESERVATION_NO,(select CHECKIN_ID FROM CHECKIN WHERE ROOM_NO=@ROOM_NO AND CHECK_OUT != 1 ), @ROOM_NO, @PAYMENT_MODE, @CURRENCY_CODE, @AMOUNT_RECEIVED," +
+                           "@PARTICULARS, @TRANSACTION_NO, @RECEIPT_NO,@ADVANCE_FOR, @CHEQUE_NO,@INSERT_BY,@INSERT_DATE,'0',@ADVANCE_Time)";
             DbFunctions.ExecuteCommand<int>(query, list);
         }
 

@@ -678,7 +678,7 @@ namespace HMS.View.Operations
         {
             co.ROOM_NO = roomno;
             d1 = co.guestinfo();
-            id = co.get_checkout_id();
+            id = co.get_checkout_id() - 1;
             DataTable d = new DataTable();
             d.Columns.Add("Name", typeof(string));
             d.Columns.Add("Address1", typeof(string));
