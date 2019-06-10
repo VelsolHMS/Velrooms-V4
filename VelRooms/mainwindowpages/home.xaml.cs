@@ -160,8 +160,9 @@ namespace HMS.mainwindowpages
             t.Start();
             Opening_Balance();
             GettingAllData();
+            GettingAllData2();
         }
-        public int Checkins, Checkouts, Reservations;
+        public int Checkins, Checkouts, Reservations,RoomsOccupied;
         public decimal Settle, Advance, Paidout, Refunds;
         public string TimeZone, TimeStamp;
         DataTable dt;
@@ -177,7 +178,7 @@ namespace HMS.mainwindowpages
             if ((now > time1) && (now < time2))
             {
                 TimeZone = "Zone1";
-                TimeStamp = ""+DateTime.Now.AddDays(-1).ToString("dd-MM-yyyy") +" 10:00 PM to "+DateTime.Now.ToString("dd-MM-yyyy") + " 06:00 AM";
+                TimeStamp = "From : "+DateTime.Now.AddDays(-1).ToString("dd-MM-yyyy") +" 10:00 PM to "+DateTime.Now.ToString("dd-MM-yyyy") + " 06:00 AM";
                 hm.TimeZone = TimeZone;
                 DataTable CS = hm.CheckingSms();
                 if (CS.Rows.Count == 0)
@@ -226,7 +227,7 @@ namespace HMS.mainwindowpages
             }else if((now > time2) && (now < time3))
             {
                 TimeZone = "Zone2";
-                TimeStamp = DateTime.Now.ToString("dd-MM-yyyy") + " 06:00 AM to 10:00 AM";
+                TimeStamp = "On : "+DateTime.Now.ToString("dd-MM-yyyy") + " From 06:00 AM to 10:00 AM";
                 hm.TimeZone = TimeZone;
                 DataTable CS = hm.CheckingSms();
                 if (CS.Rows.Count == 0)
@@ -240,7 +241,7 @@ namespace HMS.mainwindowpages
             }else if((now > time3) && (now < time4))
             {
                 TimeZone = "Zone3";
-                TimeStamp = DateTime.Now.ToString("dd-MM-yyyy") + " 10:00 AM to 04:00 PM";
+                TimeStamp = "On : "+ DateTime.Now.ToString("dd-MM-yyyy") + " From 10:00 AM to 04:00 PM";
                 hm.TimeZone = TimeZone;
                 DataTable CS = hm.CheckingSms();
                 if (CS.Rows.Count == 0)
@@ -287,6 +288,81 @@ namespace HMS.mainwindowpages
             }
             catch(Exception)
             {
+            }
+        }
+        public void GettingAllData2()
+        {
+            TimeSpan time1 = new TimeSpan(12, 0, 0);//12 o'clock
+            TimeSpan timenow = DateTime.Now.TimeOfDay;
+            if (timenow > time1)
+            {
+                TimeZone = "DayZone";
+                hm.TimeZone = TimeZone;
+                DataTable CS = hm.CheckingSms();
+                if (CS.Rows.Count == 0)
+                {
+                    TimeSpan now = DateTime.Now.TimeOfDay;
+                    DateTime today = DateTime.Today.Date;
+                    DateTime yesterday = DateTime.Today.Date.AddDays(-1);
+                    hm.TodaysDate = yesterday;
+                    hm.StartTime = "12:00";
+                    hm.EndTime = "24:00";
+                    dt = hm.GettingDataUsingTime();
+                    StoringValues();
+                    hm.TodaysDate = today;
+                    hm.StartTime = "00:00";
+                    hm.EndTime = "12:00";
+                    DataTable dt1 = hm.GettingDataUsingTime();
+                    Checkins += Convert.ToInt32(dt.Rows[0]["Checkins"]);
+                    Checkouts += Convert.ToInt32(dt.Rows[0]["Checkouts"]);
+                    Reservations += Convert.ToInt32(dt.Rows[0]["Reservations"]);
+                    if (dt.Rows[0]["Settlements"].ToString() == "" || dt.Rows[0]["Settlements"].ToString() == null)
+                    {
+                        Settle += 0;
+                    }
+                    else
+                    {
+                        Settle += Convert.ToDecimal(dt.Rows[0]["Settlements"]);
+                    }
+                    if (dt.Rows[0]["Advances"].ToString() == "" || dt.Rows[0]["Advances"].ToString() == null)
+                    {
+                        Advance += 0;
+                    }
+                    else
+                    {
+                        Advance += Convert.ToDecimal(dt.Rows[0]["Advances"]);
+                    }
+                    if (dt.Rows[0]["Paidouts"].ToString() == "" || dt.Rows[0]["Paidouts"].ToString() == null)
+                    {
+                        Paidout += 0;
+                    }
+                    else
+                    {
+                        Paidout += Convert.ToDecimal(dt.Rows[0]["Paidouts"]);
+                    }
+                    if (dt.Rows[0]["Refunds"].ToString() == "" || dt.Rows[0]["Refunds"].ToString() == null)
+                    {
+                        Refunds += 0;
+                    }
+                    else
+                    {
+                        Refunds += Convert.ToDecimal(dt.Rows[0]["Refunds"]);
+                    }
+                    DataTable dtr = hm.GetCurrentCheckins();
+                    RoomsOccupied = Convert.ToInt32(dtr.Rows[0]["Chekins"]);
+                    TimeStamp = "RoomsOccupied : " + RoomsOccupied + "\nFrom : " + DateTime.Now.AddDays(-1).ToString("dd-MM-yyyy") + " 12:00 to " + DateTime.Now.ToString("dd-MM-yyyy") + " 12:00";
+                    try
+                    {
+                        hm.TimeZone = TimeZone;
+                        Send_SMS();
+                        hm.SmsMessage = SmsMessage;
+                        hm.PhoneNo = SmsMobileNumber;
+                        hm.SmsStatusInsert();
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
             }
         }
         public void StoringValues()
@@ -337,13 +413,11 @@ namespace HMS.mainwindowpages
             String password = "33233";
             SmsMobileNumber = "91" + "8179893241";
 
-            SmsMessage = "Checkin's : " + Checkins + "\nCheckout's : " + Checkouts + "\nReservations : " + Reservations + "\nAmount Collected : " + Math.Round(Advance+Settle,2,MidpointRounding.AwayFromZero) + "\nAmount Outward : " + Math.Round(Paidout + Refunds, 2, MidpointRounding.AwayFromZero) + "\nFrom : " + TimeStamp;
+            SmsMessage = "Checkin's : " + Checkins + "\nCheckout's : " + Checkouts + "\nReservations : " + Reservations + "\nAmount Collected : " + Math.Round(Advance+Settle,2,MidpointRounding.AwayFromZero) + "\nAmount Outward : " + Math.Round(Paidout + Refunds, 2, MidpointRounding.AwayFromZero) + "\n" + TimeStamp;
             String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + SmsMobileNumber + "&from=HRTVEL&text=" + SmsMessage + "";
-
             try
             {
                 HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url);
-
                 //Prepare and Add URL Encoded data
                 UTF8Encoding encoding = new UTF8Encoding();
                 httpWReq.Method = "GET";

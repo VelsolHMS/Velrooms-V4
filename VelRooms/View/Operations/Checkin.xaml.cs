@@ -3,28 +3,16 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.IO;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using HMS.ViewModel;
 using HMS.View.Masters;
-using System.Text.RegularExpressions;
-using System.Windows.Forms.Integration;
-using Windows.Media.Capture;
-using Windows.Storage;
-using System.Web;
 using System.Net;
-using Windows.Storage.Streams;
 using HMS.Model.Others;
 
 namespace HMS.View.Operations
@@ -343,258 +331,6 @@ namespace HMS.View.Operations
                         TAXPER.Text = "0.00";
                     }
                 }
-                //}
-                //    try
-                //    {
-                //        if (txtpax.Text != "")
-                //        {
-                //            int DIVIDE = 0;
-                //            DataTable D = new DataTable();
-                //            int A = Convert.ToInt16(txtpax.Text);
-                //            if (RESERVSTIONCHECKIN.p == 1)
-                //            {
-                //                if (A % lo.Count == 0)
-                //                {
-                //                    DIVIDE = A / lo.Count;
-                //                }
-                //                foreach (var ITEM in lo)
-                //                {
-                //                    D = ch.FETCH_PAX_DETAILS(Convert.ToInt16(ITEM));
-                //                    int Maxpax = Convert.ToInt16(D.Rows[0]["MAX_PAX"]);
-                //                    if (a != 1)
-                //                    {
-                //                        cal_tarrif(DIVIDE, Maxpax, D);
-                //                    }
-                //                }
-                //                a = 1;
-                //            }
-                //            else
-                //            {
-                //                D = ch.FETCH_PAX_DETAILS(Convert.ToInt16(roomno.Content));
-                //                int MAXPAX = Convert.ToInt16(D.Rows[0]["MAX_PAX"]);
-                //                cal_tarrif(A, MAXPAX, D);
-                //            }
-                //            if (txtpax.Text == "")
-                //            {
-                //                RACKADULT.Text = "";
-                //                RACKCHILD.Text = ""; RACKTARRIF.Text = "";
-                //            }
-                //        }
-                //    }
-                //    catch (Exception)
-                //    {
-                //        MessageBox.Show("enter correct values");
-                //        txtpax.Text = "";
-                //    }
-                //}
-                //public void cal_tarrif(int A, int MAXPAX, DataTable D)
-                //{
-                //    if (A <= MAXPAX)
-                //    {
-                //        if (A == 1)
-                //        {
-                //            if (RESERVSTIONCHECKIN.p == 1)
-                //            {
-
-                //                Decimal T = Convert.ToDecimal(D.Rows[0]["SINGLERATE_TARRIF"]);
-                //                if (RACKTARRIF.Text != "")
-                //                {
-                //                    Decimal O = Convert.ToDecimal(RACKTARRIF.Text);
-                //                    Decimal C = O + T;
-                //                    RACKTARRIF.Text = C.ToString();
-                //                }
-                //                else
-                //                {
-                //                    RACKTARRIF.Text = D.Rows[0]["SINGLERATE_TARRIF"].ToString();
-                //                }
-                //            }
-                //            else
-                //            {
-                //                RACKTARRIF.Text = D.Rows[0]["SINGLERATE_TARRIF"].ToString();
-                //            }
-                //        }
-                //        if (A == 2)
-                //        {
-                //            if (RESERVSTIONCHECKIN.p == 1)
-                //            {
-                //                Decimal T = Convert.ToDecimal(D.Rows[0]["DOUBLERATE_TARRIF"]);
-                //                if (RACKTARRIF.Text != "")
-                //                {
-                //                    Decimal O = Convert.ToDecimal(RACKTARRIF.Text);
-                //                    Decimal C = O + T;
-                //                    RACKTARRIF.Text = C.ToString();
-                //                }
-                //                else
-                //                {
-                //                    RACKTARRIF.Text = D.Rows[0]["DOUBLERATE_TARRIF"].ToString();
-                //                }
-                //            }
-                //            else
-                //            {
-                //                RACKTARRIF.Text = D.Rows[0]["DOUBLERATE_TARRIF"].ToString();
-                //            }
-                //        }
-                //        if (A == 3)
-                //        {
-                //            if (RESERVSTIONCHECKIN.p == 1)
-                //            {
-                //                Decimal T = Convert.ToDecimal(D.Rows[0]["TRIPLERATE_TARRIF"]);
-                //                if (RACKTARRIF.Text != "")
-                //                {
-                //                    Decimal O = Convert.ToDecimal(RACKTARRIF.Text);
-                //                    Decimal C = O + T;
-                //                    RACKTARRIF.Text = C.ToString();
-                //                }
-                //                else
-                //                {
-                //                    RACKTARRIF.Text = D.Rows[0]["TRIPLERATE_TARRIF"].ToString();
-                //                }
-                //            }
-                //            else
-                //            {
-                //                RACKTARRIF.Text = D.Rows[0]["TRIPLERATE_TARRIF"].ToString();
-                //            }
-                //        }
-                //        if (A == 4)
-                //        {
-                //            if (RESERVSTIONCHECKIN.p == 1)
-                //            {
-                //                Decimal T = Convert.ToDecimal(D.Rows[0]["QUADRATE_TARRIF"]);
-                //                if (RACKTARRIF.Text != "")
-                //                {
-                //                    Decimal O = Convert.ToDecimal(RACKTARRIF.Text);
-                //                    Decimal C = O + T;
-                //                    RACKTARRIF.Text = C.ToString();
-                //                }
-                //                else
-                //                {
-                //                    RACKTARRIF.Text = D.Rows[0]["QUADRATE_TARRIF"].ToString();
-                //                }
-                //            }
-                //            else
-                //            {
-                //                RACKTARRIF.Text = D.Rows[0]["QUADRATE_TARRIF"].ToString();
-                //            }
-                //        }
-                //        decimal d = Convert.ToDecimal(RACKTARRIF.Text);
-                //        d = decimal.Round(d, 2);
-                //        RACKTARRIF.Text = d.ToString();
-                //    }
-                //    else if (A > MAXPAX)
-                //    {
-                //        if (MAXPAX == 1)
-                //        {
-                //            String M = "SINGLERATE_TARRIF";
-                //            if (RESERVSTIONCHECKIN.p == 1)
-                //            {
-                //                Decimal T = Convert.ToDecimal(D.Rows[0][M]);
-                //                if (RACKTARRIF.Text != "")
-                //                {
-                //                    Decimal O = Convert.ToDecimal(RACKTARRIF.Text);
-                //                    Decimal C = O + T;
-                //                    RACKTARRIF.Text = C.ToString();
-                //                }
-                //                else
-                //                {
-                //                    RACKTARRIF.Text = D.Rows[0][M].ToString();
-                //                }
-                //            }
-
-                //            else
-                //            {
-                //                RACKTARRIF.Text = D.Rows[0][M].ToString();
-                //            }
-                //        }
-                //        if (MAXPAX == 2)
-                //        {
-                //            String S = "DOUBLERATE_TARRIF";
-                //            if (RESERVSTIONCHECKIN.p == 1)
-                //            {
-                //                Decimal T = Convert.ToDecimal(D.Rows[0][S]);
-                //                if (RACKTARRIF.Text != "")
-                //                {
-                //                    Decimal O = Convert.ToDecimal(RACKTARRIF.Text);
-                //                    Decimal C = O + T;
-                //                    RACKTARRIF.Text = C.ToString();
-                //                }
-                //                else
-                //                {
-                //                    RACKTARRIF.Text = D.Rows[0][S].ToString();
-                //                }
-                //            }
-                //            else
-                //            {
-                //                RACKTARRIF.Text = D.Rows[0][S].ToString();
-                //            }
-                //        }
-                //        if (MAXPAX == 3)
-                //        {
-                //            String MX = "TRIPLERATE_TARRIF";
-                //            if (RESERVSTIONCHECKIN.p == 1)
-                //            {
-                //                Decimal T = Convert.ToDecimal(D.Rows[0][MX]);
-                //                if (RACKTARRIF.Text != "")
-                //                {
-                //                    Decimal O = Convert.ToDecimal(RACKTARRIF.Text);
-                //                    Decimal C = O + T;
-                //                    RACKTARRIF.Text = C.ToString();
-                //                }
-                //                else
-                //                {
-                //                    RACKTARRIF.Text = D.Rows[0][MX].ToString();
-                //                }
-                //            }
-                //            else
-                //            {
-                //                RACKTARRIF.Text = D.Rows[0][MX].ToString();
-                //            }
-                //        }
-                //        if (MAXPAX == 4)
-                //        {
-                //            String PX = "QUADRATE_TARRIF";
-                //            if (RESERVSTIONCHECKIN.p == 1)
-                //            {
-                //                Decimal T = Convert.ToDecimal(D.Rows[0][PX]);
-                //                if (RACKTARRIF.Text != "")
-                //                {
-                //                    Decimal O = Convert.ToDecimal(RACKTARRIF.Text);
-                //                    Decimal C = O + T;
-                //                    RACKTARRIF.Text = C.ToString();
-                //                }
-                //                else
-                //                {
-                //                    RACKTARRIF.Text = D.Rows[0][PX].ToString();
-                //                }
-                //            }
-                //            else
-                //            {
-                //                RACKTARRIF.Text = D.Rows[0][PX].ToString();
-                //            }
-                //        }
-                //        decimal d = Convert.ToDecimal(RACKTARRIF.Text);
-                //        d = decimal.Round(d, 2);
-                //        RACKTARRIF.Text = d.ToString();
-                //    }
-                //    if (MAXPAX > 4)
-                //    {
-                //        if (A > 4)
-                //        {
-                //            RACKTARRIF.Text = D.Rows[0]["COMMON_PRICE"].ToString();
-                //        }
-                //    }
-                //    if (RACKTARRIF.Text != "")
-                //    {
-                //        ch.FETCH_TAX(RACKTARRIF.Text);
-                //        TAXPER.Text = ch.TAX;
-                //    }
-
-                //    decimal adult = Convert.ToDecimal(D.Rows[0]["EXTRABED_ADULT"]);
-                //    adult = decimal.Round(adult, 2);
-                //    RACKADULT.Text = adult.ToString();
-                //    decimal child = Convert.ToDecimal(D.Rows[0]["EXTRABED_CHILD"]);
-                //    child = decimal.Round(child, 2);
-                //    RACKCHILD.Text = child.ToString();
-                //    CHARGETARRIF.Text = RACKTARRIF.Text;
             }
             catch (Exception) { }
         }
@@ -883,22 +619,22 @@ namespace HMS.View.Operations
                         {
                             ADVANCE = 1;
                             txtroomno.Text = roomno.Text;
-                            ch.adavance();
-                            ch.updateroomstatus();
+                            //ch.adavance();
+                            //ch.updateroomstatus();
                         }
                         checkin_id.Text = checkinid.Text.ToString();
                         if (RESERVSTIONCHECKIN.p != 1)
                         {
                             ADVANCE = 2;
                             ch.ID = Convert.ToInt32(checkin_id.Text);
-                            ch.adavance();
-                            ch.updateroomstatus();
+                            //ch.adavance();
+                            //ch.updateroomstatus();
                         }
                         else
                         {
                             ADVANCE = 1;
                             ch.id_res = id;
-                            ch.adavance();
+                            //ch.adavance();
                         }
                         guestname.Text = txtfirstname.Text;
                         companyname.Text = txtcompany.Text;
@@ -954,16 +690,16 @@ namespace HMS.View.Operations
                         ADVANCE = 0;
                         popup.IsOpen = false; ADVANCEPOPUP.IsOpen = false;
                         ch.INSERT();
-                        ch.adavance();
+                        //ch.adavance();
                         //ch.advanceupdate();
-                        //  ch.INSERT_POST();
+                        //ch.INSERT_POST();
                         ch.Night_Audit();
-                        ch.updateroomstatus();
+                        //ch.updateroomstatus();
                         if (RESERVSTIONCHECKIN.p == 1)
                         {
                             ch.RESERVATIONINT();
                         }
-                        ch.postcharges();
+                        //ch.postcharges();
                         popup_insert.IsOpen = true;
                         Send_SMS();
                     }
@@ -1005,7 +741,7 @@ namespace HMS.View.Operations
                     pop1.IsOpen = false;
                     BIND_ADVANCE();
                     ch.INSERT();
-                    ch.adavance();
+                    //ch.adavance();
                     // ch.INSERT_POST();
                     ch.Night_Audit();
                     if (RESERVSTIONCHECKIN.p == 1)
@@ -1014,7 +750,7 @@ namespace HMS.View.Operations
                         ch.INSERT_RES_CHECKIN_ADVANCE();
                         // ch.adavance();
                     }
-                    ch.postcharges();
+                    //ch.postcharges();
                     ch.CHECKIN_ID = int.Parse(checkinid.Text.ToString());
                     ch.ROOM_NO = Convert.ToString(roomno.Text);
                     //ch.RESERVATION_ID = int.Parse(reservationid.Text);
@@ -1179,7 +915,6 @@ namespace HMS.View.Operations
             }
             else
             {
-
             }
         }
         private void txtproof_TextChanged(object sender, TextChangedEventArgs e)
@@ -1324,13 +1059,11 @@ namespace HMS.View.Operations
         {
             txtproof.Text = "";
         }
-
         private void CHARGETARRIF_LostFocus(object sender, RoutedEventArgs e)
         {
             ch.FETCH_TAX(CHARGETARRIF.Text);
             TAXPER.Text = ch.TAX;
         }
-
         private void plancode_DropDownClosed(object sender, EventArgs e)
         {
             try

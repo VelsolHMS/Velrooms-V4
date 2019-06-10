@@ -183,5 +183,12 @@ namespace HMS.Model.Others
             DataTable dt = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return dt;
         }
+        public DataTable GetCurrentCheckins()
+        {
+            var list = new List<SqlParameter>();
+            string s = "Select COUNT(ROOM_NO) as Chekins from ROOMMASTER where BACKGROUND_COLOR = 'Orange'";
+            DataTable dt = DbFunctions.ExecuteCommand<DataTable>(s, list);
+            return dt;
+        }
     }
 }

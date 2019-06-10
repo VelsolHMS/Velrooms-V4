@@ -183,7 +183,7 @@ namespace HMS.Model.Operations
         public void printsupdate()
         {
             var list = new List<SqlParameter>();
-            string s = "Update PRINTS set PRINTSTATUS=1 WHERE ROOM_NO='" + ROOM_NO + "'";
+            string s = "Update PRINTS set PRINTSTATUS = 1 WHERE ROOM_NO='" + ROOM_NO + "'";
             DbFunctions.ExecuteCommand<int>(s, list);
         }
         public void printsBILLLUPDATE()

@@ -379,8 +379,8 @@ namespace HMS.Model
             //}
             //else
             //{
-                S = "INSERT INTO ADVANCE (CHECKIN_ID,ADVANCE_FOR,ROOM_NO,PAYTYPE,CURRENCY_CODE,AMOUNT_RECEIVED,PARTICULARS,TRANSACTION_NO,CHEQUE_NO,INSERT_BY,INSERT_DATE,ADVANCE_Time)" +
-                    "VALUES(@CHECKIN_ID,@ADVANCE_FOR,@ROOM_NO,@PAYTYPE,@CURRENCY_CODE,@AMOUNT_RECEIVED,@PARTICULARS,@TRANSACTION_NO,@CHEQUE_NO,@INSERT_BY,@INSERT_DATE,@ADVANCE_Time)";
+                S = "INSERT INTO ADVANCE (CHECKIN_ID,ADVANCE_FOR,ROOM_NO,PAYTYPE,CURRENCY_CODE,AMOUNT_RECEIVED,PARTICULARS,TRANSACTION_NO,CHEQUE_NO,INSERT_BY,INSERT_DATE,ADVANCE_Time,ADVANCE)" +
+                    "VALUES(@CHECKIN_ID,@ADVANCE_FOR,@ROOM_NO,@PAYTYPE,@CURRENCY_CODE,@AMOUNT_RECEIVED,@PARTICULARS,@TRANSACTION_NO,@CHEQUE_NO,@INSERT_BY,@INSERT_DATE,@ADVANCE_Time,0)";
             //}
             var LIST = new List<SqlParameter>();
             //if (RESERVSTIONCHECKIN.p == 1)
@@ -519,7 +519,7 @@ namespace HMS.Model
         {
             var list = new List<SqlParameter>();
             list.AddSqlParameter("@CHECKIN_ID", ID);
-            string s1 = " UPDATE ADVANCE SET ADVANCE =0 WHERE ROOM_NO ='" + ROOM_NO + "' AND CHECKIN_ID='" + ss + "' ";
+            string s1 = "UPDATE ADVANCE SET ADVANCE = 0 WHERE ROOM_NO ='" + ROOM_NO + "' AND CHECKIN_ID='" + ss + "' ";
             DbFunctions.ExecuteCommand<int>(s1, list);
 
         }

@@ -301,7 +301,7 @@ namespace HMS.View.Operations
             String username = "9494433233";
             String password = "33233";
             string Advance_Amount;
-            if(txtamountrecivd.Text == "")
+            if (txtamountrecivd.Text == "")
             {
                 Advance_Amount = "0.0";
             }
@@ -310,7 +310,7 @@ namespace HMS.View.Operations
                 Advance_Amount = txtamountrecivd.Text;
             }
             String mobileNumber = "91" + txtmobileno.Text;
-            String customer = "Hi "+ txtfirstname .Text+ " We Confirm your Reservation as follows : Arrival : "+dt.Text+ " " + Checkintime.Text + "\nDeparture : " + dt1.Text+"\nRoom Type : "+cbroomtype.Text+"\nNo of Rooms : "+ txtrooms.Text+ "\nAdvance : " + Advance_Amount + "\nFor Assistance Call : "+ll_number+","+no+"";
+            String customer = "Hi " + txtfirstname.Text + " We Confirm your Reservation as follows :\nArrival : " + Convert.ToDateTime(dt.Text).ToString("dd/MM/yyyy") + " " + Checkintime.Text + "\nDeparture : " + Convert.ToDateTime(dt1.Text).ToString("dd/MM/yyyy") + " "+ Checkintime.Text + "\nRoom Type : " + cbroomtype.Text + "\nNo of Rooms : " + txtrooms.Text + "\nAdvance : " + Advance_Amount + "\nFor Assistance Call : " + ll_number + "," + no + "";
             String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + mobileNumber + "&from=VELSOL&text=" + customer + "";
 
             try
@@ -1053,6 +1053,7 @@ namespace HMS.View.Operations
                         txtchild.Text = datatable.Rows[i]["CHILD"].ToString();
                         dt.Text = Convert.ToDateTime(datatable.Rows[i]["ARRIVAL_DATE"]).ToString();
                         dt1.Text = Convert.ToDateTime(datatable.Rows[i]["DEPARTURE_DATE"]).ToString();
+                        Checkintime.Text = datatable.Rows[i]["ARRIVAL_TIME"].ToString();
                         txtdays.Text = datatable.Rows[i]["DAYS"].ToString();
                         cbroomtype.Text = datatable.Rows[i]["ROOM_CATEGORY"].ToString();
                         cbguest.Text = datatable.Rows[i]["GUEST_STATUS"].ToString();

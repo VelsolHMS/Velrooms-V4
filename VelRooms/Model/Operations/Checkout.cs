@@ -70,7 +70,7 @@ namespace HMS.Model.Operations
         {
             var list = new List<SqlParameter>();
             list.AddSqlParameter("@ROOM_NO", RR);
-            string S = "UPDATE CHECKIN SET CHECK_OUT=1 WHERE ROOM_NO ='" + RR + "' AND CHECKIN_ID IN (SELECT CHECKIN_ID FROM CHECKIN WHERE ROOM_NO ='" + RR + "' AND CHECK_OUT = 0) ";
+            string S = "UPDATE CHECKIN SET CHECK_OUT = 1 WHERE ROOM_NO ='" + RR + "' AND CHECKIN_ID IN (SELECT CHECKIN_ID FROM CHECKIN WHERE ROOM_NO ='" + RR + "' AND CHECK_OUT = 0) ";
             DataTable dt = DbFunctions.ExecuteCommand<DataTable>(S, list);
             return dt;
         }

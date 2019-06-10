@@ -38,8 +38,8 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="415*"/>
-            <RowDefinition Height="193*"/>
+            <RowDefinition Height="415"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="949*"/>

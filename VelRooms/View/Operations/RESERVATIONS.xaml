@@ -202,7 +202,7 @@
                                 <material:PackIcon Kind="Account" Height="22" Margin="15,0,0,0" Width="22"/>
                                 <TextBox Name="txtfirstname" Width="90" Height="22" TabIndex="10" MaxLength="20" Padding="1,-9,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Name, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="15,0,0,0" material:HintAssist.Hint="First Name" material:HintAssist.IsFloating="True"></TextBox>
                                 <material:PackIcon Kind="AccountConvert" Height="22" Margin="15,0,0,0" Width="22"/>
-                                <TextBox x:Name="txtlastname" Width="90" Height="22" TabIndex="11" Margin="15,0,0,0" MaxLength="20" Padding="1,-9,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Reportname, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  material:HintAssist.Hint="Last Name" material:HintAssist.IsFloating="True" />
+                                <TextBox x:Name="txtlastname" Width="90" Height="22" TabIndex="11" Margin="15,0,0,0" MaxLength="20" Padding="1,-9,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Reportname, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  material:HintAssist.Hint="Last Name" material:HintAssist.IsFloating="True"/>
                                 <material:PackIcon Kind="Phone" Height="22" Margin="15,0,0,0" Width="22"/>
                                 <TextBox Name="txtmobileno" Width="90" Height="22" TabIndex="12" Padding="1,-9,0,0" DataContext="{Binding Source={StaticResource Viewmodel}}" Validation.Error="Validation_Error" Text="{Binding Path=Mobilenumber, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" MaxLength="10" Margin="15,0,0,0" material:HintAssist.Hint="Phone Number" material:HintAssist.IsFloating="True"  />
                                 <material:PackIcon Kind="Email" Height="22" Margin="15,0,0,0" Width="22"/>
@@ -266,6 +266,7 @@
                                     <DataGridTextColumn Header="Name" Binding="{Binding FIRSTNAME}"/>
                                     <DataGridTextColumn Header="Phone" Binding="{Binding MOBILE_NO}"/>
                                     <DataGridTextColumn  Header="ArrivalDate" Binding="{Binding ARRIVAL_DATE, StringFormat=dd/MM/yyyy}"/>
+                                    <DataGridTextColumn  Header="Time" Binding="{Binding ARRIVAL_TIME}"/>
                                 </DataGrid.Columns>
                                 <DataGrid.RowStyle>
                                     <Style TargetType="DataGridRow">
