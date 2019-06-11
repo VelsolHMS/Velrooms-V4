@@ -899,21 +899,21 @@ namespace HMS.Model.Others
         public DataTable FOResAdvance()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT ROOM_NO,RESERVATION_ID,AMOUNT_RECEIVED,(SELECT FIRSTNAME FROM RESERVATION WHERE RESERVATION_ID =A.RESERVATION_ID )AS GUESTNAME,PAYTYPE,INSERT_BY from ADVANCE A WHERE INSERT_DATE = '" + SelectedDate + "' AND RESERVATION_ID > 0 AND AMOUNT_RECEIVED > 0"; //'" + SelectedDate + "'
+            string s = "SELECT ROOM_NO,RESERVATION_ID,AMOUNT_RECEIVED,ADVANCE_Time,(SELECT FIRSTNAME FROM RESERVATION WHERE RESERVATION_ID =A.RESERVATION_ID )AS GUESTNAME,PAYTYPE,INSERT_BY from ADVANCE A WHERE INSERT_DATE = '" + SelectedDate + "' AND RESERVATION_ID > 0 AND AMOUNT_RECEIVED > 0"; //'" + SelectedDate + "'
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
         public DataTable FOCheckInAdvance()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT ROOM_NO,RESERVATION_ID,AMOUNT_RECEIVED,(SELECT FIRSTNAME FROM CHECKIN WHERE CHECKIN_ID =A.CHECKIN_ID )AS GUESTNAME,PAYTYPE,INSERT_BY from ADVANCE A WHERE INSERT_DATE = '" + SelectedDate + "' AND RESERVATION_ID IS NULL AND AMOUNT_RECEIVED > 0";
+            string s = "SELECT ROOM_NO,RESERVATION_ID,AMOUNT_RECEIVED,ADVANCE_Time,(SELECT FIRSTNAME FROM CHECKIN WHERE CHECKIN_ID =A.CHECKIN_ID )AS GUESTNAME,PAYTYPE,INSERT_BY from ADVANCE A WHERE INSERT_DATE = '" + SelectedDate + "' AND RESERVATION_ID IS NULL AND AMOUNT_RECEIVED > 0";
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
         public DataTable FOExtraAdvance()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT ROOM_NO,RESERVATION_ID,AMOUNT_RECEIVED,(SELECT FIRSTNAME FROM CHECKIN WHERE CHECKIN_ID =A.CHECKIN_ID )AS GUESTNAME,PAYTYPE,INSERT_BY from ADVANCE A WHERE INSERT_DATE = '" + SelectedDate + "' AND RESERVATION_ID = 0 AND AMOUNT_RECEIVED > 0";
+            string s = "SELECT ROOM_NO,RESERVATION_ID,AMOUNT_RECEIVED,ADVANCE_Time,(SELECT FIRSTNAME FROM CHECKIN WHERE CHECKIN_ID =A.CHECKIN_ID )AS GUESTNAME,PAYTYPE,INSERT_BY from ADVANCE A WHERE INSERT_DATE = '" + SelectedDate + "' AND RESERVATION_ID = 0 AND AMOUNT_RECEIVED > 0";
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
@@ -934,14 +934,14 @@ namespace HMS.Model.Others
         public DataTable FOPaidOut()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT VOCHERNUMBER,AMOUNT,INSERT_BY,AUTHORIZATIONS,PAY_TYPE FROM PAIDOUT WHERE INSERT_DATE = '" + SelectedDate + "' AND AMOUNT > 0";
+            string s = "SELECT VOCHERNUMBER,AMOUNT,INSERT_BY,AUTHORIZATIONS,Paidout_Time,PAY_TYPE FROM PAIDOUT WHERE INSERT_DATE = '" + SelectedDate + "' AND AMOUNT > 0";
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
         public DataTable FORefund()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT RESERVATION_ID,ROOM_NO,GUEST_NAME,BALANCE_AMOUNT,REASON,INSERT_BY FROM REFUND WHERE INSERT_DATE = '" + SelectedDate + "' AND BALANCE_AMOUNT > 0"; //'" + SelectedDate + "'
+            string s = "SELECT RESERVATION_ID,ROOM_NO,GUEST_NAME,BALANCE_AMOUNT,REFUND_Time,REASON,INSERT_BY FROM REFUND WHERE INSERT_DATE = '" + SelectedDate + "' AND BALANCE_AMOUNT > 0"; //'" + SelectedDate + "'
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
@@ -955,14 +955,14 @@ namespace HMS.Model.Others
         public DataTable FOSettlements()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT ROOM_NO,RESERVATION_NO,GUEST_NAME,BALANCE_AMOUNT,INSERT_BY,PAYMENT_MODE,BILL_NO from SETTLE where INSERT_DATE = '" + SelectedDate + "'";//AND BALANCE_AMOUNT > 0
+            string s = "SELECT ROOM_NO,RESERVATION_NO,GUEST_NAME,Settle_Time,BALANCE_AMOUNT,INSERT_BY,PAYMENT_MODE,BILL_NO from SETTLE where INSERT_DATE = '" + SelectedDate + "'";//AND BALANCE_AMOUNT > 0
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }
         public DataTable FOOtherSettlements()
         {
             var list = new List<SqlParameter>();
-            string s = "SELECT ROOM_NO,PAYTYPE,AMOUNT,INSERT_BY,BILL_NO,(SELECT GUEST_NAME from PRINTSTATUS where BILL_NO = so.BILL_NO) as Guest_Name from SETTLE_OTHERPAY so where INSERT_DATE = '" + SelectedDate + "' AND AMOUNT > 0";
+            string s = "SELECT ROOM_NO,PAYTYPE,AMOUNT,INSERT_BY,BILL_NO,Settle_Time,(SELECT GUEST_NAME from PRINTSTATUS where BILL_NO = so.BILL_NO) as Guest_Name from SETTLE_OTHERPAY so where INSERT_DATE = '" + SelectedDate + "' AND AMOUNT > 0";
             DataTable d = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return d;
         }

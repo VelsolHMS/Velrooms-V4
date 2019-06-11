@@ -884,6 +884,8 @@ namespace HMS.Reports {
             
             private global::System.Data.DataColumn columnName;
             
+            private global::System.Data.DataColumn columnTime;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public PaidOutsDataTable() {
@@ -951,6 +953,14 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TimeColumn {
+                get {
+                    return this.columnTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -986,13 +996,14 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PaidOutsRow AddPaidOutsRow(string Voucher, string Amount, string User, string Name) {
+            public PaidOutsRow AddPaidOutsRow(string Voucher, string Amount, string User, string Name, string Time) {
                 PaidOutsRow rowPaidOutsRow = ((PaidOutsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Voucher,
                         Amount,
                         User,
-                        Name};
+                        Name,
+                        Time};
                 rowPaidOutsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPaidOutsRow);
                 return rowPaidOutsRow;
@@ -1019,6 +1030,7 @@ namespace HMS.Reports {
                 this.columnAmount = base.Columns["Amount"];
                 this.columnUser = base.Columns["User"];
                 this.columnName = base.Columns["Name"];
+                this.columnTime = base.Columns["Time"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1032,6 +1044,8 @@ namespace HMS.Reports {
                 base.Columns.Add(this.columnUser);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
+                this.columnTime = new global::System.Data.DataColumn("Time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTime);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2132,6 +2146,12 @@ namespace HMS.Reports {
             
             private global::System.Data.DataColumn columnE_User;
             
+            private global::System.Data.DataColumn columnR_Time;
+            
+            private global::System.Data.DataColumn columnC_Time;
+            
+            private global::System.Data.DataColumn columnE_Time;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public AdvanceDataTable() {
@@ -2263,6 +2283,30 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn R_TimeColumn {
+                get {
+                    return this.columnR_Time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn C_TimeColumn {
+                get {
+                    return this.columnC_Time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn E_TimeColumn {
+                get {
+                    return this.columnE_Time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2298,7 +2342,7 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AdvanceRow AddAdvanceRow(string R_RoomRes, string R_GuestName, string R_Advance, string R_User, string C_RoomRes, string C_GuestName, string C_Advance, string C_User, string E_RoomRes, string E_Guestname, string E_Advance, string E_User) {
+            public AdvanceRow AddAdvanceRow(string R_RoomRes, string R_GuestName, string R_Advance, string R_User, string C_RoomRes, string C_GuestName, string C_Advance, string C_User, string E_RoomRes, string E_Guestname, string E_Advance, string E_User, string R_Time, string C_Time, string E_Time) {
                 AdvanceRow rowAdvanceRow = ((AdvanceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         R_RoomRes,
@@ -2312,7 +2356,10 @@ namespace HMS.Reports {
                         E_RoomRes,
                         E_Guestname,
                         E_Advance,
-                        E_User};
+                        E_User,
+                        R_Time,
+                        C_Time,
+                        E_Time};
                 rowAdvanceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAdvanceRow);
                 return rowAdvanceRow;
@@ -2347,6 +2394,9 @@ namespace HMS.Reports {
                 this.columnE_Guestname = base.Columns["E_Guestname"];
                 this.columnE_Advance = base.Columns["E_Advance"];
                 this.columnE_User = base.Columns["E_User"];
+                this.columnR_Time = base.Columns["R_Time"];
+                this.columnC_Time = base.Columns["C_Time"];
+                this.columnE_Time = base.Columns["E_Time"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2376,6 +2426,12 @@ namespace HMS.Reports {
                 base.Columns.Add(this.columnE_Advance);
                 this.columnE_User = new global::System.Data.DataColumn("E_User", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnE_User);
+                this.columnR_Time = new global::System.Data.DataColumn("R_Time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnR_Time);
+                this.columnC_Time = new global::System.Data.DataColumn("C_Time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnC_Time);
+                this.columnE_Time = new global::System.Data.DataColumn("E_Time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnE_Time);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2515,11 +2571,9 @@ namespace HMS.Reports {
             
             private global::System.Data.DataColumn columnBalance;
             
-            private global::System.Data.DataColumn columnAmount;
-            
-            private global::System.Data.DataColumn columnReason;
-            
             private global::System.Data.DataColumn columnUser;
+            
+            private global::System.Data.DataColumn columnTime;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -2580,25 +2634,17 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn AmountColumn {
-                get {
-                    return this.columnAmount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ReasonColumn {
-                get {
-                    return this.columnReason;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn UserColumn {
                 get {
                     return this.columnUser;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TimeColumn {
+                get {
+                    return this.columnTime;
                 }
             }
             
@@ -2639,15 +2685,14 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public RefundRow AddRefundRow(string ResId, string Name, string Balance, string Amount, string Reason, string User) {
+            public RefundRow AddRefundRow(string ResId, string Name, string Balance, string User, string Time) {
                 RefundRow rowRefundRow = ((RefundRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ResId,
                         Name,
                         Balance,
-                        Amount,
-                        Reason,
-                        User};
+                        User,
+                        Time};
                 rowRefundRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRefundRow);
                 return rowRefundRow;
@@ -2673,9 +2718,8 @@ namespace HMS.Reports {
                 this.columnResId = base.Columns["ResId"];
                 this.columnName = base.Columns["Name"];
                 this.columnBalance = base.Columns["Balance"];
-                this.columnAmount = base.Columns["Amount"];
-                this.columnReason = base.Columns["Reason"];
                 this.columnUser = base.Columns["User"];
+                this.columnTime = base.Columns["Time"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2687,12 +2731,10 @@ namespace HMS.Reports {
                 base.Columns.Add(this.columnName);
                 this.columnBalance = new global::System.Data.DataColumn("Balance", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBalance);
-                this.columnAmount = new global::System.Data.DataColumn("Amount", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAmount);
-                this.columnReason = new global::System.Data.DataColumn("Reason", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnReason);
                 this.columnUser = new global::System.Data.DataColumn("User", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUser);
+                this.columnTime = new global::System.Data.DataColumn("Time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTime);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2834,6 +2876,8 @@ namespace HMS.Reports {
             
             private global::System.Data.DataColumn columnUser;
             
+            private global::System.Data.DataColumn columnTime;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public SettleDataTable() {
@@ -2901,6 +2945,14 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TimeColumn {
+                get {
+                    return this.columnTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2936,13 +2988,14 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SettleRow AddSettleRow(string Room, string Name, string Amount, string User) {
+            public SettleRow AddSettleRow(string Room, string Name, string Amount, string User, string Time) {
                 SettleRow rowSettleRow = ((SettleRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Room,
                         Name,
                         Amount,
-                        User};
+                        User,
+                        Time};
                 rowSettleRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSettleRow);
                 return rowSettleRow;
@@ -2969,6 +3022,7 @@ namespace HMS.Reports {
                 this.columnName = base.Columns["Name"];
                 this.columnAmount = base.Columns["Amount"];
                 this.columnUser = base.Columns["User"];
+                this.columnTime = base.Columns["Time"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2982,6 +3036,8 @@ namespace HMS.Reports {
                 base.Columns.Add(this.columnAmount);
                 this.columnUser = new global::System.Data.DataColumn("User", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUser);
+                this.columnTime = new global::System.Data.DataColumn("Time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTime);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3935,6 +3991,22 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Time {
+                get {
+                    try {
+                        return ((string)(this[this.tablePaidOuts.TimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Time\' in table \'PaidOuts\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePaidOuts.TimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsVoucherNull() {
                 return this.IsNull(this.tablePaidOuts.VoucherColumn);
             }
@@ -3979,6 +4051,18 @@ namespace HMS.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetNameNull() {
                 this[this.tablePaidOuts.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTimeNull() {
+                return this.IsNull(this.tablePaidOuts.TimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTimeNull() {
+                this[this.tablePaidOuts.TimeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5116,6 +5200,54 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string R_Time {
+                get {
+                    try {
+                        return ((string)(this[this.tableAdvance.R_TimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'R_Time\' in table \'Advance\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAdvance.R_TimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string C_Time {
+                get {
+                    try {
+                        return ((string)(this[this.tableAdvance.C_TimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'C_Time\' in table \'Advance\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAdvance.C_TimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string E_Time {
+                get {
+                    try {
+                        return ((string)(this[this.tableAdvance.E_TimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'E_Time\' in table \'Advance\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAdvance.E_TimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsR_RoomResNull() {
                 return this.IsNull(this.tableAdvance.R_RoomResColumn);
             }
@@ -5257,6 +5389,42 @@ namespace HMS.Reports {
             public void SetE_UserNull() {
                 this[this.tableAdvance.E_UserColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsR_TimeNull() {
+                return this.IsNull(this.tableAdvance.R_TimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetR_TimeNull() {
+                this[this.tableAdvance.R_TimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsC_TimeNull() {
+                return this.IsNull(this.tableAdvance.C_TimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetC_TimeNull() {
+                this[this.tableAdvance.C_TimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsE_TimeNull() {
+                return this.IsNull(this.tableAdvance.E_TimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetE_TimeNull() {
+                this[this.tableAdvance.E_TimeColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -5323,38 +5491,6 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Amount {
-                get {
-                    try {
-                        return ((string)(this[this.tableRefund.AmountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Amount\' in table \'Refund\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRefund.AmountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Reason {
-                get {
-                    try {
-                        return ((string)(this[this.tableRefund.ReasonColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Reason\' in table \'Refund\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableRefund.ReasonColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string User {
                 get {
                     try {
@@ -5366,6 +5502,22 @@ namespace HMS.Reports {
                 }
                 set {
                     this[this.tableRefund.UserColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Time {
+                get {
+                    try {
+                        return ((string)(this[this.tableRefund.TimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Time\' in table \'Refund\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRefund.TimeColumn] = value;
                 }
             }
             
@@ -5407,30 +5559,6 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsAmountNull() {
-                return this.IsNull(this.tableRefund.AmountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetAmountNull() {
-                this[this.tableRefund.AmountColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsReasonNull() {
-                return this.IsNull(this.tableRefund.ReasonColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetReasonNull() {
-                this[this.tableRefund.ReasonColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsUserNull() {
                 return this.IsNull(this.tableRefund.UserColumn);
             }
@@ -5439,6 +5567,18 @@ namespace HMS.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetUserNull() {
                 this[this.tableRefund.UserColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTimeNull() {
+                return this.IsNull(this.tableRefund.TimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTimeNull() {
+                this[this.tableRefund.TimeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5522,6 +5662,22 @@ namespace HMS.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Time {
+                get {
+                    try {
+                        return ((string)(this[this.tableSettle.TimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Time\' in table \'Settle\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSettle.TimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsRoomNull() {
                 return this.IsNull(this.tableSettle.RoomColumn);
             }
@@ -5566,6 +5722,18 @@ namespace HMS.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetUserNull() {
                 this[this.tableSettle.UserColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTimeNull() {
+                return this.IsNull(this.tableSettle.TimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTimeNull() {
+                this[this.tableSettle.TimeColumn] = global::System.Convert.DBNull;
             }
         }
         

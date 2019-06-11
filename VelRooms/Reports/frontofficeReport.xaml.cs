@@ -342,7 +342,7 @@ namespace HMS.Reports
             D.Columns.Add("R_GuestName", typeof(string));
             D.Columns.Add("R_Advance", typeof(string));
             D.Columns.Add("R_User", typeof(string));
-
+            D.Columns.Add("R_Time", typeof(string));
             DataTable d = rp.FOResAdvance();
             for (int i = 0; i < d.Rows.Count; i++)
             {
@@ -353,6 +353,7 @@ namespace HMS.Reports
                     r["R_GuestName"] = 0;
                     r["R_Advance"] = 0;
                     r["R_User"] = 0;
+                    r["R_Time"] = 0;
                 }
                 else
                 {
@@ -385,6 +386,7 @@ namespace HMS.Reports
                     {
                         Acard += Convert.ToDecimal(d.Rows[i]["AMOUNT_RECEIVED"]);
                     }
+                    r["R_Time"] = d.Rows[i]["ADVANCE_Time"];
                     Advances += Convert.ToDecimal(d.Rows[i]["AMOUNT_RECEIVED"]);
                     D.Rows.Add(r);
                 }
@@ -398,6 +400,7 @@ namespace HMS.Reports
             D.Columns.Add("C_GuestName", typeof(string));
             D.Columns.Add("C_Advance", typeof(string));
             D.Columns.Add("C_User", typeof(string));
+            D.Columns.Add("C_Time", typeof(string));
 
             DataTable d = rp.FOCheckInAdvance();
             for (int i = 0; i < d.Rows.Count; i++)
@@ -409,6 +412,7 @@ namespace HMS.Reports
                     r["C_GuestName"] = 0;
                     r["C_Advance"] = 0;
                     r["C_User"] = 0;
+                    r["C_Time"] = 0;
                 }
                 else
                 {
@@ -433,6 +437,7 @@ namespace HMS.Reports
                     {
                         Acard += Convert.ToDecimal(d.Rows[i]["AMOUNT_RECEIVED"]);
                     }
+                    r["C_Time"] = d.Rows[i]["ADVANCE_Time"];
                     Advances += Convert.ToDecimal(d.Rows[i]["AMOUNT_RECEIVED"]);
                     D.Rows.Add(r);
                 }
@@ -446,6 +451,7 @@ namespace HMS.Reports
             D.Columns.Add("E_Guestname", typeof(string));
             D.Columns.Add("E_Advance", typeof(string));
             D.Columns.Add("E_User", typeof(string));
+            D.Columns.Add("E_Time", typeof(string));
 
             DataTable d = rp.FOExtraAdvance();
             for (int i = 0; i < d.Rows.Count; i++)
@@ -457,6 +463,7 @@ namespace HMS.Reports
                     r["E_Guestname"] = 0;
                     r["E_Advance"] = 0;
                     r["E_User"] = 0;
+                    r["E_Time"] = 0;
                 }
                 else
                 {
@@ -489,6 +496,7 @@ namespace HMS.Reports
                     {
                         Acard += Convert.ToDecimal(d.Rows[i]["AMOUNT_RECEIVED"]);
                     }
+                    r["E_Time"] = d.Rows[i]["ADVANCE_Time"];
                     Advances += Convert.ToDecimal(d.Rows[i]["AMOUNT_RECEIVED"]);
                     D.Rows.Add(r);
                 }
@@ -568,7 +576,8 @@ namespace HMS.Reports
             D.Columns.Add("Voucher", typeof(string));
             D.Columns.Add("Amount", typeof(string));
             D.Columns.Add("User", typeof(string));
-            D.Columns.Add("Name", typeof(string));
+            D.Columns.Add("Name", typeof(string)); 
+            D.Columns.Add("Time", typeof(string));
             DataTable d = rp.FOPaidOut();
             for (int i = 0; i < d.Rows.Count; i++)
             {
@@ -579,6 +588,7 @@ namespace HMS.Reports
                     r["Amount"] = 0;
                     r["User"] = 0;
                     r["Name"] = 0;
+                    r["Time"] = 0;
                 }
                 else
                 {
@@ -594,6 +604,7 @@ namespace HMS.Reports
                     {
                         PaidoutCard += Math.Round(Convert.ToDecimal(d.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero);
                     }
+                    r["Time"] = d.Rows[i]["Paidout_Time"].ToString();
                     D.Rows.Add(r);
                 }
             }
@@ -605,9 +616,8 @@ namespace HMS.Reports
             D.Columns.Add("ResId", typeof(string));
             D.Columns.Add("Name", typeof(string));
             D.Columns.Add("Balance", typeof(string));
-            D.Columns.Add("Reason", typeof(string));
-            D.Columns.Add("Amount", typeof(string));
             D.Columns.Add("User", typeof(string));
+            D.Columns.Add("Time", typeof(string));
             DataTable d = rp.FORefund();
             for (int i = 0; i < d.Rows.Count; i++)
             {
@@ -618,6 +628,7 @@ namespace HMS.Reports
                     r["Name"] = 0;
                     r["Balance"] = 0;
                     r["User"] = 0;
+                    r["Time"] = 0;
                 }
                 else
                 {
@@ -638,6 +649,7 @@ namespace HMS.Reports
                     r["Name"] = d.Rows[i]["GUEST_NAME"].ToString();
                     r["Balance"] = Math.Round(Convert.ToDecimal(d.Rows[i]["BALANCE_AMOUNT"]), 2, MidpointRounding.AwayFromZero).ToString();
                     r["User"] = d.Rows[i]["INSERT_BY"].ToString();
+                    r["Time"] = d.Rows[i]["REFUND_Time"];
                     Refunds += Math.Round(Convert.ToDecimal(d.Rows[i]["BALANCE_AMOUNT"]), 2, MidpointRounding.AwayFromZero);
                     D.Rows.Add(r);
                 }
@@ -652,6 +664,7 @@ namespace HMS.Reports
             D.Columns.Add("Name", typeof(string));
             D.Columns.Add("Amount", typeof(string));
             D.Columns.Add("User", typeof(string));
+            D.Columns.Add("Time", typeof(string));
             //DataTable d = rp.FOSettle();
             //for (int i = 0; i < d.Rows.Count; i++)
             //{
@@ -682,6 +695,7 @@ namespace HMS.Reports
                     r["Name"] = 0;
                     r["Amount"] = 0;
                     r["User"] = 0;
+                    r["Time"] = 0;
                 }
                 else
                 {
@@ -690,6 +704,7 @@ namespace HMS.Reports
                     r["Name"] = d2.Rows[i]["FROMROOM_GUEST"].ToString();
                     r["Amount"] = Math.Round(Convert.ToDecimal(d2.Rows[i]["AMOUNT"]), 2, MidpointRounding.AwayFromZero) + " (Transfered to "+ d2.Rows[i]["TOROOM_NO"] +")";
                     r["User"] = d2.Rows[i]["INSERT_BY"].ToString();
+                    r["Time"] = 0;
                     D.Rows.Add(r);
                 }
             }
@@ -703,6 +718,7 @@ namespace HMS.Reports
                     r["Name"] = 0;
                     r["Amount"] = 0;
                     r["User"] = 0;
+                    r["Time"] = 0;
                 }
                 else
                 {
@@ -743,6 +759,7 @@ namespace HMS.Reports
                     {
                         SCard += Convert.ToDecimal(d.Rows[i]["BALANCE_AMOUNT"]);
                     }
+                    r["Time"] = d.Rows[i]["Settle_Time"];
                     RoomCollection += Convert.ToDecimal(d.Rows[i]["BALANCE_AMOUNT"]);
                     D.Rows.Add(r);
                 }
@@ -757,6 +774,7 @@ namespace HMS.Reports
                     r["Name"] = 0;
                     r["Amount"] = 0;
                     r["User"] = 0;
+                    r["Time"] = 0;
                 }
                 else
                 {
@@ -777,6 +795,7 @@ namespace HMS.Reports
                     {
                         SBOH += Convert.ToDecimal(d1.Rows[i]["AMOUNT"]);
                     }
+                    r["Time"] = d.Rows[i]["Settle_Time"];
                     D.Rows.Add(r);
                 }
             }
