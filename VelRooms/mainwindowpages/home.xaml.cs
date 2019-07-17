@@ -168,17 +168,16 @@ namespace HMS.mainwindowpages
         DataTable dt;
         public void GettingAllData()
         {
-            TimeSpan time1 = new TimeSpan(6, 0, 0); //6 o'clock
-            TimeSpan time2 = new TimeSpan(10, 0, 0); //10 o'clock
-            TimeSpan time3 = new TimeSpan(16, 0, 0); //16 o'clock
-            TimeSpan time4 = new TimeSpan(22, 0, 0); //22 o'clock
-            TimeSpan time5 = new TimeSpan(24, 0, 0); //24 o'clock
-            TimeSpan time6 = new TimeSpan(0, 0, 0); //0 o'clock
+            TimeSpan time1 = new TimeSpan(8, 0, 0); //8 o'clock
+            TimeSpan time2 = new TimeSpan(3, 0, 0); //3 o'clock
+            TimeSpan time3 = new TimeSpan(22, 0, 0); //22 o'clock
+            TimeSpan time4 = new TimeSpan(24, 0, 0); //24 o'clock
+            TimeSpan time5 = new TimeSpan(0, 0, 0); //0 o'clock
             TimeSpan now = DateTime.Now.TimeOfDay;
             if ((now > time1) && (now < time2))
             {
                 TimeZone = "Zone1";
-                TimeStamp = "From : "+DateTime.Now.AddDays(-1).ToString("dd-MM-yyyy") +" 10:00 PM to "+DateTime.Now.ToString("dd-MM-yyyy") + " 06:00 AM";
+                TimeStamp = "From : "+DateTime.Now.AddDays(-1).ToString("dd-MM-yyyy") +" 10:00 PM to "+DateTime.Now.ToString("dd-MM-yyyy") + " 08:00 AM";
                 hm.TimeZone = TimeZone;
                 DataTable CS = hm.CheckingSms();
                 if (CS.Rows.Count == 0)
@@ -190,7 +189,7 @@ namespace HMS.mainwindowpages
                     StoringValues();
                     hm.TodaysDate = DateTime.Today.Date;
                     hm.StartTime = "00:00";
-                    hm.EndTime = "06:00";
+                    hm.EndTime = "08:00";
                     dt = hm.GettingDataUsingTime();
                     Checkins += Convert.ToInt32(dt.Rows[0]["Checkins"]);
                     Checkouts += Convert.ToInt32(dt.Rows[0]["Checkouts"]);
@@ -227,48 +226,34 @@ namespace HMS.mainwindowpages
             }else if((now > time2) && (now < time3))
             {
                 TimeZone = "Zone2";
-                TimeStamp = "On : "+DateTime.Now.ToString("dd-MM-yyyy") + " From 06:00 AM to 10:00 AM";
+                TimeStamp = "On : "+DateTime.Now.ToString("dd-MM-yyyy") + " From 08:00 AM to 03:00 PM";
                 hm.TimeZone = TimeZone;
                 DataTable CS = hm.CheckingSms();
                 if (CS.Rows.Count == 0)
                 {
                     hm.TodaysDate = DateTime.Today.Date;
-                    hm.StartTime = "06:00";
-                    hm.EndTime = "10:00";
+                    hm.StartTime = "08:00";
+                    hm.EndTime = "03:00";
                     dt = hm.GettingDataUsingTime();
                     StoringValues();
                 }
-            }else if((now > time3) && (now < time4))
+            }else if (((now > time3) && (now < time4)) || ((now >time5) && (now <time1)))
             {
                 TimeZone = "Zone3";
-                TimeStamp = "On : "+ DateTime.Now.ToString("dd-MM-yyyy") + " From 10:00 AM to 04:00 PM";
+                TimeStamp = DateTime.Now.ToString("dd-MM-yyyy") + " 03:00 PM to 10:00 PM";
                 hm.TimeZone = TimeZone;
                 DataTable CS = hm.CheckingSms();
                 if (CS.Rows.Count == 0)
                 {
-                    hm.TodaysDate = DateTime.Today.Date;
-                    hm.StartTime = "10:00";
-                    hm.EndTime = "16:00";
-                    dt = hm.GettingDataUsingTime();
-                    StoringValues();
-                }
-            }else if (((now > time4) && (now < time5)) || ((now >time6) && (now <time1)))
-            {
-                TimeZone = "Zone4";
-                TimeStamp = DateTime.Now.ToString("dd-MM-yyyy") + " 04:00 PM to 10:00 PM";
-                hm.TimeZone = TimeZone;
-                DataTable CS = hm.CheckingSms();
-                if (CS.Rows.Count == 0)
-                {
-                    if ((now > time4) && (now < time5))
+                    if ((now > time3) && (now < time4))
                     {
                         hm.TodaysDate = DateTime.Today.Date;
                     }
-                    else if ((now > time6) && (now < time1))
+                    else if ((now > time5) && (now < time1))
                     {
                         hm.TodaysDate = DateTime.Today.AddDays(-1);
                     }
-                    hm.StartTime = "16:00";
+                    hm.StartTime = "15:00";
                     hm.EndTime = "22:00";
                     dt = hm.GettingDataUsingTime();
                     StoringValues();
@@ -305,52 +290,52 @@ namespace HMS.mainwindowpages
                     DateTime today = DateTime.Today.Date;
                     DateTime yesterday = DateTime.Today.Date.AddDays(-1);
                     hm.TodaysDate = yesterday;
-                    hm.StartTime = "12:00";
+                    hm.StartTime = "00:00";
                     hm.EndTime = "24:00";
                     dt = hm.GettingDataUsingTime();
                     StoringValues();
-                    hm.TodaysDate = today;
-                    hm.StartTime = "00:00";
-                    hm.EndTime = "12:00";
-                    DataTable dt1 = hm.GettingDataUsingTime();
-                    Checkins += Convert.ToInt32(dt.Rows[0]["Checkins"]);
-                    Checkouts += Convert.ToInt32(dt.Rows[0]["Checkouts"]);
-                    Reservations += Convert.ToInt32(dt.Rows[0]["Reservations"]);
-                    if (dt.Rows[0]["Settlements"].ToString() == "" || dt.Rows[0]["Settlements"].ToString() == null)
-                    {
-                        Settle += 0;
-                    }
-                    else
-                    {
-                        Settle += Convert.ToDecimal(dt.Rows[0]["Settlements"]);
-                    }
-                    if (dt.Rows[0]["Advances"].ToString() == "" || dt.Rows[0]["Advances"].ToString() == null)
-                    {
-                        Advance += 0;
-                    }
-                    else
-                    {
-                        Advance += Convert.ToDecimal(dt.Rows[0]["Advances"]);
-                    }
-                    if (dt.Rows[0]["Paidouts"].ToString() == "" || dt.Rows[0]["Paidouts"].ToString() == null)
-                    {
-                        Paidout += 0;
-                    }
-                    else
-                    {
-                        Paidout += Convert.ToDecimal(dt.Rows[0]["Paidouts"]);
-                    }
-                    if (dt.Rows[0]["Refunds"].ToString() == "" || dt.Rows[0]["Refunds"].ToString() == null)
-                    {
-                        Refunds += 0;
-                    }
-                    else
-                    {
-                        Refunds += Convert.ToDecimal(dt.Rows[0]["Refunds"]);
-                    }
+                    //hm.TodaysDate = today;
+                    //hm.StartTime = "12:00";
+                    //hm.EndTime = "24:00";
+                    //DataTable dt1 = hm.GettingDataUsingTime();
+                    //Checkins += Convert.ToInt32(dt.Rows[0]["Checkins"]);
+                    //Checkouts += Convert.ToInt32(dt.Rows[0]["Checkouts"]);
+                    //Reservations += Convert.ToInt32(dt.Rows[0]["Reservations"]);
+                    //if (dt.Rows[0]["Settlements"].ToString() == "" || dt.Rows[0]["Settlements"].ToString() == null)
+                    //{
+                    //    Settle += 0;
+                    //}
+                    //else
+                    //{
+                    //    Settle += Convert.ToDecimal(dt.Rows[0]["Settlements"]);
+                    //}
+                    //if (dt.Rows[0]["Advances"].ToString() == "" || dt.Rows[0]["Advances"].ToString() == null)
+                    //{
+                    //    Advance += 0;
+                    //}
+                    //else
+                    //{
+                    //    Advance += Convert.ToDecimal(dt.Rows[0]["Advances"]);
+                    //}
+                    //if (dt.Rows[0]["Paidouts"].ToString() == "" || dt.Rows[0]["Paidouts"].ToString() == null)
+                    //{
+                    //    Paidout += 0;
+                    //}
+                    //else
+                    //{
+                    //    Paidout += Convert.ToDecimal(dt.Rows[0]["Paidouts"]);
+                    //}
+                    //if (dt.Rows[0]["Refunds"].ToString() == "" || dt.Rows[0]["Refunds"].ToString() == null)
+                    //{
+                    //    Refunds += 0;
+                    //}
+                    //else
+                    //{
+                    //    Refunds += Convert.ToDecimal(dt.Rows[0]["Refunds"]);
+                    //}
                     DataTable dtr = hm.GetCurrentCheckins();
                     RoomsOccupied = Convert.ToInt32(dtr.Rows[0]["Chekins"]);
-                    TimeStamp = "RoomsOccupied : " + RoomsOccupied + "\nFrom : " + DateTime.Now.AddDays(-1).ToString("dd-MM-yyyy") + " 12:00 to " + DateTime.Now.ToString("dd-MM-yyyy") + " 12:00";
+                    TimeStamp = "RoomsOccupied : " + RoomsOccupied + "\nOn : " + DateTime.Now.AddDays(-1).ToString("dd-MM-yyyy") + "From 00:00 to " + DateTime.Now.ToString("dd-MM-yyyy") + " 24:00";
                     try
                     {
                         hm.TimeZone = TimeZone;
@@ -411,7 +396,7 @@ namespace HMS.mainwindowpages
             //string no = "9848082999";
             String username = "9494433233";
             String password = "33233";
-            SmsMobileNumber = "91" + "8179893241";
+            SmsMobileNumber = "91" + "7893895698";
 
             SmsMessage = "Checkin's : " + Checkins + "\nCheckout's : " + Checkouts + "\nReservations : " + Reservations + "\nAmount Collected : " + Math.Round(Advance+Settle,2,MidpointRounding.AwayFromZero) + "\nAmount Outward : " + Math.Round(Paidout + Refunds, 2, MidpointRounding.AwayFromZero) + "\n" + TimeStamp;
             String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + SmsMobileNumber + "&from=HRTVEL&text=" + SmsMessage + "";
