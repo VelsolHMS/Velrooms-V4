@@ -304,3 +304,17 @@ C:\Users\Velsol\source\repos\New folder\Velrooms-V3\DAL\obj\Debug\DAL.csproj.Gen
 C:\Users\Velsol\source\repos\New folder\Velrooms-V3\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\Velsol\source\repos\New folder\Velrooms-V3\DAL\obj\Debug\DAL.exe
 C:\Users\Velsol\source\repos\New folder\Velrooms-V3\DAL\obj\Debug\DAL.pdb
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\bin\Debug\DAL.exe
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\bin\Debug\DAL.pdb
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\MainWindow.g.cs
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\App.g.cs
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\DAL_MarkupCompile.cache
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\DAL_MarkupCompile.lref
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\MainWindow.baml
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.g.resources
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.Properties.Resources.resources
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.exe
+C:\Users\user3.VELSOL\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.pdb
