@@ -169,7 +169,7 @@ namespace HMS.mainwindowpages
         public void GettingAllData()
         {
             TimeSpan time1 = new TimeSpan(8, 0, 0); //8 o'clock
-            TimeSpan time2 = new TimeSpan(3, 0, 0); //3 o'clock
+            TimeSpan time2 = new TimeSpan(15, 0, 0); //15 o'clock
             TimeSpan time3 = new TimeSpan(22, 0, 0); //22 o'clock
             TimeSpan time4 = new TimeSpan(24, 0, 0); //24 o'clock
             TimeSpan time5 = new TimeSpan(0, 0, 0); //0 o'clock
@@ -226,21 +226,21 @@ namespace HMS.mainwindowpages
             }else if((now > time2) && (now < time3))
             {
                 TimeZone = "Zone2";
-                TimeStamp = "On : "+DateTime.Now.ToString("dd-MM-yyyy") + " From 08:00 AM to 03:00 PM";
+                TimeStamp = "On : "+DateTime.Now.ToString("dd-MM-yyyy") + " From 08:00 AM to 3:00 PM";
                 hm.TimeZone = TimeZone;
                 DataTable CS = hm.CheckingSms();
                 if (CS.Rows.Count == 0)
                 {
                     hm.TodaysDate = DateTime.Today.Date;
                     hm.StartTime = "08:00";
-                    hm.EndTime = "03:00";
+                    hm.EndTime = "15:00";
                     dt = hm.GettingDataUsingTime();
                     StoringValues();
                 }
             }else if (((now > time3) && (now < time4)) || ((now >time5) && (now <time1)))
             {
                 TimeZone = "Zone3";
-                TimeStamp = DateTime.Now.ToString("dd-MM-yyyy") + " 03:00 PM to 10:00 PM";
+                TimeStamp = DateTime.Now.ToString("dd-MM-yyyy") + " 3:00 PM to 10:00 PM";
                 hm.TimeZone = TimeZone;
                 DataTable CS = hm.CheckingSms();
                 if (CS.Rows.Count == 0)
@@ -277,7 +277,7 @@ namespace HMS.mainwindowpages
         }
         public void GettingAllData2()
         {
-            TimeSpan time1 = new TimeSpan(12, 0, 0);//12 o'clock
+            TimeSpan time1 = new TimeSpan(6, 0, 0);//12 o'clock
             TimeSpan timenow = DateTime.Now.TimeOfDay;
             if (timenow > time1)
             {
@@ -335,7 +335,7 @@ namespace HMS.mainwindowpages
                     //}
                     DataTable dtr = hm.GetCurrentCheckins();
                     RoomsOccupied = Convert.ToInt32(dtr.Rows[0]["Chekins"]);
-                    TimeStamp = "RoomsOccupied : " + RoomsOccupied + "\nOn : " + DateTime.Now.AddDays(-1).ToString("dd-MM-yyyy") + "From 00:00 to " + DateTime.Now.ToString("dd-MM-yyyy") + " 24:00";
+                    TimeStamp = "RoomsOccupied : " + RoomsOccupied + "\nOn : " + DateTime.Now.AddDays(-1).ToString("dd-MM-yyyy") + " From 00:01 AM to " + DateTime.Now.ToString("dd-MM-yyyy") + " 12:00 PM";
                     try
                     {
                         hm.TimeZone = TimeZone;
@@ -396,7 +396,7 @@ namespace HMS.mainwindowpages
             //string no = "9848082999";
             String username = "9494433233";
             String password = "33233";
-            SmsMobileNumber = "91" + "7893895698";
+            SmsMobileNumber = "91" + "8179893241";
 
             SmsMessage = "Checkin's : " + Checkins + "\nCheckout's : " + Checkouts + "\nReservations : " + Reservations + "\nAmount Collected : " + Math.Round(Advance+Settle,2,MidpointRounding.AwayFromZero) + "\nAmount Outward : " + Math.Round(Paidout + Refunds, 2, MidpointRounding.AwayFromZero) + "\n" + TimeStamp;
             String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + SmsMobileNumber + "&from=HRTVEL&text=" + SmsMessage + "";
