@@ -396,7 +396,7 @@ namespace HMS.mainwindowpages
             //string no = "9848082999";
             String username = "9494433233";
             String password = "33233";
-            SmsMobileNumber = "91" + "8179893241";
+            SmsMobileNumber = "91" + "9494433033";
 
             SmsMessage = "Checkin's : " + Checkins + "\nCheckout's : " + Checkouts + "\nReservations : " + Reservations + "\nAmount Collected : " + Math.Round(Advance+Settle,2,MidpointRounding.AwayFromZero) + "\nAmount Outward : " + Math.Round(Paidout + Refunds, 2, MidpointRounding.AwayFromZero) + "\n" + TimeStamp;
             String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + SmsMobileNumber + "&from=HRTVEL&text=" + SmsMessage + "";

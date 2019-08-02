@@ -136,7 +136,7 @@ namespace HMS.View.Operations
             }
             else
             {
-                arrival.Text = DateTime.Now.ToShortDateString();
+                arrival.Text =Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy");
                 departure.Text = CheckinDeparture.date;
                 roomno.Text = Vacant.roomno.ToString();
                 roomcategory.Text = Vacant.ROOMTYPE;
