@@ -39,7 +39,6 @@ namespace HMS.View.Operations
         {
             data.COUNT = 0;
             InitializeComponent();
-
             data.COUNT = 1;
             //  Clear();
             RACKTARRIF.IsEnabled = false;

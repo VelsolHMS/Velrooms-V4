@@ -1597,6 +1597,8 @@ namespace HMS {
             
             private global::System.Data.DataColumn columnTime;
             
+            private global::System.Data.DataColumn columnPrintType;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public DataTable1DataTable() {
@@ -1880,6 +1882,14 @@ namespace HMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PrintTypeColumn {
+                get {
+                    return this.columnPrintType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1946,7 +1956,8 @@ namespace HMS {
                         decimal Refund, 
                         decimal Transfer, 
                         string Company, 
-                        System.DateTime Time) {
+                        System.DateTime Time, 
+                        string PrintType) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Name,
@@ -1979,7 +1990,8 @@ namespace HMS {
                         Refund,
                         Transfer,
                         Company,
-                        Time};
+                        Time,
+                        PrintType};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -2033,6 +2045,7 @@ namespace HMS {
                 this.columnTransfer = base.Columns["Transfer"];
                 this.columnCompany = base.Columns["Company"];
                 this.columnTime = base.Columns["Time"];
+                this.columnPrintType = base.Columns["PrintType"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2104,6 +2117,8 @@ namespace HMS {
                 base.Columns.Add(this.columnCompany);
                 this.columnTime = new global::System.Data.DataColumn("Time", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTime);
+                this.columnPrintType = new global::System.Data.DataColumn("PrintType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrintType);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3683,6 +3698,22 @@ namespace HMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string PrintType {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.PrintTypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PrintType\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.PrintTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableDataTable1.NameColumn);
             }
@@ -4051,6 +4082,18 @@ namespace HMS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTimeNull() {
                 this[this.tableDataTable1.TimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPrintTypeNull() {
+                return this.IsNull(this.tableDataTable1.PrintTypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPrintTypeNull() {
+                this[this.tableDataTable1.PrintTypeColumn] = global::System.Convert.DBNull;
             }
         }
         
