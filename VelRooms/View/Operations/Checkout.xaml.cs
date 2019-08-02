@@ -758,7 +758,7 @@ namespace HMS.View.Operations
             }
             if(PrintType == 0)
             {
-                r["PrintType"] = "Owner Bill";
+                r["PrintType"] = "Owner Copy";
             }else if (PrintType == 1)
             {
                 r["PrintType"] = " ";
