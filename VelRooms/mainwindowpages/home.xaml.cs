@@ -388,7 +388,7 @@ namespace HMS.mainwindowpages
                 Refunds = Convert.ToDecimal(dt.Rows[0]["Refunds"]);
             }
         }
-        public string SmsMessage,SmsMobileNumber;
+        public string SmsMessage,SmsMobileNumber, SmsMobileNumber1;
         public void Send_SMS()
         {
             DataTable landline = hotelinfo.getLandLinenumber();
@@ -397,9 +397,11 @@ namespace HMS.mainwindowpages
             String username = "9494433233";
             String password = "33233";
             SmsMobileNumber = "91" + "9494433033";
+            SmsMobileNumber1 = "91" + "9494433233";
+            
 
             SmsMessage = "Checkin's : " + Checkins + "\nCheckout's : " + Checkouts + "\nReservations : " + Reservations + "\nAmount Collected : " + Math.Round(Advance+Settle,2,MidpointRounding.AwayFromZero) + "\nAmount Outward : " + Math.Round(Paidout + Refunds, 2, MidpointRounding.AwayFromZero) + "\n" + TimeStamp;
-            String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + SmsMobileNumber + "&from=HRTVEL&text=" + SmsMessage + "";
+            String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + SmsMobileNumber + SmsMobileNumber1+  "&from=HRTVEL&text=" + SmsMessage + "";
             try
             {
                 HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url);
