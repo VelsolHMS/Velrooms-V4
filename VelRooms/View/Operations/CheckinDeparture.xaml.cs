@@ -44,11 +44,13 @@ namespace HMS.View.Operations
 
                 d = dt.Date;
 
-                date = d.ToString("d");
+                 date = d.ToString("d");
+                //date = Convert.ToDateTime(d).ToString("dd/MM/yyyy");
             }
             else if (DateTime.TryParse(txtstaydep.Text, out d))
             {
-                date = d.ToShortDateString();
+                                date = d.ToShortDateString();
+                //date = Convert.ToDateTime(d).ToString("dd/MM/yyyy");
             }
             DateTime dtt = DateTime.Now;
             txttime.Text = dtt.ToString("hh:mm:ss tt");

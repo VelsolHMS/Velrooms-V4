@@ -283,6 +283,7 @@
                                 <ComboBox x:Name="status" Width="150" TabIndex="27" Padding="2" Margin="15,0,0,0" SelectedIndex="1">
                                     <ComboBoxItem Content="VIP"/>
                                     <ComboBoxItem Content="General"/>
+                                    <ComboBoxItem Content="Governament"/>
                                 </ComboBox>
                                 <material:PackIcon Kind="Briefcase"  Margin="15,0,0,0" Height="25" Width="25"/>
                                 <ComboBox Name="scantybaggage" TabIndex="28" Width="150" Padding="2" SelectedIndex="0" Margin="15,0,0,0">

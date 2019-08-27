@@ -210,7 +210,7 @@ namespace HMS.View.Operations
             Refund d = new Refund();
             this.NavigationService.Navigate(d);
         }
-        public static decimal Ch_CSGST, Ch_Tarrif, Ch_Total, Ch_Discount, Ch_Advance, Ch_Charges, Ch_Refunds, Ch_PendingAmount;
+        public static decimal Ch_CSGST, Ch_Tarrif, Ch_Total, Ch_Discount, Ch_Advance, Ch_Charges, Ch_Refunds, Ch_PendingAmount, PrintType;
         private void yes_Click(object sender, RoutedEventArgs e)
         {
             co.ROOM_NO = "";
@@ -240,6 +240,7 @@ namespace HMS.View.Operations
                             co.Prints_insert();
                             co.PrintStatus_Insert();
                             co.color();
+                            PrintType = 0;
                             ReportDocument r = new ReportDocument();
                             DataTable hot = report();
                             r.Load("../../Checkoutbilling.rpt");
@@ -250,6 +251,17 @@ namespace HMS.View.Operations
                             r.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
                             r.PrintToPrinter(1, false, 0, 0);
                             r.Refresh();
+                            PrintType = 1;
+                            ReportDocument r2 = new ReportDocument();
+                            DataTable hot2 = report();
+                            r2.Load("../../Checkoutbilling.rpt");
+                            DataTable table2 = hotelprint();
+                            r2.Load("../../CheckoutbillReport1.rpt");
+                            r2.SetDataSource(table2);
+                            r2.Subreports[0].SetDataSource(hot2);
+                            r2.PrintOptions.PaperOrientation = CrystalDecisions.Shared.PaperOrientation.Portrait;
+                            r2.PrintToPrinter(1, false, 0, 0);
+                            r2.Refresh();
                             this.NavigationService.Refresh();
                         }
                     }
@@ -702,6 +714,7 @@ namespace HMS.View.Operations
             d.Columns.Add("Transfer", typeof(decimal));
             d.Columns.Add("Company", typeof(string));
             d.Columns.Add("Time", typeof(DateTime));
+            d.Columns.Add("PrintType", typeof(string));
             co.hotel();
             DataRow r = d.NewRow();
             r["Name"] = Checkout1.N;
@@ -742,6 +755,13 @@ namespace HMS.View.Operations
             }else
             {
                 r["Company"] = d1.Rows[0]["Company_Gst"].ToString() + " (" + d1.Rows[0]["COMPANY_NAME"].ToString() + ")";
+            }
+            if(PrintType == 0)
+            {
+                r["PrintType"] = "Owner Copy";
+            }else if (PrintType == 1)
+            {
+                r["PrintType"] = " ";
             }
             d.Rows.Add(r);
             return d;
