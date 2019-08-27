@@ -39,7 +39,6 @@ namespace HMS.View.Operations
         {
             data.COUNT = 0;
             InitializeComponent();
-
             data.COUNT = 1;
             //  Clear();
             RACKTARRIF.IsEnabled = false;
@@ -47,10 +46,10 @@ namespace HMS.View.Operations
             RACKCHILD.IsEnabled = false;
             Hotelinfo H = new Hotelinfo();
             H.market();
-            txtextrabed.Text = "0";EADULT.Text = "0";ECHILD.Text = "0";
-            txtextrabed.IsEnabled = false;EADULT.IsEnabled = false;ECHILD.IsEnabled = false;
+            txtextrabed.Text = "0"; EADULT.Text = "0"; ECHILD.Text = "0";
+            txtextrabed.IsEnabled = false; EADULT.IsEnabled = false; ECHILD.IsEnabled = false;
             txtmarketseg.Text = H.city;
-            DataTable d  = ch.CompanyName();
+            DataTable d = ch.CompanyName();
             txtcompany.ItemsSource = d.DefaultView;
             //DataTable d1 = ch.CompanyAddress();
             //companyADDRESS.ItemsSource = d1.DefaultView;
@@ -137,11 +136,12 @@ namespace HMS.View.Operations
             }
             else
             {
-                arrival.Text = DateTime.Now.ToShortDateString();
+                arrival.Text = Convert.ToDateTime(DateTime.Now).ToString();
+                //arrival.Text =Convert.ToDateTime(DateTime.Now).ToString("dd/MM/yyyy");
                 departure.Text = CheckinDeparture.date;
                 roomno.Text = Vacant.roomno.ToString();
                 roomcategory.Text = Vacant.ROOMTYPE;
-               
+
                 DataTable dt = ch.fetch_PLANCODE(Convert.ToInt16(roomno.Text));
                 plancode.ItemsSource = dt.DefaultView;
                 DataTable DT = ch.GET_COMPANY();
@@ -387,7 +387,7 @@ namespace HMS.View.Operations
                         {
                             ADULT = EADULT.Text;
                         }
-                        decimal ADULT_PLUS_CHILD =decimal.Parse(CHILD + ADULT);
+                        decimal ADULT_PLUS_CHILD = decimal.Parse(CHILD + ADULT);
                         if (ADULT_PLUS_CHILD > EXTRABED)
                         {
                             MessageBox.Show("YOUR EXTRABED OF ADULTS AND CHILDS ARE MORE THAN THE EXTRABEDS");
@@ -403,7 +403,7 @@ namespace HMS.View.Operations
         {
             try
             {
-                if(imgcaptured.Source == null)
+                if (imgcaptured.Source == null)
                 {
                     ch.IMAGE = "";
                 }
@@ -597,7 +597,7 @@ namespace HMS.View.Operations
         {
             try
             {
-                if (error!= 0 || txtfirstname.Text == null || txtlastname.Text == null || ADDRESS.Text == null || ZIP.Text == null || txtcity.Text == null || txtmobileno.Text == null || idproof.Text == null || txtproof.Text == null || txtpax.Text == null || txtadult.Text == null || txtchild.Text == null || txtextrabed.Text == null || EADULT.Text == null || ECHILD.Text == null || TAXPER.Text == null || RACKTARRIF.Text == null || RACKCHILD.Text == null || RACKADULT.Text == null || CHARGETARRIF.Text == null || CHARGEADULT.Text == null || CHARGECHILD.Text == null)
+                if (error != 0 || txtfirstname.Text == null || txtlastname.Text == null || ADDRESS.Text == null || ZIP.Text == null || txtcity.Text == null || txtmobileno.Text == null || idproof.Text == null || txtproof.Text == null || txtpax.Text == null || txtadult.Text == null || txtchild.Text == null || txtextrabed.Text == null || EADULT.Text == null || ECHILD.Text == null || TAXPER.Text == null || RACKTARRIF.Text == null || RACKCHILD.Text == null || RACKADULT.Text == null || CHARGETARRIF.Text == null || CHARGEADULT.Text == null || CHARGECHILD.Text == null)
                 {
                     //MessageBox.Show("FILL ALL COLUMNS ");
                     pop1.IsOpen = true;
@@ -702,6 +702,7 @@ namespace HMS.View.Operations
                         //ch.postcharges();
                         popup_insert.IsOpen = true;
                         Send_SMS();
+                        Send_sms2();
                     }
                     else
                     {
@@ -759,9 +760,51 @@ namespace HMS.View.Operations
                     ADVANCEPOPUP.IsOpen = false;
                     popup_insert.IsOpen = true;
                     Send_SMS();
+                    Send_sms2();
                 }
             }
             catch (Exception) { }
+        }
+        public void Send_sms2()
+        {
+            DataTable landline = hotelinfo.getLandLinenumber();
+            String ll_number = landline.Rows[0]["LANDLINE1"].ToString();
+            string no = "9848082999";
+            String AdvanceAmount;
+            if (txtamntrecivd.Text != null)
+            {
+                AdvanceAmount = txtamntrecivd.Text;
+            }
+            else
+            {
+                AdvanceAmount = "0.00";
+            }
+            String username = "9494433233";
+            String password = "33233";
+            String mobileNumber = "91" + "9494433233";
+            String customer = "Room No : " + roomno.Text + "\nRoom Type : " + roomcategory.Text + "\nArrival & Departure : " + arrival.Text + " - " + departure.Text + "\nAdvance Paid : " + AdvanceAmount;
+            String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + mobileNumber + "&from=VELSOL&text=" + customer + "";
+            try
+            {
+                HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url);
+
+                // Prepare and Add URL Encoded data
+                UTF8Encoding encoding = new UTF8Encoding();
+                httpWReq.Method = "GET";
+                httpWReq.ContentType = "application/x-www-form-urlencoded";
+
+                HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                string responseString = reader.ReadToEnd();
+
+                // Close the response
+                reader.Close();
+                response.Close();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
         public void Send_SMS()
         {
@@ -779,18 +822,18 @@ namespace HMS.View.Operations
             }
             String username = "9494433233";
             String password = "33233";
-            String mobileNumber = "91"+txtmobileno.Text;
-            String customer = "Thank you very much for choosing us! \nYour Room No : "+roomno.Text+"\nAdvance Paid : "+AdvanceAmount+"\nFor Assistance Call : "+ll_number+","+no+"";
-            String url = "http://sms.zestwings.com/smpp.sms?username="+username+"&password="+password+"&to="+mobileNumber+"&from=VELSOL&text="+customer+"";
+            String mobileNumber = "91" + txtmobileno.Text;
+            String customer = "Thank you very much for choosing us! \nYour Room No : " + roomno.Text + "\nAdvance Paid : " + AdvanceAmount + "\nFor Assistance Call : " + ll_number + "," + no + "";
+            String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + mobileNumber + "&from=VELSOL&text=" + customer + "";
             try
             {
                 HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url);
-                
+
                 // Prepare and Add URL Encoded data
                 UTF8Encoding encoding = new UTF8Encoding();
                 httpWReq.Method = "GET";
                 httpWReq.ContentType = "application/x-www-form-urlencoded";
-                
+
                 HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
                 StreamReader reader = new StreamReader(response.GetResponseStream());
                 string responseString = reader.ReadToEnd();
@@ -865,7 +908,7 @@ namespace HMS.View.Operations
             Binding b = new Binding();
             if (idproof.Text == "Aadhar")
             {
-               // txtproof.Text = "";
+                // txtproof.Text = "";
                 b.Source = daa;
                 daa.Addharcard = txtproof.Text.ToUpper();
                 b.Path = new PropertyPath("Addharcard");
@@ -885,7 +928,7 @@ namespace HMS.View.Operations
             }
             else if (idproof.Text == "DrivingLicense")
             {
-               // txtproof.Text = "";
+                // txtproof.Text = "";
                 b.Source = daa;
                 daa.Driving = txtproof.Text;
                 b.Path = new PropertyPath("Driving");
@@ -905,7 +948,7 @@ namespace HMS.View.Operations
             }
             else if (idproof.Text == "Passport")
             {
-               // txtproof.Text = "";
+                // txtproof.Text = "";
                 b.Source = daa;
                 daa.Passport = txtproof.Text;
                 b.Path = new PropertyPath("Passport");
@@ -1001,12 +1044,12 @@ namespace HMS.View.Operations
             }
             catch (Exception) { }
         }
-        public static string rn,pc;
+        public static string rn, pc;
         private void txtcompany_DropDownClosed(object sender, EventArgs e)
         {
             companymaster rr = new companymaster();
             rr.COMPANY_NAME = txtcompany.Text;
-            DataTable dt= rr.get();
+            DataTable dt = rr.get();
             // companyADDRESS.Text = rr.PLOT_NO + "," + rr.LANDMARK + "\n" + rr.CITY + "-" + rr.PINCODE + "\n" + rr.STATE + "\n" + rr.COUNTRY + "\n" + rr.EMAIL + "\n" + rr.CONTACT;
             companyADDRESS.ItemsSource = dt.DefaultView;
             //DataTable d1 = ch.CompanyAddress();
@@ -1024,7 +1067,7 @@ namespace HMS.View.Operations
                     webcam = new WebCam();
                     webcam.InitializeWebCam(ref imgVideo);
                     webcam.Start();
-                    if(imgVideo.Source == null)
+                    if (imgVideo.Source == null)
                     {
                         Camerapopup.IsOpen = false;
                         MessageBox.Show("Please connect a web camera and try again");

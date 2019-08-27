@@ -317,3 +317,17 @@ C:\Users\Velsol\source\repos\New folder\Velrooms-V3\DAL\obj\Debug\DAL.csproj.Gen
 C:\Users\Velsol\source\repos\New folder\Velrooms-V3\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\Velsol\source\repos\New folder\Velrooms-V3\DAL\obj\Debug\DAL.exe
 C:\Users\Velsol\source\repos\New folder\Velrooms-V3\DAL\obj\Debug\DAL.pdb
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\bin\Debug\DAL.exe
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\bin\Debug\DAL.pdb
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\MainWindow.g.cs
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\App.g.cs
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\DAL_MarkupCompile.cache
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\DAL_MarkupCompile.lref
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\MainWindow.baml
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\DAL.g.resources
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\DAL.Properties.Resources.resources
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\DAL.exe
+D:\HMS NEW 2019-08-01\Velrooms-V4\DAL\obj\Debug\DAL.pdb
