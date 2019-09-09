@@ -432,6 +432,23 @@ namespace HMS.mainwindowpages
             }
         }
 
-       
+    
+        private void BtnBankandWallet_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.frame2.Navigate(new Uri("View/Masters/BankandWallet.xaml", UriKind.RelativeOrAbsolute));
+            (sender as Button).Background = new SolidColorBrush(Colors.Orange);
+
+            btnhtinfo.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            btncategory.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            btnami.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            btnplan.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            btnrmmst.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            btnrmtax.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            btnrvn.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            btndpt.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            btncmp.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            //btnRstPass.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+            btnRegUsr.Background = new SolidColorBrush(Color.FromRgb(53, 71, 102));
+        }
     }
 }
