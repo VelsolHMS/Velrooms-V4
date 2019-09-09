@@ -1013,6 +1013,9 @@
     <Compile Include="View\Masters\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Masters\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Masters\Planecode.xaml.cs">
       <DependentUpon>Planecode.xaml</DependentUpon>
     </Compile>
@@ -1283,6 +1286,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Masters\login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Masters\Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
