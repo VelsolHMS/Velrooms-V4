@@ -344,3 +344,4 @@ C:\Users\VelsolAndroid\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.csproj.Generat
 C:\Users\VelsolAndroid\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\VelsolAndroid\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.exe
 C:\Users\VelsolAndroid\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.pdb
+C:\Users\VelsolAndroid\source\repos\Velrooms-V4\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
