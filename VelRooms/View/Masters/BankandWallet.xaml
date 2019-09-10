@@ -36,19 +36,19 @@
 
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                                 <material:PackIcon Kind="CreditCardScan" Height="25" Width="25" Margin="50,0,0,0"/>
-                                <TextBox TabIndex="1" Name="txtbankcode" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Path=Bankcode, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Bank code *" material:HintAssist.IsFloating="True" />
+                                <TextBox TabIndex="1" Name="txtbankcode" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Bankcode, ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Bank code *" material:HintAssist.IsFloating="True" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                                 <material:PackIcon Kind="Bank" Height="25" Width="25" Margin="50,0,0,0"/>
-                                <TextBox TabIndex="2" Name="txtbankname" Background="White" MaxLength="10" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Path=Bankname, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Bank name *" material:HintAssist.IsFloating="True" />
+                                <TextBox TabIndex="2" Name="txtbankname" Background="White" MaxLength="10" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Bankname,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Bank name *" material:HintAssist.IsFloating="True" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                                 <material:PackIcon Kind="FormatListBulleted" Height="25" Width="25" Margin="50,0,0,0"/>
-                                <TextBox TabIndex="3" Name="txtaccountnumber" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0" Text="{Binding Path=Accountnumber, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Account number *" material:HintAssist.IsFloating="True" />
+                                <TextBox TabIndex="3" Name="txtaccountnumber" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0" Text="{Binding Accountnumber,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Account number *" material:HintAssist.IsFloating="True" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                                 <material:PackIcon Kind="AccountCircle" Height="25" Width="25" Margin="50,0,0,0"/>
-                                <TextBox TabIndex="6" Name="txtreportname" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Path=Reportname, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Report name *" material:HintAssist.IsFloating="True" />
+                                <TextBox TabIndex="6" Name="txtreportname" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Reportname,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Report name *" material:HintAssist.IsFloating="True" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0" Name="status" Visibility="Visible" Height="28">
                                 <material:PackIcon Kind="Emoticon" Height="23" Width="25" Margin="50,0,0,0"/>
@@ -67,15 +67,15 @@
 
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                                 <material:PackIcon Kind="CreditCardScan" Height="25" Width="25" Margin="50,0,0,0"/>
-                                <TextBox TabIndex="4" Name="txtwalletcode" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Path=Walletcode, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Wallet code *" material:HintAssist.IsFloating="True" />
+                                <TextBox TabIndex="4" Name="txtwalletcode" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Walletcode, ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Wallet code *" material:HintAssist.IsFloating="True" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                                 <material:PackIcon Kind="Wallet" Height="25" Width="25" Margin="50,0,0,0"/>
-                                <TextBox TabIndex="5" Name="txtwalletname" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Path=Walletname, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Wallet name *" material:HintAssist.IsFloating="True" />
+                                <TextBox TabIndex="5" Name="txtwalletname" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Walletname,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Wallet name *" material:HintAssist.IsFloating="True" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                                 <material:PackIcon Kind="AccountCircle" Height="25" Width="25" Margin="50,0,0,0"/>
-                                <TextBox TabIndex="6" Name="txtreportnam" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Path=Reportname, NotifyOnValidationError=True, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Report name *" material:HintAssist.IsFloating="True" />
+                                <TextBox TabIndex="6" Name="txtreportnam" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Reportnam,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Report name *" material:HintAssist.IsFloating="True" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,20,0,0" Name="status1"  Height="28">
                                 <material:PackIcon Kind="Emoticon" Height="23" Width="25" Margin="50,0,0,0"/>

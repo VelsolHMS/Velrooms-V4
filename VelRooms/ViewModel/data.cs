@@ -96,7 +96,7 @@ namespace HMS.ViewModel
         public string View { get; set; }
         public string ResID { get; set; }
         public string AdRooms { get; set; }
-
+        public string Bankcode { get; set; }
         public static int COUNT;
         public string columnName;
         public string result = null;
@@ -108,6 +108,7 @@ namespace HMS.ViewModel
         //public string acode = @"[A-Z]{5}[0-9]{5}";//[0-9]{4}|[0-9]{8}
         //public string name = @"[a-zA-z]\s?[a-zA-z]";
         public string name = @"^[a-zA-Z ]+$";
+        public string code = @"^[a - zA - Z0 - 9_.-] *$";
         public string percentage = @"(\D)\s*([\d,]+)";
         // public string reg = @"(\D)\s*([.\d,]+)";
         //public string reg = @"((\d+)+(\.\d+))$";
@@ -1245,6 +1246,22 @@ namespace HMS.ViewModel
                         else
                         {
                             result = "Invalid voterid number";
+                        }
+                    }
+
+                    if (columnName == "Bankcode")
+                    {
+                        if (string.IsNullOrEmpty(Bankcode))
+                        {
+                            result = "Please enter a code";
+                        }
+                        else if (Regex.IsMatch(Bankcode, code))
+                        {
+                            result = null;
+                        }
+                        else
+                        {
+                            result = "Enter a valid code";
                         }
                     }
 

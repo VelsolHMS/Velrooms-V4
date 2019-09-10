@@ -89,7 +89,7 @@ namespace HMS.View.Masters
             BankWallet1 BN = new BankWallet1();
             if (rbtn1.IsChecked == true)
             {
-                MessageBox.Show("Bank");
+                //MessageBox.Show("Bank");
                 //Getting Details and Inserting into Bank Table
                 if (error != 0 || txtbankcode.Text == "" || txtbankname.Text == "" || txtaccountnumber.Text == "" || txtreportname.Text == "")
                 {
@@ -116,7 +116,7 @@ namespace HMS.View.Masters
             }
             else if (rbtn2.IsChecked == true)
             {
-                MessageBox.Show("Wallet");
+                //MessageBox.Show("Wallet");
                 //Getting Details and Inserting into wallet Table
                 if (error != 0 || txtwalletcode.Text == "" || txtwalletname.Text == "" || txtreportnam.Text == "")
                 {

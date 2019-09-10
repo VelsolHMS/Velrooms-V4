@@ -231,10 +231,11 @@ namespace HMS.View.Operations
                     p.PENDING_AMOUNT = txtpendingamount1.Text;
                     p.BALANCE_AMOUNT = txtbalanceamount1.Text;
                     p.PAYMENT_TYPE = combobox3.Text;
-                    p.PENDING_PAY_TYPE = combobox4.Text;
-                    p.REMARKS = txtremarks1.Text;
+                    
                     if (txtbalanceamount1.Text == "0.00")
                     {
+                        p.PENDING_PAY_TYPE = "Settled";
+                        p.REMARKS = txtremarks1.Text;
                         p.INSERT();
                         p.balance_update();
                         p.status_update();
@@ -245,6 +246,8 @@ namespace HMS.View.Operations
                     }
                     else
                     {
+                        p.PENDING_PAY_TYPE = combobox4.Text;
+                        p.REMARKS = txtremarks1.Text;
                         p.INSERT();
                         p.balance_update();
                         clear();
