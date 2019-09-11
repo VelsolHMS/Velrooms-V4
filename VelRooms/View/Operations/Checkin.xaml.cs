@@ -781,8 +781,9 @@ namespace HMS.View.Operations
             }
             String username = "9494433233";
             String password = "33233";
-            String mobileNumber = "91" + "9494433233";
-            String customer = "Room No : " + roomno.Text + "\nRoom Type : " + roomcategory.Text + "\nArrival & Departure : " + arrival.Text + " - " + departure.Text + "\nAdvance Paid : " + AdvanceAmount;
+            String mobileNumber = "91" + "9494433033";
+            //String customer = "Room No : " + roomno.Text + "\nRoom Type : " + roomcategory.Text + "\nArrival & Departure : " + arrival.Text + " - " + departure.Text + "\nAdvance Paid : " + AdvanceAmount;
+            String customer = "Room No : " + roomno.Text +"\nAdvance Paid : " + AdvanceAmount + "\nName : "+txtfirstname.Text+"";
             String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + mobileNumber + "&from=VELSOL&text=" + customer + "";
             try
             {
