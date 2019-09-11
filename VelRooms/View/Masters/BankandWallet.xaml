@@ -1,0 +1,149 @@
+﻿<Page x:Class="HMS.View.Masters.BankandWallet"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HMS.View.Masters"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="BankandWallet" Background="White">
+
+    <material:Card Height="600" Width="600" material:ShadowAssist.ShadowDepth="Depth4">
+        <Grid Height="613" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="11*"/>
+                <RowDefinition Height="65*"/>
+                <RowDefinition Height="17*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Height="35" Background="#354766">
+                    <TextBlock Text="Bank and Wallet" Foreground="White" FontSize="18" Padding="0,6,0,0" HorizontalAlignment="Center"  FontFamily="Times New Roman" Cursor="None"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <RadioButton Content="Bank" Width="100" Name="rbtn1" FontFamily="Times New Roman" FontSize="18" Padding="15,-1,0,0" Margin="38.75,8,0,0" Checked="Rbtn1_Checked"  />
+                    <RadioButton Content="Wallet" Width="170" Checked="Rbtn2_Checked" Name="rbtn2" FontFamily="Times New Roman" Margin="38.75,8,0,0" Padding="15,-1,0,0" FontSize="18"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <StackPanel Margin="0,0,0,-14" Visibility="Visible" Name="stkpnl1">
+                    <TextBlock x:Name="pagename" Text="Bank Details" Width="550" Padding="62,15,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF354766"/>
+                    <Border Width="470" BorderBrush="#123" BorderThickness="1.5" Margin="65,15,65,30" Padding="0,25,0,25" CornerRadius="10" Height="329">
+                        <StackPanel >
+
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                <material:PackIcon Kind="CreditCardScan" Height="25" Width="25" Margin="50,0,0,0"/>
+                                <TextBox TabIndex="1" Name="txtbankcode" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Bankcode, ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Bank code *" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                <material:PackIcon Kind="Bank" Height="25" Width="25" Margin="50,0,0,0"/>
+                                <TextBox TabIndex="2" Name="txtbankname" Background="White" MaxLength="10" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Bankname,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Bank name *" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                <material:PackIcon Kind="FormatListBulleted" Height="25" Width="25" Margin="50,0,0,0"/>
+                                <TextBox TabIndex="3" Name="txtaccountnumber" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0" Text="{Binding Accountnumber,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Account number *" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                <material:PackIcon Kind="AccountCircle" Height="25" Width="25" Margin="50,0,0,0"/>
+                                <TextBox TabIndex="6" Name="txtreportname" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Reportname,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Report name *" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0" Name="status" Visibility="Visible" Height="28">
+                                <material:PackIcon Kind="Emoticon" Height="23" Width="25" Margin="50,0,0,0"/>
+                                <ComboBox Margin="20,0,0,0" Name="ComboBox1" Padding="1,1,0,0" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Height="22">
+                                    <ComboBoxItem Name="ACTIVE" Content="Active"></ComboBoxItem>
+                                    <ComboBoxItem Name="INACTIVE" Content="Inactive"></ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Margin="0,0,0,-14" Visibility="Hidden" Name="stkpnl2">
+                    <TextBlock x:Name="pagenam" Text="Wallet Details"  Width="550" Padding="62,15,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF354766"/>
+                    <Border Width="470" BorderBrush="#123" BorderThickness="1.5" Margin="65,15,65,30" Padding="0,25,0,25" CornerRadius="10" Height="330">
+                        <StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                <material:PackIcon Kind="CreditCardScan" Height="25" Width="25" Margin="50,0,0,0"/>
+                                <TextBox TabIndex="4" Name="txtwalletcode" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Walletcode, ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Wallet code *" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                <material:PackIcon Kind="Wallet" Height="25" Width="25" Margin="50,0,0,0"/>
+                                <TextBox TabIndex="5" Name="txtwalletname" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Walletname,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Wallet name *" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                <material:PackIcon Kind="AccountCircle" Height="25" Width="25" Margin="50,0,0,0"/>
+                                <TextBox TabIndex="6" Name="txtreportnam" Background="White" TextAlignment="Justify" Width="230" Margin="20,0,0,0"  Padding="1,-8,0,0"  Text="{Binding Reportnam,  ValidatesOnDataErrors=True,ValidatesOnExceptions=True,ValidatesOnNotifyDataErrors=True,NotifyOnSourceUpdated=True,NotifyOnTargetUpdated=True,NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" material:HintAssist.Hint="Report name *" material:HintAssist.IsFloating="True" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0" Name="status1"  Height="28">
+                                <material:PackIcon Kind="Emoticon" Height="23" Width="25" Margin="50,0,0,0"/>
+                                <ComboBox Margin="20,0,0,0" Name="ComboBox2" Padding="1,1,0,0" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Height="22">
+                                    <ComboBoxItem Name="ACTIV" Content="Active"></ComboBoxItem>
+                                    <ComboBoxItem Name="INACTIV" Content="Inactive"></ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2" Margin="0,400,0,0" Grid.RowSpan="2" Height="92" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Height="40" Margin="0,-35,0,0">
+                    <Button Content="Clear" x:Name="clear" Width="100" Click="Clear_Click" Margin="150,0,100,0" FontSize="15"/>
+                    <Button Content="Save" TabIndex="4" IsDefault="True" Width="100"  x:Name="Save" FontSize="15" Click="Save_Click" />
+                </StackPanel>
+            </Grid>
+            <Popup Name="pop1" Width="300" Height="180" Placement="Center">
+                <material:Card Background="#EF513A" Width="300" Height="180" material:ShadowAssist.ShadowDepth="Depth4">
+                    <StackPanel>
+                        <StackPanel Height="50" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Missing Fields" FontSize="25" FontFamily="Calibri" Foreground="White" Margin="0,10,0,10" Padding="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Height="120" Margin="10,0,10,0" Background="White">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Width="35" Height="35" Margin="15,10,10,0">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Data="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" Fill="#EF513A" />
+                                    </Canvas>
+                                </Viewbox>
+                                <TextBlock Text="Please fill all Fields !" FontSize="20" Margin="0,15,0,0" TextAlignment="Center" FontFamily="Calibri"/>
+                            </StackPanel>
+                            <Button HorizontalAlignment="Center" Width="100" Click="Button_Click"  Foreground="#EF513A" FontSize="17" Background="White" BorderThickness="1" BorderBrush="#EF513A" Content="OK" FontWeight="Bold" Margin="0,20,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </material:Card>
+            </Popup>
+            <!--<Popup Name="pop1" Height="150" Width="250" Placement="Center">
+                <Border Background="White" BorderThickness="1" BorderBrush="Red" >
+                    <StackPanel Height="110">
+                        <Label Content="Cannot Save The Data" Width="130" Margin="0,10,0,0"></Label>
+                        <Label Content="Please Check The Field Values" Width="170" Margin="0,0,0,0"></Label>
+                        <Label Content=""></Label>
+                        <Button Width="100" Height="30" Content="OK" FontSize="15" Click="" Margin="0,-20,0,0"></Button>
+                    </StackPanel>
+                </Border>
+            </Popup>-->
+            <Popup Name="popup_insert" Width="300" Height="180" Placement="Center">
+                <material:Card Background="#31B774" Width="300" Height="180" material:ShadowAssist.ShadowDepth="Depth3">
+                    <StackPanel>
+                        <StackPanel Height="50" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Success" FontSize="25" FontFamily="Calibri" Foreground="White" Margin="0,10,0,10" Padding="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Height="120" Margin="10,0,10,0" Background="White">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Width="35" Height="35"  Margin="15,10,10,0">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Data="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" Fill="#31B774" />
+                                    </Canvas>
+                                </Viewbox>
+                                <TextBlock Text="Data Inserted !" FontSize="20" Margin="0,15,0,0" TextAlignment="Center" FontFamily="Calibri"/>
+                            </StackPanel>
+                            <Button HorizontalAlignment="Center" Width="100" Name="insertpop" Click="Insertpop_Click"  Foreground="#31B774" FontSize="17" Background="White" BorderThickness="1.5" BorderBrush="#31B774" Content="OK" FontWeight="Bold" Margin="0,20,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </material:Card>
+            </Popup>
+        </Grid>
+    </material:Card>
+</Page>

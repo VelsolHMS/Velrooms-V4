@@ -3,8 +3,9 @@
     "",
     "\\DAL",
     "\\VelRooms",
-    "\\VelRooms\\Crystal Reports Backup Files"
+    "\\VelRooms\\View",
+    "\\VelRooms\\View\\Masters"
   ],
-  "SelectedNode": "\\DAL\\DbFunctions.cs",
+  "SelectedNode": "\\VelRooms\\View\\Masters\\Company_Master.xaml",
   "PreviewInSolutionExplorer": false
 }

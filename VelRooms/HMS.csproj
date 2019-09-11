@@ -350,6 +350,7 @@
       <DependentUpon>reports.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Masters\amenity.cs" />
+    <Compile Include="Model\Masters\BankWallet.cs" />
     <Compile Include="Model\Masters\companymaster.cs" />
     <Compile Include="Model\Masters\Passwordreset.cs" />
     <Compile Include="Model\Masters\Userpermission.cs" />
@@ -1004,6 +1005,9 @@
     <Compile Include="View\Masters\Amenities.xaml.cs">
       <DependentUpon>Amenities.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Masters\BankandWallet.xaml.cs">
+      <DependentUpon>BankandWallet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Masters\Company_Master.xaml.cs">
       <DependentUpon>Company_Master.xaml</DependentUpon>
     </Compile>
@@ -1012,9 +1016,6 @@
     </Compile>
     <Compile Include="View\Masters\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Masters\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Masters\Planecode.xaml.cs">
       <DependentUpon>Planecode.xaml</DependentUpon>
@@ -1277,6 +1278,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Masters\BankandWallet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Masters\Company_Master.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1286,10 +1291,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Masters\login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Masters\Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

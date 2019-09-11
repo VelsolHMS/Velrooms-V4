@@ -83,6 +83,8 @@
                     <AccessText>Reg U_ser</AccessText>
                 </TextBlock>
             </Button>
+           
+
             <Button x:Name="btncmp"  Width="168" Margin="-169,377,0,207" Style="{StaticResource leftpanestyle}" Click="btncmpclick" >
                 <TextBlock    FontSize="20" Foreground="White" Style="{StaticResource txtbox}">
                     <AccessText>_Company</AccessText>
@@ -111,6 +113,7 @@
                     <AccessText>_Amenities</AccessText>
                 </TextBlock>
             </Button>
+        
             <Button x:Name="btnrvn"  Width="168" Margin="-168,0,0,299" Style="{StaticResource leftpanestyle}" Click="btnrvnclick" VerticalAlignment="Bottom" >
                 <TextBlock    FontSize="20" Foreground="White"  Width="89" Height="29" Style="{StaticResource txtbox}">
                     <AccessText>R_evenue</AccessText>
@@ -127,8 +130,13 @@
                     <AccessText> Room _Tax</AccessText>
                 </TextBlock>
             </Button>
+            <Button x:Name="btnBankandWallet" Width="168" Margin="-169,450,0,0" Style="{StaticResource leftpanestyle}" Click="BtnBankandWallet_Click_2" >
+                <TextBlock FontSize="20" Foreground="White" Height="25" Style="{StaticResource txtbox}">
+                   <AccessText>Bank and Wallet</AccessText> 
+                </TextBlock>
+            </Button>
+      
 
-           
         </StackPanel>
 
         <ScrollViewer Name="scrframe2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
