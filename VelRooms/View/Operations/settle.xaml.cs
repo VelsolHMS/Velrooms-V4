@@ -111,8 +111,9 @@ namespace HMS.View
                     S.INSERT_DATE = DateTime.Today;
                     S.insert();
                     Checkout1.RR = int.Parse(txtroom.Text);
+                    c.Bill_no =Convert.ToInt32(txtbillno.Text);
                     c.Insert();
-                    Send_sms();
+                   // Send_sms();
                     S.printsupdate();
                     S.ColorUpdate("Blue");
                     c.ADVANCEINT();
@@ -139,43 +140,43 @@ namespace HMS.View
             }
             catch (Exception) { }
         }
-        public DataTable()
-        {
-           
-        }
 
+        //public DataTable get()
+        //{
+        //    string a ="selet * from "
+        //}
 
-        public void Send_sms()
-        {
-            DataTable landline = hotelinfo.getLandLinenumber();
-            String ll_number = landline.Rows[0]["MOBILE_NO"].ToString();
-            //string no = "9848082999";
-            String username = "9494433233";
-            String password = "33233";
-            SmsMobileNumber = "91" + "9494433033";
-            SmsMessage = "Check Out : " + + "\nAdvance Paid : " +  + "\nName : " + .t +"";
-            String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + SmsMobileNumber + "&from=HRTVEL&text=" + SmsMessage + "";
-            try
-            {
-                HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url);
-                //Prepare and Add URL Encoded data
-                UTF8Encoding encoding = new UTF8Encoding();
-                httpWReq.Method = "GET";
-                httpWReq.ContentType = "application/x-www-form-urlencoded";
+        //public void Send_sms()
+        //{
+        //    DataTable landline = hotelinfo.getLandLinenumber();
+        //    String ll_number = landline.Rows[0]["MOBILE_NO"].ToString();
+        //    string no = "9848082999";
+        //    String username = "9494433233";
+        //    String password = "33233";
+        //    SmsMobileNumber = "91" + "9494433033";
+        //    SmsMessage = "Check Out : " + +"\nAdvance Paid : " + +"\nName : " + .t + "";
+        //    String url = "http://sms.zestwings.com/smpp.sms?username=" + username + "&password=" + password + "&to=" + SmsMobileNumber + "&from=HRTVEL&text=" + SmsMessage + "";
+        //    try
+        //    {
+        //        HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(url);
+        //        Prepare and Add URL Encoded data
+        //        UTF8Encoding encoding = new UTF8Encoding();
+        //        httpWReq.Method = "GET";
+        //        httpWReq.ContentType = "application/x-www-form-urlencoded";
 
-                HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                string responseString = reader.ReadToEnd();
+        //        HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
+        //        StreamReader reader = new StreamReader(response.GetResponseStream());
+        //        string responseString = reader.ReadToEnd();
 
-                //Close the response
-                reader.Close();
-                response.Close();
-            }
-            catch (SystemException ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
+        //        Close the response
+        //        reader.Close();
+        //        response.Close();
+        //    }
+        //    catch (SystemException ex)
+        //    {
+        //        MessageBox.Show(ex.Message.ToString());
+        //    }
+        //}
         public async Task<String> DELAY()
         {
             await Task.Delay(900000);
@@ -301,6 +302,7 @@ namespace HMS.View
                     pu.IsOpen = false;
                     settle1.STATUS = "BOH";
                     Checkout1.RR = int.Parse(txtroom.Text);
+                    c.Bill_no = Convert.ToInt32(txtbillno.Text);
                     c.Insert();
                     settle1.otherinsert();
                     settle1.printsupdate();
@@ -320,7 +322,8 @@ namespace HMS.View
                     pu.IsOpen = false;
                     settle1.STATUS = "CMP";
                     Checkout1.RR = int.Parse(txtroom.Text);
-                    c.Insert();
+                c.Bill_no = Convert.ToInt32(txtbillno.Text);
+                c.Insert();
                     settle1.otherinsert();
                     settle1.printsupdate();
                     settle1.ColorUpdate("Green");
@@ -344,7 +347,8 @@ namespace HMS.View
                     {
                         pu.IsOpen = false;
                         Checkout1.RR = int.Parse(txtroom.Text);
-                        c.Insert();
+                    c.Bill_no = Convert.ToInt32(txtbillno.Text);
+                    c.Insert();
                         settle1.TRANSFER();
                         settle1.printsupdate();
                         settle1.ColorUpdate("Green");
