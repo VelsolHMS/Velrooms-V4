@@ -112,6 +112,7 @@ namespace HMS.View.Masters
                     BN.INSERT_BY = login.u;
                     BN.INSERT_DATE = DateTime.Today;
                     BN.INSERT();
+                    this.NavigationService.Refresh();
                 }
             }
             else if (rbtn2.IsChecked == true)
@@ -136,6 +137,7 @@ namespace HMS.View.Masters
                     BN.INSERT_BY = login.u;
                     BN.INSERT_DATE = DateTime.Today;
                     BN.INSERT1();
+                    this.NavigationService.Refresh();
                 }
             }
 
