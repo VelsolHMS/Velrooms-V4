@@ -451,6 +451,11 @@
     <Compile Include="Reports\CheckoutDetails.xaml.cs">
       <DependentUpon>CheckoutDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\DateWisetax.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -690,6 +695,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OutstandingbalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\GstBillfrom.xaml.cs">
+      <DependentUpon>GstBillfrom.xaml</DependentUpon>
     </Compile>
     <Compile Include="Reports\Plan Wise Room Tarrif.xaml.cs">
       <DependentUpon>Plan Wise Room Tarrif.xaml</DependentUpon>
@@ -1225,6 +1233,10 @@
     <Page Include="Reports\Oustandingbal.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Reports\GstBillfrom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Reports\Plan Wise Room Tarrif.xaml">
       <SubType>Designer</SubType>
@@ -1882,6 +1894,17 @@
     </None>
     <None Include="Reports\CheckoutDayDataSet1.xss">
       <DependentUpon>CheckoutDayDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="Reports\DateWisetax.xsc">
       <DependentUpon>DateWisetax.xsd</DependentUpon>
