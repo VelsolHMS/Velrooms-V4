@@ -538,20 +538,21 @@ namespace HMS.Model.Operations
             lists.AddSqlParameter("@Ch_PendingAmount", Checkout.Ch_PendingAmount);
             lists.AddSqlParameter("@INSERT_BY", login.u);
             lists.AddSqlParameter("@INSERT_DATE", DateTime.Today.Date);
+
             string s = "INSERT INTO PRINTS (BILL_NO,DATE,ROOM_NO,ARRIVAL_DATE,DEPARTURE_DATE,GUEST_NAME,MOBILE_NO,ROOM_TARRIF,EXTRA_CHARGES,CGST,SGST,TOTAL,TRANSFER_AMOUNT,ADVANCE,DISCOUNT,BALANCE_AMOUNT,PRINTSTATUS,INSERT_BY,INSERT_DATE)" +
                  "VALUES ((SELECT CHECKIN_ID FROM CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0),@DATE,@ROOM_NO," +
                  "(select ARRIVAL_DATE from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0 )," +
                  "(select DEPARTURE_DATE from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
                  "(select FIRSTNAME from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
                  "(select MOBILE_NO from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0),@Ch_Tarrif," +
-                 "@Ch_Charges,@Ch_CSGST,@Ch_CSGST,@TOTAL,@TRANSFER_AMOUNT,@Ch_Advance,@Ch_Discount,@Ch_PendingAmount,'0',@INSERT_BY,@INSERT_DATE)";
+                 "@Ch_Charges,@Ch_CSGST,@Ch_CSGST,@TOTAL,@TRANSFER_AMOUNT,@Ch_Advance,@Ch_Discount,@Ch_PendingAmount,0,@INSERT_BY,@INSERT_DATE)";
             DbFunctions.ExecuteCommand<int>(s, lists);
         }
         // Inserting row in PrintStatus Table
         public void PrintStatus_Insert()
         {
             var lists = new List<SqlParameter>();     
-            lists.AddSqlParameter("@DATE", DateTime.Today.Date);
+            lists.AddSqlParameter("@DATE", DateTime.Now);
             lists.AddSqlParameter("@ROOM_NO", ROOM_NO);
             lists.AddSqlParameter("@Ch_Tarrif", Checkout.Ch_Tarrif);
             lists.AddSqlParameter("@Ch_CSGST", Checkout.Ch_CSGST);
@@ -562,15 +563,26 @@ namespace HMS.Model.Operations
             lists.AddSqlParameter("@Ch_Charges", Checkout.Ch_Charges);
             lists.AddSqlParameter("@Ch_PendingAmount", Checkout.Ch_PendingAmount);
             lists.AddSqlParameter("@INSERT_BY", login.u);
-            lists.AddSqlParameter("@INSERT_DATE", DateTime.Today.Date);
+            lists.AddSqlParameter("@INSERT_DATE", DateTime.Now);
 
-            string s = "INSERT INTO PRINTSTATUS (DATE,ROOM_NO,ARRIVAL_DATE,DEPARTURE_DATE,GUEST_NAME,MOBILE_NO,ROOM_TARRIF,EXTRA_CHARGES,CGST,SGST,TOTAL,TRANSFER_AMOUNT,ADVANCE,DISCOUNT,BALANCE_AMOUNT,CHECKIN_ID,INSERT_BY,INSERT_DATE,COMPANYNAME,BILLSETTLE)" +
-                "VALUES (@DATE,@ROOM_NO,(select ARRIVAL_DATE from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0 )," +
-                "(select DEPARTURE_DATE from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
-                "(select FIRSTNAME from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
-                "(select MOBILE_NO from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
-                "@Ch_Tarrif,@Ch_Charges,@Ch_CSGST,@Ch_CSGST,@TOTAL,@TRANSFER_AMOUNT,@Ch_Advance,@Ch_Discount,@Ch_PendingAmount," +
-                "(SELECT CHECKIN_ID FROM CHECKIN WHERE  ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0),@INSERT_BY,@INSERT_DATE,(SELECT COMPANY_NAME FROM CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0),'0')";
+            //string s = "INSERT INTO PRINTSTATUS (DATE,ROOM_NO,ARRIVAL_DATE,DEPARTURE_DATE,GUEST_NAME,MOBILE_NO,ROOM_TARRIF,EXTRA_CHARGES,CGST,SGST,TOTAL,TRANSFER_AMOUNT,ADVANCE,DISCOUNT,BALANCE_AMOUNT,CHECKIN_ID,INSERT_BY,INSERT_DATE,COMPANYNAME,BILLSETTLE)" +
+            //    "VALUES (@DATE,@ROOM_NO,(select ARRIVAL_DATE from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0 )," +
+            //    "(select DEPARTURE_DATE from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
+            //    "(select FIRSTNAME from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
+            //    "(select MOBILE_NO from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
+            //    "@Ch_Tarrif,@Ch_Charges,@Ch_CSGST,@Ch_CSGST,@TOTAL,@TRANSFER_AMOUNT,@Ch_Advance,@Ch_Discount,@Ch_PendingAmount," +
+            //    "(SELECT CHECKIN_ID FROM CHECKIN WHERE  ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0),@INSERT_BY,@INSERT_DATE,(SELECT COMPANY_NAME FROM CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0),0)";
+            string s = "INSERT INTO PRINTSTATUS (DATE,ROOM_NO,ARRIVAL_DATE,DEPARTURE_DATE,GUEST_NAME,"+
+                "MOBILE_NO,ROOM_TARRIF,EXTRA_CHARGES,CGST,SGST,TOTAL,TRANSFER_AMOUNT,ADVANCE,DISCOUNT,BALANCE_AMOUNT,"+
+                "CHECKIN_ID,INSERT_BY,INSERT_DATE,BILLSETTLE)" +
+              "VALUES (@DATE,@ROOM_NO,(select ARRIVAL_DATE from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0 )," +
+              "(select DEPARTURE_DATE from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
+              "(select FIRSTNAME from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
+              "(select MOBILE_NO from CHECKIN WHERE ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0)," +
+              "@Ch_Tarrif,@Ch_Charges,@Ch_CSGST,@Ch_CSGST,@TOTAL,@TRANSFER_AMOUNT,@Ch_Advance,@Ch_Discount,@Ch_PendingAmount," +
+              "(SELECT CHECKIN_ID FROM CHECKIN WHERE  ROOM_NO='" + ROOM_NO + "' AND CHECK_OUT=0),@INSERT_BY,"+
+              "@INSERT_DATE,0)";
+
             DbFunctions.ExecuteCommand<int>(s, lists);
         }
         public DataTable TransferAmount()

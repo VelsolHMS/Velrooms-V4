@@ -822,7 +822,7 @@ namespace HMS.Model.Others
             var list = new List<SqlParameter>();
             string s = "SELECT A.INSERT_DATE,A.BILL_NO,A.ROOM_NO," +
                        "(SELECT GUEST_NAME FROM PRINTSTATUS WHERE BILL_NO = A.BILL_NO) AS GUESTNAME," +
-                        "(SELECT MOBILE_NO FROM PRINTSTATUS WHERE BILL_NO = A.BILL_NO) AS MOBILENO,(SELECT TOTAL FROM PRINTSTATUS WHERE BILL_NO = A.BILL_NO) AS TOTAL, A.BALANCE FROM SETTLE_OTHERPAY A WHERE INSERT_DATE BETWEEN '" + pendingfromdate + "' AND '" + pendingtodate + "'";
+                        "(SELECT MOBILE_NO FROM PRINTSTATUS WHERE BILL_NO = A.BILL_NO) AS MOBILENO,(SELECT TOTAL FROM PRINTSTATUS WHERE BILL_NO = A.BILL_NO) AS TOTAL, A.BALANCE FROM SETTLE_OTHERPAY A WHERE INSERT_DATE BETWEEN '" + pendingfromdate + "' AND '" + pendingtodate + "' AND STATUS ='Bill On Hold'";
             DataTable st = DbFunctions.ExecuteCommand<DataTable>(s, list);
             return st;
         }

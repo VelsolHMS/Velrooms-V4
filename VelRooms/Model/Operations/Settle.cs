@@ -1,4 +1,4 @@
-﻿using DAL;
+﻿  using DAL;
 using HMS.View.Masters;
 using System;
 using System.Collections.Generic;
@@ -210,7 +210,7 @@ namespace HMS.Model.Operations
             }
             else
             {
-                pendingbillcompany= D.Rows[0]["AMOUNT"].ToString();
+                pendingbillcompany= D.Rows[0]["AMOUNT"].ToString(); 
             }
             return D ;
         }

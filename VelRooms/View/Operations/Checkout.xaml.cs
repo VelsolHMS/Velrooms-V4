@@ -213,9 +213,8 @@ namespace HMS.View.Operations
         public static decimal Ch_CSGST, Ch_Tarrif, Ch_Total, Ch_Discount, Ch_Advance, Ch_Charges, Ch_Refunds, Ch_PendingAmount, PrintType;
         private void yes_Click(object sender, RoutedEventArgs e)
         {
-            co.ROOM_NO = "";
-            try
-            {
+            //try
+            //{
                 popup.IsOpen = false;
                 co.ROOM_NO = roomno;
                 if(co.ROOM_NO == "" || co.ROOM_NO == null)
@@ -270,14 +269,14 @@ namespace HMS.View.Operations
                         MessageBox.Show("Please Settle the Room And Try again.!");
                     }
                 }
-            }
-            catch (Exception) { }
+            //}
+            //catch (Exception) { }
         }
         public static decimal pcharge;
         private void no_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 popup.IsOpen = false;
                 ReportDocument r = new ReportDocument();
                 co.ROOM_NO = roomno;
@@ -311,8 +310,8 @@ namespace HMS.View.Operations
                         MessageBox.Show("Please Settle the Room And Try again.!");
                     }
                 }
-            }
-            catch (Exception) { }
+            //}
+            //catch (Exception) { }
         }
         public string discountamount, chargedtarrif, advanceamount, totalpendingamount, totalcharges, Cgst;
         public static string roomno;
