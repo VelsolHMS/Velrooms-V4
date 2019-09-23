@@ -41,6 +41,7 @@ namespace HMS.Model.Operations
         public float factor;
         public DateTime arrival, departure;
         public static int RR, LL;
+        public int Bill_no { get; set; }
         public void Insert()
         {
             var list = new List<SqlParameter>();
@@ -49,6 +50,7 @@ namespace HMS.Model.Operations
             list.AddSqlParameter("@INSERT_BY", login.u);
             list.AddSqlParameter("@Checkout_Time", DateTime.Now.ToShortTimeString());
             list.AddSqlParameter("@INSERT_DATE", DateTime.Today.Date);
+            list.AddSqlParameter("@BILL_NO", Bill_no);
             string S = "INSERT INTO CHECKOUT (ROOM_NO,CURRENTDATE,GUEST_NAME,MOBILE_NO,ARRIVAL_DATE,DEPARTURE_DATE,TARRIF,CHARGES,CGST,SGST,TOTAL,ADVANCE,DISCOUNT,BALANCE,TRANSFER_AMOUNT,CHECKIN_ID,prints,INSERT_BY,INSERT_DATE,Checkout_Time)" +
                " VALUES (@ROOM_NO,@CURRENTDATE,(select FIRSTNAME from CHECKIN WHERE ROOM_NO ='" + RR + "' AND CHECK_OUT=0 )," +
                "(select MOBILE_NO from CHECKIN WHERE ROOM_NO='" + RR + "' AND  CHECK_OUT=0)," +
@@ -63,7 +65,7 @@ namespace HMS.Model.Operations
                 "(SELECT DISCOUNT FROM PRINTSTATUS WHERE ROOM_NO='" + RR + "' AND BILLSETTLE = 0)," +
                 "(SELECT BALANCE_AMOUNT FROM PRINTSTATUS WHERE ROOM_NO='" + RR + "' AND BILLSETTLE = 0)," +
                 "(SELECT TRANSFER_AMOUNT from PRINTSTATUS WHERE ROOM_NO='" + RR + "' AND BILLSETTLE = 0)," +
-                "(SELECT CHECKIN_ID from checkin where ROOM_NO='" + RR + "' AND CHECK_OUT=0) ,1,@INSERT_BY,@INSERT_DATE,@Checkout_Time)";
+                "(SELECT CHECKIN_ID from checkin where ROOM_NO='" + RR + "' AND CHECK_OUT=0) ,1,@INSERT_BY,@INSERT_DATE,@Checkout_Time,@BILL_NO)";
             DbFunctions.ExecuteCommand<int>(S, list);
         }
         public DataTable CC()
